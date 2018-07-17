@@ -3,19 +3,63 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FPSCamera : MonoBehaviour {
+    public Transform PlayerBody;
 
-    public Transform PlayerBody; 
     public float Sensitivity;
-
-    float XAxisClamp = 0; 
+    public float PeekSpeed;
+    float XAxisClamp = 0;
+    public GameObject leanPivot;
+    bool IsPeeking = false; 
     // Use this for initialization
-    
 
     // Update is called once per frame
     void Update () {
-        Cursor.lockState = CursorLockMode.Locked;
 
-        RotateCamera();
+        Cursor.lockState = CursorLockMode.Locked;
+        if (IsPeeking == false)
+        {
+            RotateCamera();
+        }
+        if (Input.GetKey(KeyCode.Q))
+        {
+            IsPeeking = true;
+            PeekLeft();
+        }
+        else if (Input.GetKeyUp(KeyCode.Q))
+        {
+            NoPeek();
+            IsPeeking = false;
+
+        }
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            IsPeeking = true;
+
+            PeekRight();
+
+        }
+        else if (Input.GetKeyUp(KeyCode.E))
+        {
+            NoPeek();
+            IsPeeking = false;
+
+        }
+    }
+
+    void PeekRight()
+    {
+        leanPivot.transform.rotation = Quaternion.Lerp(leanPivot.transform.rotation, Quaternion.Euler(0, 0, -25), Time.deltaTime * 1.0f);
+    }
+
+    void PeekLeft()
+    {
+        leanPivot.transform.rotation = Quaternion.Lerp(leanPivot.transform.rotation, Quaternion.Euler(0, 0, 25), Time.deltaTime * 1.0f);
+    }
+
+    void NoPeek()
+    {
+        leanPivot.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
     void RotateCamera()
     {
