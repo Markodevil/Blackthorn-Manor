@@ -2,28 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FPSCamera : MonoBehaviour {
+public class FPSCamera : MonoBehaviour
+{
     public Transform PlayerBody;
 
     public float Sensitivity;
     public float PeekSpeed;
     float XAxisClamp = 0;
     public GameObject leanPivot;
-    bool IsPeeking = false; 
+    bool IsPeeking = false;
+    public float leanAngle;
+
     // Use this for initialization
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 
     // Update is called once per frame
-    void Update () {
-
-        Cursor.lockState = CursorLockMode.Locked;
-        if (IsPeeking == false)
-        {
+    void Update()
+    {
+        if (!IsPeeking)
             RotateCamera();
-        }
         if (Input.GetKey(KeyCode.Q))
         {
-            IsPeeking = true;
-            PeekLeft();
+            if (!CheckDirections(false))
+            {
+                IsPeeking = true;
+                PeekLeft();
+
+            }
+
         }
         else if (Input.GetKeyUp(KeyCode.Q))
         {
@@ -34,32 +43,41 @@ public class FPSCamera : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.E))
         {
-            IsPeeking = true;
-
-            PeekRight();
-
+            if (!CheckDirections(true))
+            {
+                IsPeeking = true;
+                PeekRight();
+            }
         }
         else if (Input.GetKeyUp(KeyCode.E))
         {
+
             NoPeek();
             IsPeeking = false;
 
+
+        }
+
+        if (!Input.GetKey(KeyCode.E) && !Input.GetKey(KeyCode.Q))
+        {
+            NoPeek();
         }
     }
 
     void PeekRight()
     {
-        leanPivot.transform.rotation = Quaternion.Lerp(leanPivot.transform.rotation, Quaternion.Euler(0, 0, -25), Time.deltaTime * 1.0f);
+        leanPivot.transform.rotation = Quaternion.Lerp(leanPivot.transform.rotation, Quaternion.Euler(leanPivot.transform.rotation.eulerAngles.x, leanPivot.transform.rotation.eulerAngles.y, -leanAngle), Time.deltaTime * 1.5f);
     }
 
     void PeekLeft()
     {
-        leanPivot.transform.rotation = Quaternion.Lerp(leanPivot.transform.rotation, Quaternion.Euler(0, 0, 25), Time.deltaTime * 1.0f);
+        leanPivot.transform.rotation = Quaternion.Lerp(leanPivot.transform.rotation, Quaternion.Euler(leanPivot.transform.rotation.eulerAngles.x, leanPivot.transform.rotation.eulerAngles.y, leanAngle), Time.deltaTime * 1.5f);
     }
 
     void NoPeek()
     {
-        leanPivot.transform.rotation = Quaternion.Euler(0, 0, 0);
+        //leanPivot.transform.rotation = Quaternion.Euler(0, 0, 0);
+        leanPivot.transform.rotation = Quaternion.Lerp(leanPivot.transform.rotation, Quaternion.Euler(leanPivot.transform.rotation.eulerAngles.x, leanPivot.transform.rotation.eulerAngles.y, 0), Time.deltaTime * 1.5f);
     }
     void RotateCamera()
     {
@@ -76,7 +94,9 @@ public class FPSCamera : MonoBehaviour {
         XAxisClamp -= RotAmountY;
 
         TargetRotationCamera.x -= RotAmountY;
-        TargetRotationCamera.z = 0;
+
+        //TargetRotationCamera.z = 0;  --- changed to \/ to fix leaning problem
+        TargetRotationCamera.z = transform.rotation.eulerAngles.z;
 
         TargetRotationBody.y += RotAmountX;
 
@@ -96,4 +116,44 @@ public class FPSCamera : MonoBehaviour {
         PlayerBody.rotation = Quaternion.Euler(TargetRotationBody);
     }
 
+    //--------------------------------------------------------------------------------------
+    // Raycasts to the left or right of the player and returns true if there is a wall 
+    // right next to the player
+    // 
+    // Param
+    //		Direction: The direction in which I want to check for a wall 
+    //		 
+    // Return:
+    //		A bool which correlates to whether or not there is a wall next to the player
+    //--------------------------------------------------------------------------------------
+
+    bool CheckDirections(bool direction)
+    {
+        RaycastHit hit;
+        switch (direction)
+        {
+            case true:
+                if (Physics.Raycast(PlayerBody.transform.position, PlayerBody.transform.right, out hit, 1.5f))
+                {
+                    if (hit.collider.gameObject.tag == "Wall")
+                    {
+                        return true;
+                    }
+                }
+
+                break;
+            case false:
+                if (Physics.Raycast(PlayerBody.transform.position, -PlayerBody.transform.right, out hit, 1.5f))
+                {
+                    if (hit.collider.gameObject.tag == "Wall")
+                    {
+                        return true;
+                    }
+                }
+
+                break;
+        }
+
+        return false;
+    }
 }
