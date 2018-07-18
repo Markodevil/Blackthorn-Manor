@@ -42,10 +42,10 @@ public class Ghost : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         //Game Over on player collision
-        if (collision.gameObject.layer == 8)
+        if (other.gameObject.layer == 8)
         {
             destination = null;
             SceneManager.LoadScene("GameOver");
