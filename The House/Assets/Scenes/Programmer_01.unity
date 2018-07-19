@@ -217,6 +217,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114939394329766826, guid: eff05569a2dbc34498a4f4d4939785ec,
+        type: 2}
+      propertyPath: smooth
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eff05569a2dbc34498a4f4d4939785ec, type: 2}
   m_IsPrefabParent: 0
@@ -583,6 +588,7 @@ MonoBehaviour:
   Sensitivity: 2
   PeekSpeed: 4
   leanPivot: {fileID: 1297206518}
+  IsPeeking: 0
   leanAngle: 30
 --- !u!1 &957542753
 GameObject:

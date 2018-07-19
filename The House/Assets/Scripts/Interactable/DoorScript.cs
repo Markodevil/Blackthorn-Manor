@@ -8,7 +8,8 @@ public class DoorScript : MonoBehaviour {
    public  float doorOpenAngle;
     float doorCloseAngle = 0;
     public float smooth = 2;
-
+    public float mouseY;
+    public bool OpeningDoor = false;
     // Use this for initialization
     void Start () {
 		
@@ -17,23 +18,24 @@ public class DoorScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        mouseY = Input.GetAxis("Mouse Y");
 
         if (isOpen)
         {
             Quaternion targetRotation = Quaternion.Euler(0, doorOpenAngle, 0);
-            transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, smooth * Time.deltaTime);
+            transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, mouseY * Time.deltaTime);
         }
         else
         {
             Quaternion targetRotation2 = Quaternion.Euler(0, doorCloseAngle, 0);
-            transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation2, smooth * Time.deltaTime);
+            transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation2, -mouseY * Time.deltaTime);
         }
 
 	}
 
     public void changeDoorState()
     {
-        isOpen = !isOpen; 
+        isOpen = !isOpen;
     }
 
 }

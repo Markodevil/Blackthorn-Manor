@@ -10,7 +10,7 @@ public class FPSCamera : MonoBehaviour
     public float PeekSpeed;
     float XAxisClamp = 0;
     public GameObject leanPivot;
-    bool IsPeeking = false;
+    public bool IsPeeking = false;
     public float leanAngle;
 
     // Use this for initialization
@@ -23,7 +23,18 @@ public class FPSCamera : MonoBehaviour
     void Update()
     {
         if (!IsPeeking)
+        {
             RotateCamera();
+        }
+
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            IsPeeking = true;
+        }
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            IsPeeking = false;
+        }
         if (Input.GetKey(KeyCode.Q))
         {
             if (!CheckDirections(false))
