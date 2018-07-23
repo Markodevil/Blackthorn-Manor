@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractableItems : MonoBehaviour {
+[RequireComponent(typeof(Rigidbody))]
+public class InteractableItems : MonoBehaviour
+{
 
     public GameObject player;
     public GameObject playerCam;
@@ -11,19 +13,29 @@ public class InteractableItems : MonoBehaviour {
     public bool beingCarried;
     public bool touched;
 
+    public AudioClip collisionClip;
 
-	// Use this for initialization
-	void Start ()
+    Rigidbody rb;
+    AudioManager am;
+
+    private void Awake()
     {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
+        rb = GetComponent<Rigidbody>();
+        am = FindObjectOfType<AudioManager>();
+    }
+
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         Ray ray = playerCam.GetComponent<Camera>().ScreenPointToRay(playerCam.transform.forward);
         RaycastHit hit;
-		if(Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, 10.0f))
+        if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, 10.0f))
         {
             Debug.Log("Player looking at me");
             playerHere = true;
@@ -34,37 +46,57 @@ public class InteractableItems : MonoBehaviour {
             playerHere = false;
         }
 
-        if(playerHere && Input.GetMouseButtonDown(0))
+        if (playerHere && Input.GetMouseButtonDown(0))
         {
-            GetComponent<Rigidbody>().isKinematic = true;
+            rb.isKinematic = true;
             transform.parent = playerCam.transform;
             beingCarried = true;
         }
 
-        if(beingCarried)
+        if (beingCarried)
         {
-            if(touched)
+            if (touched)
             {
-                GetComponent<Rigidbody>().isKinematic = false;
+                rb.isKinematic = false;
                 transform.parent = null;
                 beingCarried = false;
                 touched = false;
             }
 
-            if(Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(0))
             {
-                GetComponent<Rigidbody>().isKinematic = false;
+                rb.isKinematic = false;
                 transform.parent = null;
                 beingCarried = false;
             }
+
+            if(Input.GetMouseButtonDown(1))
+            {
+                rb.isKinematic = false;
+                transform.parent = null;
+                beingCarried = false;
+                rb.AddForce(playerCam.transform.forward * throwForce);
+            }
         }
-	}
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (beingCarried)
+        {
+            if (collision.gameObject.tag == "Wall")
+            {
+                touched = true;
+            }
+
+        }
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Wall")
+        if(!beingCarried)
         {
-            touched = true;
+            am.CreateAudioInstance(collisionClip, collision.contacts[0].point);
         }
     }
 }
