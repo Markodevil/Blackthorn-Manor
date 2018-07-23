@@ -646,6 +646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 2101695583}
+  connectedWayPatrol: {fileID: 568091630}
   chaseTimer: 0
 --- !u!114 &568091627
 MonoBehaviour:
@@ -703,7 +704,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partrolWaiting: 0
   totalWaitTime: 3
-  switchProbability: 0.2
 --- !u!1 &581729991
 GameObject:
   m_ObjectHideFlags: 0

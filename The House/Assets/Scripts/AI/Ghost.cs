@@ -56,6 +56,7 @@ public class Ghost : MonoBehaviour
             //If the player has left the ghosts vision counts down form 10, then go back to patroling
             if (chaseTimer >= 0 && hasBeenSpotted == true)
             {
+                //Counts down and updates the players position
                 chaseTimer -= Time.deltaTime;
                 SetDestination();
             }
