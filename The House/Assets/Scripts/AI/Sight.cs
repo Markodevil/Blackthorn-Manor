@@ -18,7 +18,6 @@ namespace SIGHT
 
         public float meshResolution;
 
-        [HideInInspector]
         public List<Transform> visibleTargets = new List<Transform>();
 
         public MeshFilter viewMeshFilter;
