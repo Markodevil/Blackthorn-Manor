@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        Cursor.lockState = CursorLockMode.Locked;
 		if(Input.anyKeyDown)
         {
             if(Input.GetKeyDown(codeInit[codeIndex].ToString()))

@@ -22,6 +22,7 @@ public class FPSCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (!IsPeeking)
         {
             RotateCamera();

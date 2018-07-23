@@ -35,15 +35,20 @@ public class InteractableItems : MonoBehaviour
     {
         Ray ray = playerCam.GetComponent<Camera>().ScreenPointToRay(playerCam.transform.forward);
         RaycastHit hit;
+        Debug.DrawRay(playerCam.transform.position, playerCam.transform.forward * 10.0f);
         if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, 10.0f))
         {
-            Debug.Log("Player looking at me");
-            playerHere = true;
-        }
-        else
-        {
-            Debug.Log("Player not looking at me");
-            playerHere = false;
+            if (hit.collider.gameObject == gameObject)
+            {
+                Debug.Log("Player looking at me");
+                playerHere = true;
+
+            }
+            else
+            {
+                Debug.Log("Player not looking at me");
+                playerHere = false;
+            }
         }
 
         if (playerHere && Input.GetMouseButtonDown(0))
@@ -70,7 +75,7 @@ public class InteractableItems : MonoBehaviour
                 beingCarried = false;
             }
 
-            if(Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1))
             {
                 rb.isKinematic = false;
                 transform.parent = null;

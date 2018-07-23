@@ -2,22 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorScript : MonoBehaviour {
+public class DoorScript : MonoBehaviour
+{
 
     public bool isOpen = false;
-   public  float doorOpenAngle;
+    public float doorOpenAngle;
     float doorCloseAngle = 0;
     public float smooth = 2;
     public float mouseY;
     public bool OpeningDoor = false;
     public float interactDistance = 5;
-   public float doorOpenSpeed; 
+    public float doorOpenSpeed;
 
 
     // Use this for initialization
-    void Start () {
-		
-	}
+    void Start()
+    {
+        doorCloseAngle = transform.rotation.eulerAngles.y;
+    }
 
     // Update is called once per frame
     void Update()
@@ -26,7 +28,7 @@ public class DoorScript : MonoBehaviour {
         Ray ray = new Ray(transform.position, transform.forward);
 
         RaycastHit hit;
-        
+
 
         if (isOpen && mouseY > 0)
         {
@@ -40,30 +42,30 @@ public class DoorScript : MonoBehaviour {
             Quaternion targetRotation2 = Quaternion.Euler(0, doorCloseAngle, 0);
             transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation2, -mouseY * Time.deltaTime * doorOpenSpeed);
         }
-        
+
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             isOpen = false;
         }
-         
-       if (Physics.Raycast(ray, out hit, interactDistance))
-       {
-           Debug.Log("Doors Forward");
-           if (isOpen && mouseY > 0)
-           {
-               Quaternion targetRotation = Quaternion.Euler(0, doorOpenAngle, 0);
-               transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, -mouseY * Time.deltaTime);
-           }
-      
-      
-           if (isOpen && mouseY < 0)
-           {
-               Quaternion targetRotation2 = Quaternion.Euler(0, doorCloseAngle, 0);
-               transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation2, mouseY * Time.deltaTime);
-           }
-      
-      
-       }
+
+        if (Physics.Raycast(ray, out hit, interactDistance))
+        {
+            Debug.Log("Doors Forward");
+            if (isOpen && mouseY > 0)
+            {
+                Quaternion targetRotation = Quaternion.Euler(0, doorOpenAngle, 0);
+                transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, -mouseY * Time.deltaTime);
+            }
+
+
+            if (isOpen && mouseY < 0)
+            {
+                Quaternion targetRotation2 = Quaternion.Euler(0, doorCloseAngle, 0);
+                transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation2, mouseY * Time.deltaTime);
+            }
+
+
+        }
     }
 
     public void changeDoorState()
