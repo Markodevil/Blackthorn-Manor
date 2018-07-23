@@ -19,18 +19,26 @@ public class DoorScript : MonoBehaviour {
 	void Update ()
     {
         mouseY = Input.GetAxis("Mouse Y");
-        if (isOpen && mouseY > 0)
-        {
-            Quaternion targetRotation = Quaternion.Euler(0, doorOpenAngle, 0);
-            transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, mouseY * Time.deltaTime);
-        }
-        if (isOpen && mouseY < 0)
-        {
-            Quaternion targetRotation2 = Quaternion.Euler(0, doorCloseAngle, 0);
-            transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation2, -mouseY * Time.deltaTime);
-        }
+       
+            if (isOpen && mouseY > 0 )
+            {
+                Quaternion targetRotation = Quaternion.Euler(0, doorOpenAngle, 0);
+                transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, mouseY * Time.deltaTime);
+            }
+        
+        
+            if (isOpen && mouseY < 0 )
+            {
+                Quaternion targetRotation2 = Quaternion.Euler(0, doorCloseAngle, 0);
+                transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation2, -mouseY * Time.deltaTime);
+            }
 
-	}
+            if (Input.GetKeyUp(KeyCode.Mouse0))
+            {
+                isOpen = false;
+            }
+
+    }
 
     public void changeDoorState()
     {
