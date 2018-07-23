@@ -18,7 +18,9 @@ public class DestroyAudioItem : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(!audSource.isPlaying)
+        audSource = GetComponent<AudioSource>();
+        Debug.Log(audSource.isPlaying);
+        if (!audSource.isPlaying)
         {
             Destroy(gameObject);
         }

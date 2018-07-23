@@ -16,12 +16,12 @@ public class InteractableItems : MonoBehaviour
     public AudioClip collisionClip;
 
     Rigidbody rb;
-    AudioManager am;
+    AudioSource audioSource;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        am = FindObjectOfType<AudioManager>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Use this for initialization
@@ -90,13 +90,16 @@ public class InteractableItems : MonoBehaviour
             }
 
         }
+
+        audioSource.pitch = Random.Range(1, 3);
+        audioSource.PlayOneShot(collisionClip);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(!beingCarried)
-        {
-            am.CreateAudioInstance(collisionClip, collision.contacts[0].point);
-        }
+        //if(!beingCarried)
+        //{
+        //    am.CreateAudioInstance(collisionClip, collision.contacts[0].point);
+        //}
     }
 }

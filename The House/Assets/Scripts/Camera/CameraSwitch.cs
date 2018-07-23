@@ -27,14 +27,19 @@ public class CameraSwitch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if you aren't looking at your phone
         if (!lookingAtPhone)
         {
+            //if you press the f key
             if (Input.GetKeyDown(KeyCode.F))
             {
+                //go through scripts to be toggled
                 for (int i = 0; i < playerScriptsToBeToggled.Length; i++)
                 {
+                    //turn the script off
                     playerScriptsToBeToggled[i].enabled = false;
                 }
+                //set the phone to true
                 phoneThing.SetActive(true);
                 lookingAtPhone = true;
             }
