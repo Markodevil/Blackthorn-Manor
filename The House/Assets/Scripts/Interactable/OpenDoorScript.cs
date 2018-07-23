@@ -16,6 +16,8 @@ public class OpenDoorScript : MonoBehaviour {
 		
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            // Disable Mouse Rotation when opening door
+
             Ray ray = new Ray(transform.position, transform.forward);
             RaycastHit hit;
             Debug.Log("Raycast 1");
@@ -25,6 +27,8 @@ public class OpenDoorScript : MonoBehaviour {
 
                 if (hit.collider.CompareTag("Door"))
                 {
+                    GetComponent<FPSCamera>().IsPeeking = true;
+
                     hit.collider.transform.parent.GetComponent<DoorScript>().changeDoorState();
                     Debug.Log("Raycast 3");
 
@@ -32,5 +36,15 @@ public class OpenDoorScript : MonoBehaviour {
 
             }
         }
-	}
+        //--------------------------------------------------------------------------------------
+        // Raycasts in front of the player checking if their is a Door infront of the player 
+        //
+        // Param 
+        //      Direction: the direction in which i want to check if there is a door 
+        // Return 
+        //      Changes the doorState so that the door can be opened
+        //--------------------------------------------------------------------------------------
+
+    }
 }
+

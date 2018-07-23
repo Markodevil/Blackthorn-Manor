@@ -27,14 +27,6 @@ public class FPSCamera : MonoBehaviour
             RotateCamera();
         }
 
-        //if (Input.GetKey(KeyCode.Mouse0))
-        //{
-        //    IsPeeking = true;
-        //}
-        //if (Input.GetKeyUp(KeyCode.Mouse0))
-        //{
-        //    IsPeeking = false;
-        //}
         if (Input.GetKey(KeyCode.Q))
         {
             if (!CheckDirections(false))

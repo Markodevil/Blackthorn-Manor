@@ -16,6 +16,10 @@ public class PlayerMovement : MonoBehaviour {
     public float timeBetweenStepsRunning;
     private float footstepTimer;
 
+    private Vector3 desiredRot;
+    private Quaternion desiredRotation;
+    private bool rotating = false;
+
 	// Use this for initialization
 	void Awake ()
     {
@@ -31,7 +35,32 @@ public class PlayerMovement : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        if(Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            rotating = true;
+            //calculate desired rotation
+            desiredRotation = new Quaternion();
+            desiredRot = transform.rotation.eulerAngles;
+            desiredRot += new Vector3(0, 180, 0);
+            desiredRotation.eulerAngles = desiredRot;
+        }
+
+        if(rotating)
+        {
+            //                       put desired rotation here \/
+            transform.rotation = Quaternion.Lerp(transform.rotation, desiredRotation, 1.5f * Time.deltaTime);
+
+            //if the difference between these 2 vectors is miniscule 
+            if(Vector3.Distance(transform.rotation.eulerAngles, desiredRotation.eulerAngles) < 1.0f)
+            {
+                //stop rotating
+                rotating = false;
+                //set current rotation to desired rotation
+                transform.rotation = desiredRotation;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             Speed *= 2;
             isRunning = true;

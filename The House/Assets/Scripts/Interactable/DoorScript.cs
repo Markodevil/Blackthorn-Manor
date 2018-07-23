@@ -19,7 +19,6 @@ public class DoorScript : MonoBehaviour {
 	void Update ()
     {
         mouseY = Input.GetAxis("Mouse Y");
-
         if (isOpen)
         {
             Quaternion targetRotation = Quaternion.Euler(0, doorOpenAngle, 0);
