@@ -27,7 +27,7 @@ public class OpenDoorScript : MonoBehaviour {
 
                 if (hit.collider.CompareTag("Door"))
                 {
-                    GetComponent<FPSCamera>().IsPeeking = true;
+                   // GetComponent<FPSCamera>().IsPeeking = true;
 
                     hit.collider.transform.parent.GetComponent<DoorScript>().changeDoorState();
                     Debug.Log("Raycast 3");
