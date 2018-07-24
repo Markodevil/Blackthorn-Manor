@@ -24,17 +24,14 @@ public class OpenDoorScript : MonoBehaviour {
 
             Ray ray = new Ray(transform.position, transform.forward);
             RaycastHit hit;
-            Debug.Log("Raycast 1");
             if (Physics.Raycast(ray,out hit,interactDistance))
             {
-                Debug.Log("Raycast 2");
 
                 if (hit.collider.CompareTag("Door"))
                 {
                     //fpsCamera.IsPeeking = true;
                     hit.collider.transform.parent.GetComponent<DoorScript>().changeDoorState();
                     camScript.enabled = false;
-                    Debug.Log("Raycast 3");
 
                 }
 
