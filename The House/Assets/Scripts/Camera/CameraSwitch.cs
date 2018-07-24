@@ -13,6 +13,11 @@ public class CameraSwitch : MonoBehaviour
     public MonoBehaviour[] playerScriptsToBeToggled;
     public GameObject playerCamera;
 
+    private void Awake()
+    {
+        
+    }
+
     // Use this for initialization
     void Start()
     {

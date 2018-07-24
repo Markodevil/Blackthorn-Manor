@@ -24,6 +24,8 @@ public class InteractableItems : MonoBehaviour
     private Vector3 currentPosition;
     private Vector3 previousPosition;
 
+    private Vector3 localOffset;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -45,7 +47,6 @@ public class InteractableItems : MonoBehaviour
         if (beingCarried)
         {
             rb.isKinematic = true;
-            //transform.parent = playerCam.transform;
             transform.position = Vector3.Lerp(transform.position, playerCam.transform.position + playerCam.transform.forward * heading, Time.deltaTime * speed);
             beingCarried = true;
 

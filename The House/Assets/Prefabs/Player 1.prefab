@@ -550,7 +550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e197676b68a0e4f86d1acaf82570e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 3
+  initialSpeed: 3
   footstepsManager: {fileID: 82941048956642432}
   timeBetweenStepsWalking: 0.75
   timeBetweenStepsRunning: 0.4
