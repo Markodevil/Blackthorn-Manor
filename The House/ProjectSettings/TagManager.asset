@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Wall
   - Door
+  - Interactable
+  - Waypoint
   layers:
   - Default
   - TransparentFX

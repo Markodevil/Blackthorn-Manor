@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour
+{
 
 
-    CharacterController charControl; 
-    public float Speed;
+    CharacterController charControl;
+    float Horizontal = 0;
+    float Vertcile = 0;
+    public float initialSpeed;
+    private float speed;
     bool LookingAtCameras = false;
     bool isRunning;
 
@@ -20,20 +24,21 @@ public class PlayerMovement : MonoBehaviour {
     private Quaternion desiredRotation;
     private bool rotating = false;
 
-	// Use this for initialization
-	void Awake ()
+    // Use this for initialization
+    void Awake()
     {
         charControl = GetComponent<CharacterController>();
-	}
+    }
 
     private void Start()
     {
         isRunning = false;
         footstepTimer = timeBetweenStepsWalking;
+        speed = initialSpeed;
     }
 
     // Update is called once per frame
-    void Update ()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -45,13 +50,13 @@ public class PlayerMovement : MonoBehaviour {
             desiredRotation.eulerAngles = desiredRot;
         }
 
-        if(rotating)
+        if (rotating)
         {
             //                       put desired rotation here \/
             transform.rotation = Quaternion.Lerp(transform.rotation, desiredRotation, 1.5f * Time.deltaTime);
 
             //if the difference between these 2 vectors is miniscule 
-            if(Vector3.Distance(transform.rotation.eulerAngles, desiredRotation.eulerAngles) < 1.0f)
+            if (Vector3.Distance(transform.rotation.eulerAngles, desiredRotation.eulerAngles) < 1.0f)
             {
                 //stop rotating
                 rotating = false;
@@ -60,37 +65,51 @@ public class PlayerMovement : MonoBehaviour {
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Vertcile > 0)
         {
-            Speed *= 2;
-            isRunning = true;
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                speed = initialSpeed * 2;
+                isRunning = true;
+            }
+            else
+            {
+                speed = initialSpeed;
+                isRunning = false;
+            }
+
         }
-        if(Input.GetKeyUp(KeyCode.LeftShift))
+
+        if(isRunning)
         {
-            Speed /= 2;
-            isRunning = false;
+            if(Vertcile < 0)
+            {
+                speed = initialSpeed;
+                isRunning = false;
+            }
         }
+
         Movement();
 
-        
+
     }
 
     void Movement()
     {
 
-        float Horizontal = Input.GetAxis("Horizontal");
-        float Vertcile = Input.GetAxis("Vertical");
+        Horizontal = Input.GetAxis("Horizontal");
+        Vertcile = Input.GetAxis("Vertical");
 
-        Vector3 MoveDirectionSide = transform.right * Horizontal * Speed;
-        Vector3 MoveDirectionForward = transform.forward * Vertcile * Speed;
+        Vector3 MoveDirectionSide = transform.right * Horizontal * speed;
+        Vector3 MoveDirectionForward = transform.forward * Vertcile * speed;
 
-        if(Horizontal != 0 || Vertcile != 0)
+        if (Horizontal != 0 || Vertcile != 0)
         {
             footstepTimer -= Time.deltaTime;
-            if(footstepTimer <= 0)
+            if (footstepTimer <= 0)
             {
                 footstepsManager.Play();
-                if(isRunning)
+                if (isRunning)
                 {
                     footstepTimer = timeBetweenStepsRunning;
                 }
