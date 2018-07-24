@@ -11,9 +11,10 @@ public class Wander : MonoBehaviour {
 
     [SerializeField]
     private float wanderRadius = 30f;
-    [HideInInspector]
-    public float wanderTimer;
-    private float wanderTick;
+    [SerializeField]
+    private float wanderTimer = 10f;
+    [SerializeField]
+    private float wanderTick = 1;
     private float timer;
 
 
@@ -23,8 +24,7 @@ public class Wander : MonoBehaviour {
         connectedWayPatrol = this.GetComponent<ConnectedPartol>();
 
         connectedWayPatrol.enabled = false;
-        timer = wanderTick;
-        wanderTimer = 10;
+        timer = 0;
     }
 	
 	// Update is called once per frame
