@@ -78,6 +78,7 @@ public class Ghost : MonoBehaviour
         {
             destination = null;
             SceneManager.LoadScene("GameOver");
+            Debug.Log("You Got touched by a ghost, How do you feel?");
         }
     }
 

@@ -42,7 +42,7 @@ namespace SIGHT
 
         private void LateUpdate()
         {
-            //Toggle this on/off if you whant sight in game or not
+            //Toggle this on/off if you whant sight visualization in game or not
             DrawFieldOfView();
         }
 
