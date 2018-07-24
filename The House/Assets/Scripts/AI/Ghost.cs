@@ -6,25 +6,29 @@ using UnityEngine.SceneManagement;
 using SIGHT;
 public class Ghost : MonoBehaviour
 {
-
     //Sets the player/patrol point as the desired destination
     [SerializeField]
     public Transform destination;
-
-    NavMeshAgent navMeshAgent;
-    public ConnectedPartol connectedWayPatrol;
-
-    //access to the sight.cs
-    Sight enemySight;
     [SerializeField]
     private float chaseTimer = 0f;
     private bool hasBeenSpotted = false;
 
 
+    //Access to the navMeshAgent and ConnectedPatrol 
+    NavMeshAgent navMeshAgent;
+    public ConnectedPartol connectedWayPatrol;
+
+    //Access to the Sight.cs
+    Sight enemySight;
+    //Access to the Wander.cs
+    Wander wanderBehavior;
+
     void Start()
     {
         navMeshAgent = this.GetComponent<NavMeshAgent>();
         enemySight = this.GetComponent<Sight>();
+        wanderBehavior = this.GetComponent<Wander>();
+        wanderBehavior.enabled = false;
 
         //Nav mesh failed
         if (navMeshAgent == null)
@@ -37,8 +41,12 @@ public class Ghost : MonoBehaviour
         {
             Debug.LogError("The Sight.cs component is not attached to" + gameObject.name);
         }
+        //Wander failed
+        if (wanderBehavior == null)
+        {
+            Debug.LogError("The Wander.cs component is not attached to" + gameObject.name);
+        }
     }
-
 
     void Update()
     {
@@ -60,14 +68,19 @@ public class Ghost : MonoBehaviour
                 chaseTimer -= Time.deltaTime;
                 SetDestination();
             }
-            else if(chaseTimer <= 0 && hasBeenSpotted == true)
+            else if (chaseTimer <= 0 && hasBeenSpotted == true)
             {
-                //Once the timer has hit zero go back to patroling
-                hasBeenSpotted = false;
-                connectedWayPatrol.enabled = true;
-                connectedWayPatrol.SetDestination();
+                //Enable wandering for 10s before toggling patrol back on, Completing the loop
+                wanderBehavior.enabled = true;
+                if (wanderBehavior.wanderTimer <= -1)
+                {
+                    //Once the timer has hit zero go back to patroling
+                    hasBeenSpotted = false;
+                    wanderBehavior.enabled = false;
+                    connectedWayPatrol.enabled = true;
+                    connectedWayPatrol.SetDestination();
+                }
             }
-            //partrol / Search
         }
     }
 
