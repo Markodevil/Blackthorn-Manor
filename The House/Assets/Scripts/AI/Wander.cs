@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+//This code was taken and adapted from this webpage https://forum.unity.com/threads/solved-random-wander-ai-using-navmesh.327950/
 public class Wander : MonoBehaviour {
 
     //Wander Behaviour memeber Var

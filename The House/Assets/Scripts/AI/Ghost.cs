@@ -12,6 +12,8 @@ public class Ghost : MonoBehaviour
     [SerializeField]
     private float chaseTimer = 0f;
     private bool hasBeenSpotted = false;
+    public float patrolSpeed = 3.5f;
+    public float chaseSpeed = 7f;
 
 
     //Access to the navMeshAgent and ConnectedPatrol 
@@ -58,6 +60,7 @@ public class Ghost : MonoBehaviour
             hasBeenSpotted = true;
             SetDestination();
             connectedWayPatrol.enabled = false;
+            navMeshAgent.speed = chaseSpeed;
         }
         else
         {
@@ -79,6 +82,7 @@ public class Ghost : MonoBehaviour
                     wanderBehavior.enabled = false;
                     connectedWayPatrol.enabled = true;
                     connectedWayPatrol.SetDestination();
+                    navMeshAgent.speed = patrolSpeed;
                 }
             }
         }
