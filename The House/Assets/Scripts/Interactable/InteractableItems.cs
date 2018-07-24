@@ -8,7 +8,9 @@ public class InteractableItems : MonoBehaviour
 
     public GameObject player;
     public GameObject playerCam;
+    float mouseX;
     public float throwForce;
+    public float releaseForce;
     public bool playerHere;
     public bool beingCarried;
     public bool touched;
@@ -44,10 +46,16 @@ public class InteractableItems : MonoBehaviour
     {
         currentPosition = transform.position;
 
+        mouseX = Input.GetAxis("Mouse X");
+       // if (Input.GetKeyUp(KeyCode.T))
+       // {
+       //     rb.AddForce(new Vector3(mouseX * releaseForce, 0, 0));
+       //
+       // }
         if (beingCarried)
         {
             rb.isKinematic = true;
-            transform.position = Vector3.Lerp(transform.position, playerCam.transform.position + playerCam.transform.forward * heading, Time.deltaTime * speed);
+            rb.transform.position = Vector3.Lerp(rb.transform.position, playerCam.transform.position + playerCam.transform.forward * heading, Time.deltaTime * speed);
             beingCarried = true;
 
             Vector3 velocity = currentPosition - previousPosition;
@@ -62,8 +70,12 @@ public class InteractableItems : MonoBehaviour
             {
                 Drop();
                 rb.AddForce(playerCam.transform.forward * throwForce);
+             
             }
+             
+
         }
+    
 
         previousPosition = transform.position;
     }
@@ -89,7 +101,10 @@ public class InteractableItems : MonoBehaviour
     {
         rb.isKinematic = false;
         transform.parent = null;
-        beingCarried = false;
+       beingCarried = false;
         rb.AddForce(currentPosition - previousPosition);
+       // Debug.Log("ButtonUp");
+      //  rb.AddForce(new Vector3(mouseX * releaseForce, 0, 0));
+      //  rb.AddForce.ri
     }
 }

@@ -8,7 +8,6 @@ public class DoorScript : MonoBehaviour
     public bool isOpen = false;
     public float doorOpenAngle;
     float doorCloseAngle = 0;
-    public float smooth = 2;
     public float mouseY;
     public bool OpeningDoor = false;
     public float interactDistance = 5;
@@ -25,9 +24,6 @@ public class DoorScript : MonoBehaviour
     void Update()
     {
         mouseY = Input.GetAxis("Mouse Y");
-        Ray ray = new Ray(transform.position, transform.forward);
-
-        RaycastHit hit;
 
 
         if (Input.GetKeyUp(KeyCode.Mouse0))
@@ -36,14 +32,13 @@ public class DoorScript : MonoBehaviour
             isOpen = false;
         }
 
-        Vector3 HingeLocation = transform.position;
+        Vector3 HingePosition = transform.position;
         Vector3 Playerposition = Player.transform.position;
 
-        Vector3 Direction = HingeLocation = Playerposition;
+        Vector3 Direction = HingePosition = Playerposition;
 
         Vector3.Normalize(Direction);
 
-        // If Direction.Player.transform.right > 0 
         if (Vector3.Dot(Direction, Player.transform.right) < 0)
         {
 
