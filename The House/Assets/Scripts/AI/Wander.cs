@@ -11,8 +11,7 @@ public class Wander : MonoBehaviour {
 
     [SerializeField]
     private float wanderRadius = 30f;
-    [SerializeField]
-    private float wanderTimer = 10f;
+    public float wanderTimer = 10f;
     [SerializeField]
     private float wanderTick = 1;
     private float timer;
