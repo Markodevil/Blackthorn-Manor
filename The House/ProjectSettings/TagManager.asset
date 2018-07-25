@@ -9,6 +9,8 @@ TagManager:
   - Interactable
   - Waypoint
   - HorcruxManager
+  - Noise
+  - Ghost
   layers:
   - Default
   - TransparentFX
