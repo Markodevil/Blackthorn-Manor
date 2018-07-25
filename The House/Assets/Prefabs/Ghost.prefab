@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114984319624796110}
   - component: {fileID: 114936691259406164}
   - component: {fileID: 114093386475967958}
-  - component: {fileID: 114488275420352372}
+  - component: {fileID: 114053698044476448}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
@@ -58,7 +58,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1297902697834458}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 34.46, y: 1, z: 19.22}
+  m_LocalPosition: {x: -9.385371, y: -1.465, z: 23.044386}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4229351125400290}
@@ -92,7 +92,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 89119ea15d4f32445b6c1cf34d2a5404, type: 2}
+  - {fileID: 2100000, guid: fc2c07b34e3379843a92f04e4f4fd19a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -126,7 +126,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 72b797b36c0316945a7535904009adf5, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -172,6 +172,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114053698044476448
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1297902697834458}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb71ce763e04ba9409e452bd7583f3bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wanderRadius: 30
+  wanderTimer: 0
 --- !u!114 &114093386475967958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -185,19 +198,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partrolWaiting: 0
   totalWaitTime: 3
---- !u!114 &114488275420352372
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1297902697834458}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca277ab9b0aba8d4798f74ae897454c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wanderRadius: 30
-  wanderTimer: 0
 --- !u!114 &114936691259406164
 MonoBehaviour:
   m_ObjectHideFlags: 1
