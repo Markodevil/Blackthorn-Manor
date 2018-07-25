@@ -392,7 +392,7 @@ MonoBehaviour:
   doorOpenAngle: -90
   mouseY: 0
   OpeningDoor: 0
-  interactDistance: 1
+  interactDistance: 2
   doorOpenSpeed: 2
   Player: {fileID: 181204771}
 --- !u!23 &314620459

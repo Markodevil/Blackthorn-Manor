@@ -18,7 +18,7 @@ public class OpenDoorScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             // Disable Mouse Rotation when opening door
 
