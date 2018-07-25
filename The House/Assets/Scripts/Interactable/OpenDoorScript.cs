@@ -18,6 +18,14 @@ public class OpenDoorScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+        //--------------------------------------------------------------------------------------
+        // Raycasts in front of the player checking if their is a Door infront of the player 
+        //
+        // Param 
+        //      Direction: the direction in which i want to check if there is a door 
+        // Return 
+        //      Changes the doorState so that the door can be opened
+        //--------------------------------------------------------------------------------------
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             // Disable Mouse Rotation when opening door
@@ -42,14 +50,6 @@ public class OpenDoorScript : MonoBehaviour {
         {
             camScript.enabled = true;
         }
-        //--------------------------------------------------------------------------------------
-        // Raycasts in front of the player checking if their is a Door infront of the player 
-        //
-        // Param 
-        //      Direction: the direction in which i want to check if there is a door 
-        // Return 
-        //      Changes the doorState so that the door can be opened
-        //--------------------------------------------------------------------------------------
 
     }
 }

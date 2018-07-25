@@ -39,6 +39,15 @@ public class DoorScript : MonoBehaviour
 
         Vector3.Normalize(Direction);
 
+        //--------------------------------------------------------------------------------------
+        // Checks if the players posiition is infront or behind the door 
+        //
+        // Param 
+        //     The direction of the player 
+        // Return 
+        //      Reverses the mouse axis when opening the door to give a more comfortable feel to  
+        //      doors on either side 
+        //--------------------------------------------------------------------------------------
         if (Vector3.Dot(Direction, Player.transform.right) < 0)
         {
 
