@@ -7,11 +7,11 @@ using SIGHT;
 public class Ghost : MonoBehaviour
 {
     //Sets the player/patrol point as the desired destination
-    [SerializeField]
-    public Transform destination;
-    [SerializeField]
-    private float chaseTimer = 0f;
     private bool hasBeenSpotted = false;
+    private float chaseTimer = 0f;
+
+    public float chaseTime = 10f;
+    public Transform destination;
     public float patrolSpeed = 3.5f;
     public float chaseSpeed = 7f;
 
@@ -56,7 +56,7 @@ public class Ghost : MonoBehaviour
         if (enemySight.visibleTargets.Count > 0)
         {
             //Sets the chase timer to 10s and the player as the navAgent's target
-            chaseTimer = 10;
+            chaseTimer = chaseTime;
             hasBeenSpotted = true;
             SetDestination();
             connectedWayPatrol.enabled = false;
