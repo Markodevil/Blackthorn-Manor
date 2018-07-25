@@ -48,7 +48,10 @@ public class DoorScript : MonoBehaviour
         //      Reverses the mouse axis when opening the door to give a more comfortable feel to  
         //      doors on either side 
         //--------------------------------------------------------------------------------------
-        if (Vector3.Dot(Direction, Player.transform.right) < 0)
+
+
+        //MAKE SURE DOORS X AXIS IS FACING THE PLAYER WHEN FIRST OPENING THE DOOR 
+        if (Vector3.Dot(Direction, Player.transform.right) > 0)
         {
 
             Debug.Log("ZERO");
