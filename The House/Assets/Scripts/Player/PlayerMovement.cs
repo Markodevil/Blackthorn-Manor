@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     bool isRunning;
 
     [Header("Footsteps")]
-    public AudioSource footstepsManager;
+    public AudioSource footstepsSound;
     public float timeBetweenStepsWalking;
     public float timeBetweenStepsRunning;
     private float footstepTimer;
@@ -23,6 +23,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 desiredRot;
     private Quaternion desiredRotation;
     private bool rotating = false;
+
+    public GameObject[] footsies;
+    private int footIndex = 0;
 
     // Use this for initialization
     void Awake()
@@ -80,9 +83,9 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-        if(isRunning)
+        if (isRunning)
         {
-            if(Vertcile < 0)
+            if (Vertcile < 0)
             {
                 speed = initialSpeed;
                 isRunning = false;
@@ -108,7 +111,19 @@ public class PlayerMovement : MonoBehaviour
             footstepTimer -= Time.deltaTime;
             if (footstepTimer <= 0)
             {
-                footstepsManager.Play();
+                footstepsSound.Play();
+
+
+                Collider[] hitCollider = Physics.OverlapSphere(footsies[footIndex].transform.position, 2.0f);
+                for (int i = 0; i < hitCollider.Length; i++)
+                {
+                    if (hitCollider[i].gameObject.tag == "Ghost")
+                    {
+                        //do ghost things
+                        Debug.Log("ghost can hear my footsies");
+                    }
+                }
+
                 if (isRunning)
                 {
                     footstepTimer = timeBetweenStepsRunning;
@@ -116,6 +131,17 @@ public class PlayerMovement : MonoBehaviour
                 else
                 {
                     footstepTimer = timeBetweenStepsWalking;
+                }
+
+
+                if (footIndex + 1 != footsies.Length)
+                {
+                    footIndex++;
+
+                }
+                else
+                {
+                    footIndex = 0;
                 }
             }
         }
