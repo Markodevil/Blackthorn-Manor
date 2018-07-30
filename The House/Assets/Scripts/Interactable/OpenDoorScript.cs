@@ -38,7 +38,9 @@ public class OpenDoorScript : MonoBehaviour {
                 if (hit.collider.CompareTag("Door"))
                 {
                     //fpsCamera.IsPeeking = true;
-                    hit.collider.transform.parent.GetComponent<DoorScript>().changeDoorState();
+                    // hit.collider.transform.parent.GetComponent<DoorScript>().changeDoorState();
+                    hit.collider.transform.GetComponent<HingeDoorScript>().changeDoorState();
+
                     camScript.enabled = false;
 
                 }
