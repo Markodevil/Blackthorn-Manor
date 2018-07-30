@@ -21,22 +21,27 @@ public class MenuManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        //dont destroy this thing
         DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
+        //control global volume
         SetGlobalVolume();
 
     }
 
     public void SetGlobalVolume()
     {
+        //if global mute is not active
         if (!globalMute)
+            //update volume
             globalVolume = volumeSlider.value;
     }
 
+    //function for a button to toggle a global mute
     public void ToggleMute()
     {
         if (globalMute)
@@ -45,12 +50,14 @@ public class MenuManager : MonoBehaviour
             globalMute = true;
     }
 
+    //function for a button to go to an options menu
     public void ToOptions()
     {
         mainMenuItems.SetActive(false);
         optionsMenuItems.SetActive(true);
     }
 
+    //function for a button to return to main menu
     public void ToMenu()
     {
         mainMenuItems.SetActive(true);

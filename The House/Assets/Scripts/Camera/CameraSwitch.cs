@@ -10,8 +10,12 @@ public class CameraSwitch : MonoBehaviour
     public GameObject[] cameras;
     public GameObject phoneThing;
     public bool lookingAtPhone = false;
-    public MonoBehaviour[] playerScriptsToBeToggled;
     public GameObject playerCamera;
+
+    [SerializeField]
+    private FPSCamera cameraScript;
+    [SerializeField]
+    private PlayerMovement playerScript;
 
     private void Awake()
     {
@@ -38,12 +42,9 @@ public class CameraSwitch : MonoBehaviour
             //if you press the f key
             if (Input.GetKeyDown(KeyCode.F))
             {
-                //go through scripts to be toggled
-                for (int i = 0; i < playerScriptsToBeToggled.Length; i++)
-                {
-                    //turn the script off
-                    playerScriptsToBeToggled[i].enabled = false;
-                }
+                //set the player scripts to not do things
+                cameraScript.SetTouching(true);
+                playerScript.SetTouchingSomething(true);
                 //set the phone to true
                 phoneThing.SetActive(true);
                 lookingAtPhone = true;
@@ -55,29 +56,36 @@ public class CameraSwitch : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.A))
             {
+                //set current cameras active to false
                 cameras[cameraIndex].SetActive(false);
+                //camera index things
                 if (cameraIndex == 0)
                     cameraIndex = cameras.Length - 1;
                 else
                     cameraIndex--;
+                //set new index to active
                 cameras[cameraIndex].SetActive(true);
             }
             if (Input.GetKeyDown(KeyCode.D))
             {
+                //set current cameras active to false
                 cameras[cameraIndex].SetActive(false);
+                //camera index things
                 if (cameraIndex == cameras.Length - 1)
                     cameraIndex = 0;
                 else
                     cameraIndex++;
+                //set new index to active
                 cameras[cameraIndex].SetActive(true);
             }
 
             if(Input.GetKeyDown(KeyCode.F))
             {
-                for (int i = 0; i < playerScriptsToBeToggled.Length; i++)
-                {
-                    playerScriptsToBeToggled[i].enabled = true;
-                }
+                //set player scripts to do things
+                cameraScript.SetTouching(false);
+                playerScript.SetTouchingSomething(false);
+
+                //turn the phone off
                 phoneThing.SetActive(false);
                 lookingAtPhone = false;
             }

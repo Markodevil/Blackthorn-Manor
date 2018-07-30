@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PostProcessing;
 
-public class GameManager : MonoBehaviour {
-
+public class GameManager : MonoBehaviour
+{
+    [Header("secret stuff")]
     public string codeInit;
     public int codeIndex = 0;
     private string code1;
+    public PostProcessingBehaviour postProcessing;
+    public AudioSource secretMusic;
 
     [Header("End Game Stuff")]
     public GameObject clickyWinThing;
@@ -20,7 +24,7 @@ public class GameManager : MonoBehaviour {
     private enum GameStates
     {
         Playing,
-        Pause, 
+        Pause,
         GameOver,
     }
 
@@ -28,18 +32,19 @@ public class GameManager : MonoBehaviour {
 
     private void Awake()
     {
-        
+
     }
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         currentState = GameStates.Playing;
-
+        postProcessing.enabled = false;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         ////////////////////
         // Game Logic Here//
         ////////////////////
@@ -54,7 +59,7 @@ public class GameManager : MonoBehaviour {
                 //if you've brought all items to the spot
                 //or you have been killed by the ghost
                 //set currentState to game over
-                if(clickyWinThing.GetComponent<Horcruxes>().completed || KilledByGhost())
+                if (clickyWinThing.GetComponent<Horcruxes>().completed || KilledByGhost())
                 {
                     currentState = GameStates.GameOver;
                 }
@@ -86,8 +91,8 @@ public class GameManager : MonoBehaviour {
                 gameOverText.SetActive(true);
                 break;
         }
-        
-	}
+
+    }
 
 
 
@@ -116,7 +121,8 @@ public class GameManager : MonoBehaviour {
 
         if (codeIndex == codeInit.Length)
         {
-            Debug.Log("code put in");
+            secretMusic.Play();
+            postProcessing.enabled = true;
             codeIndex = 0;
         }
     }

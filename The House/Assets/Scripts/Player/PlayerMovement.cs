@@ -30,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
     private float ghostSoundResponceLvl;
 
 
+    private bool isTouchingSomething = false;
+
 
 
     // Use this for initialization
@@ -48,6 +50,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isTouchingSomething)
+            return; 
         if (Input.GetKeyDown(KeyCode.R))
         {
             rotating = true;
@@ -172,5 +176,10 @@ public class PlayerMovement : MonoBehaviour
         //move
         charControl.SimpleMove(MoveDirectionSide);
         charControl.SimpleMove(MoveDirectionForward);
+    }
+
+    public void SetTouchingSomething(bool yeah)
+    {
+        isTouchingSomething = yeah;
     }
 }

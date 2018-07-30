@@ -48,11 +48,11 @@ public class InteractableItems : MonoBehaviour
         //currentPosition = transform.position;
         //
         //mouseX = Input.GetAxis("Mouse X");
-       //// if (Input.GetKeyUp(KeyCode.T))
-       //// {
-       ////     rb.AddForce(new Vector3(mouseX * releaseForce, 0, 0));
-       ////
-       //// }
+        //// if (Input.GetKeyUp(KeyCode.T))
+        //// {
+        ////     rb.AddForce(new Vector3(mouseX * releaseForce, 0, 0));
+        ////
+        //// }
         //if (beingCarried)
         //{
         //    rb.isKinematic = true;
@@ -83,14 +83,18 @@ public class InteractableItems : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        //if currently being carried
         if (beingCarried)
         {
+            //i've been touched
             touched = true;
 
         }
 
+        //play a sound 
         audioSource.pitch = Random.Range(1, 3);
         audioSource.PlayOneShot(collisionClip);
+        //sound collision stuff for AI
         CreateSoundColliders();
     }
 
@@ -103,11 +107,11 @@ public class InteractableItems : MonoBehaviour
     {
         rb.isKinematic = false;
         transform.parent = null;
-       beingCarried = false;
+        beingCarried = false;
         rb.AddForce(currentPosition - previousPosition);
-       // Debug.Log("ButtonUp");
-      //  rb.AddForce(new Vector3(mouseX * releaseForce, 0, 0));
-      //  rb.AddForce.ri
+        // Debug.Log("ButtonUp");
+        //  rb.AddForce(new Vector3(mouseX * releaseForce, 0, 0));
+        //  rb.AddForce.ri
     }
 
     public void CreateSoundColliders()
@@ -124,9 +128,9 @@ public class InteractableItems : MonoBehaviour
         //sphereCol.radius = 5.0f * audioSource.volume;
 
         Collider[] hitCollider = Physics.OverlapSphere(transform.position, 2.0f);
-        for(int i = 0; i < hitCollider.Length; i++)
+        for (int i = 0; i < hitCollider.Length; i++)
         {
-            if(hitCollider[i].gameObject.tag == "Ghost")
+            if (hitCollider[i].gameObject.tag == "Ghost")
             {
                 //do ghost things
                 Debug.Log("ghost can hear player");
