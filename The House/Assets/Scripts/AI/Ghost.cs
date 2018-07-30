@@ -17,13 +17,16 @@ public class Ghost : MonoBehaviour
 
 
     //Access to the navMeshAgent and ConnectedPatrol 
-    NavMeshAgent navMeshAgent;
+    [HideInInspector]
+    public NavMeshAgent navMeshAgent;
+    [HideInInspector]
     public ConnectedPartol connectedWayPatrol;
 
     //Access to the Sight.cs
     Sight enemySight;
     //Access to the Wander.cs
-    Wander wanderBehavior;
+    [HideInInspector]
+    public Wander wanderBehavior;
 
     void Start()
     {
@@ -99,13 +102,42 @@ public class Ghost : MonoBehaviour
         }
     }
 
-    private void SetDestination()
+    public void SetDestination()
     {
         if (destination != null)
         {
             Vector3 targetVector = destination.transform.position;
             navMeshAgent.SetDestination(targetVector);
         }
+    }
+
+    public float CalulatePathLength(Vector3 targetPosition)
+    {
+        NavMeshPath path = new NavMeshPath();
+
+        if (navMeshAgent.enabled)
+        { 
+            bool temp = navMeshAgent.CalculatePath(targetPosition, path);
+        }
+
+        Vector3[] allWayPoints = new Vector3[path.corners.Length + 2];
+
+        allWayPoints[0] = transform.position;
+        allWayPoints[allWayPoints.Length - 1] = targetPosition;
+
+        for (int i = 0; i < path.corners.Length; i++)
+        {
+            allWayPoints[i + 1] = path.corners[i];
+        }
+
+        float pathLength = 0.0f;
+
+        for (int i = 0; i < allWayPoints.Length - 1; i++)
+        {
+            pathLength += Vector3.Distance(allWayPoints[i], allWayPoints[i + 1]);
+        }
+
+        return pathLength;
     }
 
 }

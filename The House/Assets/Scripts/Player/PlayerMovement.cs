@@ -26,6 +26,10 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject[] footsies;
     private int footIndex = 0;
+    [SerializeField]
+    private float playerSoundLvl;
+    [SerializeField]
+    private float ghostSoundResponceLvl;
 
     // Use this for initialization
     void Awake()
@@ -113,14 +117,19 @@ public class PlayerMovement : MonoBehaviour
             {
                 footstepsSound.Play();
 
-
-                Collider[] hitCollider = Physics.OverlapSphere(footsies[footIndex].transform.position, 2.0f);
+                Collider[] hitCollider = Physics.OverlapSphere(footsies[footIndex].transform.position, playerSoundLvl);
                 for (int i = 0; i < hitCollider.Length; i++)
                 {
                     if (hitCollider[i].gameObject.tag == "Ghost")
                     {
-                        //do ghost things
+                        //We've heard the player
                         Debug.Log("ghost can hear my footsies");
+                        Ghost temp = hitCollider[i].gameObject.GetComponent<Ghost>();
+                        if (temp.CalulatePathLength(temp.destination.position) <= ghostSoundResponceLvl)
+                        {
+                            //We're within range to respond to the sound 
+                            temp.SetDestination();
+                        }
                     }
                 }
 
