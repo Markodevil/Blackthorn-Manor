@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
-
     CharacterController charControl;
     float Horizontal = 0;
-    float Vertcile = 0;
+    float Verticle = 0;
     public float initialSpeed;
     private float speed;
     bool LookingAtCameras = false;
@@ -30,6 +28,9 @@ public class PlayerMovement : MonoBehaviour
     private float playerSoundLvl;
     [SerializeField]
     private float ghostSoundResponceLvl;
+
+
+
 
     // Use this for initialization
     void Awake()
@@ -72,54 +73,65 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (Vertcile > 0)
+        //if you are moving forward
+        if (Verticle > 0)
         {
+            //if you are holding left shift
             if (Input.GetKey(KeyCode.LeftShift))
             {
+                //speed is doubled
                 speed = initialSpeed * 2;
                 isRunning = true;
             }
             else
             {
+                //speed is as normal
                 speed = initialSpeed;
                 isRunning = false;
             }
 
         }
 
+        //if you are running
         if (isRunning)
         {
-            if (Vertcile < 0)
+            //if you are moving backwards
+            if (Verticle < 0)
             {
+                //speed is as normal
                 speed = initialSpeed;
                 isRunning = false;
             }
         }
 
+        //move
         Movement();
-
-
     }
 
     void Movement()
     {
-
         Horizontal = Input.GetAxis("Horizontal");
-        Vertcile = Input.GetAxis("Vertical");
+        Verticle = Input.GetAxis("Vertical");
 
         Vector3 MoveDirectionSide = transform.right * Horizontal * speed;
-        Vector3 MoveDirectionForward = transform.forward * Vertcile * speed;
+        Vector3 MoveDirectionForward = transform.forward * Verticle * speed;
 
-        if (Horizontal != 0 || Vertcile != 0)
+        //if you are moving in any direction
+        if (Horizontal != 0 || Verticle != 0)
         {
+            //footstep sound timer
             footstepTimer -= Time.deltaTime;
+            
             if (footstepTimer <= 0)
             {
+                //play a footstep sound
                 footstepsSound.Play();
 
+                //create array of colliders overlapping with a sphere who's origin is our foot 
                 Collider[] hitCollider = Physics.OverlapSphere(footsies[footIndex].transform.position, playerSoundLvl);
                 for (int i = 0; i < hitCollider.Length; i++)
                 {
+                    //if current collider's gameobject in array is tagged Ghost
                     if (hitCollider[i].gameObject.tag == "Ghost")
                     {
                         //We've heard the player
@@ -133,6 +145,7 @@ public class PlayerMovement : MonoBehaviour
                     }
                 }
 
+                //reset footstep timer
                 if (isRunning)
                 {
                     footstepTimer = timeBetweenStepsRunning;
@@ -143,6 +156,7 @@ public class PlayerMovement : MonoBehaviour
                 }
 
 
+                //increase foot index 
                 if (footIndex + 1 != footsies.Length)
                 {
                     footIndex++;
@@ -155,6 +169,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        //move
         charControl.SimpleMove(MoveDirectionSide);
         charControl.SimpleMove(MoveDirectionForward);
     }

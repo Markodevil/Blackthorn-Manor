@@ -12,6 +12,7 @@ public class FPSCamera : MonoBehaviour
     public GameObject leanPivot;
     public bool IsPeeking = false;
     public float leanAngle;
+    private bool isTouchingSomething = false;
 
     // Use this for initialization
     private void Start()
@@ -23,49 +24,49 @@ public class FPSCamera : MonoBehaviour
     void Update()
     {
         
-        if (!IsPeeking)
+        if (!IsPeeking && !isTouchingSomething)
         {
             RotateCamera();
         }
 
-        if (Input.GetKey(KeyCode.Q))
-        {
-            if (!CheckDirections(false))
-            {
-                IsPeeking = true;
-                PeekLeft();
-
-            }
-
-        }
-        else if (Input.GetKeyUp(KeyCode.Q))
-        {
-            NoPeek();
-            IsPeeking = false;
-
-        }
-
-        if (Input.GetKey(KeyCode.E))
-        {
-            if (!CheckDirections(true))
-            {
-                IsPeeking = true;
-                PeekRight();
-            }
-        }
-        else if (Input.GetKeyUp(KeyCode.E))
-        {
-
-            NoPeek();
-            IsPeeking = false;
-
-
-        }
-
-        if (!Input.GetKey(KeyCode.E) && !Input.GetKey(KeyCode.Q))
-        {
-            NoPeek();
-        }
+        //if (Input.GetKey(KeyCode.Q))
+        //{
+        //    if (!CheckDirections(false))
+        //    {
+        //        IsPeeking = true;
+        //        PeekLeft();
+        //
+        //    }
+        //
+        //}
+        //else if (Input.GetKeyUp(KeyCode.Q))
+        //{
+        //    NoPeek();
+        //    IsPeeking = false;
+        //
+        //}
+        //
+        //if (Input.GetKey(KeyCode.E))
+        //{
+        //    if (!CheckDirections(true))
+        //    {
+        //        IsPeeking = true;
+        //        PeekRight();
+        //    }
+        //}
+        //else if (Input.GetKeyUp(KeyCode.E))
+        //{
+        //
+        //    NoPeek();
+        //    IsPeeking = false;
+        //
+        //
+        //}
+        //
+        //if (!Input.GetKey(KeyCode.E) && !Input.GetKey(KeyCode.Q))
+        //{
+        //    NoPeek();
+        //}
     }
 
     void PeekRight()
@@ -161,4 +162,9 @@ public class FPSCamera : MonoBehaviour
         return false;
     }
 
+
+    public void SetTouching(bool yeah)
+    {
+        isTouchingSomething = yeah; 
+    }
 }

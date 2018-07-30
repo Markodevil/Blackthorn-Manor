@@ -11,6 +11,7 @@ TagManager:
   - HorcruxManager
   - Noise
   - Ghost
+  - RequiredItem
   layers:
   - Default
   - TransparentFX

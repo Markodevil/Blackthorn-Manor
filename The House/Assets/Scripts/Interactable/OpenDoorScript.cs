@@ -6,12 +6,11 @@ public class OpenDoorScript : MonoBehaviour {
 
 
     public float interactDistance = 5;
-    FPSCamera fpsCamera;
-    public MonoBehaviour camScript;
+    [SerializeField]
+    private FPSCamera camScript;
 
 	// Use this for initialization
 	void Start () {
-        fpsCamera = GetComponent<FPSCamera>();
 
     }
 	
@@ -41,8 +40,8 @@ public class OpenDoorScript : MonoBehaviour {
                     // hit.collider.transform.parent.GetComponent<DoorScript>().changeDoorState();
                     hit.collider.transform.GetComponent<HingeDoorScript>().changeDoorState();
 
-                    camScript.enabled = false;
-
+                    //camScript.enabled = false;
+                    camScript.SetTouching(true);
                 }
 
             }
@@ -50,7 +49,8 @@ public class OpenDoorScript : MonoBehaviour {
 
         if(Input.GetKeyUp(KeyCode.Mouse0))
         {
-            camScript.enabled = true;
+            //camScript.enabled = true;
+            camScript.SetTouching(false);
         }
 
     }
