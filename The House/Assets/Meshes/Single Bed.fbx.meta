@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 1a45ddd4f6b712240815ef0284fc1b00
-timeCreated: 1532475293
+guid: 72375bd4eb8feb040b04e814bc29c4d7
+timeCreated: 1532477871
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -9,7 +9,7 @@ ModelImporter:
     100002: //RootNode
     400000: Bed2
     400002: //RootNode
-    2100000: lambert1
+    2100000: lambert3
     2300000: Bed2
     3300000: Bed2
     4300000: Bed2

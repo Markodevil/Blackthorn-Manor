@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 4fc223f03f0bbb549ba8bd6e0aa69a97
-timeCreated: 1532475294
+guid: 8c58e9771ab72ea4890c7ce0d27b357d
+timeCreated: 1532477871
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -9,7 +9,7 @@ ModelImporter:
     100002: Coffee_Table1
     400000: //RootNode
     400002: Coffee_Table1
-    2100000: lambert1
+    2100000: lambert9
     2300000: Coffee_Table1
     3300000: Coffee_Table1
     4300000: Coffee_Table1

@@ -1,18 +1,18 @@
 fileFormatVersion: 2
-guid: dfe043ac77946c747b9b36d5909a4adc
-timeCreated: 1532475294
+guid: 43b026b30777bbf4181f56cec4276b97
+timeCreated: 1532477870
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Chair1
+    100002: Chair8
     400000: //RootNode
-    400002: Chair1
-    2100000: lambert1
-    2300000: Chair1
-    3300000: Chair1
-    4300000: Chair1
+    400002: Chair8
+    2100000: lambert11
+    2300000: Chair8
+    3300000: Chair8
+    4300000: Chair8
     9500000: //RootNode
   externalObjects: {}
   materials:

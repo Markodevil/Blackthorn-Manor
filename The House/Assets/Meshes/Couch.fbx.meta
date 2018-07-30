@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 3a718e906d02d4f4485b35fc5ba0f78d
-timeCreated: 1532475294
+guid: e478ec9fab31e9245b5656c28f16c394
+timeCreated: 1532477871
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -9,7 +9,7 @@ ModelImporter:
     100002: Couch1
     400000: //RootNode
     400002: Couch1
-    2100000: lambert1
+    2100000: lambert10
     2300000: Couch1
     3300000: Couch1
     4300000: Couch1

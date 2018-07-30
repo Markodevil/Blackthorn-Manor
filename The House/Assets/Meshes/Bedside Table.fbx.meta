@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 0a8bda61ce9585c43894f50f191cdb84
-timeCreated: 1532475293
+guid: 76316a0321502af40ae120a6ceb073b8
+timeCreated: 1532477871
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -9,7 +9,7 @@ ModelImporter:
     100002: Bedside_Table3
     400000: //RootNode
     400002: Bedside_Table3
-    2100000: lambert1
+    2100000: lambert7
     2300000: Bedside_Table3
     3300000: Bedside_Table3
     4300000: Bedside_Table3

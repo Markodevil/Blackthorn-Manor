@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: f8ec206592450ff4d8fc7859444ee3fd
-timeCreated: 1532475295
+guid: 084a4cd29696a6e42bffd12e73c0fb72
+timeCreated: 1532477870
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -9,7 +9,7 @@ ModelImporter:
     100002: //RootNode
     400000: TV
     400002: //RootNode
-    2100000: lambert1
+    2100000: lambert6
     2300000: TV
     3300000: TV
     4300000: TV

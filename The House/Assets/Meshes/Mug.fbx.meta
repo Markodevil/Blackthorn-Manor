@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: d81f1a91ad40d62439856eba0e24a7ec
-timeCreated: 1532475294
+guid: 5e34376a9c12ffc41b1ce98bfa71a472
+timeCreated: 1532477870
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -9,7 +9,7 @@ ModelImporter:
     100002: Mug4
     400000: //RootNode
     400002: Mug4
-    2100000: Cups
+    2100000: Cups2
     2300000: Mug4
     3300000: Mug4
     4300000: Mug4
