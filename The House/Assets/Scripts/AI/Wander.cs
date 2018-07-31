@@ -5,7 +5,7 @@ using UnityEngine.AI;
 //This code was taken and adapted from this webpage https://forum.unity.com/threads/solved-random-wander-ai-using-navmesh.327950/
 public class Wander : MonoBehaviour {
 
-    //Wander Behaviour memeber Var
+    //Wander Behaviour memeber Var's
     private NavMeshAgent navMeshAgent;
     private ConnectedPartol connectedWayPatrol;
     private Wander wander;
@@ -13,7 +13,8 @@ public class Wander : MonoBehaviour {
     [SerializeField]
     private float wanderRadius = 30f;
     public float wanderTimer = 10f;
-    private float wanderTimerActual;
+    [HideInInspector]
+    public float wanderTimerActual;
     [SerializeField]
     private float wanderTick = 1;
     private float timer;
@@ -33,8 +34,8 @@ public class Wander : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         timer += Time.deltaTime;
-        wanderTimer -= Time.deltaTime;
-        if (wanderTimer > 0.0f)
+        wanderTimerActual -= Time.deltaTime;
+        if (wanderTimerActual > 0.0f)
         {
             if (timer >= wanderTick)
             {
@@ -48,6 +49,7 @@ public class Wander : MonoBehaviour {
         }
     }
 
+    //Creates a sphere around the ghost and picks a random location as the destination within the sphere
     public static Vector3 RandomNavSphere(Vector3 origin, float dst, int layermask)
     {
         Vector3 randDirection = Random.insideUnitSphere * dst;

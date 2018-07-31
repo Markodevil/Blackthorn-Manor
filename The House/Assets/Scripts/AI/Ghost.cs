@@ -62,7 +62,7 @@ public class Ghost : MonoBehaviour
         {
             connectedWayPatrol.enabled = false;
             wanderBehavior.enabled = true;
-            if (wanderBehavior.wanderTimer <= -1.0f)
+            if (wanderBehavior.wanderTimerActual <= -1.0f)
             {
                 wanderBehavior.enabled = false;
                 player.hasBeenHeard = false;
@@ -71,10 +71,10 @@ public class Ghost : MonoBehaviour
                 navMeshAgent.speed = patrolSpeed;
             }
         }
-        //Checks if the Player is within the Ghosts vision
+        //Check if the Player is within the Ghosts vision
         if (enemySight.visibleTargets.Count > 0)
         {
-            //Sets the chase timer to 10s and the player as the navAgent's target
+            //Set the chase time and the player as the navAgent's target
             chaseTimer = chaseTime;
             hasBeenSpotted = true;
             SetDestination();
@@ -83,7 +83,7 @@ public class Ghost : MonoBehaviour
         }
         else
         {
-            //If the player has left the ghosts vision counts down form 10, then go back to patroling
+            //If the player has left the ghosts vision counts down form ?, then go back to patroling
             if (chaseTimer >= 0 && hasBeenSpotted == true)
             {
                 //Counts down and updates the players position
@@ -92,9 +92,9 @@ public class Ghost : MonoBehaviour
             }
             else if (chaseTimer <= 0 && hasBeenSpotted == true)
             {
-                //Enable wandering for 10s before toggling patrol back on, Completing the loop
+                //Enable wandering for ? before toggling patrol back on, Completing the loop
                 wanderBehavior.enabled = true;
-                if (wanderBehavior.wanderTimer <= -1)
+                if (wanderBehavior.wanderTimerActual <= -1)
                 {
                     //Once the timer has hit zero go back to patroling
                     hasBeenSpotted = false;
@@ -118,6 +118,7 @@ public class Ghost : MonoBehaviour
         }
     }
 
+    //sets the publicly assined obj pos and the target i.e the player
     public void SetDestination()
     {
         if (destination != null)
@@ -128,6 +129,7 @@ public class Ghost : MonoBehaviour
     }
 
     //This code was taken from a youtube tutorial from here https://www.youtube.com/watch?v=mBGUY7EUxXQ
+    //It calculates the total distance to the player taking into account the amount of corners. 
     public float CalulatePathLength(Vector3 targetPosition)
     {
         NavMeshPath path = new NavMeshPath();
