@@ -23,7 +23,8 @@ public class FPSCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //fix to rotation bug - dont know if its the best way to do it
+        transform.localRotation = Quaternion.Euler(new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0));
         if (!IsPeeking && !isTouchingSomething)
         {
             RotateCamera();
@@ -165,6 +166,6 @@ public class FPSCamera : MonoBehaviour
 
     public void SetTouching(bool yeah)
     {
-        isTouchingSomething = yeah; 
+        isTouchingSomething = yeah;
     }
 }
