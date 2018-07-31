@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraSwitch : MonoBehaviour
 {
@@ -17,9 +18,13 @@ public class CameraSwitch : MonoBehaviour
     [SerializeField]
     private PlayerMovement playerScript;
 
+    public GameObject canvasOverlay;
+
+    public Image[] selectedCameraDisplay;
+
     private void Awake()
     {
-        
+
     }
 
     // Use this for initialization
@@ -31,6 +36,8 @@ public class CameraSwitch : MonoBehaviour
         }
         cameras[0].SetActive(true);
         playerCamera = GetComponentInChildren<Camera>().gameObject;
+        SetCanvasPosition(cameras[0].transform);
+        UpdateCanvasIndex();
     }
 
     // Update is called once per frame
@@ -54,6 +61,7 @@ public class CameraSwitch : MonoBehaviour
 
         else
         {
+
             if (Input.GetKeyDown(KeyCode.A))
             {
                 //set current cameras active to false
@@ -65,6 +73,8 @@ public class CameraSwitch : MonoBehaviour
                     cameraIndex--;
                 //set new index to active
                 cameras[cameraIndex].SetActive(true);
+                SetCanvasPosition(cameras[cameraIndex].transform);
+                UpdateCanvasIndex();
             }
             if (Input.GetKeyDown(KeyCode.D))
             {
@@ -77,9 +87,11 @@ public class CameraSwitch : MonoBehaviour
                     cameraIndex++;
                 //set new index to active
                 cameras[cameraIndex].SetActive(true);
+                SetCanvasPosition(cameras[cameraIndex].transform);
+                UpdateCanvasIndex();
             }
 
-            if(Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 //set player scripts to do things
                 cameraScript.SetTouching(false);
@@ -89,6 +101,35 @@ public class CameraSwitch : MonoBehaviour
                 phoneThing.SetActive(false);
                 lookingAtPhone = false;
             }
+        }
+    }
+
+    private void SetCanvasPosition(Transform position)
+    {
+        canvasOverlay.transform.SetParent(position.transform);
+        canvasOverlay.transform.localPosition = new Vector3(0, 0, 0.205f);
+        canvasOverlay.transform.localRotation = Quaternion.identity;
+    }
+
+    private void UpdateCanvasIndex()
+    {
+        SetColour(true, 0, Color.red);
+        SetColour(false, cameraIndex, Color.white);
+    }
+
+    private void SetColour(bool setAll, int index, Color colour)
+    {
+        if (setAll)
+        {
+            for (int i = 0; i < selectedCameraDisplay.Length; i++)
+            {
+                selectedCameraDisplay[i].color = colour;
+            }
+
+        }
+        else
+        {
+            selectedCameraDisplay[index].color = colour;
         }
     }
 }

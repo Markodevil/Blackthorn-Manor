@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
@@ -36,18 +37,22 @@ public class MenuManager : MonoBehaviour
     public void SetGlobalVolume()
     {
         //if global mute is not active
-        if (!globalMute)
+        if (!AudioListener.pause)
             //update volume
-            globalVolume = volumeSlider.value;
+            AudioListener.volume = volumeSlider.value;
     }
 
     //function for a button to toggle a global mute
     public void ToggleMute()
     {
-        if (globalMute)
-            globalMute = false;
+        // if (globalMute)
+        //     globalMute = false;
+        // else
+        //     globalMute = true;
+        if (!AudioListener.pause)
+            AudioListener.pause = true;
         else
-            globalMute = true;
+            AudioListener.pause = false;
     }
 
     //function for a button to go to an options menu
@@ -62,5 +67,10 @@ public class MenuManager : MonoBehaviour
     {
         mainMenuItems.SetActive(true);
         optionsMenuItems.SetActive(false);
+    }
+
+    public void ToGame()
+    {
+        SceneManager.LoadSceneAsync("Deeon");
     }
 }

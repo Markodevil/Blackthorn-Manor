@@ -107,20 +107,26 @@ public class GameManager : MonoBehaviour
     //--------------------------------------------------------------------------------------
     void CheckSecretCode()
     {
+        //check for any key input
         if (Input.anyKeyDown)
         {
+            //if the key pressed is equal to the key of the codes current index
             if (Input.GetKeyDown(codeInit[codeIndex].ToString()))
             {
+                //add to index
                 codeIndex++;
             }
             else
             {
+                //reset index
                 codeIndex = 0;
             }
         }
 
+        //if the index is equal to the code length
         if (codeIndex == codeInit.Length)
         {
+            //do secret stuff
             secretMusic.Play();
             postProcessing.enabled = true;
             codeIndex = 0;
