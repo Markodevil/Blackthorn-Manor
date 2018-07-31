@@ -28,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
     private float playerSoundLvl;
     [SerializeField]
     private float ghostSoundResponceLvl;
+    [HideInInspector]
+    public bool hasBeenHeard = false;
 
 
     private bool isTouchingSomething = false;
@@ -139,12 +141,14 @@ public class PlayerMovement : MonoBehaviour
                     if (hitCollider[i].gameObject.tag == "Ghost")
                     {
                         //We've heard the player
-                        Debug.Log("ghost can hear my footsies");
+                        Debug.Log("Ghost heard the sound");
                         Ghost temp = hitCollider[i].gameObject.GetComponent<Ghost>();
                         if (temp.CalulatePathLength(temp.destination.position) <= ghostSoundResponceLvl)
                         {
                             //We're within range to respond to the sound 
                             temp.SetDestination();
+                            hasBeenHeard = true;
+                            Debug.Log("The Ghost is responding to the sound");
                         }
                     }
                 }

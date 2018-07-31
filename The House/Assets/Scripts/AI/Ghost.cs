@@ -27,6 +27,8 @@ public class Ghost : MonoBehaviour
     //Access to the Wander.cs
     [HideInInspector]
     public Wander wanderBehavior;
+    //Access to the PlayerMovement.cs
+    public PlayerMovement player;
 
     void Start()
     {
@@ -55,6 +57,20 @@ public class Ghost : MonoBehaviour
 
     void Update()
     {
+        //If we we'rent spotted and we've been heard head to the sound and wander
+        if (player.hasBeenHeard == true && navMeshAgent.remainingDistance <= 10.0f)
+        {
+            connectedWayPatrol.enabled = false;
+            wanderBehavior.enabled = true;
+            if (wanderBehavior.wanderTimer <= -1.0f)
+            {
+                wanderBehavior.enabled = false;
+                player.hasBeenHeard = false;
+                connectedWayPatrol.enabled = true;
+                connectedWayPatrol.SetDestination();
+                navMeshAgent.speed = patrolSpeed;
+            }
+        }
         //Checks if the Player is within the Ghosts vision
         if (enemySight.visibleTargets.Count > 0)
         {
@@ -111,12 +127,14 @@ public class Ghost : MonoBehaviour
         }
     }
 
+    //This code was taken from a youtube tutorial from here https://www.youtube.com/watch?v=mBGUY7EUxXQ
     public float CalulatePathLength(Vector3 targetPosition)
     {
         NavMeshPath path = new NavMeshPath();
+        //NavMeshHit hit = new NavMeshHit();
 
         if (navMeshAgent.enabled)
-        { 
+        {
             bool temp = navMeshAgent.CalculatePath(targetPosition, path);
         }
 
