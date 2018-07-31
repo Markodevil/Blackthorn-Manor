@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public string codeInit;
     public int codeIndex = 0;
     private string code1;
-    public PostProcessingBehaviour postProcessing;
+    //public PostProcessingBehaviour postProcessing;
     public AudioSource secretMusic;
 
     [Header("End Game Stuff")]
@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
 
     [Header("UI Tings")]
     public GameObject gameOverText;
+
+	private MenuManager menuManager;
 
     private enum GameStates
     {
@@ -32,14 +34,14 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-
+		menuManager = FindObjectOfType<MenuManager> ();
     }
 
     // Use this for initialization
     void Start()
     {
         currentState = GameStates.Playing;
-        postProcessing.enabled = false;
+        //postProcessing.enabled = false;
     }
 
     // Update is called once per frame
@@ -78,10 +80,10 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 0;
 
                 break;
-            case GameStates.GameOver:
+		case GameStates.GameOver:
                 //set timescale to 0
-                Time.timeScale = 0;
-                Cursor.lockState = CursorLockMode.Confined;
+			Time.timeScale = 0;
+			Cursor.lockState = CursorLockMode.None;
 
 
                 foreach (MonoBehaviour mon in scriptsToTurnOff)
@@ -128,7 +130,7 @@ public class GameManager : MonoBehaviour
         {
             //do secret stuff
             secretMusic.Play();
-            postProcessing.enabled = true;
+            //postProcessing.enabled = true;
             codeIndex = 0;
         }
     }
@@ -148,4 +150,9 @@ public class GameManager : MonoBehaviour
 
         return false;
     }
+
+	public void RestartGame()
+	{
+		menuManager.ToGame ();
+	}
 }
