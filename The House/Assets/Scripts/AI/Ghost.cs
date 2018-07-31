@@ -58,7 +58,7 @@ public class Ghost : MonoBehaviour
     void Update()
     {
         //If we we'rent spotted and we've been heard head to the sound and wander
-        if (player.hasBeenHeard == true && navMeshAgent.remainingDistance <= 10.0f)
+        if (player.hasBeenHeard == true && navMeshAgent.remainingDistance <= 3.0f)
         {
             connectedWayPatrol.enabled = false;
             wanderBehavior.enabled = true;
@@ -131,7 +131,6 @@ public class Ghost : MonoBehaviour
     public float CalulatePathLength(Vector3 targetPosition)
     {
         NavMeshPath path = new NavMeshPath();
-        //NavMeshHit hit = new NavMeshHit();
 
         if (navMeshAgent.enabled)
         {

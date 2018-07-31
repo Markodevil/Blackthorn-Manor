@@ -9,7 +9,7 @@ public class ConnectedPartol : MonoBehaviour
 
     //Dictates wheter the agent waits on each node
     [SerializeField]
-    bool partrolWaiting;
+    bool partrolWaiting = false;
 
     //Total time we wait at each node
     [SerializeField]
