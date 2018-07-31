@@ -40,8 +40,8 @@ public class OpenDoorScript : MonoBehaviour {
                 {
                     hit.collider.transform.GetComponent<HingeDoorScript>().changeDoorState();
 
-                    camScript.enabled = false;
-
+                    //camScript.enabled = false;
+					fpsCamera.SetTouching(true);
                 }
 
             }
@@ -56,7 +56,8 @@ public class OpenDoorScript : MonoBehaviour {
         //--------------------------------------------------------------------------------------
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            camScript.enabled = true;
+            //camScript.enabled = true;
+			fpsCamera.SetTouching(false);
         }
 
     }
