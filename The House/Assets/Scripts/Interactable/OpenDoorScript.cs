@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class OpenDoorScript : MonoBehaviour {
 
+    // Distance in which the player can interact with the door 
+    public float interactDistance;
+    // Refrences the Camera so it can be locked 
+    FPSCamera fpsCamera;
 
-    public float interactDistance = 5;
-    [SerializeField]
-    private FPSCamera camScript;
+    public MonoBehaviour camScript;
 
 	// Use this for initialization
 	void Start () {
+        fpsCamera = GetComponent<FPSCamera>();
 
     }
 	
@@ -27,7 +30,6 @@ public class OpenDoorScript : MonoBehaviour {
         //--------------------------------------------------------------------------------------
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            // Disable Mouse Rotation when opening door
 
             Ray ray = new Ray(transform.position, transform.forward);
             RaycastHit hit;
@@ -36,21 +38,25 @@ public class OpenDoorScript : MonoBehaviour {
 
                 if (hit.collider.CompareTag("Door"))
                 {
-                    //fpsCamera.IsPeeking = true;
-                    // hit.collider.transform.parent.GetComponent<DoorScript>().changeDoorState();
                     hit.collider.transform.GetComponent<HingeDoorScript>().changeDoorState();
 
-                    //camScript.enabled = false;
-                    camScript.SetTouching(true);
+                    camScript.enabled = false;
+
                 }
 
             }
         }
-
-        if(Input.GetKeyUp(KeyCode.Mouse0))
+        //--------------------------------------------------------------------------------------
+        // Checks if the Mouse0 button is up  
+        //
+        // Param 
+        //      Determines if Camscript is true 
+        // Return 
+        //      Changes Camscript to true so player can check cameras 
+        //--------------------------------------------------------------------------------------
+        if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            //camScript.enabled = true;
-            camScript.SetTouching(false);
+            camScript.enabled = true;
         }
 
     }
