@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224006334062593484}
   - component: {fileID: 222724918726684152}
   - component: {fileID: 114078915367479710}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Image (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 224964917340980044}
   - component: {fileID: 222099941248482026}
   - component: {fileID: 114004412223444006}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Image (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224412326600580064}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Selected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 224354097745700502}
   - component: {fileID: 222047130831830688}
   - component: {fileID: 114508684582205696}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 224369458311875564}
   - component: {fileID: 222262331990139752}
   - component: {fileID: 114162825417567270}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cam_HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 223008282580493612}
   - component: {fileID: 114914040460063400}
   - component: {fileID: 114821711656624904}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Canvas_WorldSpace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -457,7 +457,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967039
+    m_Bits: 4294964991
   m_RenderingPath: 1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
