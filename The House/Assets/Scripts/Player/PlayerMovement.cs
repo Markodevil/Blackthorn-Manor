@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private float speed;
     bool LookingAtCameras = false;
     bool isRunning;
+    public bool hasBeenHeard = false;
 
     [Header("Footsteps")]
     public AudioSource footstepsSound;
