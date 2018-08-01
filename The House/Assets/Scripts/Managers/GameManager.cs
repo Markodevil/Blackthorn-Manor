@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PostProcessing;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -153,6 +154,9 @@ public class GameManager : MonoBehaviour
 
 	public void RestartGame()
 	{
-		menuManager.ToGame ();
+		if (menuManager)
+			menuManager.ToGame ();
+		else
+			SceneManager.LoadScene ("Mark");
 	}
 }
