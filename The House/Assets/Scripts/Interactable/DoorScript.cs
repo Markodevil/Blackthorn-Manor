@@ -54,7 +54,6 @@ public class DoorScript : MonoBehaviour
         if (Vector3.Dot(Direction, Player.transform.right) > 0)
         {
 
-            Debug.Log("ZERO");
             if (isOpen && mouseY > 0)
             {
                 Quaternion targetRotation = Quaternion.Euler(0, doorCloseAngle, 0);
@@ -72,7 +71,6 @@ public class DoorScript : MonoBehaviour
         }
         else
         {
-            Debug.Log("Greater Than Zero");
             if (isOpen && mouseY > 0)
             {
                 Quaternion targetRotation = Quaternion.Euler(0, doorOpenAngle, 0);

@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     CharacterController charControl;
     float Horizontal = 0;
-    float Verticle = 0;
+    float Vertical = 0;
     public float initialSpeed;
     private float speed;
     bool LookingAtCameras = false;
@@ -32,13 +32,14 @@ public class PlayerMovement : MonoBehaviour
 
 
     private bool isTouchingSomething = false;
-
+    public Animator headbobAnim;
 
 
     // Use this for initialization
     void Awake()
     {
         charControl = GetComponent<CharacterController>();
+
     }
 
     private void Start()
@@ -52,7 +53,11 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if (isTouchingSomething)
-            return; 
+            return;
+        
+        //set headbob anim bool
+        headbobAnim.SetBool("isRunning", isRunning);
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             rotating = true;
@@ -78,35 +83,45 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        //if you are moving forward
-        if (Verticle > 0)
+        //if you're moving forward and NOT strafing and you press left shift
+        if (Vertical > 0 && Horizontal == 0 && Input.GetKeyDown(KeyCode.LeftShift))
+            //you are now running
+            isRunning = true;
+
+        //if you are already holding left shift
+        if(Input.GetKey(KeyCode.LeftShift))
         {
-            //if you are holding left shift
-            if (Input.GetKey(KeyCode.LeftShift))
+            //if you start to move forward but not strafe
+            if(Vertical > 0 && Horizontal == 0)
             {
-                //speed is doubled
-                speed = initialSpeed * 2;
+                //you are now running
                 isRunning = true;
             }
-            else
-            {
-                //speed is as normal
-                speed = initialSpeed;
-                isRunning = false;
-            }
-
         }
 
         //if you are running
-        if (isRunning)
+        if(isRunning)
         {
-            //if you are moving backwards
-            if (Verticle < 0)
+            //speed is equal to twice the initial speed
+            speed = initialSpeed * 2;
+
+            //if you begin to move backwards
+            if(Vertical <= 0)
             {
-                //speed is as normal
-                speed = initialSpeed;
+                //you are no longer running
                 isRunning = false;
             }
+
+            //if you let go of shift
+            if (Input.GetKeyUp(KeyCode.LeftShift))
+                //no longer running
+                isRunning = false;
+        }
+        //if you aren't running
+        else
+        {
+            //speed is equal to initial speed
+            speed = initialSpeed;
         }
 
         //move
@@ -116,13 +131,13 @@ public class PlayerMovement : MonoBehaviour
     void Movement()
     {
         Horizontal = Input.GetAxis("Horizontal");
-        Verticle = Input.GetAxis("Vertical");
+        Vertical = Input.GetAxis("Vertical");
 
         Vector3 MoveDirectionSide = transform.right * Horizontal * speed;
-        Vector3 MoveDirectionForward = transform.forward * Verticle * speed;
+        Vector3 MoveDirectionForward = transform.forward * Vertical * speed;
 
         //if you are moving in any direction
-        if (Horizontal != 0 || Verticle != 0)
+        if (Horizontal != 0 || Vertical != 0)
         {
             //footstep sound timer
             footstepTimer -= Time.deltaTime;
@@ -189,5 +204,10 @@ public class PlayerMovement : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, playerSoundLvl);
+    }
+
+    public bool GetTouchingSomething()
+    {
+        return isTouchingSomething;
     }
 }

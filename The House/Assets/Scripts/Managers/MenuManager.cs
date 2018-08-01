@@ -7,17 +7,18 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
 
-    [Header("Audio Related")]
-    float globalVolume;
-    public bool globalMute = true;
-    public Slider volumeSlider;
 
     [Header("Main Menu Items")]
     public GameObject mainMenuItems;
 
     [Header("Options Menu Items")]
     public GameObject optionsMenuItems;
+    public Dropdown resolutionDropdown;
 
+    [Header("Audio Related")]
+    float globalVolume;
+    public bool globalMute = true;
+    public Slider volumeSlider;
 
     // Use this for initialization
     void Start()
@@ -72,5 +73,29 @@ public class MenuManager : MonoBehaviour
     public void ToGame()
     {
         SceneManager.LoadSceneAsync("Mark");
+    }
+
+    public void ToggleFullscreen()
+    {
+        Screen.fullScreen = !Screen.fullScreen;
+    }
+
+    public void SetResolution()
+    {
+        switch (resolutionDropdown.value)
+        {
+            case 0:
+                Screen.SetResolution(1920, 1080, Screen.fullScreen);
+                break;
+            case 1:
+                Screen.SetResolution(1280, 720, Screen.fullScreen);
+                break;
+        }
+
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
 }
