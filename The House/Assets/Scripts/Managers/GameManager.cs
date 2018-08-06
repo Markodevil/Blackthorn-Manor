@@ -16,13 +16,17 @@ public class GameManager : MonoBehaviour
     [Header("End Game Stuff")]
     public GameObject clickyWinThing;
     public MonoBehaviour[] scriptsToTurnOff;
-
     public GameObject ghost;
+
+    [Header("Req. Items")]
+    public GameObject[] RequiredItems;
+    public Transform[] RequiredItemSpawns;
 
     [Header("UI Tings")]
     public GameObject gameOverText;
 
-	private MenuManager menuManager;
+    private MenuManager menuManager;
+
 
     private enum GameStates
     {
@@ -35,13 +39,14 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-		menuManager = FindObjectOfType<MenuManager> ();
+        menuManager = FindObjectOfType<MenuManager>();
     }
 
     // Use this for initialization
     void Start()
     {
         currentState = GameStates.Playing;
+        SpawnItems();
         //postProcessing.enabled = false;
     }
 
@@ -81,10 +86,10 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 0;
 
                 break;
-		case GameStates.GameOver:
+            case GameStates.GameOver:
                 //set timescale to 0
-			Time.timeScale = 0;
-			Cursor.lockState = CursorLockMode.None;
+                Time.timeScale = 0;
+                Cursor.lockState = CursorLockMode.None;
 
 
                 foreach (MonoBehaviour mon in scriptsToTurnOff)
@@ -152,11 +157,46 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-	public void RestartGame()
-	{
-		if (menuManager)
-			menuManager.ToGame ();
-		else
-			SceneManager.LoadScene ("Mark");
-	}
+    public void RestartGame()
+    {
+        if (menuManager)
+            menuManager.ToGame();
+        else
+            SceneManager.LoadScene("Mark");
+    }
+
+
+    //--------------------------------------------------------------------------------------
+    // Spawns required items at random spawn points in the house
+    // 
+    // Param
+    //        N/A
+    // Return:
+    //        spawns all required items in random positions in the house
+    //        from an array of chosen transforms
+    //--------------------------------------------------------------------------------------
+    private void SpawnItems()
+    {
+        //initialize temp list of spawn points that have been chosen
+        List<int> chosenSpots = new List<int>();
+        //initialize temp int for random position index
+        int randPlace = int.MaxValue;
+        //for each item required in the game
+        for (int i = 0; i < RequiredItems.Length; i++)
+        {
+            //start do while 
+            do
+            {
+                //set rand place to a random int between 0 and length of item spawns array
+                randPlace = Random.Range(0, RequiredItemSpawns.Length);
+
+                //keep doing this if randplace is withing chosenspots
+            } while (chosenSpots.Contains(randPlace));
+
+            //add randplace to chosenspots list
+            chosenSpots.Add(randPlace);
+            //instantiate required item at random position
+            Instantiate(RequiredItems[i], RequiredItemSpawns[randPlace].transform.position, Quaternion.identity);
+        }
+    }
 }

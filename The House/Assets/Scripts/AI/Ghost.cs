@@ -31,8 +31,9 @@ public class Ghost : MonoBehaviour
     public Wander wanderBehavior;
     //Access to the PlayerMovement.cs
     public PlayerMovement player;
+
     //Acess to the ItemCollection
-    private ItemCollection items;
+    public ItemCollection items;
 
     void Start()
     {
