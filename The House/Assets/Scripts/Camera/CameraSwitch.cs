@@ -22,6 +22,11 @@ public class CameraSwitch : MonoBehaviour
 
     public Image[] selectedCameraDisplay;
 
+    public AudioSource cameraSoundManager;
+    public AudioClip openCameraSound;
+    public AudioClip closeCameraSound;
+    public AudioClip changeCameraSound;
+
     private void Awake()
     {
 
@@ -55,6 +60,9 @@ public class CameraSwitch : MonoBehaviour
                 //set the phone to true
                 phoneThing.SetActive(true);
                 lookingAtPhone = true;
+
+                if (cameraSoundManager)
+                    cameraSoundManager.PlayOneShot(openCameraSound);
             }
 
         }
@@ -75,6 +83,9 @@ public class CameraSwitch : MonoBehaviour
                 cameras[cameraIndex].SetActive(true);
                 SetCanvasPosition(cameras[cameraIndex].transform);
                 UpdateCanvasIndex();
+
+                if (cameraSoundManager)
+                    cameraSoundManager.PlayOneShot(changeCameraSound);
             }
             if (Input.GetKeyDown(KeyCode.D))
             {
@@ -89,6 +100,9 @@ public class CameraSwitch : MonoBehaviour
                 cameras[cameraIndex].SetActive(true);
                 SetCanvasPosition(cameras[cameraIndex].transform);
                 UpdateCanvasIndex();
+
+                if (cameraSoundManager)
+                    cameraSoundManager.PlayOneShot(changeCameraSound);
             }
 
             if (Input.GetKeyDown(KeyCode.F))
@@ -100,6 +114,8 @@ public class CameraSwitch : MonoBehaviour
                 //turn the phone off
                 phoneThing.SetActive(false);
                 lookingAtPhone = false;
+                if (cameraSoundManager)
+                    cameraSoundManager.PlayOneShot(closeCameraSound);
             }
         }
     }

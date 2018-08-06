@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PostProcessing;
 using UnityEngine.SceneManagement;
+using UnityEditor.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,8 +25,8 @@ public class GameManager : MonoBehaviour
 
     [Header("UI Tings")]
     public GameObject gameOverText;
-
     private MenuManager menuManager;
+    
 
 
     private enum GameStates
@@ -199,4 +200,6 @@ public class GameManager : MonoBehaviour
             Instantiate(RequiredItems[i], RequiredItemSpawns[randPlace].transform.position, Quaternion.identity);
         }
     }
+
+   
 }

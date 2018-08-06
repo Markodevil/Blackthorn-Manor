@@ -34,6 +34,10 @@ public class PlayerMovement : MonoBehaviour
     private bool isTouchingSomething = false;
     public Animator headbobAnim;
 
+    [Header("Crouching")]
+    bool isCreepin;
+    public float crouchCameraHeight;
+    float initialCameraHeight;
 
     // Use this for initialization
     void Awake()
@@ -45,8 +49,10 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         isRunning = false;
+        isCreepin = false;
         footstepTimer = timeBetweenStepsWalking;
         speed = initialSpeed;
+        initialCameraHeight = Camera.main.transform.localPosition.y;
     }
 
     // Update is called once per frame
@@ -54,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isTouchingSomething)
             return;
-        
+
         //set headbob anim bool
         headbobAnim.SetBool("isRunning", isRunning);
 
@@ -90,10 +96,10 @@ public class PlayerMovement : MonoBehaviour
             isRunning = true;
 
         //if you are already holding left shift
-        if(Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             //if you start to move forward but not strafe
-            if(Vertical > 0 && Horizontal == 0)
+            if (Vertical > 0 && Horizontal == 0)
             {
                 //you are now running
                 isRunning = true;
@@ -101,14 +107,21 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        //if you are running
-        if(isRunning)
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
+            isCreepin = true;
+
+        }
+
+        //if you are running
+        if (isRunning)
+        {
+            Camera.main.transform.localPosition = new Vector3(0, initialCameraHeight, 0.25f);
             //speed is equal to twice the initial speed
             speed = initialSpeed * 2;
 
             //if you begin to move backwards
-            if(Vertical <= 0)
+            if (Vertical <= 0)
             {
                 //you are no longer running
                 isRunning = false;
@@ -121,12 +134,45 @@ public class PlayerMovement : MonoBehaviour
                 isRunning = false;
                 playerSoundLvl /= 2;
             }
+            if(Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                isRunning = false;
+                playerSoundLvl /= 2;
+                isCreepin = true;
+            }
+        }
+        else if (isCreepin)
+        {
+            speed = initialSpeed / 2;
+
+            Camera.main.transform.localPosition = new Vector3(0, crouchCameraHeight, 0.25f);
+
+            if (Input.GetKeyUp(KeyCode.LeftControl))
+            {
+                isCreepin = false;
+            }
         }
         //if you aren't running
         else
         {
+            Camera.main.transform.localPosition = new Vector3(0, initialCameraHeight, 0.25f);
             //speed is equal to initial speed
             speed = initialSpeed;
+        }
+
+
+        Debug.Log("Speed: " + speed);
+        if(isRunning)
+        {
+            Debug.Log("running");
+        }
+        else if(isCreepin)
+        {
+            Debug.Log("creepin");
+        }
+        else
+        {
+            Debug.Log("walking");
         }
 
         //move
@@ -141,60 +187,64 @@ public class PlayerMovement : MonoBehaviour
         Vector3 MoveDirectionSide = transform.right * Horizontal * speed;
         Vector3 MoveDirectionForward = transform.forward * Vertical * speed;
 
-        //if you are moving in any direction
-        if (Horizontal != 0 || Vertical != 0)
+        if (!isCreepin)
         {
-            //footstep sound timer
-            footstepTimer -= Time.deltaTime;
-            
-            if (footstepTimer <= 0)
+            //if you are moving in any direction
+            if (Horizontal != 0 || Vertical != 0)
             {
-                //play a footstep sound
-                footstepsSound.Play();
+                //footstep sound timer
+                footstepTimer -= Time.deltaTime;
 
-                //create array of colliders overlapping with a sphere who's origin is our foot 
-                Collider[] hitCollider = Physics.OverlapSphere(footsies[footIndex].transform.position, playerSoundLvl);
-                for (int i = 0; i < hitCollider.Length; i++)
+                if (footstepTimer <= 0)
                 {
-                    //if current collider's gameobject in array is tagged Ghost
-                    if (hitCollider[i].gameObject.tag == "Ghost")
+                    //play a footstep sound
+                    footstepsSound.Play();
+
+                    //create array of colliders overlapping with a sphere who's origin is our foot 
+                    Collider[] hitCollider = Physics.OverlapSphere(footsies[footIndex].transform.position, playerSoundLvl);
+                    for (int i = 0; i < hitCollider.Length; i++)
                     {
-                        //We've heard the player
-                        Debug.Log("Ghost heard the sound");
-                        Ghost temp = hitCollider[i].gameObject.GetComponent<Ghost>();
-                        //ICANTBELIVEIMISSEDTHISFREAKINMISSTAKE
-                        if (temp.CalulatePathLength(footsies[footIndex].transform.position) <= ghostSoundResponceLvl)
+                        //if current collider's gameobject in array is tagged Ghost
+                        if (hitCollider[i].gameObject.tag == "Ghost")
                         {
-                            //We're within range to respond to the sound 
-                            temp.SetDestination();
-                            hasBeenHeard = true;
-                            Debug.Log("The Ghost is responding to the sound:");
+                            //We've heard the player
+                            Debug.Log("Ghost heard the sound");
+                            Ghost temp = hitCollider[i].gameObject.GetComponent<Ghost>();
+                            //ICANTBELIVEIMISSEDTHISFREAKINMISSTAKE
+                            if (temp.CalulatePathLength(footsies[footIndex].transform.position) <= ghostSoundResponceLvl)
+                            {
+                                //We're within range to respond to the sound 
+                                temp.SetDestination();
+                                hasBeenHeard = true;
+                                Debug.Log("The Ghost is responding to the sound:");
+                            }
                         }
                     }
-                }
 
-                //reset footstep timer
-                if (isRunning)
-                {
-                    footstepTimer = timeBetweenStepsRunning;
-                }
-                else
-                {
-                    footstepTimer = timeBetweenStepsWalking;
-                }
+                    //reset footstep timer
+                    if (isRunning)
+                    {
+                        footstepTimer = timeBetweenStepsRunning;
+                    }
+                    else
+                    {
+                        footstepTimer = timeBetweenStepsWalking;
+                    }
 
 
-                //increase foot index 
-                if (footIndex + 1 != footsies.Length)
-                {
-                    footIndex++;
+                    //increase foot index 
+                    if (footIndex + 1 != footsies.Length)
+                    {
+                        footIndex++;
 
-                }
-                else
-                {
-                    footIndex = 0;
+                    }
+                    else
+                    {
+                        footIndex = 0;
+                    }
                 }
             }
+
         }
 
         //move

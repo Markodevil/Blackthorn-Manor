@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemCollection : MonoBehaviour
 {
@@ -18,10 +19,20 @@ public class ItemCollection : MonoBehaviour
     public List<GameObject> inventory;
     public List<string> pickedUpItems;
 
+    [Header("UI")]
+    public Image Thing1;
+    public Image Thing2;
+    public Image Thing3;
+    public Image Thing4;
+
+    public Sprite filled;
+    public Sprite unfilled;
+
+
     // Use this for initialization
     void Start()
     {
-
+        UpdateUI();
     }
 
     // Update is called once per frame
@@ -40,10 +51,10 @@ public class ItemCollection : MonoBehaviour
                 if (hitObject.tag == "RequiredItem")
                 {
                     //check to see if the item has been picked up before
-                    foreach(string str in pickedUpItems)
+                    foreach (string str in pickedUpItems)
                     {
                         //if it has been picked up before
-                        if(hitObject.name == str)
+                        if (hitObject.name == str)
                         {
                             //return
                             return;
@@ -55,6 +66,7 @@ public class ItemCollection : MonoBehaviour
                     pickedUpItems.Add(hitObject.name);
                     //set object to inactive
                     hitObject.SetActive(false);
+                    
                     //add to number of items
                     currentNumberOfItems++;
                 }
@@ -64,10 +76,13 @@ public class ItemCollection : MonoBehaviour
                 {
                     //make sure something is in the inventory
                     if (inventory.Count > 0)
+                    {
                         //send the first item in the inventoy to the ritual
                         SendToRitual(inventory[0], hitObject.GetComponent<Horcruxes>());
+                    }
                 }
             }
+            UpdateUI();
         }
     }
 
@@ -86,5 +101,50 @@ public class ItemCollection : MonoBehaviour
         script.AddHorcruxToRitual(ritualItem);
         currentNumberOfItems--;
         inventory.RemoveAt(0);
+    }
+
+    //--------------------------------------------------------------------------------------
+    // Updates in game UI elements
+    // 
+    // Param
+    //        N/A
+    // Return:
+    //        Updates in game UI elements
+    //--------------------------------------------------------------------------------------
+    private void UpdateUI()
+    {
+        //Thing1.color = new Color(Thing1.color.r, Thing1.color.g, Thing1.color.b, 0.25f);
+        //Thing2.color = new Color(Thing2.color.r, Thing2.color.g, Thing2.color.b, 0.25f);
+        //Thing3.color = new Color(Thing3.color.r, Thing3.color.g, Thing3.color.b, 0.25f);
+        //Thing4.color = new Color(Thing4.color.r, Thing4.color.g, Thing4.color.b, 0.25f);
+        Thing1.sprite = unfilled;
+        Thing2.sprite = unfilled;
+        Thing3.sprite = unfilled;
+        Thing4.sprite = unfilled;
+
+
+        foreach (GameObject go in inventory)
+        {
+            switch (go.name)
+            {
+                case "RequiredItem":
+                    //Thing1.color = new Color(Thing1.color.r, Thing1.color.g, Thing1.color.b, 0.5f);
+                    Thing1.sprite = filled;
+                    break;
+                case "RequiredItem (1)":
+                    //Thing2.color = new Color(Thing2.color.r, Thing2.color.g, Thing2.color.b, 0.5f);
+                    Thing2.sprite = filled;
+                    break;
+                case "RequiredItem (2)":
+                    //Thing3.color = new Color(Thing3.color.r, Thing3.color.g, Thing3.color.b, 0.5f);
+                    Thing3.sprite = filled;
+                    break;
+                case "RequiredItem (3)":
+                    //Thing4.color = new Color(Thing4.color.r, Thing4.color.g, Thing4.color.b, 0.5f);
+                    Thing4.sprite = filled;
+                    break;
+            }
+
+        }
     }
 }
