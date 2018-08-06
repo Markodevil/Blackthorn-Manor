@@ -8,8 +8,13 @@ public class HingeDoorScript : MonoBehaviour {
      bool isOpen = false;
     public float mouseY;
     public float doorOpenSpeed; 
-    public GameObject Player;
-    public Rigidbody rb; 
+    private GameObject Player;
+    public Rigidbody rb;
+
+    private void Awake()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+    }
 
     // Update is called once per frame
     void Update()
@@ -23,14 +28,14 @@ public class HingeDoorScript : MonoBehaviour {
 
             isOpen = false;
         }
-        // Doors position 
-        Vector3 doorPosition = transform.position;
-        // Players position
-        Vector3 playerPosition = Player.transform.position;
-       
-        // Gets the direction of the player from the door 
-        Vector3 Direction = doorPosition - playerPosition;
-        Direction.Normalize();
+        //// Doors position 
+        //Vector3 doorPosition = transform.position;
+        //// Players position
+        //Vector3 playerPosition = Player.transform.position;
+        //
+        //// Gets the direction of the player from the door 
+        //Vector3 Direction = doorPosition - playerPosition;
+        //Direction.Normalize();
 
         //--------------------------------------------------------------------------------------
         // Checks for the players forward position

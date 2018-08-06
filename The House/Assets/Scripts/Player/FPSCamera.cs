@@ -43,21 +43,28 @@ public class FPSCamera : MonoBehaviour
                 GameObject hitObj = hit.collider.gameObject;
                 if (hitObj.tag == "Interactable" || hitObj.tag == "RequiredItem" || hitObj.tag == "Door" || hitObj.tag == "HorcruxManager")
                 {
-                    hand.SetActive(true);
+                    if (hand)
+                        hand.SetActive(true);
                 }
                 else
                 {
-                    hand.SetActive(false);
+                    if (hand)
+                        hand.SetActive(false);
                 }
             }
             else
-                hand.SetActive(false);
+            {
+                if (hand)
+                    hand.SetActive(false);
+
+            }
 
 
         }
         else
         {
-            hand.SetActive(true);
+            if (hand)
+                hand.SetActive(true);
         }
         //if (Input.GetKey(KeyCode.Q))
         //{

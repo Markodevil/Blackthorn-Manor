@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private Quaternion desiredRotation;
     private bool rotating = false;
 
+    [Header("Foot/Movement stuff")]
     public GameObject[] footsies;
     private int footIndex = 0;
     [SerializeField]
@@ -65,30 +66,29 @@ public class PlayerMovement : MonoBehaviour
         headbobAnim.SetBool("isRunning", isRunning);
 
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            rotating = true;
-            //calculate desired rotation
-            desiredRotation = new Quaternion();
-            desiredRot = transform.rotation.eulerAngles;
-            desiredRot += new Vector3(0, 180, 0);
-            desiredRotation.eulerAngles = desiredRot;
-        }
-
-        if (rotating)
-        {
-            //                       put desired rotation here \/
-            transform.rotation = Quaternion.Lerp(transform.rotation, desiredRotation, 1.5f * Time.deltaTime);
-
-            //if the difference between these 2 vectors is miniscule 
-            if (Vector3.Distance(transform.rotation.eulerAngles, desiredRotation.eulerAngles) < 1.0f)
-            {
-                //stop rotating
-                rotating = false;
-                //set current rotation to desired rotation
-                transform.rotation = desiredRotation;
-            }
-        }
+        //if (Input.GetKeyDown(KeyCode.R))
+        //{
+        //    rotating = true;
+        //    desiredRotation = new Quaternion();
+        //    desiredRot = transform.rotation.eulerAngles;
+        //    desiredRot += new Vector3(0, 180, 0);
+        //    desiredRotation.eulerAngles = desiredRot;
+        //}
+        //
+        //if (rotating)
+        //{
+        //    //                       put desired rotation here \/
+        //    transform.rotation = Quaternion.Lerp(transform.rotation, desiredRotation, 1.5f * Time.deltaTime);
+        //
+        //    //if the difference between these 2 vectors is miniscule 
+        //    if (Vector3.Distance(transform.rotation.eulerAngles, desiredRotation.eulerAngles) < 1.0f)
+        //    {
+        //        //stop rotating
+        //        rotating = false;
+        //        //set current rotation to desired rotation
+        //        transform.rotation = desiredRotation;
+        //    }
+        //}
 
         //if you're moving forward and NOT strafing and you press left shift
         if (Vertical > 0 && Horizontal == 0 && Input.GetKeyDown(KeyCode.LeftShift))
@@ -161,19 +161,19 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        Debug.Log("Speed: " + speed);
-        if(isRunning)
-        {
-            Debug.Log("running");
-        }
-        else if(isCreepin)
-        {
-            Debug.Log("creepin");
-        }
-        else
-        {
-            Debug.Log("walking");
-        }
+        //Debug.Log("Speed: " + speed);
+        //if(isRunning)
+        //{
+        //    Debug.Log("running");
+        //}
+        //else if(isCreepin)
+        //{
+        //    Debug.Log("creepin");
+        //}
+        //else
+        //{
+        //    Debug.Log("walking");
+        //}
 
         //move
         Movement();
@@ -236,7 +236,6 @@ public class PlayerMovement : MonoBehaviour
                     if (footIndex + 1 != footsies.Length)
                     {
                         footIndex++;
-
                     }
                     else
                     {
@@ -267,5 +266,4 @@ public class PlayerMovement : MonoBehaviour
     {
         return isTouchingSomething;
     }
-
 }

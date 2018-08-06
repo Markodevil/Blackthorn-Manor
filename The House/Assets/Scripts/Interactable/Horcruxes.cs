@@ -36,6 +36,11 @@ public class Horcruxes : MonoBehaviour
     //--------------------------------------------------------------------------------------
     public void AddHorcruxToRitual(GameObject ritualItem)
     {
+        if (positions.Length == 0)
+        {
+            Debug.Log("You need to give me positions to put the items");
+            return;
+        }
         switch (ritualItem.name)
         {
             case "frozen pizza":
@@ -47,20 +52,23 @@ public class Horcruxes : MonoBehaviour
                 break;
             case "pepsi":
                 //set gameobject position here
-
+                ritualItem.transform.position = positions[1].transform.position;
                 //reenable object
+                ritualItem.SetActive(true);
 
                 break;
             case "garlic bread":
                 //set gameobject position here
-
+                ritualItem.transform.position = positions[2].transform.position;
                 //reenable object
+                ritualItem.SetActive(true);
 
                 break;
             case "pizza box":
                 //set gameobject position here
-
+                ritualItem.transform.position = positions[3].transform.position;
                 //reenable object
+                ritualItem.SetActive(true);
 
                 break;
             default:

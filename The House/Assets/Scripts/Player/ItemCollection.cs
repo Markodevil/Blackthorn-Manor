@@ -66,7 +66,7 @@ public class ItemCollection : MonoBehaviour
                     pickedUpItems.Add(hitObject.name);
                     //set object to inactive
                     hitObject.SetActive(false);
-                    
+
                     //add to number of items
                     currentNumberOfItems++;
                 }
@@ -82,7 +82,8 @@ public class ItemCollection : MonoBehaviour
                     }
                 }
             }
-            UpdateUI();
+            if (Thing1 && Thing2 && Thing3 && Thing4)
+                UpdateUI();
         }
     }
 
