@@ -70,7 +70,7 @@ public class Wander : MonoBehaviour {
 
         if (navMeshAgent.enabled)
         {
-            bool temp = navMeshAgent.CalculatePath(targetPosition, path);
+            navMeshAgent.CalculatePath(targetPosition, path);
         }
 
         Vector3[] allWayPoints = new Vector3[path.corners.Length + 2];

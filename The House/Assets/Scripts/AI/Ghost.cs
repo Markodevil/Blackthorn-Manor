@@ -9,6 +9,7 @@ public class Ghost : MonoBehaviour
     //Sets the player/patrol point as the desired destination
     private bool hasBeenSpotted = false;
     private float chaseTimer = 0f;
+    private GameObject player;
 
     [Header("Ghost Chase")]
     public Transform destination;
@@ -30,17 +31,24 @@ public class Ghost : MonoBehaviour
     [HideInInspector]
     public Wander wanderBehavior;
     //Access to the PlayerMovement.cs
-    public PlayerMovement player;
-
+    private PlayerMovement playerMovementCS;
     //Acess to the ItemCollection
-    public ItemCollection items;
+    private ItemCollection itemsCollectionCS;
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         navMeshAgent = this.GetComponent<NavMeshAgent>();
         enemySight = this.GetComponent<Sight>();
         wanderBehavior = this.GetComponent<Wander>();
         wanderBehavior.enabled = false;
+
+        //Player Scripts
+        if (player != null)
+        {
+            playerMovementCS  = player.GetComponent<PlayerMovement>();
+            itemsCollectionCS = player.GetComponent<ItemCollection>();
+        }
 
         //Nav mesh failed
         if (navMeshAgent == null)
@@ -63,17 +71,17 @@ public class Ghost : MonoBehaviour
     void Update()
     {
         //Check if we've picked up less the 2 items, if yes use regular AI Loop
-        if (items.currentNumberOfItems <= 1)
+        if (itemsCollectionCS.currentNumberOfItems <= 1)
         {
             //If we we'rent spotted and we've been heard head to the sound and wander
-            if (player.hasBeenHeard == true && navMeshAgent.remainingDistance <= 3.0f)
+            if (playerMovementCS.hasBeenHeard == true && navMeshAgent.remainingDistance <= 3.0f)
             {
                 connectedWayPatrol.enabled = false;
                 wanderBehavior.enabled = true;
                 if (wanderBehavior.wanderTimerActual <= -1.0f)
                 {
                     wanderBehavior.enabled = false;
-                    player.hasBeenHeard = false;
+                    playerMovementCS.hasBeenHeard = false;
                     connectedWayPatrol.enabled = true;
                     connectedWayPatrol.SetDestination();
                     navMeshAgent.speed = patrolSpeed;
@@ -114,12 +122,12 @@ public class Ghost : MonoBehaviour
                 }
             }
         }
-        else if(items.currentNumberOfItems == 4)
+        else if(itemsCollectionCS.currentNumberOfItems == 4)
         {
             SetDestination();
             navMeshAgent.speed = chaseSpeed;
         }
-        else if(items.currentNumberOfItems >= 2)
+        else if(itemsCollectionCS.currentNumberOfItems >= 2)
         {
             SetDestination();
             navMeshAgent.speed = patrolSpeed;
@@ -155,7 +163,7 @@ public class Ghost : MonoBehaviour
 
         if (navMeshAgent.enabled)
         {
-            bool temp = navMeshAgent.CalculatePath(targetPosition, path);
+            navMeshAgent.CalculatePath(targetPosition, path);
         }
 
         Vector3[] allWayPoints = new Vector3[path.corners.Length + 2];
