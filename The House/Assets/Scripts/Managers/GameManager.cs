@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     public string codeInit;
     public int codeIndex = 0;
     private string code1;
-    //public PostProcessingBehaviour postProcessing;
     public AudioSource secretMusic;
 
     [Header("End Game Stuff")]
@@ -26,10 +25,13 @@ public class GameManager : MonoBehaviour
     [Header("UI Tings")]
     public GameObject gameOverText;
     private MenuManager menuManager;
+    public GameObject ingameUI;
+    public GameObject menuUI;
+    public GameObject gameoverUI;
     
 
 
-    private enum GameStates
+    public enum GameStates
     {
         Playing,
         Pause,
@@ -54,9 +56,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ////////////////////
-        // Game Logic Here//
-        ////////////////////
+        /////////////////////
+        // Game Logic Here //
+        /////////////////////
         switch (currentState)
         {
             case GameStates.Playing:
@@ -64,6 +66,8 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 1;
                 Cursor.lockState = CursorLockMode.Locked;
                 CheckSecretCode();
+                menuUI.SetActive(false);
+                ingameUI.SetActive(true);
 
                 //if you've brought all items to the spot
                 //or you have been killed by the ghost
@@ -73,6 +77,10 @@ public class GameManager : MonoBehaviour
                     currentState = GameStates.GameOver;
                 }
 
+                if(Input.GetKeyDown(KeyCode.Escape))
+                {
+                    currentState = GameStates.Pause;
+                }
 
                 //turn all the scripts back on
                 //if coming from game over
@@ -85,6 +93,12 @@ public class GameManager : MonoBehaviour
             case GameStates.Pause:
                 //set timescale to 0
                 Time.timeScale = 0;
+                foreach (MonoBehaviour mon in scriptsToTurnOff)
+                {
+                    mon.enabled = false;
+                }
+                menuUI.SetActive(true);
+                ingameUI.SetActive(false);
 
                 break;
             case GameStates.GameOver:
@@ -201,5 +215,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-   
+   public void ChangeGameState()
+    {
+        currentState = GameStates.Playing;
+    }
 }
