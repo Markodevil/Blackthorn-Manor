@@ -11,6 +11,7 @@ public class SpringPickup : MonoBehaviour
     Transform jointTransform;
     float dragDepth;
     Rigidbody rb;
+    public bool holdingSomething;
 
     private void Awake()
     {
@@ -64,6 +65,7 @@ public class SpringPickup : MonoBehaviour
                 dragDepth = 6.0f;
                 //create new joint at the point of the hit connected to the player
                 jointTransform = AttachJoint(hit.rigidbody, hit.point);
+                holdingSomething = true;
             }
         }
     }
@@ -99,7 +101,10 @@ public class SpringPickup : MonoBehaviour
     {
         //if jointTransform isn't null destroy it
         if (jointTransform)
+        {
             Destroy(jointTransform.gameObject);
+            holdingSomething = false;
+        }
     }
 
 

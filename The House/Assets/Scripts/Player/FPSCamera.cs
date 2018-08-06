@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FPSCamera : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class FPSCamera : MonoBehaviour
     public bool IsPeeking = false;
     public float leanAngle;
     private bool isTouchingSomething = false;
+    public float interactableDistance;
+
+    public GameObject hand;
+    public SpringPickup pickupBool;
 
     // Use this for initialization
     private void Start()
@@ -30,6 +35,30 @@ public class FPSCamera : MonoBehaviour
             RotateCamera();
         }
 
+        if (!pickupBool.holdingSomething)
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.forward, out hit, interactableDistance))
+            {
+                GameObject hitObj = hit.collider.gameObject;
+                if (hitObj.tag == "Interactable" || hitObj.tag == "RequiredItem" || hitObj.tag == "Door" || hitObj.tag == "HorcruxManager")
+                {
+                    hand.SetActive(true);
+                }
+                else
+                {
+                    hand.SetActive(false);
+                }
+            }
+            else
+                hand.SetActive(false);
+
+
+        }
+        else
+        {
+            hand.SetActive(true);
+        }
         //if (Input.GetKey(KeyCode.Q))
         //{
         //    if (!CheckDirections(false))
