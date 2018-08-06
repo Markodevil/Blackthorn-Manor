@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 81247332901367224}
   - component: {fileID: 114643910981474702}
   - component: {fileID: 114138149600672652}
+  - component: {fileID: 114002028163313346}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -313,7 +314,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1988884962101314}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.729499, y: 1, z: 8.33991}
+  m_LocalPosition: {x: 7.08, y: 0.49, z: -9.652}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4078791353232066}
@@ -847,6 +848,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114002028163313346
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1181625725552622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfd05445f6ce5cd4e926dce29665ba50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactDistance: 2
+  camScript: {fileID: 114209887467727460}
 --- !u!114 &114138149600672652
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -915,7 +929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7e71d7f6641cd49b8a5b0fb9616429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactDistance: 5
+  interactDistance: 2
   camScript: {fileID: 114209887467727460}
 --- !u!114 &114410116335782474
 MonoBehaviour:
@@ -956,7 +970,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialSpeed: 3
-  hasBeenHeard: 0
   footstepsSound: {fileID: 82941048956642432}
   timeBetweenStepsWalking: 0.75
   timeBetweenStepsRunning: 0.4
@@ -965,7 +978,9 @@ MonoBehaviour:
   - {fileID: 1071784853054508}
   playerSoundLvl: 0
   ghostSoundResponceLvl: 0
+  hasBeenHeard: 0
   headbobAnim: {fileID: 95278486987620686}
+  crouchCameraHeight: 0
 --- !u!114 &114603926043642028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -978,10 +993,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goalNumberOfItems: 5
+  currentNumberOfItems: 0
   playerCamera: {fileID: 20579935015346334}
   interactRange: 5
   inventory: []
   pickedUpItems: []
+  Thing1: {fileID: 0}
+  Thing2: {fileID: 0}
+  Thing3: {fileID: 0}
+  Thing4: {fileID: 0}
+  filled: {fileID: 0}
+  unfilled: {fileID: 0}
 --- !u!114 &114613204414113520
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1048,6 +1070,10 @@ MonoBehaviour:
   - {fileID: 114613204414113520}
   - {fileID: 114410116335782474}
   - {fileID: 114914668172141576}
+  cameraSoundManager: {fileID: 0}
+  openCameraSound: {fileID: 0}
+  closeCameraSound: {fileID: 0}
+  changeCameraSound: {fileID: 0}
 --- !u!114 &114818907202205792
 MonoBehaviour:
   m_ObjectHideFlags: 1

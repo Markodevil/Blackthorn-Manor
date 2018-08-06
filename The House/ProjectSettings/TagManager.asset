@@ -12,6 +12,7 @@ TagManager:
   - Noise
   - Ghost
   - RequiredItem
+  - Drawer
   layers:
   - Default
   - TransparentFX
