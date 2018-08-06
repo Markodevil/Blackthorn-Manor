@@ -11,7 +11,6 @@ public class PlayerMovement : MonoBehaviour
     private float speed;
     bool LookingAtCameras = false;
     bool isRunning;
-    public bool hasBeenHeard = false;
 
     [Header("Footsteps")]
     public AudioSource footstepsSound;
@@ -29,7 +28,8 @@ public class PlayerMovement : MonoBehaviour
     private float playerSoundLvl;
     [SerializeField]
     private float ghostSoundResponceLvl;
-
+    [HideInInspector]
+    public bool hasBeenHeard = false;
 
     private bool isTouchingSomething = false;
     public Animator headbobAnim;
@@ -57,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
         
         //set headbob anim bool
         headbobAnim.SetBool("isRunning", isRunning);
+
 
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -89,13 +90,14 @@ public class PlayerMovement : MonoBehaviour
             isRunning = true;
 
         //if you are already holding left shift
-        if(Input.GetKey(KeyCode.LeftShift))
+        if(Input.GetKeyDown(KeyCode.LeftShift))
         {
             //if you start to move forward but not strafe
             if(Vertical > 0 && Horizontal == 0)
             {
                 //you are now running
                 isRunning = true;
+                playerSoundLvl *= 2;
             }
         }
 
@@ -114,8 +116,11 @@ public class PlayerMovement : MonoBehaviour
 
             //if you let go of shift
             if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
                 //no longer running
                 isRunning = false;
+                playerSoundLvl /= 2;
+            }
         }
         //if you aren't running
         else
@@ -155,13 +160,15 @@ public class PlayerMovement : MonoBehaviour
                     if (hitCollider[i].gameObject.tag == "Ghost")
                     {
                         //We've heard the player
-                        Debug.Log("ghost can hear my footsies");
+                        Debug.Log("Ghost heard the sound");
                         Ghost temp = hitCollider[i].gameObject.GetComponent<Ghost>();
+                        //ICANTBELIVEIMISSEDTHISFREAKINMISSTAKE
                         if (temp.CalulatePathLength(footsies[footIndex].transform.position) <= ghostSoundResponceLvl)
                         {
                             //We're within range to respond to the sound 
                             temp.SetDestination();
-                            Debug.Log("ghost heard me");
+                            hasBeenHeard = true;
+                            Debug.Log("The Ghost is responding to the sound:");
                         }
                     }
                 }
