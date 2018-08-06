@@ -7,8 +7,13 @@ public class DrawerScript : MonoBehaviour {
     bool isOpen = false;
     public float mouseY;
     public float drawerSpeed; 
-    public GameObject Player;
+    private GameObject Player;
     public Rigidbody rb;
+
+    private void Awake()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+    }
     // Use this for initialization
     void Start () {
 
