@@ -31,13 +31,12 @@ public class OpenDrawerScript : MonoBehaviour {
         //--------------------------------------------------------------------------------------
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-
+            
             Ray ray = new Ray(transform.position, transform.forward);
             RaycastHit hit;
             // checks if the player is in distance to open the door 
             if (Physics.Raycast(ray, out hit, interactDistance))
             {
-
                 if (hit.collider.CompareTag("Drawer"))
                 {
                     //Goes into HingeDoorScript and allows player to open doors 

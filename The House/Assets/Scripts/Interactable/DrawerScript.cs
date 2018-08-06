@@ -34,12 +34,17 @@ public class DrawerScript : MonoBehaviour {
         // Gets the direction of the player from the door 
         Vector3 Direction = drawerPosition - playerPosition;
         Direction.Normalize();
-        if (isOpen)
+
+     
+
+        // Checks if can be opened and if player is positioned infront of the Dresser 
+        if (isOpen && Vector3.Dot(transform.forward, Direction) > 0)
         {
             Debug.Log("IsOpen");
-
+            // Adds force from the players forward position to the door 
             rb.AddForceAtPosition(Player.transform.forward * mouseY * drawerSpeed, Player.transform.position);
         }
+        
     }
 
     public void changeDrawerState()
