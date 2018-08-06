@@ -6,7 +6,8 @@ public class ItemCollection : MonoBehaviour
 {
 
     public int goalNumberOfItems;
-    private int currentNumberOfItems;
+    [HideInInspector]
+    public int currentNumberOfItems;
 
     [SerializeField]
     private Camera playerCamera;

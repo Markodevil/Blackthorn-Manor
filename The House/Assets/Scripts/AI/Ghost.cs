@@ -10,9 +10,10 @@ public class Ghost : MonoBehaviour
     private bool hasBeenSpotted = false;
     private float chaseTimer = 0f;
 
-    public float chaseTime = 10f;
+    [Header("Ghost Chase")]
     public Transform destination;
     public float patrolSpeed = 3.5f;
+    public float chaseTime = 10f;
     public float chaseSpeed = 7f;
 
 
@@ -22,6 +23,7 @@ public class Ghost : MonoBehaviour
     [HideInInspector]
     public ConnectedPartol connectedWayPatrol;
 
+
     //Access to the Sight.cs
     Sight enemySight;
     //Access to the Wander.cs
@@ -29,6 +31,8 @@ public class Ghost : MonoBehaviour
     public Wander wanderBehavior;
     //Access to the PlayerMovement.cs
     public PlayerMovement player;
+    //Acess to the ItemCollection
+    private ItemCollection items;
 
     void Start()
     {
@@ -57,53 +61,67 @@ public class Ghost : MonoBehaviour
 
     void Update()
     {
-        //If we we'rent spotted and we've been heard head to the sound and wander
-        if (player.hasBeenHeard == true && navMeshAgent.remainingDistance <= 3.0f)
+        //Check if we've picked up less the 2 items, if yes use regular AI Loop
+        if (items.currentNumberOfItems <= 1)
         {
-            connectedWayPatrol.enabled = false;
-            wanderBehavior.enabled = true;
-            if (wanderBehavior.wanderTimerActual <= -1.0f)
+            //If we we'rent spotted and we've been heard head to the sound and wander
+            if (player.hasBeenHeard == true && navMeshAgent.remainingDistance <= 3.0f)
             {
-                wanderBehavior.enabled = false;
-                player.hasBeenHeard = false;
-                connectedWayPatrol.enabled = true;
-                connectedWayPatrol.SetDestination();
-                navMeshAgent.speed = patrolSpeed;
-            }
-        }
-        //Check if the Player is within the Ghosts vision
-        if (enemySight.visibleTargets.Count > 0)
-        {
-            //Set the chase time and the player as the navAgent's target
-            chaseTimer = chaseTime;
-            hasBeenSpotted = true;
-            SetDestination();
-            connectedWayPatrol.enabled = false;
-            navMeshAgent.speed = chaseSpeed;
-        }
-        else
-        {
-            //If the player has left the ghosts vision counts down form ?, then go back to patroling
-            if (chaseTimer >= 0 && hasBeenSpotted == true)
-            {
-                //Counts down and updates the players position
-                chaseTimer -= Time.deltaTime;
-                SetDestination();
-            }
-            else if (chaseTimer <= 0 && hasBeenSpotted == true)
-            {
-                //Enable wandering for ? before toggling patrol back on, Completing the loop
+                connectedWayPatrol.enabled = false;
                 wanderBehavior.enabled = true;
-                if (wanderBehavior.wanderTimerActual <= -1)
+                if (wanderBehavior.wanderTimerActual <= -1.0f)
                 {
-                    //Once the timer has hit zero go back to patroling
-                    hasBeenSpotted = false;
                     wanderBehavior.enabled = false;
+                    player.hasBeenHeard = false;
                     connectedWayPatrol.enabled = true;
                     connectedWayPatrol.SetDestination();
                     navMeshAgent.speed = patrolSpeed;
                 }
             }
+            //Check if the Player is within the Ghosts vision
+            if (enemySight.visibleTargets.Count > 0)
+            {
+                //Set the chase time and the player as the navAgent's target
+                chaseTimer = chaseTime;
+                hasBeenSpotted = true;
+                SetDestination();
+                connectedWayPatrol.enabled = false;
+                navMeshAgent.speed = chaseSpeed;
+            }
+            else
+            {
+                //If the player has left the ghosts vision counts down form ?, then go back to patroling
+                if (chaseTimer >= 0 && hasBeenSpotted == true)
+                {
+                    //Counts down and chases the player untill time == 0
+                    chaseTimer -= Time.deltaTime;
+                    SetDestination();
+                }
+                else if (chaseTimer <= 0 && hasBeenSpotted == true)
+                {
+                    //Enable wandering for ? before toggling patrol back on, Completing the loop
+                    wanderBehavior.enabled = true;
+                    if (wanderBehavior.wanderTimerActual <= -1)
+                    {
+                        //Once the timer has hit zero go back to patroling
+                        hasBeenSpotted = false;
+                        wanderBehavior.enabled = false;
+                        connectedWayPatrol.enabled = true;
+                        connectedWayPatrol.SetDestination();
+                        navMeshAgent.speed = patrolSpeed;
+                    }
+                }
+            }
+        }
+        else if(items.currentNumberOfItems == 4)
+        {
+            SetDestination();
+            navMeshAgent.speed = chaseSpeed;
+        }
+        else if(items.currentNumberOfItems >= 2)
+        {
+            SetDestination();
+            navMeshAgent.speed = patrolSpeed;
         }
     }
 
