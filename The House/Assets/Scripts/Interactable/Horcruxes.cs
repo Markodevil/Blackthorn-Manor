@@ -11,6 +11,8 @@ public class Horcruxes : MonoBehaviour
 
     public Transform[] positions;
 
+    public GameObject[] items;
+
     // Use this for initialization
     void Start()
     {
@@ -43,39 +45,43 @@ public class Horcruxes : MonoBehaviour
         }
         switch (ritualItem.name)
         {
-            case "Cup3":
-                //set gameobject position here
-                ritualItem.transform.position = positions[0].transform.position;
-                //reenable object
-                ritualItem.SetActive(true);
+            case "Item1":
+                ////set gameobject position here
+                //ritualItem.transform.position = positions[0].transform.position;
+                ////reenable object
+                //ritualItem.SetActive(true);
+                items[0].SetActive(true);
 
                 break;
-            case "Plate9":
-                //set gameobject position here
-                ritualItem.transform.position = positions[1].transform.position;
-                //reenable object
-                ritualItem.SetActive(true);
+            case "Item2":
+                ////set gameobject position here
+                //ritualItem.transform.position = positions[1].transform.position;
+                ////reenable object
+                //ritualItem.SetActive(true);
+                items[1].SetActive(true);
 
                 break;
-            case "Pot":
-                //set gameobject position here
-                ritualItem.transform.position = positions[2].transform.position;
-                //reenable object
-                ritualItem.SetActive(true);
+            case "Item3":
+                ////set gameobject position here
+                //ritualItem.transform.position = positions[2].transform.position;
+                ////reenable object
+                //ritualItem.SetActive(true);
+                items[2].SetActive(true);
 
                 break;
-            case "Mug4":
-                //set gameobject position here
-                ritualItem.transform.position = positions[3].transform.position;
-                //reenable object
-                ritualItem.SetActive(true);
+            case "Item4":
+                ////set gameobject position here
+                //ritualItem.transform.position = positions[3].transform.position;
+                ////reenable object
+                //ritualItem.SetActive(true);
+                items[3].SetActive(true);
 
                 break;
             default:
-                //set gameobject position here
-                ritualItem.transform.position = positions[0].transform.position;
-                //reenable object
-                ritualItem.SetActive(true);
+                ////set gameobject position here
+                //ritualItem.transform.position = positions[0].transform.position;
+                ////reenable object
+                //ritualItem.SetActive(true);
 
                 break;
         }
