@@ -32,6 +32,9 @@ public class InteractableItems : MonoBehaviour
 
     public float soundRange;
 
+    [HideInInspector]
+    public bool objectHasBeenHeard = false;
+
     private void Awake()
     {
         if (player != null)
@@ -146,7 +149,7 @@ public class InteractableItems : MonoBehaviour
                     //We're within range to respond to the sound 
                     temp.destination = GetComponent<Transform>();
                     temp.SetDestination();
-                    //temp.destination = player.GetComponent<Transform>();
+                    objectHasBeenHeard = false;
                     Debug.Log("The Ghost is responding to the sound:");
                 }
             }

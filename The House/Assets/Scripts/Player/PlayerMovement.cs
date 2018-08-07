@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     public float ghostSoundResponceLvl;
     public Transform GhostTransform;
     [HideInInspector]
-    public bool hasBeenHeard = false;
+    public bool playerHasBeenHeard = false;
 
     private bool isTouchingSomething = false;
     public Animator headbobAnim;
@@ -213,7 +213,7 @@ public class PlayerMovement : MonoBehaviour
                             {
                                 //We're within range to respond to the sound 
                                 temp.SetDestination();
-                                hasBeenHeard = true;
+                                playerHasBeenHeard = true;
                                 Debug.Log("The Ghost is responding to the sound:");
                             }
                         }

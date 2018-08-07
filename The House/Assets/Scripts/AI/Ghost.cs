@@ -11,7 +11,7 @@ public class Ghost : MonoBehaviour
     private float chaseTimer = 0f;
     private GameObject player;
 
-    [Header("Ghost Chase")]
+    [Header("Ghost")]
     [HideInInspector]
     public Transform destination;
     public float patrolSpeed = 3.5f;
@@ -37,8 +37,10 @@ public class Ghost : MonoBehaviour
     public Wander wanderBehavior;
     //Access to the PlayerMovement.cs
     private PlayerMovement playerMovementCS;
-    //Acess to the ItemCollection
+    //Acess to the ItemCollection.cs
     private ItemCollection itemsCollectionCS;
+    //Acess to the Interacable.cs
+    private InteractableItems interactableItems;
 
     void Start()
     {
@@ -80,19 +82,36 @@ public class Ghost : MonoBehaviour
     {
 
         //If we we'rent spotted and we've been heard head to the sound and wander
-        if (playerMovementCS.hasBeenHeard == true && navMeshAgent.remainingDistance <= 3.0f)
+        if (playerMovementCS.playerHasBeenHeard == true && navMeshAgent.remainingDistance <= 3.0f)
         {
             connectedWayPatrol.enabled = false;
             wanderBehavior.enabled = true;
             if (wanderBehavior.wanderTimerActual <= -1.0f)
             {
                 wanderBehavior.enabled = false;
-                playerMovementCS.hasBeenHeard = false;
+                playerMovementCS.playerHasBeenHeard = false;
                 connectedWayPatrol.enabled = true;
                 connectedWayPatrol.SetDestination();
                 navMeshAgent.speed = patrolSpeed;
             }
         }
+        //If The Ghost hears a obj hitting the ground
+        if (interactableItems.objectHasBeenHeard == true && navMeshAgent.remainingDistance <= 3.0f)
+        {
+            connectedWayPatrol.enabled = false;
+            wanderBehavior.enabled = true;
+            if (wanderBehavior.wanderTimerActual <= -1.0f)
+            {
+                wanderBehavior.enabled = false;
+                interactableItems.objectHasBeenHeard = false;
+                connectedWayPatrol.enabled = true;
+                destination = player.GetComponent<Transform>();
+                connectedWayPatrol.SetDestination();
+                navMeshAgent.speed = patrolSpeed;
+            }
+        }
+
+
         //Check if the Player is within the Ghosts vision
         if (enemySight.visibleTargets.Count > 0)
         {
