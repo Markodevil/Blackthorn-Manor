@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     public float playerSoundLvl;
     public float ghostSoundResponceLvl;
     private GameObject Ghost;
+    private Transform GhostTransform;
     [HideInInspector]
     public bool hasBeenHeard = false;
 
@@ -54,6 +55,10 @@ public class PlayerMovement : MonoBehaviour
         speed = initialSpeed;
         initialCameraHeight = Camera.main.transform.localPosition.y;
         Ghost = GameObject.FindGameObjectWithTag("Ghost");
+        if (Ghost != null)
+        {
+            GhostTransform = Ghost.GetComponent<Transform>();
+        }
     }
 
     // Update is called once per frame
@@ -260,7 +265,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, playerSoundLvl);
-        Gizmos.DrawWireSphere(Ghost.transform.position, ghostSoundResponceLvl);
+        Gizmos.DrawWireSphere(GhostTransform.transform.position, ghostSoundResponceLvl);
     }
 
     public bool GetTouchingSomething()

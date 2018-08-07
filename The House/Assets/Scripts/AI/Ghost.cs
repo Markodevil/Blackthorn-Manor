@@ -48,6 +48,7 @@ public class Ghost : MonoBehaviour
         wanderBehavior = this.GetComponent<Wander>();
         connectedWayPatrol = this.GetComponent<ConnectedPartol>();
         wanderBehavior.enabled = false;
+        navMeshAgent.speed = patrolSpeed;
 
         //Player Scripts
         if (player != null)
@@ -131,7 +132,10 @@ public class Ghost : MonoBehaviour
             case 1:
                 //Increase ghost speed
                 if (stageOne == false)
+                { 
                     patrolSpeed *= 2;
+                    navMeshAgent.speed = patrolSpeed;
+                }
                 stageOne = true;
                 break;
             case 2:
@@ -143,13 +147,13 @@ public class Ghost : MonoBehaviour
             case 3:
                 //Ghost starts teleporting to its waypoints
                 //set the next waypoint as the destination
-                //destination = connectedWayPatrol.currentWayPoint.transform;
+                destination = connectedWayPatrol.currentWayPoint.transform;
                 //Ignore remaining distance to next target
-                //stageThree = true;
+                stageThree = true;
                 //Wait before teleporting
-                //connectedWayPatrol.waiting = true;
+                connectedWayPatrol.waiting = true;
                 //Teleport
-                //gameObject.transform.position = connectedWayPatrol.currentWayPoint.transform.position;
+                gameObject.transform.position = connectedWayPatrol.currentWayPoint.transform.position;
                 break;
             case 4:
                 //Ghost duplicates it self
