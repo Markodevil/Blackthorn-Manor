@@ -12,13 +12,14 @@ public class Ghost : MonoBehaviour
     private GameObject player;
 
     [Header("Ghost Chase")]
+    [HideInInspector]
     public Transform destination;
     public float patrolSpeed = 3.5f;
     public float chaseTime = 10f;
     public float chaseSpeed = 7f;
     private bool stageOne = false;
     private bool stageTwo = false;
-    private bool stageThree = false;
+    public bool stageThree = false;
     private bool stageFour = false;
     public GameObject Clone;
 
@@ -141,6 +142,14 @@ public class Ghost : MonoBehaviour
                 break;
             case 3:
                 //Ghost starts teleporting to its waypoints
+                //set the next waypoint as the destination
+                //destination = connectedWayPatrol.currentWayPoint.transform;
+                //Ignore remaining distance to next target
+                //stageThree = true;
+                //Wait before teleporting
+                //connectedWayPatrol.waiting = true;
+                //Teleport
+                //gameObject.transform.position = connectedWayPatrol.currentWayPoint.transform.position;
                 break;
             case 4:
                 //Ghost duplicates it self
