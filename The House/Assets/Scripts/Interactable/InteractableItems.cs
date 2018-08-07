@@ -20,6 +20,7 @@ public class InteractableItems : MonoBehaviour
 
     Rigidbody rb;
     AudioSource audioSource;
+    PlayerMovement playerMovementCS;
 
     public float heading;
     public float speed;
@@ -31,6 +32,10 @@ public class InteractableItems : MonoBehaviour
 
     private void Awake()
     {
+        if (player != null)
+        {
+            playerMovementCS = player.GetComponent<PlayerMovement>();
+        }
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
     }
@@ -132,8 +137,14 @@ public class InteractableItems : MonoBehaviour
         {
             if (hitCollider[i].gameObject.tag == "Ghost")
             {
-                //do ghost things
-                Debug.Log("ghost can hear player");
+                Debug.Log("Ghost heard the sound");
+                Ghost temp = hitCollider[i].gameObject.GetComponent<Ghost>();
+                if (temp.CalulatePathLength(transform.position) <= playerMovementCS.ghostSoundResponceLvl)
+                {
+                    //We're within range to respond to the sound 
+                    temp.SetDestination();
+                    Debug.Log("The Ghost is responding to the sound:");
+                }
             }
         }
     }
