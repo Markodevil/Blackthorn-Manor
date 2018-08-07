@@ -41,6 +41,7 @@ public class Ghost : MonoBehaviour
         navMeshAgent = this.GetComponent<NavMeshAgent>();
         enemySight = this.GetComponent<Sight>();
         wanderBehavior = this.GetComponent<Wander>();
+        connectedWayPatrol = this.GetComponent<ConnectedPartol>();
         wanderBehavior.enabled = false;
 
         //Player Scripts
