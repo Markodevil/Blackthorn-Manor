@@ -9,10 +9,12 @@ public class DrawerScript : MonoBehaviour {
     public float drawerSpeed; 
     private GameObject Player;
     public Rigidbody rb;
+    FPSCamera fpsCamera;
 
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+        fpsCamera = GetComponent<FPSCamera>();
     }
     // Use this for initialization
     void Start () {
@@ -23,15 +25,7 @@ public class DrawerScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        mouseY = Input.GetAxis("Mouse Y");
 
-        // lets go of the drawer when Mouse0 is released 
-        if (Input.GetKeyUp(KeyCode.Mouse0))
-        {
-
-            isOpen = false;
-        }
-        // Doors position 
         Vector3 drawerPosition = transform.position;
         // Players position
         Vector3 playerPosition = Player.transform.position;
@@ -40,21 +34,29 @@ public class DrawerScript : MonoBehaviour {
         Vector3 Direction = drawerPosition - playerPosition;
         Direction.Normalize();
 
-     
+        float dist = Vector3.Distance(playerPosition, drawerPosition);
+        mouseY = Input.GetAxis("Mouse Y");  
 
+        // lets go of the drawer when Mouse0 is released 
+        if (Input.GetKeyUp(KeyCode.Mouse0) || dist > 2)
+        {
+            isOpen = false;
+        }
+        // Doors position 
+  
         // Checks if can be opened and if player is positioned infront of the Dresser 
         if (isOpen && Vector3.Dot(transform.forward, Direction) > 0)
         {
-            Debug.Log("IsOpen");
+
             // Adds force from the players forward position to the door 
             rb.AddForceAtPosition(Player.transform.forward * mouseY * drawerSpeed, Player.transform.position);
+
         }
-        
+
     }
 
     public void changeDrawerState()
     {
-        Debug.Log("ChangeDrawerState");
         isOpen = !isOpen;
     }
 }
