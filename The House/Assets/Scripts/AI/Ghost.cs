@@ -12,7 +12,7 @@ public class Ghost : MonoBehaviour
     private GameObject player;
 
     [Header("Ghost Chase")]
-    private Transform destination;
+    public Transform destination;
     public float patrolSpeed = 3.5f;
     public float chaseTime = 10f;
     public float chaseSpeed = 7f;
