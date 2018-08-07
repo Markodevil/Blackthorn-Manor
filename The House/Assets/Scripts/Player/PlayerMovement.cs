@@ -25,10 +25,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Foot/Movement stuff")]
     public GameObject[] footsies;
     private int footIndex = 0;
-    [SerializeField]
-    private float playerSoundLvl;
-    [SerializeField]
-    private float ghostSoundResponceLvl;
+    public float playerSoundLvl;
+    public float ghostSoundResponceLvl;
     [HideInInspector]
     public bool hasBeenHeard = false;
 

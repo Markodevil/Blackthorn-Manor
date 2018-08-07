@@ -12,11 +12,15 @@ public class Ghost : MonoBehaviour
     private GameObject player;
 
     [Header("Ghost Chase")]
-    public Transform destination;
+    private Transform destination;
     public float patrolSpeed = 3.5f;
     public float chaseTime = 10f;
     public float chaseSpeed = 7f;
-
+    private bool stageOne = false;
+    private bool stageTwo = false;
+    private bool stageThree = false;
+    private bool stageFour = false;
+    public GameObject Clone;
 
     //Access to the navMeshAgent and ConnectedPatrol 
     [HideInInspector]
@@ -47,8 +51,9 @@ public class Ghost : MonoBehaviour
         //Player Scripts
         if (player != null)
         {
-            playerMovementCS  = player.GetComponent<PlayerMovement>();
+            playerMovementCS = player.GetComponent<PlayerMovement>();
             itemsCollectionCS = player.GetComponent<ItemCollection>();
+            destination = player.GetComponent<Transform>();
         }
 
         //Nav mesh failed
@@ -71,67 +76,80 @@ public class Ghost : MonoBehaviour
 
     void Update()
     {
-        //Check if we've picked up less the 2 items, if yes use regular AI Loop
-        if (itemsCollectionCS.currentNumberOfItems <= 1)
+
+        //If we we'rent spotted and we've been heard head to the sound and wander
+        if (playerMovementCS.hasBeenHeard == true && navMeshAgent.remainingDistance <= 3.0f)
         {
-            //If we we'rent spotted and we've been heard head to the sound and wander
-            if (playerMovementCS.hasBeenHeard == true && navMeshAgent.remainingDistance <= 3.0f)
+            connectedWayPatrol.enabled = false;
+            wanderBehavior.enabled = true;
+            if (wanderBehavior.wanderTimerActual <= -1.0f)
             {
-                connectedWayPatrol.enabled = false;
+                wanderBehavior.enabled = false;
+                playerMovementCS.hasBeenHeard = false;
+                connectedWayPatrol.enabled = true;
+                connectedWayPatrol.SetDestination();
+                navMeshAgent.speed = patrolSpeed;
+            }
+        }
+        //Check if the Player is within the Ghosts vision
+        if (enemySight.visibleTargets.Count > 0)
+        {
+            //Set the chase time and the player as the navAgent's target
+            chaseTimer = chaseTime;
+            hasBeenSpotted = true;
+            SetDestination();
+            connectedWayPatrol.enabled = false;
+            navMeshAgent.speed = chaseSpeed;
+        }
+        else
+        {
+            //If the player has left the ghosts vision counts down form ?, then go back to patroling
+            if (chaseTimer >= 0 && hasBeenSpotted == true)
+            {
+                //Counts down and chases the player untill time == 0
+                chaseTimer -= Time.deltaTime;
+                SetDestination();
+            }
+            else if (chaseTimer <= 0 && hasBeenSpotted == true)
+            {
+                //Enable wandering for ? before toggling patrol back on, Completing the loop
                 wanderBehavior.enabled = true;
-                if (wanderBehavior.wanderTimerActual <= -1.0f)
+                if (wanderBehavior.wanderTimerActual <= -1)
                 {
+                    //Once the timer has hit zero go back to patroling
+                    hasBeenSpotted = false;
                     wanderBehavior.enabled = false;
-                    playerMovementCS.hasBeenHeard = false;
                     connectedWayPatrol.enabled = true;
                     connectedWayPatrol.SetDestination();
                     navMeshAgent.speed = patrolSpeed;
                 }
             }
-            //Check if the Player is within the Ghosts vision
-            if (enemySight.visibleTargets.Count > 0)
-            {
-                //Set the chase time and the player as the navAgent's target
-                chaseTimer = chaseTime;
-                hasBeenSpotted = true;
-                SetDestination();
-                connectedWayPatrol.enabled = false;
-                navMeshAgent.speed = chaseSpeed;
-            }
-            else
-            {
-                //If the player has left the ghosts vision counts down form ?, then go back to patroling
-                if (chaseTimer >= 0 && hasBeenSpotted == true)
-                {
-                    //Counts down and chases the player untill time == 0
-                    chaseTimer -= Time.deltaTime;
-                    SetDestination();
-                }
-                else if (chaseTimer <= 0 && hasBeenSpotted == true)
-                {
-                    //Enable wandering for ? before toggling patrol back on, Completing the loop
-                    wanderBehavior.enabled = true;
-                    if (wanderBehavior.wanderTimerActual <= -1)
-                    {
-                        //Once the timer has hit zero go back to patroling
-                        hasBeenSpotted = false;
-                        wanderBehavior.enabled = false;
-                        connectedWayPatrol.enabled = true;
-                        connectedWayPatrol.SetDestination();
-                        navMeshAgent.speed = patrolSpeed;
-                    }
-                }
-            }
         }
-        else if(itemsCollectionCS.currentNumberOfItems == 4)
+        switch (itemsCollectionCS.currentNumberOfItems)
         {
-            SetDestination();
-            navMeshAgent.speed = chaseSpeed;
-        }
-        else if(itemsCollectionCS.currentNumberOfItems >= 2)
-        {
-            SetDestination();
-            navMeshAgent.speed = patrolSpeed;
+            case 1:
+                //Increase ghost speed
+                if (stageOne == false)
+                    patrolSpeed *= 2;
+                stageOne = true;
+                break;
+            case 2:
+                //Increase ghost hearing
+                if (stageTwo == false)
+                    playerMovementCS.ghostSoundResponceLvl *= 2;
+                stageTwo = true;
+                break;
+            case 3:
+                //Ghost starts teleporting to its waypoints
+                break;
+            case 4:
+                //Ghost duplicates it self
+                if (stageFour == false)
+                    Instantiate(Clone, transform.position, transform.rotation);
+                stageFour = true;
+                break;
+            default:
+                break;
         }
     }
 
