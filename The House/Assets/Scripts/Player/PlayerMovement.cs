@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     float Vertical = 0;
     public float initialSpeed;
     private float speed;
-    bool LookingAtCameras = false;
+    //bool LookingAtCameras = false;
     bool isRunning;
 
     [Header("Footsteps")]
@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 desiredRot;
     private Quaternion desiredRotation;
-    private bool rotating = false;
+    //private bool rotating = false;
 
     [Header("Foot/Movement stuff")]
     public GameObject[] footsies;

@@ -43,28 +43,28 @@ public class Horcruxes : MonoBehaviour
         }
         switch (ritualItem.name)
         {
-            case "frozen pizza":
+            case "Cup3":
                 //set gameobject position here
                 ritualItem.transform.position = positions[0].transform.position;
                 //reenable object
                 ritualItem.SetActive(true);
 
                 break;
-            case "pepsi":
+            case "Plate9":
                 //set gameobject position here
                 ritualItem.transform.position = positions[1].transform.position;
                 //reenable object
                 ritualItem.SetActive(true);
 
                 break;
-            case "garlic bread":
+            case "Pot":
                 //set gameobject position here
                 ritualItem.transform.position = positions[2].transform.position;
                 //reenable object
                 ritualItem.SetActive(true);
 
                 break;
-            case "pizza box":
+            case "Mug4":
                 //set gameobject position here
                 ritualItem.transform.position = positions[3].transform.position;
                 //reenable object
@@ -79,8 +79,7 @@ public class Horcruxes : MonoBehaviour
 
                 break;
         }
-
-        Debug.Log("added to ritual");
+        
         currentNumberOfHorcruxes++;
     }
 }

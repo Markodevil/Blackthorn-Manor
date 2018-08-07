@@ -32,7 +32,8 @@ public class ItemCollection : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        UpdateUI();
+        if (Thing1 && Thing2 && Thing3 && Thing4)
+            UpdateUI();
     }
 
     // Update is called once per frame
@@ -128,19 +129,19 @@ public class ItemCollection : MonoBehaviour
         {
             switch (go.name)
             {
-                case "RequiredItem":
+                case "Cup3":
                     //Thing1.color = new Color(Thing1.color.r, Thing1.color.g, Thing1.color.b, 0.5f);
                     Thing1.sprite = filled;
                     break;
-                case "RequiredItem (1)":
+                case "Plate9":
                     //Thing2.color = new Color(Thing2.color.r, Thing2.color.g, Thing2.color.b, 0.5f);
                     Thing2.sprite = filled;
                     break;
-                case "RequiredItem (2)":
+                case "Pot":
                     //Thing3.color = new Color(Thing3.color.r, Thing3.color.g, Thing3.color.b, 0.5f);
                     Thing3.sprite = filled;
                     break;
-                case "RequiredItem (3)":
+                case "Mug4":
                     //Thing4.color = new Color(Thing4.color.r, Thing4.color.g, Thing4.color.b, 0.5f);
                     Thing4.sprite = filled;
                     break;

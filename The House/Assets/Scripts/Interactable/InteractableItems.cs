@@ -30,6 +30,8 @@ public class InteractableItems : MonoBehaviour
 
     private Vector3 localOffset;
 
+    public float soundRange;
+
     private void Awake()
     {
         if (player != null)
@@ -132,7 +134,7 @@ public class InteractableItems : MonoBehaviour
         //sphereCol.isTrigger = true;
         //sphereCol.radius = 5.0f * audioSource.volume;
 
-        Collider[] hitCollider = Physics.OverlapSphere(transform.position, 2.0f);
+        Collider[] hitCollider = Physics.OverlapSphere(transform.position, soundRange);
         for (int i = 0; i < hitCollider.Length; i++)
         {
             if (hitCollider[i].gameObject.tag == "Ghost")
@@ -152,7 +154,7 @@ public class InteractableItems : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, 2.0f);
+        Gizmos.DrawWireSphere(transform.position, soundRange);
     }
 
 }
