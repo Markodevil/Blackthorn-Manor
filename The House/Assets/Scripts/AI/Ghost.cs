@@ -19,6 +19,7 @@ public class Ghost : MonoBehaviour
     public float chaseSpeed = 7f;
     private bool stageOne = false;
     private bool stageTwo = false;
+    [HideInInspector]
     public bool stageThree = false;
     private bool stageFour = false;
     public GameObject Clone;
@@ -40,7 +41,8 @@ public class Ghost : MonoBehaviour
     //Acess to the ItemCollection.cs
     private ItemCollection itemsCollectionCS;
     //Acess to the Interacable.cs
-    private InteractableItems interactableItems;
+    private InteractableItems[] interactableItemsCS;
+    public GameObject[] interactableItems;
 
     void Start()
     {
@@ -58,6 +60,13 @@ public class Ghost : MonoBehaviour
             playerMovementCS = player.GetComponent<PlayerMovement>();
             itemsCollectionCS = player.GetComponent<ItemCollection>();
             destination = player.GetComponent<Transform>();
+        }
+        if (interactableItems != null)
+        {
+            for (int i = 0; i < interactableItems.Length; i++)
+            {
+                interactableItemsCS[i] = interactableItems[i].GetComponent<InteractableItems>();
+            }
         }
 
         //Nav mesh failed
@@ -95,19 +104,22 @@ public class Ghost : MonoBehaviour
                 navMeshAgent.speed = patrolSpeed;
             }
         }
-        //If The Ghost hears a obj hitting the ground
-        if (interactableItems.objectHasBeenHeard == true && navMeshAgent.remainingDistance <= 3.0f)
+        for (int i = 0; i < interactableItems.Length; i++)
         {
-            connectedWayPatrol.enabled = false;
-            wanderBehavior.enabled = true;
-            if (wanderBehavior.wanderTimerActual <= -1.0f)
+            //If The Ghost hears a obj hitting the ground
+            if (interactableItemsCS[i].objectHasBeenHeard == true && navMeshAgent.remainingDistance <= 3.0f)
             {
-                wanderBehavior.enabled = false;
-                interactableItems.objectHasBeenHeard = false;
-                connectedWayPatrol.enabled = true;
-                destination = player.GetComponent<Transform>();
-                connectedWayPatrol.SetDestination();
-                navMeshAgent.speed = patrolSpeed;
+                connectedWayPatrol.enabled = false;
+                wanderBehavior.enabled = true;
+                if (wanderBehavior.wanderTimerActual <= -1.0f)
+                {
+                    wanderBehavior.enabled = false;
+                    interactableItemsCS[i].objectHasBeenHeard = false;
+                    connectedWayPatrol.enabled = true;
+                    destination = player.GetComponent<Transform>();
+                    connectedWayPatrol.SetDestination();
+                    navMeshAgent.speed = patrolSpeed;
+                }
             }
         }
 
@@ -151,7 +163,7 @@ public class Ghost : MonoBehaviour
             case 1:
                 //Increase ghost speed
                 if (stageOne == false)
-                { 
+                {
                     patrolSpeed *= 2;
                     navMeshAgent.speed = patrolSpeed;
                 }
