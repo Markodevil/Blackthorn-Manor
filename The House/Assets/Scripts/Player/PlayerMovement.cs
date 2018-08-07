@@ -27,8 +27,7 @@ public class PlayerMovement : MonoBehaviour
     private int footIndex = 0;
     public float playerSoundLvl;
     public float ghostSoundResponceLvl;
-    private GameObject Ghost;
-    private Transform GhostTransform;
+    public Transform GhostTransform;
     [HideInInspector]
     public bool hasBeenHeard = false;
 
@@ -44,7 +43,6 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         charControl = GetComponent<CharacterController>();
-
     }
 
     private void Start()
@@ -54,11 +52,6 @@ public class PlayerMovement : MonoBehaviour
         footstepTimer = timeBetweenStepsWalking;
         speed = initialSpeed;
         initialCameraHeight = Camera.main.transform.localPosition.y;
-        Ghost = GameObject.FindGameObjectWithTag("Ghost");
-        if (Ghost != null)
-        {
-            GhostTransform = Ghost.GetComponent<Transform>();
-        }
     }
 
     // Update is called once per frame
