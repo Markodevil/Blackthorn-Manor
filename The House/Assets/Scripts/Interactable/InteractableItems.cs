@@ -144,7 +144,9 @@ public class InteractableItems : MonoBehaviour
                 if (temp.CalulatePathLength(transform.position) <= playerMovementCS.ghostSoundResponceLvl)
                 {
                     //We're within range to respond to the sound 
+                    temp.destination = GetComponent<Transform>();
                     temp.SetDestination();
+                    temp.destination = player.GetComponent<Transform>();
                     Debug.Log("The Ghost is responding to the sound:");
                 }
             }
