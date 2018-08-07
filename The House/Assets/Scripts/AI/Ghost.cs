@@ -41,7 +41,7 @@ public class Ghost : MonoBehaviour
     //Acess to the ItemCollection.cs
     private ItemCollection itemsCollectionCS;
     //Acess to the Interacable.cs
-    private InteractableItems[] interactableItemsCS;
+    private List<InteractableItems> interactableItemsCS;
     public GameObject[] interactableItems;
 
     void Start()
@@ -54,6 +54,8 @@ public class Ghost : MonoBehaviour
         wanderBehavior.enabled = false;
         navMeshAgent.speed = patrolSpeed;
 
+        interactableItemsCS = new List<InteractableItems>();
+
         //Player Scripts
         if (player != null)
         {
@@ -65,7 +67,10 @@ public class Ghost : MonoBehaviour
         {
             for (int i = 0; i < interactableItems.Length; i++)
             {
-                interactableItemsCS[i] = interactableItems[i].GetComponent<InteractableItems>();
+                if (!interactableItemsCS.Contains(interactableItems[i].GetComponent<InteractableItems>()))
+                {
+                    interactableItemsCS.Add(interactableItems[i].GetComponent<InteractableItems>());
+                }
             }
         }
 
