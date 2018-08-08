@@ -161,5 +161,4 @@ public class InteractableItems : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, soundRange);
     }
-
 }

@@ -39,6 +39,16 @@ public class PlayerMovement : MonoBehaviour
     public float crouchCameraHeight;
     float initialCameraHeight;
 
+
+    private enum howAmIMoving
+    {
+        creeping,
+        walking,
+        running
+    }
+
+    private howAmIMoving currentMovementState;
+
     // Use this for initialization
     void Awake()
     {
@@ -52,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
         footstepTimer = timeBetweenStepsWalking;
         speed = initialSpeed;
         initialCameraHeight = Camera.main.transform.localPosition.y;
+        currentMovementState = howAmIMoving.walking;
     }
 
     // Update is called once per frame
@@ -63,116 +74,146 @@ public class PlayerMovement : MonoBehaviour
         //set headbob anim bool
         headbobAnim.SetBool("isRunning", isRunning);
 
-
-        //if (Input.GetKeyDown(KeyCode.R))
-        //{
-        //    rotating = true;
-        //    desiredRotation = new Quaternion();
-        //    desiredRot = transform.rotation.eulerAngles;
-        //    desiredRot += new Vector3(0, 180, 0);
-        //    desiredRotation.eulerAngles = desiredRot;
-        //}
+        ////if you're moving forward and NOT strafing and you press left shift
+        //if (Vertical > 0 && Horizontal == 0 && Input.GetKeyDown(KeyCode.LeftShift))
+        //    //you are now running
+        //    isRunning = true;
         //
-        //if (rotating)
+        ////if you are already holding left shift
+        //if (Input.GetKeyDown(KeyCode.LeftShift))
         //{
-        //    //                       put desired rotation here \/
-        //    transform.rotation = Quaternion.Lerp(transform.rotation, desiredRotation, 1.5f * Time.deltaTime);
-        //
-        //    //if the difference between these 2 vectors is miniscule 
-        //    if (Vector3.Distance(transform.rotation.eulerAngles, desiredRotation.eulerAngles) < 1.0f)
+        //    //if you start to move forward but not strafe
+        //    if (Vertical > 0 && Horizontal == 0)
         //    {
-        //        //stop rotating
-        //        rotating = false;
-        //        //set current rotation to desired rotation
-        //        transform.rotation = desiredRotation;
+        //        //you are now running
+        //        isRunning = true;
+        //        playerSoundLvl *= 2;
+        //        currentMovementState = howAmIMoving.running;
         //    }
         //}
-
-        //if you're moving forward and NOT strafing and you press left shift
-        if (Vertical > 0 && Horizontal == 0 && Input.GetKeyDown(KeyCode.LeftShift))
-            //you are now running
-            isRunning = true;
-
-        //if you are already holding left shift
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            //if you start to move forward but not strafe
-            if (Vertical > 0 && Horizontal == 0)
-            {
-                //you are now running
-                isRunning = true;
-                playerSoundLvl *= 2;
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            isCreepin = true;
-
-        }
-
-        //if you are running
-        if (isRunning)
-        {
-            Camera.main.transform.localPosition = new Vector3(0, initialCameraHeight, 0.25f);
-            //speed is equal to twice the initial speed
-            speed = initialSpeed * 2;
-
-            //if you begin to move backwards
-            if (Vertical <= 0)
-            {
-                //you are no longer running
-                isRunning = false;
-            }
-
-            //if you let go of shift
-            if (Input.GetKeyUp(KeyCode.LeftShift))
-            {
-                //no longer running
-                isRunning = false;
-                playerSoundLvl /= 2;
-            }
-            if(Input.GetKeyDown(KeyCode.LeftControl))
-            {
-                isRunning = false;
-                playerSoundLvl /= 2;
-                isCreepin = true;
-            }
-        }
-        else if (isCreepin)
-        {
-            speed = initialSpeed / 2;
-
-            Camera.main.transform.localPosition = new Vector3(0, crouchCameraHeight, 0.25f);
-
-            if (Input.GetKeyUp(KeyCode.LeftControl))
-            {
-                isCreepin = false;
-            }
-        }
-        //if you aren't running
-        else
-        {
-            Camera.main.transform.localPosition = new Vector3(0, initialCameraHeight, 0.25f);
-            //speed is equal to initial speed
-            speed = initialSpeed;
-        }
-
-
-        //Debug.Log("Speed: " + speed);
-        //if(isRunning)
+        //
+        //
+        ////if you are running
+        //if (isRunning)
         //{
-        //    Debug.Log("running");
+        //    Camera.main.transform.localPosition = new Vector3(0, initialCameraHeight, 0.25f);
+        //    //speed is equal to twice the initial speed
+        //    speed = initialSpeed * 2;
+        //
+        //    //if you begin to move backwards
+        //    if (Vertical <= 0)
+        //    {
+        //        //you are no longer running
+        //        isRunning = false;
+        //    }
+        //
+        //    //if you let go of shift
+        //    if (Input.GetKeyUp(KeyCode.LeftShift))
+        //    {
+        //        //no longer running
+        //        isRunning = false;
+        //        playerSoundLvl /= 2;
+        //    }
+        //    if (Input.GetKeyDown(KeyCode.LeftControl))
+        //    {
+        //        isRunning = false;
+        //        playerSoundLvl /= 2;
+        //        isCreepin = true;
+        //    }
         //}
-        //else if(isCreepin)
+        //else if (isCreepin)
         //{
-        //    Debug.Log("creepin");
+        //    speed = initialSpeed / 2;
+        //
+        //    Camera.main.transform.localPosition = new Vector3(0, crouchCameraHeight, 0.25f);
+        //
+        //    if (Input.GetKeyUp(KeyCode.LeftControl))
+        //    {
+        //        isCreepin = false;
+        //    }
         //}
+        ////if you aren't running
         //else
         //{
-        //    Debug.Log("walking");
+        //    Camera.main.transform.localPosition = new Vector3(0, initialCameraHeight, 0.25f);
+        //    //speed is equal to initial speed
+        //    speed = initialSpeed;
         //}
 
+        
+        switch (currentMovementState)
+        {
+            case howAmIMoving.creeping:
+        
+                speed = initialSpeed / 2;
+        
+                Camera.main.transform.localPosition = new Vector3(0, crouchCameraHeight, 0.25f);
+        
+                if (Input.GetKeyUp(KeyCode.LeftControl))
+                {
+                    isCreepin = false;
+                    currentMovementState = howAmIMoving.walking;
+                }
+        
+                break;
+            case howAmIMoving.walking:
+        
+                Camera.main.transform.localPosition = new Vector3(0, initialCameraHeight, 0.25f);
+                //speed is equal to initial speed
+                speed = initialSpeed;
+
+                //if you are already holding left shift
+                if (Input.GetKeyDown(KeyCode.LeftShift))
+                {
+                    //if you start to move forward but not strafe
+                    if (Vertical > 0 && Horizontal == 0)
+                    {
+                        //you are now running
+                        isRunning = true;
+                        playerSoundLvl *= 2;
+                        currentMovementState = howAmIMoving.running;
+                    }
+                }
+
+                if (Input.GetKeyDown(KeyCode.LeftControl))
+                {
+                    isCreepin = true;
+                    currentMovementState = howAmIMoving.creeping;
+                }
+
+                break;
+            case howAmIMoving.running:
+        
+                Camera.main.transform.localPosition = new Vector3(0, initialCameraHeight, 0.25f);
+                //speed is equal to twice the initial speed
+                speed = initialSpeed * 2;
+        
+                //if you begin to move backwards
+                if (Vertical <= 0)
+                {
+                    //you are no longer running
+                    isRunning = false;
+                }
+        
+                //if you let go of shift
+                if (Input.GetKeyUp(KeyCode.LeftShift))
+                {
+                    //no longer running
+                    isRunning = false;
+                    playerSoundLvl /= 2;
+                    currentMovementState = howAmIMoving.walking;
+                }
+                if (Input.GetKeyDown(KeyCode.LeftControl))
+                {
+                    isRunning = false;
+                    playerSoundLvl /= 2;
+                    isCreepin = true;
+                    currentMovementState = howAmIMoving.creeping;
+                }
+        
+                break;
+        }
+        
         //move
         Movement();
     }

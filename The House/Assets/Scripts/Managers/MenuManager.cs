@@ -20,11 +20,22 @@ public class MenuManager : MonoBehaviour
     public bool globalMute = true;
     public Slider volumeSlider;
 
+    [Header("Fade in/out")]
+    public Animator fade;
+
+    private AsyncOperation AsyncOp;
+
+
+    private void OnLevelWasLoaded(int level)
+    {
+        fade.SetTrigger("FadeOut");
+    }
     // Use this for initialization
     void Start()
     {
         //dont destroy this thing
         DontDestroyOnLoad(gameObject);
+        fade.SetTrigger("FadeOut");
     }
 
     // Update is called once per frame
@@ -32,6 +43,14 @@ public class MenuManager : MonoBehaviour
     {
         //control global volume
         SetGlobalVolume();
+
+        if (AsyncOp != null)
+        {
+            if (fade.GetCurrentAnimatorStateInfo(0).IsName("New State"))
+            {
+                AsyncOp.allowSceneActivation = true;
+            }
+        }
 
     }
 
@@ -72,7 +91,9 @@ public class MenuManager : MonoBehaviour
 
     public void ToGame()
     {
-        SceneManager.LoadSceneAsync("Mark");
+        fade.SetTrigger("FadeIn");
+        AsyncOp = SceneManager.LoadSceneAsync("Mark");
+        //AsyncOp.allowSceneActivation = false;
     }
 
     public void ToggleFullscreen()
