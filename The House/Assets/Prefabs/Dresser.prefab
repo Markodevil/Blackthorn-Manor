@@ -137,6 +137,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4192880777850306}
   - component: {fileID: 95221654263243888}
+  - component: {fileID: 64623972396904980}
+  - component: {fileID: 65790816079765560}
+  - component: {fileID: 65424075683058684}
+  - component: {fileID: 65657720108607316}
   m_Layer: 0
   m_Name: Dresser
   m_TagString: Untagged
@@ -177,7 +181,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1805024560709822}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 12.151958, y: 0.316, z: -4.9825277}
+  m_LocalPosition: {x: -42.638, y: 12.938, z: -8.565}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4342508676707036}
@@ -234,7 +238,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1055150680672090}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.036958005, y: 0.3512004, z: -0.539}
+  m_LocalPosition: {x: -0.037, y: 0.3512004, z: -0.472}
   m_LocalScale: {x: 1, y: 1.1212113, z: 1}
   m_Children:
   - {fileID: 4553130187573222}
@@ -575,6 +579,20 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300006, guid: 55ccaed43d8ddef43a3a9ea1cb7f7447, type: 3}
+--- !u!64 &64623972396904980
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1805024560709822}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 0}
 --- !u!64 &64662543345232798
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -589,6 +607,18 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300006, guid: 55ccaed43d8ddef43a3a9ea1cb7f7447, type: 3}
+--- !u!65 &65424075683058684
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1805024560709822}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.16051807, y: 1.0226412, z: 1}
+  m_Center: {x: 0.85043025, y: 0.14016485, z: 2.1255106e-15}
 --- !u!65 &65601740658621536
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -601,6 +631,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.45, z: 0}
+--- !u!65 &65657720108607316
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1805024560709822}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.071394965, y: 1.0226412, z: 1}
+  m_Center: {x: -0.8795359, y: 0.14016485, z: -1.7118942e-15}
 --- !u!65 &65771191348521548
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -613,6 +655,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65790816079765560
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1805024560709822}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.2672267, y: 0.11003494, z: 1}
+  m_Center: {x: -0.018030226, y: 0.596468, z: 3.4180373e-17}
 --- !u!95 &95221654263243888
 Animator:
   serializedVersion: 3
@@ -643,7 +697,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseY: 0
   drawerSpeed: 5
-  Player: {fileID: 0}
   rb: {fileID: 54408291130835760}
 --- !u!114 &114719197982088164
 MonoBehaviour:
@@ -658,7 +711,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseY: 0
   drawerSpeed: 5
-  Player: {fileID: 0}
   rb: {fileID: 54167989856705918}
 --- !u!114 &114825350487123918
 MonoBehaviour:
@@ -673,7 +725,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseY: 0
   drawerSpeed: 5
-  Player: {fileID: 0}
   rb: {fileID: 54664225232934688}
 --- !u!153 &153216131238597356
 ConfigurableJoint:
@@ -685,7 +736,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0.5, z: -0.35}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 11.356304, y: 0.5090183, z: -4.9455695}
+  m_ConnectedAnchor: {x: -43.433655, y: 13.131018, z: -8.528042}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -695,7 +746,7 @@ ConfigurableJoint:
   m_AngularYMotion: 0
   m_AngularZMotion: 1
   m_LinearLimitSpring:
-    spring: 40
+    spring: 140
     damper: 50
   m_LinearLimit:
     limit: 0.42
@@ -779,7 +830,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0.5, z: -0.35}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 11.356304, y: 0.88304293, z: -4.9455695}
+  m_ConnectedAnchor: {x: -43.433655, y: 13.505043, z: -8.528042}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -789,7 +840,7 @@ ConfigurableJoint:
   m_AngularYMotion: 0
   m_AngularZMotion: 1
   m_LinearLimitSpring:
-    spring: 40
+    spring: 140
     damper: 50
   m_LinearLimit:
     limit: 0.42
@@ -873,7 +924,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0.5, z: -0.35}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 11.262959, y: 1.2278061, z: -4.9455695}
+  m_ConnectedAnchor: {x: -43.46, y: 13.849806, z: -8.528}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -883,7 +934,7 @@ ConfigurableJoint:
   m_AngularYMotion: 0
   m_AngularZMotion: 1
   m_LinearLimitSpring:
-    spring: 40
+    spring: 140
     damper: 50
   m_LinearLimit:
     limit: 0.42

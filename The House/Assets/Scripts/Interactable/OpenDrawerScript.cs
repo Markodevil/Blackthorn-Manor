@@ -12,6 +12,7 @@ public class OpenDrawerScript : MonoBehaviour
     FPSCamera fpsCamera;
     private GameObject Dresser;
     public MonoBehaviour camScript;
+    bool isHoldingDown = false; 
     // Use this for initialization
     void Start()
     {
@@ -22,7 +23,7 @@ public class OpenDrawerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+
         //--------------------------------------------------------------------------------------
         // Raycasts in front of the player checking if their is a Door infront of the player 
         //
@@ -32,24 +33,35 @@ public class OpenDrawerScript : MonoBehaviour
         //      Changes the DrawerState so that the door can be opened
         //--------------------------------------------------------------------------------------
 
+        Vector3 distance = transform.position - Dresser.transform.position;
+        distance.y = 0;
+        float dist = Vector3.Distance(Dresser.transform.position, transform.position);
+       
+        // checks if the player is in distance to open the Dresser     
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
 
-        float dist = Vector3.Distance(Dresser.transform.position, transform.position);
-        // checks if the player is in distance to open the door 
-       
-        if (Input.GetKeyDown(KeyCode.Mouse0) && Physics.Raycast(ray, out hit, interactDistance) )
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Physics.Raycast(ray, out hit, interactDistance) && hit.collider.CompareTag("Drawer"))
         {
-            if (hit.collider.CompareTag("Drawer"))
-            {
-                // When true the camera cant be moved by mouse
-                fpsCamera.SetTouching(true);
-                //Goes into HingeDoorScript and allows player to open doors 
-                hit.collider.transform.GetComponent<DrawerScript>().changeDrawerState();
-            }
-           
+            // When true the camera cant be moved by mouse
+            Dresser = hit.collider.gameObject;
+            distance = transform.position - Dresser.transform.position;
+            distance.y = 0;
+            dist = distance.magnitude;       
+            isHoldingDown = true;
+            fpsCamera.SetTouching(true);
+            //Goes into HingeDoorScript and allows player to open doors 
+            hit.collider.transform.GetComponent<DrawerScript>().changeDrawerState();
+    
         }
-
+      
+        // if player is holding down mouse1 and moves away from the dresser
+        // camera movement will be enabled 
+        if (dist > 2 && isHoldingDown)
+         {
+             isHoldingDown = false;
+             fpsCamera.SetTouching(false);
+         }
 
 
         //--------------------------------------------------------------------------------------
@@ -60,7 +72,7 @@ public class OpenDrawerScript : MonoBehaviour
         // Return 
         //      Changes Camscript to true so player can check cameras 
         //--------------------------------------------------------------------------------------
-        if (Input.GetKeyUp(KeyCode.Mouse0))
+            if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             //camScript.enabled = true;
             fpsCamera.SetTouching(false);

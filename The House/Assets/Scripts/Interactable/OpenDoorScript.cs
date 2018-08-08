@@ -8,18 +8,25 @@ public class OpenDoorScript : MonoBehaviour {
     public float interactDistance;
     // Refrences the Camera so it can be locked 
     FPSCamera fpsCamera;
-
+    private GameObject Door;
     public MonoBehaviour camScript;
-
+    bool isHoldingDown = false; 
 	// Use this for initialization
 	void Start () {
         fpsCamera = GetComponent<FPSCamera>();
-
+        Door = GameObject.FindGameObjectWithTag("Door");
     }
 	
 	// Update is called once per frame
 	void Update () {
 		
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+        Debug.DrawRay(transform.position, transform.forward,Color.green);
+        //Distance from the door to the player 
+        Vector3 distance = transform.position - Door.transform.position;
+        distance.y = 0;
+        float dist = distance.magnitude;
         //--------------------------------------------------------------------------------------
         // Raycasts in front of the player checking if their is a Door infront of the player 
         //
@@ -28,25 +35,26 @@ public class OpenDoorScript : MonoBehaviour {
         // Return 
         //      Changes the doorState so that the door can be opened
         //--------------------------------------------------------------------------------------
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Physics.Raycast(ray, out hit, interactDistance))
         {
-
-            Ray ray = new Ray(transform.position, transform.forward);
-            RaycastHit hit;
-            // checks if the player is in distance to open the door 
-            if (Physics.Raycast(ray,out hit,interactDistance))
+            if (hit.collider.CompareTag("Door"))
             {
-
-                if (hit.collider.CompareTag("Door"))
-                {
-                    //Goes into HingeDoorScript and allows player to open doors 
-                    hit.collider.transform.GetComponent<HingeDoorScript>().changeDoorState();
-
-                    //camScript.enabled = false;
-					fpsCamera.SetTouching(true);
-                }
-
+                Door = hit.collider.gameObject;
+                distance = transform.position - Door.transform.position;
+                distance.y = 0;
+                dist = distance.magnitude;
+                isHoldingDown = true;
+                fpsCamera.SetTouching(true);
+                //Goes into HingeDoorScript and allows player to open doors 
+                hit.collider.transform.GetComponent<HingeDoorScript>().changeDoorState();
             }
+        }
+        
+
+        if (dist > 4 && isHoldingDown)
+        {
+            fpsCamera.SetTouching(false);
+            isHoldingDown = false;
         }
         //--------------------------------------------------------------------------------------
         // Checks if the Mouse0 button is up  

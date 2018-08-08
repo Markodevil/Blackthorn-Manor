@@ -18,40 +18,28 @@ public class HingeDoorScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update()
-    {
+    {       
+        //// Doors position 
+        Vector3 doorPosition = transform.position;
+        //// Players position
+        Vector3 playerPosition = Player.transform.position;
+
+        float dist = Vector3.Distance(playerPosition, doorPosition);
+
         //returns mouseY Axis
         mouseY = Input.GetAxis("Mouse Y");
 
         // lets go of the door when Mouse0 is released 
-        if (Input.GetKeyUp(KeyCode.Mouse0))
+        if (Input.GetKeyUp(KeyCode.Mouse0) || dist > 4)
         {
-
             isOpen = false;
         }
-        //// Doors position 
-        //Vector3 doorPosition = transform.position;
-        //// Players position
-        //Vector3 playerPosition = Player.transform.position;
-        //
-        //// Gets the direction of the player from the door 
-        //Vector3 Direction = doorPosition - playerPosition;
-        //Direction.Normalize();
 
-        //--------------------------------------------------------------------------------------
-        // Checks for the players forward position
-        //
-        // Param 
-        //     Direction: the forward direction of the player 
-        // Return 
-        //      Adds force to the players forward direction to the door which will open or close 
-        //      the door depending on which side the player is located 
-        //--------------------------------------------------------------------------------------
-
+        // Adds force to the players forward direction to the door which will open or close 
+        // the door depending on which side the player is located 
         if (isOpen)
         {
-   
                 rb.AddForceAtPosition(Player.transform.forward * mouseY * doorOpenSpeed, Player.transform.position);
-
         }
        
     }
