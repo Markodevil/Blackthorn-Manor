@@ -16,7 +16,7 @@ public class HingeDoorScript : MonoBehaviour {
     public float doorCloseTime; 
     // Timer until door closes 
     private float closeTimer;
-
+    //closes the door when closeTimer is 0 
     bool closeDoor; 
     private void Awake()
     {
@@ -56,7 +56,7 @@ public class HingeDoorScript : MonoBehaviour {
         {
             closeTimer -= Time.deltaTime;
         }
-        // Doors spring returns door back to beggining position 
+        // Doors spring returns door back to starting position 
         if (closeTimer <= 0 )
         {
             hingeSpring.spring = 5;

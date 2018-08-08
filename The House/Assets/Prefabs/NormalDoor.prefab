@@ -55,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1579587734974902}
   m_LocalRotation: {x: -0, y: -0.70741206, z: -0, w: -0.7068014}
-  m_LocalPosition: {x: -38.125, y: 0.7249885, z: -91.224}
+  m_LocalPosition: {x: -42.87857, y: 12.388, z: -8.644579}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4778154780133804}
@@ -141,7 +141,7 @@ HingeJoint:
   m_Anchor: {x: -0.96, y: 0.94, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -38.124172, y: 1.6649885, z: -90.264}
+  m_ConnectedAnchor: {x: -42.877743, y: 13.327999, z: -7.6845794}
   m_UseSpring: 1
   m_Spring:
     spring: 0
@@ -154,8 +154,8 @@ HingeJoint:
     freeSpin: 0
   m_UseLimits: 1
   m_Limits:
-    min: -90
-    max: 0
+    min: -270
+    max: 270
     bounciness: 0
     bounceMinVelocity: 0.2
     contactDistance: 0
@@ -205,7 +205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3be846130993464e873dedc3798f9b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hinge: {fileID: 59822321204798686}
   mouseY: 0
   doorOpenSpeed: 12
-  Player: {fileID: 0}
   rb: {fileID: 54159775123990282}
+  doorCloseTime: 3
