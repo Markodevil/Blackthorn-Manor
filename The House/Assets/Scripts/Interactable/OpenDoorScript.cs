@@ -22,10 +22,13 @@ public class OpenDoorScript : MonoBehaviour {
 		
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
+
         Debug.DrawRay(transform.position, transform.forward,Color.green);
+
         //Distance from the door to the player 
         Vector3 distance = transform.position - Door.transform.position;
         distance.y = 0;
+        // gets the magnitude of players position and doors position 
         float dist = distance.magnitude;
         //--------------------------------------------------------------------------------------
         // Raycasts in front of the player checking if their is a Door infront of the player 
@@ -49,8 +52,9 @@ public class OpenDoorScript : MonoBehaviour {
                 hit.collider.transform.GetComponent<HingeDoorScript>().changeDoorState();
             }
         }
-        
 
+        // if player is holding down mouse1 and moves away from the door
+        // camera movement will be enabled 
         if (dist > 4 && isHoldingDown)
         {
             fpsCamera.SetTouching(false);
