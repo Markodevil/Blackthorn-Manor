@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
     [Header("End Game Stuff")]
     public GameObject clickyWinThing;
     public MonoBehaviour[] scriptsToTurnOff;
-    public GameObject ghost;
 
     [Header("Req. Items")]
     public GameObject[] RequiredItems;
@@ -28,8 +27,10 @@ public class GameManager : MonoBehaviour
     public GameObject ingameUI;
     public GameObject menuUI;
     public GameObject gameoverUI;
-    
 
+    [Header("Debug stuff")]
+    public bool useGhost;
+    public GameObject Ghost;
 
     public enum GameStates
     {
@@ -59,6 +60,23 @@ public class GameManager : MonoBehaviour
         /////////////////////
         // Game Logic Here //
         /////////////////////
+        if(!useGhost)
+        {
+            Ghost.SetActive(false);
+            foreach (MonoBehaviour mb in Ghost.GetComponents<MonoBehaviour>())
+            {
+                mb.enabled = false;
+            }
+        }
+        else
+        {
+            Ghost.SetActive(true);
+            foreach (MonoBehaviour mb in Ghost.GetComponents<MonoBehaviour>())
+            {
+                mb.enabled = true;
+            }
+        }
+
         switch (currentState)
         {
             case GameStates.Playing:
@@ -218,5 +236,10 @@ public class GameManager : MonoBehaviour
    public void ChangeGameState()
     {
         currentState = GameStates.Playing;
+    }
+
+    public void ChangeGhostStatus()
+    {
+        useGhost = !useGhost;
     }
 }

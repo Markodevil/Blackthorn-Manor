@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour
 
     [Header("Main Menu Items")]
     public GameObject mainMenuItems;
+    public string sceneName;
 
     [Header("Options Menu Items")]
     public GameObject optionsMenuItems;
@@ -92,7 +93,7 @@ public class MenuManager : MonoBehaviour
     public void ToGame()
     {
         fade.SetTrigger("FadeIn");
-        AsyncOp = SceneManager.LoadSceneAsync("Mark");
+        AsyncOp = SceneManager.LoadSceneAsync(sceneName);
         //AsyncOp.allowSceneActivation = false;
     }
 
