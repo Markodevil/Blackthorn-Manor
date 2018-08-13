@@ -5,7 +5,7 @@ Shader "Custom/OutlineShader" {
 		// Colour of the outline
 		_outlineColor("Outline Color", Color) = (0,0,0,1)
 		// Width of the outline
-		_outline("Outline width", Range(0.0, 0.15)) = .005
+		_outline("Outline width", Range(0.0, 0.20)) = .005
 	}
 
 		CGINCLUDE
@@ -31,7 +31,6 @@ Shader "Custom/OutlineShader" {
 
 		float3 Norm = mul((float3x3)UNITY_MATRIX_IT_MV, v.normal);
 		float2 Offset = TransformViewToProjection(Norm.xy);
-
 		o.Pos.xy += Offset * o.Pos.z * _outline;
 		o.Colour = _outlineColor;
 		return o;
@@ -46,10 +45,11 @@ Shader "Custom/OutlineShader" {
 		Cull Back
 		Blend Zero One
 
-		SetTexture[_outlineColor]{
-		ConstantColor(0,0,0,0)
-		Combine constant
-	}
+		SetTexture[_outlineColor]
+		{
+			ConstantColor(0,0,0,0)
+			Combine constant
+		}
 	}
 
 		// note that a vertex shader is specified here but its using the one above
@@ -62,17 +62,14 @@ Shader "Custom/OutlineShader" {
 								   
 
 		CGPROGRAM
-#pragma vertex vert
-#pragma fragment frag
+		#pragma vertex vert
+		#pragma fragment frag
 
 		half4 frag(v2f i) :COLOR{
 		return i.Colour;
 	}
 		ENDCG
 	}
-
-
-	}
-
+	}	
 		Fallback "Diffuse"
 }

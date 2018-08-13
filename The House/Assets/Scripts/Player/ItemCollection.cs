@@ -28,7 +28,12 @@ public class ItemCollection : MonoBehaviour
     public Sprite filled;
     public Sprite unfilled;
 
+    private GameObject Outlined;
 
+    private void Awake()
+    {
+        Outlined = GameObject.FindGameObjectWithTag("Outlined");
+    }
     // Use this for initialization
     void Start()
     {
@@ -67,6 +72,7 @@ public class ItemCollection : MonoBehaviour
                     pickedUpItems.Add(hitObject.name);
                     //set object to inactive
                     hitObject.SetActive(false);
+                    Outlined.SetActive(false);
 
                     //add to number of items
                     currentNumberOfItems++;
