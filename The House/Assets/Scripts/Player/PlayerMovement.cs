@@ -248,14 +248,19 @@ public class PlayerMovement : MonoBehaviour
                         {
                             //We've heard the player
                             Debug.Log("Ghost heard the sound");
-                            Ghost temp = hitCollider[i].gameObject.GetComponent<Ghost>();
-                            //ICANTBELIVEIMISSEDTHISFREAKINMISSTAKE
-                            if (temp.CalulatePathLength(footsies[footIndex].transform.position) <= ghostSoundResponceLvl)
+                            //Ghost temp = hitCollider[i].gameObject.GetComponent<Ghost>();
+                            ////ICANTBELIVEIMISSEDTHISFREAKINMISSTAKE
+                            //if (temp.CalulatePathLength(footsies[footIndex].transform.position) <= ghostSoundResponceLvl)
+                            //{
+                            //    //We're within range to respond to the sound 
+                            //    temp.SetDestination();
+                            //    playerHasBeenHeard = true;
+                            //    Debug.Log("The Ghost is responding to the sound:");
+                            //}
+                            GhostAI ghostAI = hitCollider[i].gameObject.GetComponent<GhostAI>();
+                            if (ghostAI)
                             {
-                                //We're within range to respond to the sound 
-                                temp.SetDestination();
-                                playerHasBeenHeard = true;
-                                Debug.Log("The Ghost is responding to the sound:");
+                                ghostAI.HearSomething(gameObject.transform.position);
                             }
                         }
                     }

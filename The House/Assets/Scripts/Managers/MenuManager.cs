@@ -17,7 +17,6 @@ public class MenuManager : MonoBehaviour
     public Dropdown resolutionDropdown;
 
     [Header("Audio Related")]
-    float globalVolume;
     public bool globalMute = true;
     public Slider volumeSlider;
 
@@ -27,10 +26,10 @@ public class MenuManager : MonoBehaviour
     private AsyncOperation AsyncOp;
 
 
-    private void OnLevelWasLoaded(int level)
-    {
-        fade.SetTrigger("FadeIn");
-    }
+    //private void OnLevelWasLoaded(int level)
+    //{
+    //    fade.SetTrigger("FadeIn");
+    //}
 
     private void Awake()
     {

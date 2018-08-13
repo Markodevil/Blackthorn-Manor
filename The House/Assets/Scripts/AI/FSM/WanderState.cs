@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using FSM;
 
+//Ryan's mostly 
 public class WanderState : State<GhostAI>
 {
 
@@ -11,7 +12,6 @@ public class WanderState : State<GhostAI>
 
     //Wander Behaviour memeber Var's
     private NavMeshAgent navMeshAgent;
-    private WanderState wander;
 
     [SerializeField]
     private float wanderRadius = 30f;
@@ -80,6 +80,10 @@ public class WanderState : State<GhostAI>
                     timer = 0.0f;
                 }
             }
+        }
+        else
+        {
+            owner.FSM.ChangeState(PatrolState.GetInstance);
         }
     }
 

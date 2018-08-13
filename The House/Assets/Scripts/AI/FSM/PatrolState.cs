@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+//Ryan's mostly
 public class PatrolState : State<GhostAI>
 {
     private static PatrolState instance;

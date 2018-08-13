@@ -143,14 +143,19 @@ public class InteractableItems : MonoBehaviour
             if (hitCollider[i].gameObject.tag == "Ghost")
             {
                 Debug.Log("Ghost heard the sound");
-                Ghost temp = hitCollider[i].gameObject.GetComponent<Ghost>();
-                if (temp.CalulatePathLength(transform.position) <= playerMovementCS.ghostSoundResponceLvl)
+                //Ghost temp = hitCollider[i].gameObject.GetComponent<Ghost>();
+                //if (temp.CalulatePathLength(transform.position) <= playerMovementCS.ghostSoundResponceLvl)
+                //{
+                //    //We're within range to respond to the sound 
+                //    temp.destination = GetComponent<Transform>();
+                //    temp.SetDestination();
+                //    objectHasBeenHeard = true;
+                //    Debug.Log("The Ghost is responding to the sound:");
+                //}
+                GhostAI ghostAI = hitCollider[i].gameObject.GetComponent<GhostAI>();
+                if(ghostAI)
                 {
-                    //We're within range to respond to the sound 
-                    temp.destination = GetComponent<Transform>();
-                    temp.SetDestination();
-                    objectHasBeenHeard = true;
-                    Debug.Log("The Ghost is responding to the sound:");
+                    ghostAI.HearSomething(gameObject.transform.position);
                 }
             }
         }

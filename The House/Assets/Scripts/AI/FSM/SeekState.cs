@@ -43,6 +43,12 @@ public class SeekState : State<GhostAI> {
 
     public override void UpdateState(GhostAI owner)
     {
-        
+        owner.NMA.SetDestination(owner.destination);
+
+        if(owner.NMA.remainingDistance <= 1.0f)
+        {
+            owner.hasHeardSomething = false;
+            owner.FSM.ChangeState(WanderState.GetInstance);
+        }
     }
 }
