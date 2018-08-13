@@ -5,33 +5,37 @@ using UnityEngine;
 //This Code was taken from a youtube tutorial by https://www.youtube.com/watch?v=5OkmcKtB3a4&index=4&list=PLokhY9fbx05dodzlBfYsKrUSVk5oVactQ
 public class ConnectedWayPoint : MonoBehaviour {
 
-    [SerializeField]
-    protected float connectivityRadius = 50f;
+    //[SerializeField]
+    //protected float connectivityRadius = 50f;
 
     [SerializeField]
     protected float debugDrawRadius = 1.0f;
 
+    ConnectedWayPoint nextWayPoint;
     List<ConnectedWayPoint> connections;
+    public GameObject[] allWayPoints;
 
-	public void Start () {
-        //Grab all waypoints 
-        GameObject[] allWayPoints = GameObject.FindGameObjectsWithTag("Waypoint");
-
+    public void Start () {
         //Create a list of waypoints
         connections = new List<ConnectedWayPoint>();
 
         //Check if they're a connected waypoint
         for (int i = 0; i < allWayPoints.Length; i++)
         {
-            ConnectedWayPoint nextWaypoint = allWayPoints[i].GetComponent<ConnectedWayPoint>();
+            nextWayPoint = allWayPoints[i].GetComponent<ConnectedWayPoint>();
 
             //i.e we found a waypoint
-            if (nextWaypoint != null)
+            //TO DO change from range connection to itteration connection i.e waypoint one is connected to waypoint two
+            if (nextWayPoint != null)
             {
-                if (Vector3.Distance(this.transform.position, nextWaypoint.transform.position) <= connectivityRadius && nextWaypoint != this)
-                {
-                    connections.Add(nextWaypoint);
-                }
+                if(nextWayPoint != this)
+                connections.Add(nextWayPoint);
+
+                //Old Radius connectivity code do not delete
+                //if (/*Vector3.Distance(this.transform.position, nextWaypoint.transform.position) <= connectivityRadius &&*/)
+                //{
+                //    
+                //}
             }
         }
 	}
@@ -51,16 +55,13 @@ public class ConnectedWayPoint : MonoBehaviour {
         }
         else //Find a random waypoint
         {
-            ConnectedWayPoint nextWayPoint;
             int nextIndex = 0;
             do
             {
-
                 nextIndex = UnityEngine.Random.Range(0, connections.Count);
                 nextWayPoint = connections[nextIndex];
 
             } while (nextWayPoint == previousWaypoint);
-
             return nextWayPoint;
         }
     }
@@ -71,6 +72,8 @@ public class ConnectedWayPoint : MonoBehaviour {
         Gizmos.DrawWireSphere(transform.position, debugDrawRadius);
 
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, connectivityRadius);
+        if (nextWayPoint != null)
+            Gizmos.DrawLine(transform.position, nextWayPoint.transform.position);
+        //Gizmos.DrawWireSphere(transform.position, connectivityRadius);
     }
 }

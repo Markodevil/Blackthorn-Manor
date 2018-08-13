@@ -17,11 +17,13 @@ public class ConnectedPartol : MonoBehaviour
 
     //private variables for base behaviour
     NavMeshAgent navMeshAgent;
-    ConnectedWayPoint currentWayPoint;
+    public ConnectedWayPoint currentWayPoint;
     ConnectedWayPoint previousWayPoint;
+    Ghost ghostCS;
+    GameObject ghost;
 
     bool travelling;
-    bool waiting;
+    public bool waiting;
     float waitTimer;
     int waypointsVisited;
 
@@ -29,6 +31,12 @@ public class ConnectedPartol : MonoBehaviour
     void Start()
     {
         navMeshAgent = this.GetComponent<NavMeshAgent>();
+        ghost = GameObject.FindGameObjectWithTag("Ghost");
+
+        if (ghost != null)
+        {
+            ghostCS = ghost.GetComponent<Ghost>();
+        }
 
         if (navMeshAgent == null)
         {
@@ -36,31 +44,6 @@ public class ConnectedPartol : MonoBehaviour
         }
         else
         {
-            if (currentWayPoint == null)
-            {
-                //set it at random
-                //grab all waypoint objects in scene
-                GameObject[] allWayPoints = GameObject.FindGameObjectsWithTag("Waypoint");
-
-                if (allWayPoints.Length > 0)
-                {
-                    while (currentWayPoint == null)
-                    {
-                        int random = UnityEngine.Random.Range(0, allWayPoints.Length);
-                        ConnectedWayPoint startingWayPoint = allWayPoints[random].GetComponent<ConnectedWayPoint>();
-
-                        //i.e WE GOT ONE
-                        if (startingWayPoint != null)
-                        {
-                            currentWayPoint = startingWayPoint;
-                        }
-                    }
-                }
-                else
-                {
-                    Debug.LogError("Failed to find any waypoint for use in the scene");
-                }
-            }
             SetDestination();
         }
     }
@@ -83,9 +66,9 @@ public class ConnectedPartol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //Debug.Log(navMeshAgent.remainingDistance);
         //Check if we're close to the destination
-        if (travelling && navMeshAgent.remainingDistance <= 1.0f)
+        if (/*(*/travelling && navMeshAgent.remainingDistance <= 1.0f)// || (ghostCS.stageThree == true))
         {
             travelling = false;
             waypointsVisited++;
@@ -102,7 +85,7 @@ public class ConnectedPartol : MonoBehaviour
             }
         }
 
-        //Instead of we're waiting
+        //Check If were waiting
         if (waiting)
         {
             waitTimer += Time.deltaTime;
@@ -112,6 +95,5 @@ public class ConnectedPartol : MonoBehaviour
                 SetDestination();
             }
         }
-
     }
 }
