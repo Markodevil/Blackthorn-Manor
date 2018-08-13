@@ -37,6 +37,7 @@ public class DrawerScript : MonoBehaviour {
         float dist = Vector3.Distance(playerPosition, drawerPosition);
         mouseY = Input.GetAxis("Mouse Y");  
 
+
         // lets go of the drawer when Mouse0 is released 
         if (Input.GetKeyUp(KeyCode.Mouse0) || dist > 2)
         {
