@@ -13,6 +13,7 @@ TagManager:
   - Ghost
   - RequiredItem
   - Drawer
+  - Collectable
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - Obsticle
   - Ghost
   - WorldUI
-  - 
+  - InvisibleToCamera
   - 
   - 
   - 
