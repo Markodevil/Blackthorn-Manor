@@ -12,7 +12,7 @@ public class OpenDrawerScript : MonoBehaviour
     FPSCamera fpsCamera;
     private GameObject Dresser;
     public MonoBehaviour camScript;
-    bool isHoldingDown = false; 
+    bool isHoldingDown = false;
     // Use this for initialization
     void Start()
     {
@@ -33,10 +33,10 @@ public class OpenDrawerScript : MonoBehaviour
         //      Changes the DrawerState so that the door can be opened
         //--------------------------------------------------------------------------------------
 
-        Vector3 distance = transform.position - Dresser.transform.position;
+        Vector3 distance;
         distance.y = 0;
-        float dist = Vector3.Distance(Dresser.transform.position, transform.position);
-       
+        float dist = 0.0f;
+
         // checks if the player is in distance to open the Dresser     
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
@@ -47,21 +47,21 @@ public class OpenDrawerScript : MonoBehaviour
             Dresser = hit.collider.gameObject;
             distance = transform.position - Dresser.transform.position;
             distance.y = 0;
-            dist = distance.magnitude;       
+            dist = distance.magnitude;
             isHoldingDown = true;
             fpsCamera.SetTouching(true);
             //Goes into HingeDoorScript and allows player to open doors 
             hit.collider.transform.GetComponent<DrawerScript>().changeDrawerState();
-    
+
         }
-      
+
         // if player is holding down mouse1 and moves away from the dresser
         // camera movement will be enabled 
-        if (dist > 2 && isHoldingDown)
-         {
-             isHoldingDown = false;
-             fpsCamera.SetTouching(false);
-         }
+        if (isHoldingDown && dist > 2)
+        {
+            isHoldingDown = false;
+            fpsCamera.SetTouching(false);
+        }
 
 
         //--------------------------------------------------------------------------------------
@@ -72,7 +72,7 @@ public class OpenDrawerScript : MonoBehaviour
         // Return 
         //      Changes Camscript to true so player can check cameras 
         //--------------------------------------------------------------------------------------
-            if (Input.GetKeyUp(KeyCode.Mouse0))
+        if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             //camScript.enabled = true;
             fpsCamera.SetTouching(false);
