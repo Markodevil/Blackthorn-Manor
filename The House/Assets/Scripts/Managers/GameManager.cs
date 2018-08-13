@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PostProcessing;
 using UnityEngine.SceneManagement;
-using UnityEditor.UI;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -111,6 +111,7 @@ public class GameManager : MonoBehaviour
             case GameStates.Pause:
                 //set timescale to 0
                 Time.timeScale = 0;
+                Cursor.lockState = CursorLockMode.Confined;
                 foreach (MonoBehaviour mon in scriptsToTurnOff)
                 {
                     mon.enabled = false;

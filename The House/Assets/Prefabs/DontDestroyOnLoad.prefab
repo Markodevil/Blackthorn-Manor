@@ -37,7 +37,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224669573921893036}
-  - component: {fileID: 95773969149399532}
   m_Layer: 5
   m_Name: Fade
   m_TagString: Untagged
@@ -54,6 +53,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4278978384754254}
   - component: {fileID: 114142357924800330}
+  - component: {fileID: 95627358370796796}
   m_Layer: 0
   m_Name: DontDestroyOnLoad
   m_TagString: Untagged
@@ -84,7 +84,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1561568516479434}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 235.21558, y: 114.35995, z: 336.58063}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -92,16 +92,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &95773969149399532
+--- !u!95 &95627358370796796
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1327317725698948}
+  m_GameObject: {fileID: 1561568516479434}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 54fc5a2c8b08d4a48b872e3268563876, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1173d708890f10543b40c3466b0bc4d1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -137,12 +137,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenuItems: {fileID: 0}
-  sceneName: Mark
+  sceneName: Deeon
   optionsMenuItems: {fileID: 0}
   resolutionDropdown: {fileID: 0}
   globalMute: 0
   volumeSlider: {fileID: 0}
-  fade: {fileID: 95773969149399532}
 --- !u!114 &114329425272997752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -215,7 +214,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &224233339623539974
 RectTransform:
