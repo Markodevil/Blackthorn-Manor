@@ -16,11 +16,11 @@ public class ConnectedPartol : MonoBehaviour
     float totalWaitTime = 3f;
 
     //private variables for base behaviour
-    NavMeshAgent navMeshAgent;
-    public ConnectedWayPoint currentWayPoint;
-    ConnectedWayPoint previousWayPoint;
-    Ghost ghostCS;
-    GameObject ghost;
+    private NavMeshAgent navMeshAgent;
+    private ConnectedWayPoint currentWayPoint;
+    private ConnectedWayPoint previousWayPoint;
+    private Ghost ghostCS;
+    private GameObject ghost;
 
     bool travelling;
     public bool waiting;
@@ -44,6 +44,7 @@ public class ConnectedPartol : MonoBehaviour
         }
         else
         {
+            currentWayPoint = GameObject.Find("WayPointDirect").GetComponent<ConnectedWayPoint>();
             SetDestination();
         }
     }

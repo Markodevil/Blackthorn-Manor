@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 114093386475967958}
   - component: {fileID: 114582267437493180}
   m_Layer: 0
-  m_Name: Ghost
+  m_Name: GhostClone
   m_TagString: Ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -217,7 +217,7 @@ MonoBehaviour:
   chaseTime: 10
   chaseSpeed: 3
   stageThree: 0
-  Clone: {fileID: 1297902697834458, guid: 6c6b6a7a82d6ca24ea18a71b3cf0bf6d, type: 2}
+  Clone: {fileID: 1297902697834458}
   navMeshAgent: {fileID: 0}
   connectedWayPatrol: {fileID: 114093386475967958}
   wanderBehavior: {fileID: 0}

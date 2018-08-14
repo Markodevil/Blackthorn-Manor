@@ -94,7 +94,6 @@ public class Ghost : MonoBehaviour
 
     void Update()
     {
-
         //If we we'rent spotted and we've been heard head to the sound and wander
         if (playerMovementCS.playerHasBeenHeard == true && navMeshAgent.remainingDistance <= 3.0f)
         {
@@ -109,6 +108,7 @@ public class Ghost : MonoBehaviour
                 navMeshAgent.speed = patrolSpeed;
             }
         }
+        //If an Interactable has made a sound
         for (int i = 0; i < interactableItems.Length; i++)
         {
             //If The Ghost hears a obj hitting the ground
@@ -127,7 +127,6 @@ public class Ghost : MonoBehaviour
                 }
             }
         }
-
 
         //Check if the Player is within the Ghosts vision
         if (enemySight.visibleTargets.Count > 0)
@@ -193,9 +192,12 @@ public class Ghost : MonoBehaviour
                 break;
             case 4:
                 //Ghost duplicates it self
-                if (stageFour == false)
-                    Instantiate(Clone, transform.position, transform.rotation);
-                stageFour = true;
+                if (this.name != "GhostClone(Clone)")
+                {
+                    if (stageFour == false)
+                        Instantiate(Clone, transform.position, transform.rotation);
+                    stageFour = true;
+                }
                 break;
             default:
                 break;
