@@ -21,6 +21,7 @@ public class Ghost : MonoBehaviour
     private float speedMultiplyer = 2;
     [SerializeField]
     private float soundResponceMultiplyer = 2;
+    private float time;
     private bool stageOne = false;
     private bool stageTwo = false;
     [HideInInspector]
@@ -185,15 +186,13 @@ public class Ghost : MonoBehaviour
                 stageTwo = true;
                 break;
             case 3:
-                //Ghost starts teleporting to its waypoints
-                //set the next waypoint as the destination
-                //destination = connectedWayPatrol.currentWayPoint.transform;
-                //Ignore remaining distance to next target
-                //stageThree = true;
-                //Wait before teleporting
-                //connectedWayPatrol.waiting = true;
+                time += Time.deltaTime;
                 //Teleport
-                //gameObject.transform.position = connectedWayPatrol.currentWayPoint.transform.position;
+                if (time >= 10f)
+                { 
+                    gameObject.transform.position = connectedWayPatrol.currentWayPoint.transform.position;
+                    time = 0;
+                }
                 break;
             case 4:
                 //Ghost duplicates it self

@@ -1446,6 +1446,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114936691259406164, guid: a184da7490d22a04db15f9e1c883e42b,
+        type: 2}
+      propertyPath: soundResponceMultiplyer
+      value: 1.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a184da7490d22a04db15f9e1c883e42b, type: 2}
   m_IsPrefabParent: 0

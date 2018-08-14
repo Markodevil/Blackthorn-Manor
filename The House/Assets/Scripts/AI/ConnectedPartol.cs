@@ -17,7 +17,8 @@ public class ConnectedPartol : MonoBehaviour
 
     //private variables for base behaviour
     private NavMeshAgent navMeshAgent;
-    private ConnectedWayPoint currentWayPoint;
+    [HideInInspector]
+    public ConnectedWayPoint currentWayPoint;
     private ConnectedWayPoint previousWayPoint;
     private Ghost ghostCS;
     private GameObject ghost;
