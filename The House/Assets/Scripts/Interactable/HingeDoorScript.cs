@@ -44,7 +44,7 @@ public class HingeDoorScript : MonoBehaviour {
 
         //returns mouseY Axis
         mouseY = Input.GetAxis("Mouse Y");
-
+        
         // lets go of the door when Mouse0 is released 
         if (Input.GetKeyUp(KeyCode.Mouse0) || dist > 3.5f)
         {

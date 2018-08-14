@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class ItemCollection : MonoBehaviour
 {
 
+
     public int goalNumberOfItems;
     [HideInInspector]
     public int currentNumberOfItems;
-
+    public bool toggleOutline; 
     [SerializeField]
     private Camera playerCamera;
     [Tooltip("Interact Range in metres")]
@@ -28,12 +29,6 @@ public class ItemCollection : MonoBehaviour
     public Sprite filled;
     public Sprite unfilled;
 
-    private GameObject Outlined;
-
-    private void Awake()
-    {
-        Outlined = GameObject.FindGameObjectWithTag("Outlined");
-    }
     // Use this for initialization
     void Start()
     {
@@ -44,6 +39,8 @@ public class ItemCollection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Sets the object outline back to true
+        toggleOutline = true;
         //check for key input
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -72,8 +69,8 @@ public class ItemCollection : MonoBehaviour
                     pickedUpItems.Add(hitObject.name);
                     //set object to inactive
                     hitObject.SetActive(false);
-                    Outlined.SetActive(false);
-
+                    // Turns off the object outline 
+                    toggleOutline = false;
                     //add to number of items
                     currentNumberOfItems++;
                 }

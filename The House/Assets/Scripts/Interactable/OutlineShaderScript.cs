@@ -4,16 +4,29 @@ using UnityEngine;
 
 public class OutlineShaderScript : MonoBehaviour {
 
-	// Update is called once per frame
-	void Update () {
+    private GameObject Player;
+    public ItemCollection isOutlined;
 
-        Material mat = new Material(Shader.Find("Custom/OutlineShader"));
+  
+    private void Start()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+        isOutlined = Player.GetComponent<ItemCollection>();
+    }
+    
+    // Update is called once per frame
+    void Update () {
 
+        // Distance the outlined object is from the player 
+        Vector3 currentPosition = transform.position;
+        Vector3 playerPosition = Player.transform.position;
+        float dist = Vector3.Distance(playerPosition, currentPosition);
 
-        
-        if(Input.GetKeyDown(KeyCode.L))
+        // when the player is close and toggleoutline is false 
+        // Disable the object outline
+        if (dist < 2 && isOutlined.toggleOutline == false)
         {
-            mat.SetFloat("_Outline", 0.3f);
+            gameObject.SetActive(false);
         }
 
 	}

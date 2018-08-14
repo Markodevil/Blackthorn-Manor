@@ -43,6 +43,7 @@ Shader "Custom/OutlineShader" {
 		Pass{
 		Name "BASE"
 		Cull Back
+
 		Blend Zero One
 
 		SetTexture[_outlineColor]
@@ -57,7 +58,7 @@ Shader "Custom/OutlineShader" {
 		Name "OUTLINE"
 		Tags{ "LightMode" = "Always" }
 		Cull Front
-
+		//ZWrite On
 		Blend One OneMinusDstColor // Soft Additive
 								   
 
