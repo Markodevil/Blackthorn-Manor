@@ -80,7 +80,7 @@ public class GhostAI : MonoBehaviour
         }
 
 
-        //Ryan's
+        //Ryan's totaly awsome bool toggling ghost buffs
         switch (itemsCollectionCS.currentNumberOfItems)
         {
             case 1:
@@ -133,7 +133,7 @@ public class GhostAI : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Ryan's
+        //Ryan's totaly bestest game over trigger
         if(other.gameObject.layer == 8)
         {
             SceneManager.LoadScene("GameOver");

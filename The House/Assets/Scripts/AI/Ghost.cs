@@ -197,7 +197,7 @@ public class Ghost : MonoBehaviour
                 break;
             case 4:
                 //Ghost duplicates it self
-                if (this.name != "GhostClone(Clone)")
+                if (this.name != "Ghost(Clone)")
                 {
                     if (stageFour == false)
                         Instantiate(Clone, transform.position, transform.rotation);
