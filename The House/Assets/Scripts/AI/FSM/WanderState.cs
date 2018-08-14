@@ -12,13 +12,10 @@ public class WanderState : State<GhostAI>
 
     //Wander Behaviour memeber Var's
     private NavMeshAgent navMeshAgent;
-
-    [SerializeField]
+    
     private float wanderRadius = 30f;
     public float wanderTimer = 10f;
-    [HideInInspector]
     public float wanderTimerActual;
-    [SerializeField]
     private float wanderTick = 1;
     private float timer;
 

@@ -181,7 +181,7 @@ public class Ghost : MonoBehaviour
             case 2:
                 //Increase ghost hearing
                 if (stageTwo == false)
-                    playerMovementCS.ghostSoundResponceLvl *= soundResponceMultiplyer;
+
                 stageTwo = true;
                 break;
             case 3:

@@ -14,6 +14,8 @@ public class GhostAI : MonoBehaviour
     /*   Player/Item/Sight inputs   */
     [HideInInspector]
     public bool hasHeardSomething { get; set; }
+    public float hearingRange;
+    private SphereCollider hearingTrigger;
     private Sight sight;
 
     /*   My Things   */
@@ -24,6 +26,7 @@ public class GhostAI : MonoBehaviour
     public float patrolSpeed;
     public Animator heardSomethingAnim;
 
+
     /*   Wander Variables   */
     [Header("Wander Variables")]
     [SerializeField]
@@ -33,6 +36,8 @@ public class GhostAI : MonoBehaviour
     public float wanderTick = 1;
 
     /*   Patrol Variables   */
+    public ConnectedWayPoint currentWayPoint;
+    ConnectedWayPoint previousWayPoint;
 
     /*   Seek Variables   */
     [HideInInspector]
@@ -54,12 +59,15 @@ public class GhostAI : MonoBehaviour
         FSM = new FiniteStateMachine<GhostAI>(this);
 
         //start in wander state
-        FSM.ChangeState(WanderState.GetInstance);
+        FSM.ChangeState(PatrolState.GetInstance);
 
         NMA = GetComponent<NavMeshAgent>();
         sight = GetComponent<Sight>();
         itemsCollectionCS = player.GetComponent<ItemCollection>();
         playerMovementCS = player.GetComponent<PlayerMovement>();
+        hearingTrigger = GetComponent<SphereCollider>();
+
+        hearingTrigger.radius = hearingRange;
     }
 
     // Update is called once per frame
@@ -69,12 +77,12 @@ public class GhostAI : MonoBehaviour
         {
             FSM.ChangeState(SeekState.GetInstance);
         }
-        if(sight.visibleTargets.Count > 0)
+        if (sight.visibleTargets.Count > 0)
         {
             destination = sight.visibleTargets[0].gameObject.transform.position;
             FSM.ChangeState(SeekState.GetInstance);
         }
-        if(FSM.currentState == PatrolState.GetInstance)
+        if (FSM.currentState == PatrolState.GetInstance)
         {
             NMA.speed = patrolSpeed;
         }
@@ -95,7 +103,7 @@ public class GhostAI : MonoBehaviour
             case 2:
                 //Increase ghost hearing
                 if (stage2 == false)
-                    playerMovementCS.ghostSoundResponceLvl *= 2;
+                    hearingRange *= 2;
                 stage2 = true;
                 break;
             case 3:
@@ -126,18 +134,58 @@ public class GhostAI : MonoBehaviour
 
     public void HearSomething(Vector3 position)
     {
-        hasHeardSomething = true;
-        destination = position;
-        heardSomethingAnim.SetTrigger("hasHeardSomething");
+        //if (CalulatePathLength(position) <= hearingRange)
+        //{
+            hasHeardSomething = true;
+            destination = position;
+            heardSomethingAnim.SetTrigger("hasHeardSomething");
+        //}
     }
 
     private void OnTriggerEnter(Collider other)
     {
         //Ryan's totaly bestest game over trigger
-        if(other.gameObject.layer == 8)
+        if (other.gameObject.layer == 8)
         {
             SceneManager.LoadScene("GameOver");
             Debug.Log("Touched le ghost");
         }
+    }
+
+    //This code was taken from a youtube tutorial from here https://www.youtube.com/watch?v=mBGUY7EUxXQ
+    //It calculates the total distance to the player taking into account the amount of corners. 
+    public float CalulatePathLength(Vector3 targetPosition)
+    {
+        NavMeshPath path = new NavMeshPath();
+
+        if (NMA.enabled)
+        {
+            NMA.CalculatePath(targetPosition, path);
+        }
+
+        Vector3[] allWayPoints = new Vector3[path.corners.Length + 2];
+
+        allWayPoints[0] = transform.position;
+        allWayPoints[allWayPoints.Length - 1] = targetPosition;
+
+        for (int i = 0; i < path.corners.Length; i++)
+        {
+            allWayPoints[i + 1] = path.corners[i];
+        }
+
+        float pathLength = 0.0f;
+
+        for (int i = 0; i < allWayPoints.Length - 1; i++)
+        {
+            pathLength += Vector3.Distance(allWayPoints[i], allWayPoints[i + 1]);
+        }
+
+        return pathLength;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, hearingRange);
     }
 }

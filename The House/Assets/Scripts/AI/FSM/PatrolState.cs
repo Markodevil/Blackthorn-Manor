@@ -9,11 +9,9 @@ public class PatrolState : State<GhostAI>
     private static PatrolState instance;
 
     //Dictates wheter the agent waits on each node
-    [SerializeField]
     bool partrolWaiting = false;
 
     //Total time we wait at each node
-    [SerializeField]
     float totalWaitTime = 3f;
 
     //private variables for base behaviour
@@ -55,38 +53,15 @@ public class PatrolState : State<GhostAI>
     public override void EnterState(GhostAI owner)
     {
         navMeshAgent = owner.gameObject.GetComponent<NavMeshAgent>();
+        currentWayPoint = owner.currentWayPoint;
 
+        
         if (navMeshAgent == null)
         {
             Debug.LogError("The Nav mesh agent component is not attached to " + owner.gameObject.name);
         }
         else
         {
-            if (currentWayPoint == null)
-            {
-                //set it at random
-                //grab all waypoint objects in scene
-                GameObject[] allWayPoints = GameObject.FindGameObjectsWithTag("Waypoint");
-
-                if (allWayPoints.Length > 0)
-                {
-                    while (currentWayPoint == null)
-                    {
-                        int random = UnityEngine.Random.Range(0, allWayPoints.Length);
-                        ConnectedWayPoint startingWayPoint = allWayPoints[random].GetComponent<ConnectedWayPoint>();
-
-                        //i.e WE GOT ONE
-                        if (startingWayPoint != null)
-                        {
-                            currentWayPoint = startingWayPoint;
-                        }
-                    }
-                }
-                else
-                {
-                    Debug.LogError("Failed to find any waypoint for use in the scene");
-                }
-            }
             SetDestination();
         }
     }
@@ -98,8 +73,9 @@ public class PatrolState : State<GhostAI>
 
     public override void UpdateState(GhostAI owner)
     {
+        //Debug.Log(navMeshAgent.remainingDistance);
         //Check if we're close to the destination
-        if (travelling && navMeshAgent.remainingDistance <= 1.0f)
+        if (/*(*/travelling && navMeshAgent.remainingDistance <= 1.0f)// || (ghostCS.stageThree == true))
         {
             travelling = false;
             waypointsVisited++;
@@ -116,7 +92,7 @@ public class PatrolState : State<GhostAI>
             }
         }
 
-        //Instead of we're waiting
+        //Check If were waiting
         if (waiting)
         {
             waitTimer += Time.deltaTime;

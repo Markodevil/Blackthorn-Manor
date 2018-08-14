@@ -18,6 +18,7 @@ public class ConnectedWayPoint : MonoBehaviour {
     public void Start () {
         //Create a list of waypoints
         connections = new List<ConnectedWayPoint>();
+        //allWayPoints = GameObject.FindGameObjectsWithTag("Waypoint");
 
         //Check if they're a connected waypoint
         for (int i = 0; i < allWayPoints.Length; i++)

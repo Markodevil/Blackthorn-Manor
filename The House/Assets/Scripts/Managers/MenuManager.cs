@@ -31,6 +31,17 @@ public class MenuManager : MonoBehaviour
     //    fade.SetTrigger("FadeIn");
     //}
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+    }
+
+
     private void Awake()
     {
         fade = GetComponent<Animator>();
@@ -127,4 +138,13 @@ public class MenuManager : MonoBehaviour
     {
         AsyncOp = SceneManager.LoadSceneAsync(sceneName);
     }
+
+    void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
+    {
+        //Debug.Log("Level Loaded");
+        //Debug.Log(scene.name);
+        //Debug.Log(mode);
+        fade.SetTrigger("FadeIn");
+    }
+
 }

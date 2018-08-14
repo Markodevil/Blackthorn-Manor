@@ -126,16 +126,6 @@ public class InteractableItems : MonoBehaviour
 
     public void CreateSoundColliders()
     {
-        //GameObject go = new GameObject();
-        //go.tag = "Noise";
-        //go.hideFlags = HideFlags.HideInHierarchy;
-        //go.transform.position = transform.position;
-        //
-        //go.AddComponent<TestNoises>();
-
-        //SphereCollider sphereCol = go.AddComponent<SphereCollider>();
-        //sphereCol.isTrigger = true;
-        //sphereCol.radius = 5.0f * audioSource.volume;
 
         Collider[] hitCollider = Physics.OverlapSphere(transform.position, soundRange);
         for (int i = 0; i < hitCollider.Length; i++)
@@ -143,15 +133,6 @@ public class InteractableItems : MonoBehaviour
             if (hitCollider[i].gameObject.tag == "Ghost")
             {
                 Debug.Log("Ghost heard the sound");
-                //Ghost temp = hitCollider[i].gameObject.GetComponent<Ghost>();
-                //if (temp.CalulatePathLength(transform.position) <= playerMovementCS.ghostSoundResponceLvl)
-                //{
-                //    //We're within range to respond to the sound 
-                //    temp.destination = GetComponent<Transform>();
-                //    temp.SetDestination();
-                //    objectHasBeenHeard = true;
-                //    Debug.Log("The Ghost is responding to the sound:");
-                //}
                 GhostAI ghostAI = hitCollider[i].gameObject.GetComponent<GhostAI>();
                 if(ghostAI)
                 {
