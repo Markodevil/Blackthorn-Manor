@@ -23,6 +23,7 @@ public class Ghost : MonoBehaviour
     public bool stageThree = false;
     private bool stageFour = false;
     public GameObject Clone;
+    private bool CloneBuffs = false;
 
     //Access to the navMeshAgent and ConnectedPatrol 
     [HideInInspector]
@@ -197,6 +198,16 @@ public class Ghost : MonoBehaviour
                     if (stageFour == false)
                         Instantiate(Clone, transform.position, transform.rotation);
                     stageFour = true;
+                }
+                else
+                {
+                    //Ghost Clone Buffs
+                    if (CloneBuffs == false)
+                    {
+                        patrolSpeed *= 2;
+                        navMeshAgent.speed = patrolSpeed;
+                    }
+                    CloneBuffs = true;
                 }
                 break;
             default:
