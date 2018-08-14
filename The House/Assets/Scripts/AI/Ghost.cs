@@ -17,6 +17,10 @@ public class Ghost : MonoBehaviour
     public float patrolSpeed = 3.5f;
     public float chaseTime = 10f;
     public float chaseSpeed = 7f;
+    [SerializeField]
+    private float speedMultiplyer = 2;
+    [SerializeField]
+    private float soundResponceMultiplyer = 2;
     private bool stageOne = false;
     private bool stageTwo = false;
     [HideInInspector]
@@ -169,7 +173,7 @@ public class Ghost : MonoBehaviour
                 //Increase ghost speed
                 if (stageOne == false)
                 {
-                    patrolSpeed *= 2;
+                    patrolSpeed *= speedMultiplyer;
                     navMeshAgent.speed = patrolSpeed;
                 }
                 stageOne = true;
@@ -177,7 +181,7 @@ public class Ghost : MonoBehaviour
             case 2:
                 //Increase ghost hearing
                 if (stageTwo == false)
-                    playerMovementCS.ghostSoundResponceLvl *= 2;
+                    playerMovementCS.ghostSoundResponceLvl *= soundResponceMultiplyer;
                 stageTwo = true;
                 break;
             case 3:
@@ -204,7 +208,7 @@ public class Ghost : MonoBehaviour
                     //Ghost Clone Buffs
                     if (CloneBuffs == false)
                     {
-                        patrolSpeed *= 2;
+                        patrolSpeed *= speedMultiplyer;
                         navMeshAgent.speed = patrolSpeed;
                     }
                     CloneBuffs = true;
