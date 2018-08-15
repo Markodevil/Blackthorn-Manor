@@ -142,10 +142,19 @@ public class GhostAI : MonoBehaviour
         //}
     }
 
-    private void OnTriggerEnter(Collider other)
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    //Ryan's totaly bestest game over trigger
+    //    if (other.gameObject.layer == 8)
+    //    {
+    //        SceneManager.LoadScene("GameOver");
+    //        Debug.Log("Touched le ghost");
+    //    }
+    //}
+
+    private void OnCollisionEnter(Collision collision)
     {
-        //Ryan's totaly bestest game over trigger
-        if (other.gameObject.layer == 8)
+        if (collision.gameObject.layer == 8)
         {
             SceneManager.LoadScene("GameOver");
             Debug.Log("Touched le ghost");
