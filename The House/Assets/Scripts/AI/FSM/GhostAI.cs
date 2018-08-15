@@ -46,11 +46,18 @@ public class GhostAI : MonoBehaviour
     /*   Ghost Upgrade Variables   */
     [Header("ItemCollection related")]
     public GameObject player;
+    public GameObject Clone;
     private ItemCollection itemsCollectionCS;
+    private float time = 0;
     private bool stage1 = false;
     private bool stage2 = false;
     private bool stage3 = false;
     private bool stage4 = false;
+    private bool CloneBuffs = false;
+    [SerializeField]
+    private float speedMultiplyer = 2;
+    [SerializeField]
+    private float soundResponceMultiplyer = 2;
     private PlayerMovement playerMovementCS;
 
     // Use this for initialization
@@ -95,7 +102,7 @@ public class GhostAI : MonoBehaviour
                 //Increase ghost speed
                 if (stage1 == false)
                 {
-                    patrolSpeed *= 2;
+                    patrolSpeed *= speedMultiplyer;
                     NMA.speed = patrolSpeed;
                 }
                 stage1 = true;
@@ -103,25 +110,38 @@ public class GhostAI : MonoBehaviour
             case 2:
                 //Increase ghost hearing
                 if (stage2 == false)
-                    hearingRange *= 2;
+                    hearingRange *= soundResponceMultiplyer;
                 stage2 = true;
                 break;
             case 3:
                 //Ghost starts teleporting to its waypoints
-                //set the next waypoint as the destination
-                //destination = connectedWayPatrol.currentWayPoint.transform;
-                //Ignore remaining distance to next target
-                //stageThree = true;
-                //Wait before teleporting
-                //connectedWayPatrol.waiting = true;
-                //Teleport
-                //gameObject.transform.position = connectedWayPatrol.currentWayPoint.transform.position;
-                break;
+                //TO DO FOR DEEEEEEEON get reference to the currentWayPoint
+                //time += Time.deltaTime;
+                ////Teleport
+                //if (time >= 10f)
+                //{
+                //    gameObject.transform.position = currentWayPoint.transform.position;
+                //    time = 0;
+                //}
+                //break;
             case 4:
                 //Ghost duplicates it self
-                //if (stage4 == false)
-                //    Instantiate(Clone, transform.position, transform.rotation);
-                //stage4 = true;
+                if (this.name != "BestGhost(Clone)")
+                {
+                    if (stage4 == false)
+                        Instantiate(Clone, transform.position, transform.rotation);
+                    stage4 = true;
+                }
+                else
+                {
+                    //Ghost Clone Buffs
+                    if (CloneBuffs == false)
+                    {
+                        patrolSpeed *= speedMultiplyer;
+                        NMA.speed = patrolSpeed;
+                    }
+                    CloneBuffs = true;
+                }
                 break;
             default:
                 break;
