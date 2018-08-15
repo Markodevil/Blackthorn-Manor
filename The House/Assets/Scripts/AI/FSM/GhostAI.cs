@@ -116,14 +116,14 @@ public class GhostAI : MonoBehaviour
             case 3:
                 //Ghost starts teleporting to its waypoints
                 //TO DO FOR DEEEEEEEON get reference to the currentWayPoint
-                //time += Time.deltaTime;
-                ////Teleport
-                //if (time >= 10f)
-                //{
-                //    gameObject.transform.position = currentWayPoint.transform.position;
-                //    time = 0;
-                //}
-                //break;
+                time += Time.deltaTime;
+                //Teleport
+                if (time >= 3f)
+                {
+                    gameObject.transform.position = NMA.destination;
+                    time = 0;
+                }
+                break;
             case 4:
                 //Ghost duplicates it self
                 if (this.name != "BestGhost(Clone)")
