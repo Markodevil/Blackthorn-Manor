@@ -18,8 +18,9 @@ public class GameManager : MonoBehaviour
     public MonoBehaviour[] scriptsToTurnOff;
 
     [Header("Req. Items")]
-    public GameObject[] RequiredItems;
-    public Transform[] RequiredItemSpawns;
+    public GameObject[] requiredItems;
+    public Transform[] requiredItemSpawns;
+    public Transform ritualItemsParent;
 
     [Header("UI Tings")]
     public GameObject gameOverText;
@@ -216,13 +217,13 @@ public class GameManager : MonoBehaviour
         //initialize temp int for random position index
         int randPlace = int.MaxValue;
         //for each item required in the game
-        for (int i = 0; i < RequiredItems.Length; i++)
+        for (int i = 0; i < requiredItems.Length; i++)
         {
             //start do while 
             do
             {
                 //set rand place to a random int between 0 and length of item spawns array
-                randPlace = Random.Range(0, RequiredItemSpawns.Length);
+                randPlace = Random.Range(0, requiredItemSpawns.Length);
 
                 //keep doing this if randplace is withing chosenspots
             } while (chosenSpots.Contains(randPlace));
@@ -230,7 +231,7 @@ public class GameManager : MonoBehaviour
             //add randplace to chosenspots list
             chosenSpots.Add(randPlace);
             //instantiate required item at random position
-            Instantiate(RequiredItems[i], RequiredItemSpawns[randPlace].transform.position, Quaternion.identity);
+            Instantiate(requiredItems[i], requiredItemSpawns[randPlace].transform.position, Quaternion.identity);
         }
     }
 
