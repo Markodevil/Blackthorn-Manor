@@ -97,7 +97,14 @@ public class HingeDoorScript : MonoBehaviour {
         Debug.Log("DoorSoundPLays");
         audio.PlayOneShot(doorCreakSound, 1);
     }
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ghost")
+        {
+            Debug.Log("EnemyCollided with me ");
+            closeDoor = true;
+        }
+    }
 }
 
 

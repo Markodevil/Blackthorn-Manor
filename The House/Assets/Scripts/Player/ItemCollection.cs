@@ -16,7 +16,6 @@ public class ItemCollection : MonoBehaviour
     [Tooltip("Interact Range in metres")]
     public float interactRange;
 
-
     public List<GameObject> inventory;
     public List<string> pickedUpItems;
 
@@ -68,11 +67,13 @@ public class ItemCollection : MonoBehaviour
                     //add item's name to list of picked up items
                     pickedUpItems.Add(hitObject.name);
                     //set object to inactive
-                    hitObject.SetActive(false);
                     // Turns off the object outline 
                     toggleOutline = false;
                     //add to number of items
                     currentNumberOfItems++;
+                   // hitObject.GetComponent<AudioSource>().Play();
+
+                    hitObject.SetActive(false);
                 }
 
                 //if the object hit is the ritual

@@ -9,6 +9,8 @@ public class DrawerScript : MonoBehaviour {
     public float drawerSpeed; 
     private GameObject Player;
     public Rigidbody rb;
+    public AudioSource audio;
+    public AudioClip drawerSound;
     FPSCamera fpsCamera;
 
     private void Awake()
@@ -59,5 +61,6 @@ public class DrawerScript : MonoBehaviour {
     public void changeDrawerState()
     {
         isOpen = !isOpen;
+        audio.PlayOneShot(drawerSound, 1);
     }
 }
