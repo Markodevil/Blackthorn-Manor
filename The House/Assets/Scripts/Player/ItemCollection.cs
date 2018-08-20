@@ -8,7 +8,7 @@ public class ItemCollection : MonoBehaviour
 
 
     public int goalNumberOfItems;
-    [HideInInspector]
+    //[HideInInspector]
     public int currentNumberOfItems;
     public bool toggleOutline; 
     [SerializeField]
