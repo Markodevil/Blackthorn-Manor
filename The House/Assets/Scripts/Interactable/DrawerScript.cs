@@ -12,7 +12,7 @@ public class DrawerScript : MonoBehaviour {
     public AudioSource audio;
     public AudioClip drawerSound;
     FPSCamera fpsCamera;
-
+    bool drawerSoundBool; 
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -45,8 +45,13 @@ public class DrawerScript : MonoBehaviour {
         {
             isOpen = false;
         }
-        // Doors position 
-  
+        // Plays a sound on Drawers Direction
+        if (drawerSoundBool && mouseY > 0 || drawerSoundBool && mouseY < 0)
+        {
+            audio.PlayOneShot(drawerSound, 1);
+            drawerSoundBool = false;
+        }
+      
         // Checks if can be opened and if player is positioned infront of the Dresser 
         if (isOpen && Vector3.Dot(transform.forward, Direction) > 0)
         {
@@ -61,6 +66,11 @@ public class DrawerScript : MonoBehaviour {
     public void changeDrawerState()
     {
         isOpen = !isOpen;
-        audio.PlayOneShot(drawerSound, 1);
+        playDrawerSound();
+    }
+
+    void playDrawerSound()
+    {
+        drawerSoundBool = true;
     }
 }

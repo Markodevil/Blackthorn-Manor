@@ -17,7 +17,7 @@ public class HingeDoorScript : MonoBehaviour {
     // Sets the value for closeTimer
     public float doorCloseTime; 
     // Timer until door closes 
-    private float closeTimer;
+    public float closeTimer;
     //closes the door when closeTimer is 0 
     bool closeDoor = false;
     bool doorSoundEnabled;
@@ -72,7 +72,14 @@ public class HingeDoorScript : MonoBehaviour {
             Debug.Log("Played Closing Sound");
 
         }
+        
+        if (doorSoundEnabled && mouseY > 0)
+        {
+            audio.PlayOneShot(doorCreakSound, 1);
+            doorSoundEnabled = false;
+            Debug.Log("DoorSoundPLays");
 
+        }
         // Adds force to the players forward direction to the door which will open or close 
         // the door depending on which side the player is located 
         if (isOpen)
@@ -94,9 +101,10 @@ public class HingeDoorScript : MonoBehaviour {
     }
     void playDoorSound()
     {
-        Debug.Log("DoorSoundPLays");
-        audio.PlayOneShot(doorCreakSound, 1);
+        doorSoundEnabled = true;
+        //   audio.PlayOneShot(doorCreakSound, 1);
     }
+    // When the ghosts interacts with the door it makes a noise 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Ghost")
@@ -106,5 +114,3 @@ public class HingeDoorScript : MonoBehaviour {
         }
     }
 }
-
-
