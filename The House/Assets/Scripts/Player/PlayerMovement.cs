@@ -161,8 +161,8 @@ public class PlayerMovement : MonoBehaviour
         Horizontal = Input.GetAxis("Horizontal");
         Vertical = Input.GetAxis("Vertical");
 
-        Vector3 MoveDirectionSide = transform.right * Horizontal * speed * Time.deltaTime;
-        Vector3 MoveDirectionForward = transform.forward * Vertical * speed * Time.deltaTime;
+        Vector3 MoveDirectionSide = transform.right * Horizontal * speed;
+        Vector3 MoveDirectionForward = transform.forward * Vertical * speed;
 
         if (!isCreepin)
         {
