@@ -11,6 +11,7 @@ public class OpenDoorScript : MonoBehaviour {
     private GameObject Door;
     public MonoBehaviour camScript;
     bool isHoldingDown = false; 
+
 	// Use this for initialization
 	void Start () {
         fpsCamera = GetComponent<FPSCamera>();

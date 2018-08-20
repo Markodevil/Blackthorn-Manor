@@ -1456,21 +1456,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 59822321204798686, guid: f1ea912aee90a1a4ea427f3a3678b225,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.x
-      value: -42.877743
-      objectReference: {fileID: 0}
-    - target: {fileID: 59822321204798686, guid: f1ea912aee90a1a4ea427f3a3678b225,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.y
-      value: 13.327999
-      objectReference: {fileID: 0}
-    - target: {fileID: 59822321204798686, guid: f1ea912aee90a1a4ea427f3a3678b225,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.z
-      value: -7.6845794
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f1ea912aee90a1a4ea427f3a3678b225, type: 2}
   m_IsPrefabParent: 0
@@ -4145,6 +4130,21 @@ Prefab:
     - target: {fileID: 1579587734974902, guid: f1ea912aee90a1a4ea427f3a3678b225, type: 2}
       propertyPath: m_Name
       value: NormalDoor (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 59822321204798686, guid: f1ea912aee90a1a4ea427f3a3678b225,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -45.34536
+      objectReference: {fileID: 0}
+    - target: {fileID: 59822321204798686, guid: f1ea912aee90a1a4ea427f3a3678b225,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: 13.391999
+      objectReference: {fileID: 0}
+    - target: {fileID: 59822321204798686, guid: f1ea912aee90a1a4ea427f3a3678b225,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: -6.601141
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f1ea912aee90a1a4ea427f3a3678b225, type: 2}
@@ -11317,7 +11317,6 @@ MonoBehaviour:
   - {fileID: 202324086}
   - {fileID: 1811978079}
   playerSoundLvl: 0
-  ghostSoundResponceLvl: 0
   GhostTransform: {fileID: 0}
   playerHasBeenHeard: 0
   headbobAnim: {fileID: 816257576}
@@ -14550,6 +14549,8 @@ MonoBehaviour:
   mouseY: 0
   doorOpenSpeed: 12
   rb: {fileID: 1202109638}
+  audio: {fileID: 0}
+  doorCreakSound: {fileID: 0}
   doorCloseTime: 10
 --- !u!59 &1202109637
 HingeJoint:
