@@ -420,6 +420,49 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 401376939}
+--- !u!1 &427973218
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 427973220}
+  - component: {fileID: 427973219}
+  m_Layer: 0
+  m_Name: GameOverManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &427973219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 427973218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a94d4bc479d966546a8031c15741f590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TryAgain: {fileID: 1194586097}
+  m_Menu: {fileID: 1183465150}
+  m_Quit: {fileID: 1846788393}
+--- !u!4 &427973220
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 427973218}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 882.8309, y: 443.3611, z: -219.74072}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &641408322
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,7 +679,7 @@ GameObject:
   - component: {fileID: 1183465151}
   - component: {fileID: 1183465150}
   m_Layer: 5
-  m_Name: Quit (1)
+  m_Name: Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -654,7 +697,7 @@ RectTransform:
   m_Children:
   - {fileID: 247858702}
   m_Father: {fileID: 2073159674}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1144,7 +1187,7 @@ GameObject:
   - component: {fileID: 1846788394}
   - component: {fileID: 1846788393}
   m_Layer: 5
-  m_Name: Quit
+  m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1162,7 +1205,7 @@ RectTransform:
   m_Children:
   - {fileID: 641408323}
   m_Father: {fileID: 2073159674}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1342,8 +1385,8 @@ RectTransform:
   - {fileID: 1117030552}
   - {fileID: 401376940}
   - {fileID: 1194586096}
-  - {fileID: 1846788392}
   - {fileID: 1183465149}
+  - {fileID: 1846788392}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

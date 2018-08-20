@@ -115,9 +115,7 @@ public class GhostAI : MonoBehaviour
                 break;
             case 3:
                 //Ghost starts teleporting to its waypoints
-                //TO DO FOR DEEEEEEEON get reference to the currentWayPoint
                 time += Time.deltaTime;
-                //Teleport
                 if (time >= 3f)
                 {
                     gameObject.transform.position = NMA.destination;
@@ -176,6 +174,7 @@ public class GhostAI : MonoBehaviour
     {
         if (collision.gameObject.layer == 8)
         {
+            PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
             SceneManager.LoadScene("GameOver");
             Debug.Log("Touched le ghost");
         }
