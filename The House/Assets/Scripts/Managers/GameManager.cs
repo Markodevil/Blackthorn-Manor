@@ -84,6 +84,7 @@ public class GameManager : MonoBehaviour
                 //set timescale to 1
                 Time.timeScale = 1;
                 Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
                 CheckSecretCode();
                 menuUI.SetActive(false);
                 ingameUI.SetActive(true);
@@ -113,6 +114,7 @@ public class GameManager : MonoBehaviour
                 //set timescale to 0
                 Time.timeScale = 0;
                 Cursor.lockState = CursorLockMode.Confined;
+                Cursor.visible = true;
                 foreach (MonoBehaviour mon in scriptsToTurnOff)
                 {
                     mon.enabled = false;

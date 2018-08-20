@@ -14,7 +14,6 @@ public class MenuManager : MonoBehaviour
 
     [Header("Options Menu Items")]
     public GameObject optionsMenuItems;
-    public Dropdown resolutionDropdown;
 
     [Header("Audio Related")]
     public bool globalMute = true;
@@ -25,11 +24,23 @@ public class MenuManager : MonoBehaviour
 
     private AsyncOperation AsyncOp;
 
+    public AudioSource audSource;
+    public AudioClip scream;
 
-    //private void OnLevelWasLoaded(int level)
-    //{
-    //    fade.SetTrigger("FadeIn");
-    //}
+    [Header("menu options")]
+    public bool fullscreen;
+    public int textureQuality;
+    public int aa;
+    public int vSync;
+    public string resolution;
+    public Dropdown textureQualityDD;
+    public Dropdown aaDD;
+    public Dropdown vSyncDD;
+    public Dropdown resolutionDD;
+
+    private float brightness;
+    public Slider brightnessSlider;
+    
 
     private void OnEnable()
     {
@@ -50,6 +61,24 @@ public class MenuManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        textureQuality = QualitySettings.GetQualityLevel();
+        aa = QualitySettings.antiAliasing;
+        vSync = QualitySettings.vSyncCount;
+        resolution = Screen.currentResolution.ToString();
+
+        textureQualityDD.value = textureQuality;
+        aaDD.value = aa;
+        vSyncDD.value = vSync;
+        switch(resolution)
+        {
+            case "1920 x 1080 @ 60Hz":
+                resolutionDD.value = 0;
+                break;
+            case "1280 x 720 @ 60Hz":
+                resolutionDD.value = 1;
+                break;
+        }
+
         //dont destroy this thing
         DontDestroyOnLoad(gameObject);
     }
@@ -59,14 +88,17 @@ public class MenuManager : MonoBehaviour
     {
         //control global volume
         SetGlobalVolume();
+        SetBrightness();
+        Debug.Log("Brightness: " + brightness);
+        Debug.Log("Actual brightness: " + RenderSettings.ambientIntensity);
+        //if (AsyncOp != null)
+        //{
+        //    if (fade.GetCurrentAnimatorStateInfo(0).IsName("New State"))
+        //    {
+        //        AsyncOp.allowSceneActivation = true;
+        //    }
+        //}
 
-        if (AsyncOp != null)
-        {
-            if (fade.GetCurrentAnimatorStateInfo(0).IsName("New State"))
-            {
-                AsyncOp.allowSceneActivation = true;
-            }
-        }
 
     }
 
@@ -76,6 +108,16 @@ public class MenuManager : MonoBehaviour
         if (!AudioListener.pause)
             //update volume
             AudioListener.volume = volumeSlider.value;
+    }
+
+    public void SetBrightness()
+    {
+        brightness = brightnessSlider.value;
+    }
+
+    public void SetGamma()
+    {
+
     }
 
     //function for a button to toggle a global mute
@@ -107,7 +149,9 @@ public class MenuManager : MonoBehaviour
 
     public void ToGame()
     {
+        fade.ResetTrigger("FadeIn");
         fade.SetTrigger("FadeOut");
+        
     }
 
     public void ToggleFullscreen()
@@ -117,7 +161,7 @@ public class MenuManager : MonoBehaviour
 
     public void SetResolution()
     {
-        switch (resolutionDropdown.value)
+        switch (resolutionDD.value)
         {
             case 0:
                 Screen.SetResolution(1920, 1080, Screen.fullScreen);
@@ -127,6 +171,66 @@ public class MenuManager : MonoBehaviour
                 break;
         }
 
+    }
+
+    public void SetVSync()
+    {
+        switch (vSyncDD.value)
+        {
+            case 0:
+                QualitySettings.vSyncCount = 0;
+                break;
+            case 1:
+                QualitySettings.vSyncCount = 1;
+                break;
+            case 2:
+                QualitySettings.vSyncCount = 2;
+                break;
+        }
+    }
+
+    public void SetAntialiasing()
+    {
+        switch (aaDD.value)
+        {
+            case 0:
+                QualitySettings.antiAliasing = 0;
+                break;
+            case 1:
+                QualitySettings.antiAliasing = 1;
+                break;
+            case 2:
+                QualitySettings.antiAliasing = 2;
+                break;
+            case 3:
+                QualitySettings.antiAliasing = 3;
+                break;
+        }
+    }
+
+    public void SetTextureQuality()
+    {
+        switch (textureQualityDD.value)
+        {
+            case 0:
+                QualitySettings.SetQualityLevel(0);
+                break;
+            case 1:
+                QualitySettings.SetQualityLevel(1);
+                break;
+            case 2:
+                QualitySettings.SetQualityLevel(2);
+                break;
+            case 3:
+                QualitySettings.SetQualityLevel(3);
+                break;
+            case 4:
+                QualitySettings.SetQualityLevel(4);
+                break;
+            case 5:
+                QualitySettings.SetQualityLevel(5);
+                break;
+        }
     }
 
     public void Exit()
@@ -145,6 +249,11 @@ public class MenuManager : MonoBehaviour
         //Debug.Log(scene.name);
         //Debug.Log(mode);
         fade.SetTrigger("FadeIn");
+        RenderSettings.ambientLight = new Color(brightness, brightness, brightness, 1);
     }
 
+    public void PlaySoundOnClick()
+    {
+        audSource.PlayOneShot(scream);
+    }
 }

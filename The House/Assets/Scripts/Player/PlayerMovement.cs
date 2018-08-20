@@ -73,72 +73,6 @@ public class PlayerMovement : MonoBehaviour
         //set headbob anim bool
         headbobAnim.SetBool("isRunning", isRunning);
 
-        ////if you're moving forward and NOT strafing and you press left shift
-        //if (Vertical > 0 && Horizontal == 0 && Input.GetKeyDown(KeyCode.LeftShift))
-        //    //you are now running
-        //    isRunning = true;
-        //
-        ////if you are already holding left shift
-        //if (Input.GetKeyDown(KeyCode.LeftShift))
-        //{
-        //    //if you start to move forward but not strafe
-        //    if (Vertical > 0 && Horizontal == 0)
-        //    {
-        //        //you are now running
-        //        isRunning = true;
-        //        playerSoundLvl *= 2;
-        //        currentMovementState = howAmIMoving.running;
-        //    }
-        //}
-        //
-        //
-        ////if you are running
-        //if (isRunning)
-        //{
-        //    Camera.main.transform.localPosition = new Vector3(0, initialCameraHeight, 0.25f);
-        //    //speed is equal to twice the initial speed
-        //    speed = initialSpeed * 2;
-        //
-        //    //if you begin to move backwards
-        //    if (Vertical <= 0)
-        //    {
-        //        //you are no longer running
-        //        isRunning = false;
-        //    }
-        //
-        //    //if you let go of shift
-        //    if (Input.GetKeyUp(KeyCode.LeftShift))
-        //    {
-        //        //no longer running
-        //        isRunning = false;
-        //        playerSoundLvl /= 2;
-        //    }
-        //    if (Input.GetKeyDown(KeyCode.LeftControl))
-        //    {
-        //        isRunning = false;
-        //        playerSoundLvl /= 2;
-        //        isCreepin = true;
-        //    }
-        //}
-        //else if (isCreepin)
-        //{
-        //    speed = initialSpeed / 2;
-        //
-        //    Camera.main.transform.localPosition = new Vector3(0, crouchCameraHeight, 0.25f);
-        //
-        //    if (Input.GetKeyUp(KeyCode.LeftControl))
-        //    {
-        //        isCreepin = false;
-        //    }
-        //}
-        ////if you aren't running
-        //else
-        //{
-        //    Camera.main.transform.localPosition = new Vector3(0, initialCameraHeight, 0.25f);
-        //    //speed is equal to initial speed
-        //    speed = initialSpeed;
-        //}
-
         
         switch (currentMovementState)
         {
@@ -214,6 +148,11 @@ public class PlayerMovement : MonoBehaviour
         }
         
         //move
+        //Movement();
+    }
+
+    private void FixedUpdate()
+    {
         Movement();
     }
 
@@ -222,8 +161,8 @@ public class PlayerMovement : MonoBehaviour
         Horizontal = Input.GetAxis("Horizontal");
         Vertical = Input.GetAxis("Vertical");
 
-        Vector3 MoveDirectionSide = transform.right * Horizontal * speed;
-        Vector3 MoveDirectionForward = transform.forward * Vertical * speed;
+        Vector3 MoveDirectionSide = transform.right * Horizontal * speed * Time.deltaTime;
+        Vector3 MoveDirectionForward = transform.forward * Vertical * speed * Time.deltaTime;
 
         if (!isCreepin)
         {
