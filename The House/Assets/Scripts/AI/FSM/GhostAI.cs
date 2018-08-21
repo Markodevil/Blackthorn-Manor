@@ -124,7 +124,6 @@ public class GhostAI : MonoBehaviour
         Direction.Normalize();
 
         dist = Vector3.Distance(playerPosition, currentPosition);
-        Debug.Log(dist);
         if (hasHeardSomething)
         {
             FSM.ChangeState(SeekState.GetInstance);
