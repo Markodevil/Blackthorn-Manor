@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
     public bool useGhost;
     public GameObject Ghost;
 
+    [HideInInspector]
+    public GameObject controlFade;
+
     public enum GameStates
     {
         Playing,
@@ -52,6 +55,7 @@ public class GameManager : MonoBehaviour
     {
         currentState = GameStates.Playing;
         SpawnItems();
+        controlFade = GameObject.FindGameObjectWithTag("Singleton");
         //postProcessing.enabled = false;
     }
 

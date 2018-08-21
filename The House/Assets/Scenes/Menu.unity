@@ -242,6 +242,10 @@ Prefab:
       propertyPath: brightnessSlider
       value: 
       objectReference: {fileID: 814223579}
+    - target: {fileID: 1561568516479434, guid: 763afb75270cdb8458a38e3dab15ff4b, type: 2}
+      propertyPath: m_TagString
+      value: Singleton
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 763afb75270cdb8458a38e3dab15ff4b, type: 2}
   m_IsPrefabParent: 0

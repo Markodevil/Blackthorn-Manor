@@ -20,7 +20,8 @@ public class MenuManager : MonoBehaviour
     public Slider volumeSlider;
 
     [Header("Fade in/out")]
-    private Animator fade;
+    [HideInInspector]
+    public Animator fade;
 
     private AsyncOperation AsyncOp;
 
@@ -40,7 +41,7 @@ public class MenuManager : MonoBehaviour
 
     private float brightness;
     public Slider brightnessSlider;
-    
+
 
     private void OnEnable()
     {
@@ -69,7 +70,7 @@ public class MenuManager : MonoBehaviour
         textureQualityDD.value = textureQuality;
         aaDD.value = aa;
         vSyncDD.value = vSync;
-        switch(resolution)
+        switch (resolution)
         {
             case "1920 x 1080 @ 60Hz":
                 resolutionDD.value = 0;
@@ -106,13 +107,17 @@ public class MenuManager : MonoBehaviour
     {
         //if global mute is not active
         if (!AudioListener.pause)
-            //update volume
-            AudioListener.volume = volumeSlider.value;
+        {
+            if (volumeSlider)
+                //update volume
+                AudioListener.volume = volumeSlider.value;
+        }
     }
 
     public void SetBrightness()
     {
-        brightness = brightnessSlider.value;
+        if (brightnessSlider)
+            brightness = brightnessSlider.value;
     }
 
     public void SetGamma()
@@ -151,7 +156,7 @@ public class MenuManager : MonoBehaviour
     {
         fade.ResetTrigger("FadeIn");
         fade.SetTrigger("FadeOut");
-        
+
     }
 
     public void ToggleFullscreen()
@@ -248,6 +253,7 @@ public class MenuManager : MonoBehaviour
         //Debug.Log("Level Loaded");
         //Debug.Log(scene.name);
         //Debug.Log(mode);
+        fade.ResetTrigger("FadeOut");
         fade.SetTrigger("FadeIn");
         RenderSettings.ambientLight = new Color(brightness, brightness, brightness, 1);
     }

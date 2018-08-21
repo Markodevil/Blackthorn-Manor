@@ -61,9 +61,16 @@ public class GhostAI : MonoBehaviour
     private float soundResponceMultiplyer = 2;
     private PlayerMovement playerMovementCS;
 
+    private string ghostName;
+    private GameObject singleton;
+    private MenuManager mm;
+
     // Use this for initialization
     void Start()
     {
+        singleton = GameObject.FindGameObjectWithTag("Singleton");
+        if (singleton)
+            mm = GameObject.FindGameObjectWithTag("Singleton").GetComponent<MenuManager>();
         FSM = new FiniteStateMachine<GhostAI>(this);
         player = GameObject.FindGameObjectWithTag("Player");
 
@@ -77,6 +84,8 @@ public class GhostAI : MonoBehaviour
         hearingTrigger = this.GetComponent<SphereCollider>();
 
         hearingTrigger.radius = hearingRange;
+
+        ghostName = GameObject.FindGameObjectWithTag("Ghost").name;
 
         //start in wander state
         FSM.ChangeState(PatrolState.GetInstance);
@@ -152,7 +161,7 @@ public class GhostAI : MonoBehaviour
                 break;
             case 4:
                 //Ghost duplicates it self
-                if (this.name != "GhostWithMesh(Clone)")
+                if (this.name != ghostName + "(Clone)")
                 {
                     if (stage4 == false)
                         Instantiate(Clone, new Vector3(-6.7f, 0, -12.18f), transform.rotation);
@@ -206,7 +215,18 @@ public class GhostAI : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
             PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
-            SceneManager.LoadScene("GameOver");
+            if (mm)
+            {
+                mm.sceneName = "GameOver";
+                mm.fade.ResetTrigger("FadeIn");
+                mm.fade.SetTrigger("FadeOut");
+
+            }
+            else
+            {
+                SceneManager.LoadScene("GameOver");
+
+            }
             Debug.Log("Touched le ghost");
         }
     }
