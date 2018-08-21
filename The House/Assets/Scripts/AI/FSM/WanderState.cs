@@ -21,11 +21,11 @@ public class WanderState : State<GhostAI>
 
     private WanderState()
     {
-        if (instance != null)
-        {
-            return;
-
-        }
+        //if (instance != null)
+        //{
+        //    return;
+        //
+        //}
 
         instance = this;
         stateName = "Wander";
@@ -35,10 +35,10 @@ public class WanderState : State<GhostAI>
     {
         get
         {
-            if (instance == null)
-            {
+            //if (instance == null)
+            //{
                 new WanderState();
-            }
+            //}
 
             return instance;
         }

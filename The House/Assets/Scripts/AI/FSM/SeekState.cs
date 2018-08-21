@@ -8,11 +8,11 @@ public class SeekState : State<GhostAI> {
 
     private SeekState()
     {
-        if (instance != null)
-        {
-            return;
-
-        }
+        //if (instance != null)
+        //{
+        //    return;
+        //
+        //}
 
         instance = this;
         stateName = "Seek";
@@ -22,10 +22,10 @@ public class SeekState : State<GhostAI> {
     {
         get
         {
-            if (instance == null)
-            {
+            //if (instance == null)
+            //{
                 new SeekState();
-            }
+            //}
 
             return instance;
         }

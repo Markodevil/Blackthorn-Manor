@@ -26,11 +26,11 @@ public class PatrolState : State<GhostAI>
 
     private PatrolState()
     {
-        if (instance != null)
-        {
-            return;
-
-        }
+        //if (instance != null)
+        //{
+        //    return;
+        //
+        //}
 
         instance = this;
         stateName = "Patrol";
@@ -40,10 +40,10 @@ public class PatrolState : State<GhostAI>
     {
         get
         {
-            if (instance == null)
-            {
+            //if (instance == null)
+            //{
                 new PatrolState();
-            }
+            //}
 
             return instance;
         }

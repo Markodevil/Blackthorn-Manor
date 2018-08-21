@@ -24,7 +24,7 @@ public class GhostAI : MonoBehaviour
     public NavMeshAgent NMA;
 
     /*   Public Variables   */
-    public float patrolSpeed;
+    public float patrolSpeed = 1.5f;
     public Animator heardSomethingAnim;
 
 
@@ -152,10 +152,10 @@ public class GhostAI : MonoBehaviour
                 break;
             case 4:
                 //Ghost duplicates it self
-                if (this.name != "BestGhost(Clone)")
+                if (this.name != "GhostWithMesh(Clone)")
                 {
                     if (stage4 == false)
-                        Instantiate(Clone, transform.position, transform.rotation);
+                        Instantiate(Clone, new Vector3(-6.7f, 0, -12.18f), transform.rotation);
                     stage4 = true;
                 }
                 else
