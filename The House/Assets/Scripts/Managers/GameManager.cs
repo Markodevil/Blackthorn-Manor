@@ -5,6 +5,12 @@ using UnityEngine.PostProcessing;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+[System.Serializable]
+public class TransformArray
+{
+    public Transform[] transforms;
+}
+
 public class GameManager : MonoBehaviour
 {
     [Header("secret stuff")]
@@ -19,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Req. Items")]
     public GameObject[] requiredItems;
-    public Transform[] requiredItemSpawns;
+    public TransformArray[] itemSpawns;
     public Transform ritualItemsParent;
 
     [Header("UI Tings")]
@@ -33,8 +39,6 @@ public class GameManager : MonoBehaviour
     public bool useGhost;
     public GameObject Ghost;
 
-    [HideInInspector]
-    public GameObject controlFade;
 
     public enum GameStates
     {
@@ -55,7 +59,6 @@ public class GameManager : MonoBehaviour
     {
         currentState = GameStates.Playing;
         SpawnItems();
-        controlFade = GameObject.FindGameObjectWithTag("Singleton");
         //postProcessing.enabled = false;
     }
 
@@ -65,7 +68,7 @@ public class GameManager : MonoBehaviour
         /////////////////////
         // Game Logic Here //
         /////////////////////
-        if(!useGhost)
+        if (!useGhost)
         {
             Ghost.SetActive(false);
             foreach (MonoBehaviour mb in Ghost.GetComponents<MonoBehaviour>())
@@ -96,12 +99,14 @@ public class GameManager : MonoBehaviour
                 //if you've brought all items to the spot
                 //or you have been killed by the ghost
                 //set currentState to game over
-                if (clickyWinThing.GetComponent<Horcruxes>().completed || KilledByGhost())
+                if (clickyWinThing.GetComponent<Horcruxes>().completed/* || KilledByGhost()*/)
                 {
-                    currentState = GameStates.GameOver;
+                    menuManager.sceneName = "WinnerWinnerChickenDinner";
+                    menuManager.fade.ResetTrigger("FadeIn");
+                    menuManager.fade.SetTrigger("FadeOut");
                 }
 
-                if(Input.GetKeyDown(KeyCode.Escape))
+                if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     currentState = GameStates.Pause;
                 }
@@ -219,18 +224,116 @@ public class GameManager : MonoBehaviour
     //--------------------------------------------------------------------------------------
     private void SpawnItems()
     {
-        //initialize temp list of spawn points that have been chosen
-        List<int> chosenSpots = new List<int>();
-        //initialize temp int for random position index
-        int randPlace = int.MaxValue;
-        //for each item required in the game
+        ////initialize temp list of spawn points that have been chosen
+        //List<int> chosenSpots = new List<int>();
+        ////initialize temp int for random position index
+        //int randPlace = int.MaxValue;
+        ////for each item required in the game
+        //for (int i = 0; i < requiredItems.Length; i++)
+        //{
+        //    //start do while 
+        //    do
+        //    {
+        //        //set rand place to a random int between 0 and length of item spawns array
+        //        randPlace = Random.Range(0, requiredItemSpawns.Length);
+        //
+        //        //keep doing this if randplace is withing chosenspots
+        //    } while (chosenSpots.Contains(randPlace));
+        //
+        //    //add randplace to chosenspots list
+        //    chosenSpots.Add(randPlace);
+        //    //instantiate required item at random position
+        //    Instantiate(requiredItems[i], requiredItemSpawns[randPlace].transform.position, Quaternion.identity);
+        //}
+
+        //for(int i = 0; i < requiredItems.Length; i++)
+        //{
+        //    List<int> chosenSpots = new List<int>();
+        //    //initialize temp int for random position index
+        //    int randPlace = int.MaxValue;
+        //
+        //    switch (requiredItems[i].name)
+        //    {
+        //        case "Mug":
+        //
+        //            do
+        //            {
+        //                //set rand place to a random int between 0 and length of item spawns array
+        //                randPlace = Random.Range(0, item1Spawns.Length);
+        //
+        //                //keep doing this if randplace is withing chosenspots
+        //            } while (chosenSpots.Contains(randPlace));
+        //
+        //            //add randplace to chosenspots list
+        //            chosenSpots.Add(randPlace);
+        //            //instantiate required item at random position
+        //            Instantiate(requiredItems[i], item1Spawns[randPlace].transform.position, Quaternion.identity);
+        //
+        //            break;
+        //        case "Plate":
+        //
+        //            do
+        //            {
+        //                //set rand place to a random int between 0 and length of item spawns array
+        //                randPlace = Random.Range(0, item2Spawns.Length);
+        //
+        //                //keep doing this if randplace is withing chosenspots
+        //            } while (chosenSpots.Contains(randPlace));
+        //
+        //            //add randplace to chosenspots list
+        //            chosenSpots.Add(randPlace);
+        //            //instantiate required item at random position
+        //            Instantiate(requiredItems[i], item2Spawns[randPlace].transform.position, Quaternion.identity);
+        //
+        //            break;
+        //        case "Pot":
+        //
+        //            do
+        //            {
+        //                //set rand place to a random int between 0 and length of item spawns array
+        //                randPlace = Random.Range(0, item3Spawns.Length);
+        //
+        //                //keep doing this if randplace is withing chosenspots
+        //            } while (chosenSpots.Contains(randPlace));
+        //
+        //            //add randplace to chosenspots list
+        //            chosenSpots.Add(randPlace);
+        //            //instantiate required item at random position
+        //            Instantiate(requiredItems[i], item3Spawns[randPlace].transform.position, Quaternion.identity);
+        //
+        //            break;
+        //        case "Short Cup":
+        //
+        //            do
+        //            {
+        //                //set rand place to a random int between 0 and length of item spawns array
+        //                randPlace = Random.Range(0, item4Spawns.Length);
+        //
+        //                //keep doing this if randplace is withing chosenspots
+        //            } while (chosenSpots.Contains(randPlace));
+        //
+        //            //add randplace to chosenspots list
+        //            chosenSpots.Add(randPlace);
+        //            //instantiate required item at random position
+        //            Instantiate(requiredItems[i], item4Spawns[randPlace].transform.position, Quaternion.identity);
+        //
+        //            break;
+        //    }
+        //}
+
+        //foreach required item
         for (int i = 0; i < requiredItems.Length; i++)
         {
-            //start do while 
+            //create empty list of ints
+            List<int> chosenSpots = new List<int>();
+            //initialize temp int for random position index
+            int randPlace = int.MaxValue;
+            
+            //make sure to do this at least once
             do
             {
                 //set rand place to a random int between 0 and length of item spawns array
-                randPlace = Random.Range(0, requiredItemSpawns.Length);
+                randPlace = Random.Range(0, itemSpawns[i].transforms.Length);
 
                 //keep doing this if randplace is withing chosenspots
             } while (chosenSpots.Contains(randPlace));
@@ -238,11 +341,11 @@ public class GameManager : MonoBehaviour
             //add randplace to chosenspots list
             chosenSpots.Add(randPlace);
             //instantiate required item at random position
-            Instantiate(requiredItems[i], requiredItemSpawns[randPlace].transform.position, Quaternion.identity);
+            Instantiate(requiredItems[i], itemSpawns[i].transforms[randPlace].transform.position, Quaternion.identity);
         }
     }
 
-   public void ChangeGameState()
+    public void ChangeGameState()
     {
         currentState = GameStates.Playing;
     }

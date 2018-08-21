@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
 
                 Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, new Vector3(0, crouchCameraHeight, 0.25f), crouchSpeed);
 
-                if (Input.GetKeyUp(KeyCode.LeftControl))
+                if (Input.GetKeyUp(KeyCode.LeftControl) || Input.GetKeyUp(KeyCode.Space))
                 {
                     isCreepin = false;
                     currentMovementState = howAmIMoving.walking;
@@ -109,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
                     }
                 }
 
-                if (Input.GetKeyDown(KeyCode.LeftControl))
+                if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.Space))
                 {
                     isCreepin = true;
                     currentMovementState = howAmIMoving.creeping;
@@ -137,7 +137,7 @@ public class PlayerMovement : MonoBehaviour
                     playerSoundLvl /= 2;
                     currentMovementState = howAmIMoving.walking;
                 }
-                if (Input.GetKeyDown(KeyCode.LeftControl))
+                if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.Space))
                 {
                     isRunning = false;
                     playerSoundLvl /= 2;
