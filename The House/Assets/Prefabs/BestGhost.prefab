@@ -1933,7 +1933,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1555272311561846}
   m_LocalRotation: {x: -0, y: 0.9999948, z: -0, w: -0.0032324602}
-  m_LocalPosition: {x: -12.76, y: 0.42299998, z: 0.03}
+  m_LocalPosition: {x: -56.726513, y: 12.59, z: -17.81407}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4298750263542332}
@@ -2491,6 +2491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hearingRange: 10
   sight: {fileID: 0}
+  dist: 0
   NMA: {fileID: 0}
   patrolSpeed: 1.5
   heardSomethingAnim: {fileID: 95046254162455378}
@@ -2632,7 +2633,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1555272311561846}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.3
   m_Height: 2

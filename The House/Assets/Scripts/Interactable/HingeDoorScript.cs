@@ -105,12 +105,13 @@ public class HingeDoorScript : MonoBehaviour {
         //   audio.PlayOneShot(doorCreakSound, 1);
     }
     // When the ghosts interacts with the door it makes a noise 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Ghost")
-        {
-            Debug.Log("EnemyCollided with me ");
-            closeDoor = true;
-        }
-    }
+
+    //  private void OnCollisionEnter(Collision collision)
+ //  {
+ //      if (collision.gameObject.tag == "Ghost")
+ //      {
+ //          Debug.Log("EnemyCollided with me ");
+ //          closeDoor = true;
+ //      }
+ //  }
 }
