@@ -1933,7 +1933,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1555272311561846}
   m_LocalRotation: {x: -0, y: 0.9999948, z: -0, w: -0.0032324602}
-  m_LocalPosition: {x: -12.846656, y: 0.42299998, z: 1.002972}
+  m_LocalPosition: {x: -56.726513, y: 12.59, z: -17.81407}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4298750263542332}
@@ -2283,7 +2283,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!82 &82075483191037668
 AudioSource:
   m_ObjectHideFlags: 1
@@ -2498,7 +2498,9 @@ MonoBehaviour:
   wanderTick: 1
   currentWayPoint: {fileID: 0}
   destination: {x: 0, y: 0, z: 0}
-  player: {fileID: 0}
+  Clone: {fileID: 1555272311561846}
+  speedMultiplyer: 2
+  soundResponceMultiplyer: 2
 --- !u!114 &114101214357888952
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2630,7 +2632,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1555272311561846}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.24570337
   m_Height: 1.9076242
   m_Direction: 1

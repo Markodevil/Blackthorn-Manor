@@ -24,11 +24,18 @@ public class OutlineShaderScript : MonoBehaviour {
 
         // when the player is close and toggleoutline is false 
         // Disable the object outline
-        if (dist < 2 && isOutlined.toggleOutline == false)
-        {
-            gameObject.SetActive(false);
-        }
+         if (dist < 2 && isOutlined.toggleOutline == false)
+         {
+             gameObject.SetActive(false);
+         }
 
-	}
+       // if (dist <= 3)
+       // {
+       //     Debug.Log("Close to dresser");
+       //     gameObject.SetActive(false);
+       //
+       // }
+       // 
+    }
 
 }
