@@ -527,7 +527,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4133396066711436, guid: a51fd2e6b8a438140a22e485a23d726e, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 6.7
+      value: 6.8
       objectReference: {fileID: 0}
     - target: {fileID: 4133396066711436, guid: a51fd2e6b8a438140a22e485a23d726e, type: 2}
       propertyPath: m_LocalRotation.x
@@ -561,7 +561,7 @@ Prefab:
     - target: {fileID: 114468369444209466, guid: a51fd2e6b8a438140a22e485a23d726e,
         type: 2}
       propertyPath: initialSpeed
-      value: 5
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 114468369444209466, guid: a51fd2e6b8a438140a22e485a23d726e,
         type: 2}
@@ -2235,6 +2235,11 @@ Prefab:
       propertyPath: Clone
       value: 
       objectReference: {fileID: 594466635}
+    - target: {fileID: 114046490027439628, guid: d076763ea2e23b642a815afb9d75d52a,
+        type: 2}
+      propertyPath: soundResponceMultiplyer
+      value: 1.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d076763ea2e23b642a815afb9d75d52a, type: 2}
   m_IsPrefabParent: 0

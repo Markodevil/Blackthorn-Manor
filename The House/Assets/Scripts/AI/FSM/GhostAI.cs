@@ -193,6 +193,7 @@ public class GhostAI : MonoBehaviour
     //    //Ryan's totaly bestest game over trigger
     //    if (other.gameObject.layer == 8)
     //    {
+    //        PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
     //        SceneManager.LoadScene("GameOver");
     //        Debug.Log("Touched le ghost");
     //    }
