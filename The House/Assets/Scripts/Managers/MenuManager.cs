@@ -89,7 +89,7 @@ public class MenuManager : MonoBehaviour
     {
         //control global volume
         SetGlobalVolume();
-        SetBrightness();
+        //SetBrightness();
         Debug.Log("Brightness: " + brightness);
         Debug.Log("Actual brightness: " + RenderSettings.ambientIntensity);
         //if (AsyncOp != null)
@@ -118,11 +118,11 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    public void SetBrightness()
-    {
-        if (brightnessSlider)
-            brightness = brightnessSlider.value;
-    }
+    //public void SetBrightness()
+    //{
+    //    if (brightnessSlider)
+    //        brightness = brightnessSlider.value;
+    //}
 
     public void SetGamma()
     {
@@ -259,7 +259,7 @@ public class MenuManager : MonoBehaviour
         //Debug.Log(mode);
         fade.ResetTrigger("FadeOut");
         fade.SetTrigger("FadeIn");
-        RenderSettings.ambientLight = new Color(brightness, brightness, brightness, 1);
+        //RenderSettings.ambientLight = new Color(brightness, brightness, brightness, 1);
     }
 
     public void PlaySoundOnClick()

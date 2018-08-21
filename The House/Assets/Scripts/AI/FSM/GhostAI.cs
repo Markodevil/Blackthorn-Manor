@@ -61,6 +61,9 @@ public class GhostAI : MonoBehaviour
     private float soundResponceMultiplyer = 2;
     private PlayerMovement playerMovementCS;
 
+    [Header("Seek Variables")]
+    public float cantSeePlayerCountdown;
+
     private string ghostName;
     private GameObject singleton;
     private MenuManager mm;
@@ -124,9 +127,13 @@ public class GhostAI : MonoBehaviour
         Direction.Normalize();
 
         dist = Vector3.Distance(playerPosition, currentPosition);
-        if (hasHeardSomething)
+        if (FSM.currentState != SeekState.GetInstance)
         {
-            FSM.ChangeState(SeekState.GetInstance);
+            if (hasHeardSomething)
+            {
+                FSM.ChangeState(SeekState.GetInstance);
+            }
+
         }
         if (sight.visibleTargets.Count > 0)
         {
@@ -204,39 +211,39 @@ public class GhostAI : MonoBehaviour
         }
     }
 
-   private void OnTriggerEnter(Collider other)
-   {
-       //Ryan's totaly bestest game over trigger
-       if (other.gameObject.layer == 8 && dist < 4)
-       {
-           PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
-           SceneManager.LoadScene("GameOver");
-           Debug.Log("Touched le ghost");
-       }
-   }
+    private void OnTriggerEnter(Collider other)
+    {
+        //Ryan's totaly bestest game over trigger
+        if (other.gameObject.layer == 8 && dist < 4)
+        {
+            PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("GameOver");
+            Debug.Log("Touched le ghost");
+        }
+    }
 
-   // private void OnCollisionEnter(Collision collision)
-   // {
-   //     if (collision.gameObject.layer == 8)
-   //     {
-   //         Cursor.visible = true;
-   //         Cursor.lockState = CursorLockMode.Confined;
-   //         PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
-   //         if (mm)
-   //         {
-   //             mm.sceneName = "GameOver";
-   //             mm.fade.ResetTrigger("FadeIn");
-   //             mm.fade.SetTrigger("FadeOut");
-   //
-   //         }
-   //         else
-   //         {
-   //             SceneManager.LoadScene("GameOver");
-   //
-   //         }
-   //         Debug.Log("Touched le ghost");
-   //     }
-   // }
+    // private void OnCollisionEnter(Collision collision)
+    // {
+    //     if (collision.gameObject.layer == 8)
+    //     {
+    //         Cursor.visible = true;
+    //         Cursor.lockState = CursorLockMode.Confined;
+    //         PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
+    //         if (mm)
+    //         {
+    //             mm.sceneName = "GameOver";
+    //             mm.fade.ResetTrigger("FadeIn");
+    //             mm.fade.SetTrigger("FadeOut");
+    //
+    //         }
+    //         else
+    //         {
+    //             SceneManager.LoadScene("GameOver");
+    //
+    //         }
+    //         Debug.Log("Touched le ghost");
+    //     }
+    // }
 
     //This code was taken from a youtube tutorial from here https://www.youtube.com/watch?v=mBGUY7EUxXQ
     //It calculates the total distance to the player taking into account the amount of corners. 

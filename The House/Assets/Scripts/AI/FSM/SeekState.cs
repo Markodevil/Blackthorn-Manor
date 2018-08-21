@@ -6,6 +6,8 @@ public class SeekState : State<GhostAI>
 {
 
     private static SeekState instance;
+    private float cantSeePlayerCountdown;
+    private float timer;
 
     private SeekState()
     {
@@ -34,7 +36,8 @@ public class SeekState : State<GhostAI>
 
     public override void EnterState(GhostAI owner)
     {
-
+        cantSeePlayerCountdown = owner.cantSeePlayerCountdown;
+        timer = cantSeePlayerCountdown;
     }
 
     public override void ExitState(GhostAI owner)
@@ -74,7 +77,12 @@ public class SeekState : State<GhostAI>
         //if ghost loses sight of you, it goes back to wander
         if (owner.sight.visibleTargets.Count == 0)
         {
-            owner.FSM.ChangeState(WanderState.GetInstance);
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                owner.FSM.ChangeState(WanderState.GetInstance);
+                timer = cantSeePlayerCountdown;
+            }
         }
     }
 }
