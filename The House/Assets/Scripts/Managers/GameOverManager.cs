@@ -11,6 +11,7 @@ public class GameOverManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         m_TryAgain = m_TryAgain.GetComponent<Button>();
         m_Menu = m_Menu.GetComponent<Button>();
         m_Quit = m_Quit.GetComponent<Button>();
@@ -19,7 +20,12 @@ public class GameOverManager : MonoBehaviour {
         m_Menu.onClick.AddListener(Menu);
         m_Quit.onClick.AddListener(Exit);
     }
-	
+
+    private void Awake()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
+
     private void TryAgain()
     {
         string sceneName = PlayerPrefs.GetString("lastLoadedScene");
