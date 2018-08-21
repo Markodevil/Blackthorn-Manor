@@ -45,7 +45,7 @@ public class GhostAI : MonoBehaviour
 
     /*   Ghost Upgrade Variables   */
     [Header("ItemCollection related")]
-    public GameObject player;
+    private GameObject player;
     public GameObject Clone;
     private ItemCollection itemsCollectionCS;
     private float time = 0;
@@ -64,19 +64,46 @@ public class GhostAI : MonoBehaviour
     void Start()
     {
         FSM = new FiniteStateMachine<GhostAI>(this);
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        NMA = this.GetComponent<NavMeshAgent>();
+        sight = this.GetComponent<Sight>();
+        if (player != null)
+        {
+            itemsCollectionCS = player.GetComponent<ItemCollection>();
+            playerMovementCS = player.GetComponent<PlayerMovement>();
+        }
+        hearingTrigger = this.GetComponent<SphereCollider>();
+
+        hearingTrigger.radius = hearingRange;
 
         //start in wander state
         FSM.ChangeState(PatrolState.GetInstance);
-
-        NMA = GetComponent<NavMeshAgent>();
-        sight = GetComponent<Sight>();
-        itemsCollectionCS = player.GetComponent<ItemCollection>();
-        playerMovementCS = player.GetComponent<PlayerMovement>();
-        hearingTrigger = GetComponent<SphereCollider>();
-
-        hearingTrigger.radius = hearingRange;
     }
 
+    //For assigning var's on re-try
+    //private void OnLevelWasLoaded(int level)
+    //{
+    //    FSM = new FiniteStateMachine<GhostAI>(this);
+    //
+    //    //Grabing the players components
+    //    player = GameObject.FindGameObjectWithTag("Player");
+    //
+    //    if (player != null)
+    //    {
+    //        itemsCollectionCS = player.GetComponent<ItemCollection>();
+    //        playerMovementCS = player.GetComponent<PlayerMovement>();
+    //    }
+    //
+    //    //start in wander state
+    //    FSM.ChangeState(PatrolState.GetInstance);
+    //
+    //    NMA = this.GetComponent<NavMeshAgent>();
+    //    sight = this.GetComponent<Sight>();
+    //    hearingTrigger = this.GetComponent<SphereCollider>();
+    //
+    //    hearingTrigger.radius = hearingRange;
+    //}
     // Update is called once per frame
     void Update()
     {
