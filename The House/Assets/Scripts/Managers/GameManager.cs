@@ -328,7 +328,7 @@ public class GameManager : MonoBehaviour
             List<int> chosenSpots = new List<int>();
             //initialize temp int for random position index
             int randPlace = int.MaxValue;
-            
+
             //make sure to do this at least once
             do
             {
@@ -342,6 +342,20 @@ public class GameManager : MonoBehaviour
             chosenSpots.Add(randPlace);
             //instantiate required item at random position
             Instantiate(requiredItems[i], itemSpawns[i].transforms[randPlace].transform.position, Quaternion.identity);
+        }
+    }
+
+    public void ToMenu()
+    {
+        currentState = GameStates.Playing;
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+        if (menuManager)
+        {
+            menuManager.sceneName = "Menu";
+            menuManager.fade.ResetTrigger("FadeIn");
+            menuManager.fade.SetTrigger("FadeOut");
+
         }
     }
 

@@ -100,7 +100,11 @@ public class MenuManager : MonoBehaviour
         //    }
         //}
 
-
+        if(SceneManager.GetActiveScene().name == "Menu")
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
 
     public void SetGlobalVolume()

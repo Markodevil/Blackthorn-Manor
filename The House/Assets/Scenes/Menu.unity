@@ -422,6 +422,21 @@ Prefab:
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 921587925}
+    - target: {fileID: 114839570683861482, guid: feb67016b036b214f9dac1552eeb1552,
+        type: 2}
+      propertyPath: m_Text
+      value: BLACKTHORN MANOR
+      objectReference: {fileID: 0}
+    - target: {fileID: 224610113345412168, guid: feb67016b036b214f9dac1552eeb1552,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 532.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 224610113345412168, guid: feb67016b036b214f9dac1552eeb1552,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 102.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: feb67016b036b214f9dac1552eeb1552, type: 2}
   m_IsPrefabParent: 0
