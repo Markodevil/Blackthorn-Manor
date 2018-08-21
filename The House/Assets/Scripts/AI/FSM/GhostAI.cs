@@ -16,7 +16,8 @@ public class GhostAI : MonoBehaviour
     public bool hasHeardSomething { get; set; }
     public float hearingRange;
     private SphereCollider hearingTrigger;
-    private Sight sight;
+    [HideInInspector]
+    public Sight sight;
 
     /*   My Things   */
     [HideInInspector]
@@ -179,12 +180,12 @@ public class GhostAI : MonoBehaviour
 
     public void HearSomething(Vector3 position)
     {
-        //if (CalulatePathLength(position) <= hearingRange)
-        //{
+        if (CalulatePathLength(position) <= hearingRange)
+        {
             hasHeardSomething = true;
             destination = position;
             heardSomethingAnim.SetTrigger("hasHeardSomething");
-        //}
+        }
     }
 
     //private void OnTriggerEnter(Collider other)
@@ -201,6 +202,8 @@ public class GhostAI : MonoBehaviour
     {
         if (collision.gameObject.layer == 8)
         {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
             PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
             SceneManager.LoadScene("GameOver");
             Debug.Log("Touched le ghost");

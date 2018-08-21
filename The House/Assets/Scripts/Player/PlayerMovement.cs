@@ -73,24 +73,24 @@ public class PlayerMovement : MonoBehaviour
         //set headbob anim bool
         headbobAnim.SetBool("isRunning", isRunning);
 
-        
+
         switch (currentMovementState)
         {
             case howAmIMoving.creeping:
-        
+
                 speed = initialSpeed / 2;
-        
+
                 Camera.main.transform.localPosition = new Vector3(0, crouchCameraHeight, 0.25f);
-        
+
                 if (Input.GetKeyUp(KeyCode.LeftControl))
                 {
                     isCreepin = false;
                     currentMovementState = howAmIMoving.walking;
                 }
-        
+
                 break;
             case howAmIMoving.walking:
-        
+
                 Camera.main.transform.localPosition = new Vector3(0, initialCameraHeight, 0.25f);
                 //speed is equal to initial speed
                 speed = initialSpeed;
@@ -116,18 +116,18 @@ public class PlayerMovement : MonoBehaviour
 
                 break;
             case howAmIMoving.running:
-        
+
                 Camera.main.transform.localPosition = new Vector3(0, initialCameraHeight, 0.25f);
                 //speed is equal to twice the initial speed
                 speed = initialSpeed * 2;
-        
+
                 //if you begin to move backwards
                 if (Vertical <= 0)
                 {
                     //you are no longer running
                     isRunning = false;
                 }
-        
+
                 //if you let go of shift
                 if (Input.GetKeyUp(KeyCode.LeftShift))
                 {
@@ -143,16 +143,18 @@ public class PlayerMovement : MonoBehaviour
                     isCreepin = true;
                     currentMovementState = howAmIMoving.creeping;
                 }
-        
+
                 break;
         }
-        
+
         //move
         //Movement();
     }
 
     private void FixedUpdate()
     {
+        if (isTouchingSomething)
+            return;
         Movement();
     }
 
@@ -198,7 +200,13 @@ public class PlayerMovement : MonoBehaviour
                             GhostAI ghostAI = hitCollider[i].gameObject.GetComponent<GhostAI>();
                             if (ghostAI)
                             {
+                                //Vector3 direction = GhostTransform.position - footsies[footIndex].transform.position;
+                                //direction.Normalize();
+                                //if (!Physics.Raycast(footsies[footIndex].transform.position, direction, Vector3.Distance(footsies[footIndex].transform.position, GhostTransform.position), LayerMask.NameToLayer("Obsticle")))
+                                //{
                                 ghostAI.HearSomething(gameObject.transform.position);
+
+                                //}
                             }
                         }
                     }

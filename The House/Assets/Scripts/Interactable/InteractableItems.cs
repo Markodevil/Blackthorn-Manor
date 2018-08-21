@@ -132,6 +132,7 @@ public class InteractableItems : MonoBehaviour
         {
             if (hitCollider[i].gameObject.tag == "Ghost")
             {
+                
                 Debug.Log("Ghost heard the sound");
                 GhostAI ghostAI = hitCollider[i].gameObject.GetComponent<GhostAI>();
                 if(ghostAI)

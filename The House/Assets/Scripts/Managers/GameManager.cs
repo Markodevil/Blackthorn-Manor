@@ -127,6 +127,7 @@ public class GameManager : MonoBehaviour
                 //set timescale to 0
                 Time.timeScale = 0;
                 Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
 
 
                 foreach (MonoBehaviour mon in scriptsToTurnOff)

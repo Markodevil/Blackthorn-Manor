@@ -50,5 +50,11 @@ public class SeekState : State<GhostAI> {
             owner.hasHeardSomething = false;
             owner.FSM.ChangeState(WanderState.GetInstance);
         }
+
+        //if ghost loses sight of you, it goes back to wander
+        if(owner.sight.visibleTargets.Count == 0)
+        {
+            owner.FSM.ChangeState(WanderState.GetInstance);
+        }
     }
 }
