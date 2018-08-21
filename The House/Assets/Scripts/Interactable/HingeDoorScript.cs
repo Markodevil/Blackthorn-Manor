@@ -68,8 +68,8 @@ public class HingeDoorScript : MonoBehaviour {
             hinge.spring = hingeSpring;
             hinge.useSpring = true;
             closeDoor = false;
-            audio.PlayOneShot(doorCreakSound, 1);
-            Debug.Log("Played Closing Sound");
+          //  audio.PlayOneShot(doorCreakSound, 1);
+          //  Debug.Log("Played Closing Sound");
 
         }
         
@@ -78,7 +78,13 @@ public class HingeDoorScript : MonoBehaviour {
             audio.PlayOneShot(doorCreakSound, 1);
             doorSoundEnabled = false;
             Debug.Log("DoorSoundPLays");
-
+        
+        }
+        else if (doorSoundEnabled && mouseY < 0)
+        {
+            audio.PlayOneShot(doorCreakSound, 1);
+            doorSoundEnabled = false;
+            Debug.Log("DoorSoundPLays");
         }
         // Adds force to the players forward direction to the door which will open or close 
         // the door depending on which side the player is located 
@@ -94,12 +100,12 @@ public class HingeDoorScript : MonoBehaviour {
 
     }
 
-    public void changeDoorState()
+    public void ChangeDoorState()
     {
         isOpen = !isOpen;
-        playDoorSound();
+        PlayDoorSound();
     }
-    void playDoorSound()
+    void PlayDoorSound()
     {
         doorSoundEnabled = true;
         //   audio.PlayOneShot(doorCreakSound, 1);
