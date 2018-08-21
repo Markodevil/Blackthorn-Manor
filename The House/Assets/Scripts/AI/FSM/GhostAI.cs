@@ -159,31 +159,31 @@ public class GhostAI : MonoBehaviour
                 break;
             case 3:
                 //Ghost starts teleporting to its waypoints
-                time += Time.deltaTime;
-                if (time >= 3f)
-                {
-                    gameObject.transform.position = NMA.destination;
-                    time = 0;
-                }
+                //time += Time.deltaTime;
+                //if (time >= 3f)
+                //{
+                //    gameObject.transform.position = NMA.destination;
+                //    time = 0;
+                //}
                 break;
             case 4:
                 //Ghost duplicates it self
-                if (this.name != ghostName + "(Clone)")
-                {
-                    if (stage4 == false)
-                        Instantiate(Clone, new Vector3(-6.7f, 0, -12.18f), transform.rotation);
-                    stage4 = true;
-                }
-                else
-                {
-                    //Ghost Clone Buffs
-                    if (CloneBuffs == false)
-                    {
-                        patrolSpeed *= speedMultiplyer;
-                        NMA.speed = patrolSpeed;
-                    }
-                    CloneBuffs = true;
-                }
+                //if (this.name != ghostName + "(Clone)")
+                //{
+                //    if (stage4 == false)
+                //        Instantiate(Clone, transform.position, transform.rotation);
+                //    stage4 = true;
+                //}
+                //else if(this.name == ghostName + "(Clone)")
+                //{
+                //    //Ghost Clone Buffs
+                //    if (CloneBuffs == false)
+                //    {
+                //        patrolSpeed *= speedMultiplyer;
+                //        NMA.speed = patrolSpeed;
+                //    }
+                //    CloneBuffs = true;
+                //}
                 break;
             default:
                 break;

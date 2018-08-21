@@ -21,11 +21,6 @@ public class GameOverManager : MonoBehaviour {
         m_Quit.onClick.AddListener(Exit);
     }
 
-    private void Awake()
-    {
-        Cursor.lockState = CursorLockMode.None;
-    }
-
     private void TryAgain()
     {
         string sceneName = PlayerPrefs.GetString("lastLoadedScene");
