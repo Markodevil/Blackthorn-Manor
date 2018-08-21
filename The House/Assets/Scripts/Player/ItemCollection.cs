@@ -16,7 +16,9 @@ public class ItemCollection : MonoBehaviour
     [Tooltip("Interact Range in metres")]
     public float interactRange;
 
+    [HideInInspector]
     public List<GameObject> inventory;
+    [HideInInspector]
     public List<string> pickedUpItems;
 
     [Header("UI")]

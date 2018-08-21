@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     bool isCreepin;
     public float crouchCameraHeight;
     float initialCameraHeight;
+    public float crouchSpeed;
 
 
     private enum howAmIMoving
@@ -80,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
 
                 speed = initialSpeed / 2;
 
-                Camera.main.transform.localPosition = new Vector3(0, crouchCameraHeight, 0.25f);
+                Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, new Vector3(0, crouchCameraHeight, 0.25f), crouchSpeed);
 
                 if (Input.GetKeyUp(KeyCode.LeftControl))
                 {
@@ -91,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case howAmIMoving.walking:
 
-                Camera.main.transform.localPosition = new Vector3(0, initialCameraHeight, 0.25f);
+                Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, new Vector3(0, initialCameraHeight, 0.25f), crouchSpeed);
                 //speed is equal to initial speed
                 speed = initialSpeed;
 
@@ -117,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case howAmIMoving.running:
 
-                Camera.main.transform.localPosition = new Vector3(0, initialCameraHeight, 0.25f);
+                Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, new Vector3(0, initialCameraHeight, 0.25f), crouchSpeed);
                 //speed is equal to twice the initial speed
                 speed = initialSpeed * 2;
 
