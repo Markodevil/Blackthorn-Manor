@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SeekState : State<GhostAI> {
-    
+public class SeekState : State<GhostAI>
+{
+
     private static SeekState instance;
 
     private SeekState()
@@ -24,7 +25,7 @@ public class SeekState : State<GhostAI> {
         {
             //if (instance == null)
             //{
-                new SeekState();
+            new SeekState();
             //}
 
             return instance;
@@ -38,21 +39,40 @@ public class SeekState : State<GhostAI> {
 
     public override void ExitState(GhostAI owner)
     {
-        
+
     }
 
     public override void UpdateState(GhostAI owner)
     {
         owner.NMA.SetDestination(owner.destination);
 
-        if(owner.NMA.remainingDistance <= 1.0f)
+        //killed the player
+        if (owner.NMA.remainingDistance <= 1.0f)
         {
             owner.hasHeardSomething = false;
             owner.FSM.ChangeState(WanderState.GetInstance);
         }
 
+        //check if we have a path
+        if (owner.NMA.pathPending != false)
+        { //If we have a path increase speed while within 10 meters
+            if (owner.NMA.remainingDistance >= 1.0f && owner.NMA.remainingDistance <= 11.0f)
+            {
+                //Increase Speed as we get closer
+                if (owner.NMA.speed < 3.0f)
+                {
+                    owner.NMA.speed += 0.1f;
+                }
+            } // If we've gotten far enought away reset speed
+            else if (owner.NMA.remainingDistance >= 3.0f)
+                owner.NMA.speed = 1.0f;
+        }
+
+
+
+
         //if ghost loses sight of you, it goes back to wander
-        if(owner.sight.visibleTargets.Count == 0)
+        if (owner.sight.visibleTargets.Count == 0)
         {
             owner.FSM.ChangeState(WanderState.GetInstance);
         }
