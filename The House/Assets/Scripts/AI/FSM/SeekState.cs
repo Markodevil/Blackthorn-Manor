@@ -38,11 +38,12 @@ public class SeekState : State<GhostAI>
     {
         cantSeePlayerCountdown = owner.cantSeePlayerCountdown;
         timer = cantSeePlayerCountdown;
+        Debug.Log("enter seek");
     }
 
     public override void ExitState(GhostAI owner)
     {
-
+        Debug.Log("exit seek");
     }
 
     public override void UpdateState(GhostAI owner)

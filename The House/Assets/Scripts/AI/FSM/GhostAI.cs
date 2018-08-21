@@ -132,6 +132,7 @@ public class GhostAI : MonoBehaviour
             if (hasHeardSomething)
             {
                 FSM.ChangeState(SeekState.GetInstance);
+                hasHeardSomething = false;
             }
 
         }
@@ -195,8 +196,7 @@ public class GhostAI : MonoBehaviour
             default:
                 break;
         }
-
-        Debug.Log(FSM.currentState.stateName);
+        
         //update current state
         FSM.Update();
     }
@@ -214,7 +214,7 @@ public class GhostAI : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Ryan's totaly bestest game over trigger
-        if (other.gameObject.layer == 8 && dist < 4)
+        if (other.gameObject.layer == 8 && dist < 2)
         {
             PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
             SceneManager.LoadScene("GameOver");
