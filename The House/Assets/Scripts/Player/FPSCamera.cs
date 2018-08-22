@@ -41,7 +41,7 @@ public class FPSCamera : MonoBehaviour
             if (Physics.Raycast(transform.position, transform.forward, out hit, interactableDistance))
             {
                 GameObject hitObj = hit.collider.gameObject;
-                if (hitObj.tag == "Interactable" || hitObj.tag == "RequiredItem" || hitObj.tag == "Door" || hitObj.tag == "HorcruxManager")
+                if (hitObj.tag == "Interactable" || hitObj.tag == "RequiredItem" || hitObj.tag == "Door" || hitObj.tag == "HorcruxManager" || hitObj.tag == "Drawer")
                 {
                     if (hand)
                         hand.SetActive(true);

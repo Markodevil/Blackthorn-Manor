@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
         Playing,
         Pause,
         GameOver,
+        ChangingScene,
     }
 
     private GameStates currentState;
@@ -144,6 +145,9 @@ public class GameManager : MonoBehaviour
                     mon.enabled = false;
                 }
                 gameOverText.SetActive(true);
+                break;
+            case GameStates.ChangingScene:
+                Time.timeScale = 1;
                 break;
         }
 
@@ -347,7 +351,7 @@ public class GameManager : MonoBehaviour
 
     public void ToMenu()
     {
-        currentState = GameStates.Playing;
+        currentState = GameStates.ChangingScene;
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
         if (menuManager)

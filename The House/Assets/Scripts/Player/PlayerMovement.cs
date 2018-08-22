@@ -40,14 +40,15 @@ public class PlayerMovement : MonoBehaviour
     public float crouchSpeed;
 
 
-    private enum howAmIMoving
+    public enum howAmIMoving
     {
+        notMoving,
         creeping,
         walking,
         running
     }
-
-    private howAmIMoving currentMovementState;
+    [HideInInspector]
+    public howAmIMoving currentMovementState;
 
     // Use this for initialization
     void Awake()
@@ -69,12 +70,28 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if (isTouchingSomething)
+        {
+            isRunning = false;
+            isCreepin = false;
+            if(currentMovementState == howAmIMoving.running)
+                playerSoundLvl /= 2;
+            currentMovementState = howAmIMoving.walking;
+            headbobAnim.SetBool("isRunning", isRunning);
             return;
+        }
 
         //set headbob anim bool
         headbobAnim.SetBool("isRunning", isRunning);
 
-
+        //if(!Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.LeftControl))
+        //{
+        //    if(!Input.GetKey(KeyCode.LeftShift))
+        //    {
+        //        isCreepin = false;
+        //        currentMovementState = howAmIMoving.walking;
+        //    }
+        //}
+        Debug.Log(currentMovementState);
         switch (currentMovementState)
         {
             case howAmIMoving.creeping:

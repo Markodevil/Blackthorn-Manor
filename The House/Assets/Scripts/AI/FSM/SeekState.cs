@@ -44,6 +44,7 @@ public class SeekState : State<GhostAI>
     public override void ExitState(GhostAI owner)
     {
         Debug.Log("exit seek");
+       
     }
 
     public override void UpdateState(GhostAI owner)
