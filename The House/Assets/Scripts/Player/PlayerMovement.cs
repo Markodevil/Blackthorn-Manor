@@ -91,7 +91,6 @@ public class PlayerMovement : MonoBehaviour
         //        currentMovementState = howAmIMoving.walking;
         //    }
         //}
-        Debug.Log(currentMovementState);
         switch (currentMovementState)
         {
             case howAmIMoving.creeping:

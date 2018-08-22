@@ -12,7 +12,7 @@ public class WanderState : State<GhostAI>
 
     //Wander Behaviour memeber Var's
     private NavMeshAgent navMeshAgent;
-    
+
     private float wanderRadius = 30f;
     public float wanderTimer = 10f;
     public float wanderTimerActual;
@@ -31,17 +31,15 @@ public class WanderState : State<GhostAI>
         stateName = "Wander";
     }
 
-    public static WanderState GetInstance
+    public static WanderState GetInstance(GhostAI owner)
     {
-        get
-        {
-            //if (instance == null)
-            //{
-                new WanderState();
-            //}
+        //if (instance == null)
+        //{
+        if (owner.wanderState == null)
+            new WanderState();
+        //}
 
-            return instance;
-        }
+        return instance;
     }
 
 
@@ -80,7 +78,7 @@ public class WanderState : State<GhostAI>
         }
         else
         {
-            owner.FSM.ChangeState(PatrolState.GetInstance);
+            owner.FSM.ChangeState(PatrolState.GetInstance(owner));
         }
     }
 

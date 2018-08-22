@@ -71,9 +71,12 @@ public class GhostAI : MonoBehaviour
     private GameObject singleton;
     private MenuManager mm;
 
-    private SeekState seekState;
-    private WanderState wanderState;
-    private PatrolState patrolState;
+    [HideInInspector]
+    public SeekState seekState;
+    [HideInInspector]
+    public WanderState wanderState;
+    [HideInInspector]
+    public PatrolState patrolState;
 
 
     // Use this for initialization
@@ -99,7 +102,7 @@ public class GhostAI : MonoBehaviour
         ghostName = GameObject.FindGameObjectWithTag("Ghost").name;
 
         //start in wander state
-        FSM.ChangeState(PatrolState.GetInstance);
+        FSM.ChangeState(PatrolState.GetInstance(this));
     }
 
     //For assigning var's on re-try
@@ -134,26 +137,24 @@ public class GhostAI : MonoBehaviour
 
         Direction.Normalize();
 
+        Debug.Log("Current AI state: " + FSM.currentState.stateName);
+
         dist = Vector3.Distance(playerPosition, currentPosition);
-        if (FSM.currentState != SeekState.GetInstance)
+        if (FSM.currentState != SeekState.GetInstance(this))
         {
             if (hasHeardSomething)
             {
-                FSM.ChangeState(SeekState.GetInstance);
+                FSM.ChangeState(SeekState.GetInstance(this));
                 hasHeardSomething = false;
-                if (seekSound)
-                    seekSound.PlayOneShot(seekSoundClips[seekSoundClipIndex]);
             }
 
         }
         if (sight.visibleTargets.Count > 0)
         {
             destination = sight.visibleTargets[0].gameObject.transform.position;
-            FSM.ChangeState(SeekState.GetInstance);
-            if (seekSound)
-                seekSound.PlayOneShot(seekSoundClips[seekSoundClipIndex]);
+            FSM.ChangeState(SeekState.GetInstance(this));
         }
-        if (FSM.currentState == PatrolState.GetInstance)
+        if (FSM.currentState == PatrolState.GetInstance(this))
         {
             NMA.speed = patrolSpeed;
         }

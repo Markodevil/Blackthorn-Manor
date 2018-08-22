@@ -21,30 +21,33 @@ public class SeekState : State<GhostAI>
         stateName = "Seek";
     }
 
-    public static SeekState GetInstance
+    public static SeekState GetInstance(GhostAI owner)
     {
-        get
-        {
-            //if (instance == null)
-            //{
-            new SeekState();
-            //}
 
-            return instance;
-        }
+        //if (instance == null)
+        //{
+        if (owner.seekState == null)
+            new SeekState();
+        //}
+
+        return instance;
     }
 
     public override void EnterState(GhostAI owner)
     {
         cantSeePlayerCountdown = owner.cantSeePlayerCountdown;
         timer = cantSeePlayerCountdown;
-        Debug.Log("enter seek");
+
+        if (owner.seekSound)
+        {
+            if (!owner.seekSound.isPlaying)
+                owner.seekSound.PlayOneShot(owner.seekSoundClips[owner.seekSoundClipIndex]);
+        }
     }
 
     public override void ExitState(GhostAI owner)
     {
-        Debug.Log("exit seek");
-       
+
     }
 
     public override void UpdateState(GhostAI owner)
@@ -55,7 +58,7 @@ public class SeekState : State<GhostAI>
         if (owner.NMA.remainingDistance <= 1.0f)
         {
             owner.hasHeardSomething = false;
-            owner.FSM.ChangeState(WanderState.GetInstance);
+            owner.FSM.ChangeState(WanderState.GetInstance(owner));
         }
 
         //check if we have a path
@@ -82,7 +85,7 @@ public class SeekState : State<GhostAI>
             timer -= Time.deltaTime;
             if (timer <= 0)
             {
-                owner.FSM.ChangeState(WanderState.GetInstance);
+                owner.FSM.ChangeState(WanderState.GetInstance(owner));
                 timer = cantSeePlayerCountdown;
             }
         }

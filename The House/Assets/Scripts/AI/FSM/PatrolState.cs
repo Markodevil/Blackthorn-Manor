@@ -24,7 +24,7 @@ public class PatrolState : State<GhostAI>
     float waitTimer;
     int waypointsVisited;
 
-    private PatrolState()
+    private PatrolState(GhostAI owner)
     {
         //if (instance != null)
         //{
@@ -32,21 +32,20 @@ public class PatrolState : State<GhostAI>
         //
         //}
 
+
         instance = this;
         stateName = "Patrol";
     }
 
-    public static PatrolState GetInstance
+    public static PatrolState GetInstance(GhostAI owner)
     {
-        get
-        {
-            //if (instance == null)
-            //{
-                new PatrolState();
-            //}
+        //if (instance == null)
+        //{
+        if (owner.patrolState == null)
+            new PatrolState(owner);
+        //}
 
-            return instance;
-        }
+        return instance;
     }
 
 
@@ -55,7 +54,7 @@ public class PatrolState : State<GhostAI>
         navMeshAgent = owner.gameObject.GetComponent<NavMeshAgent>();
         currentWayPoint = owner.currentWayPoint;
 
-        
+
         if (navMeshAgent == null)
         {
             Debug.LogError("The Nav mesh agent component is not attached to " + owner.gameObject.name);
@@ -68,7 +67,7 @@ public class PatrolState : State<GhostAI>
 
     public override void ExitState(GhostAI owner)
     {
-        
+
     }
 
     public override void UpdateState(GhostAI owner)
