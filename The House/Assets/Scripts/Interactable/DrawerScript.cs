@@ -8,20 +8,25 @@ public class DrawerScript : MonoBehaviour {
     public float mouseY;
     public float drawerSpeed; 
     private GameObject Player;
+    private GameObject Outline;
     public Rigidbody rb;
     public AudioSource audio;
     public AudioClip drawerSound;
+    private Collision Col;
     FPSCamera fpsCamera;
-    bool drawerSoundBool; 
+    bool drawerSoundBool;
+    bool IsOutlineOff;
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+        Outline = GameObject.FindGameObjectWithTag("Outlined");
         fpsCamera = GetComponent<FPSCamera>();
     }
     // Use this for initialization
     void Start () {
 
         isOpen = false;
+        OnCollisionEnter(Col);
 
     }
 
@@ -37,8 +42,7 @@ public class DrawerScript : MonoBehaviour {
         Direction.Normalize();
 
         float dist = Vector3.Distance(playerPosition, drawerPosition);
-        mouseY = Input.GetAxis("Mouse Y");  
-
+        mouseY = Input.GetAxis("Mouse Y");
 
         // lets go of the drawer when Mouse0 is released 
         if (Input.GetKeyUp(KeyCode.Mouse0) || dist > 2)
@@ -60,6 +64,11 @@ public class DrawerScript : MonoBehaviour {
             rb.AddForceAtPosition(Player.transform.forward * mouseY * drawerSpeed, Player.transform.position);
 
         }
+        if (IsOutlineOff == false)
+        {
+            Outline.SetActive(false);
+
+        }
 
     }
 
@@ -72,5 +81,15 @@ public class DrawerScript : MonoBehaviour {
     void playDrawerSound()
     {
         drawerSoundBool = true;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag != "RequiredItem")
+        {
+            Debug.Log("Cup not inside");
+            IsOutlineOff = false;
+        }
+ 
     }
 }
