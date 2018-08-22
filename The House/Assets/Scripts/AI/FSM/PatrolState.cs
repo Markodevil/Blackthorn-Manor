@@ -34,6 +34,7 @@ public class PatrolState : State<GhostAI>
 
 
         instance = this;
+        owner.patrolState = this;
         stateName = "Patrol";
     }
 

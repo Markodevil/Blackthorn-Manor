@@ -19,7 +19,7 @@ public class WanderState : State<GhostAI>
     private float wanderTick = 1;
     private float timer;
 
-    private WanderState()
+    private WanderState(GhostAI owner)
     {
         //if (instance != null)
         //{
@@ -28,6 +28,7 @@ public class WanderState : State<GhostAI>
         //}
 
         instance = this;
+        owner.wanderState = this;
         stateName = "Wander";
     }
 
@@ -36,7 +37,7 @@ public class WanderState : State<GhostAI>
         //if (instance == null)
         //{
         if (owner.wanderState == null)
-            new WanderState();
+            new WanderState(owner);
         //}
 
         return instance;

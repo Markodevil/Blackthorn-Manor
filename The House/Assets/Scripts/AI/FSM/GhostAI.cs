@@ -152,7 +152,8 @@ public class GhostAI : MonoBehaviour
         if (sight.visibleTargets.Count > 0)
         {
             destination = sight.visibleTargets[0].gameObject.transform.position;
-            FSM.ChangeState(SeekState.GetInstance(this));
+            if (FSM.currentState != SeekState.GetInstance(this))
+                FSM.ChangeState(SeekState.GetInstance(this));
         }
         if (FSM.currentState == PatrolState.GetInstance(this))
         {

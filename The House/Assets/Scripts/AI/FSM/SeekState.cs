@@ -9,7 +9,7 @@ public class SeekState : State<GhostAI>
     private float cantSeePlayerCountdown;
     private float timer;
 
-    private SeekState()
+    private SeekState(GhostAI owner)
     {
         //if (instance != null)
         //{
@@ -18,6 +18,7 @@ public class SeekState : State<GhostAI>
         //}
 
         instance = this;
+        owner.seekState = this;
         stateName = "Seek";
     }
 
@@ -27,7 +28,7 @@ public class SeekState : State<GhostAI>
         //if (instance == null)
         //{
         if (owner.seekState == null)
-            new SeekState();
+            new SeekState(owner);
         //}
 
         return instance;
@@ -55,11 +56,11 @@ public class SeekState : State<GhostAI>
         owner.NMA.SetDestination(owner.destination);
 
         //killed the player
-        if (owner.NMA.remainingDistance <= 1.0f)
-        {
-            owner.hasHeardSomething = false;
-            owner.FSM.ChangeState(WanderState.GetInstance(owner));
-        }
+        //if (owner.NMA.remainingDistance <= 1.0f)
+        //{
+        //    owner.hasHeardSomething = false;
+        //    owner.FSM.ChangeState(WanderState.GetInstance(owner));
+        //}
 
         //check if we have a path
         if (owner.NMA.pathPending != false)
