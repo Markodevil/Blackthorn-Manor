@@ -14844,6 +14844,11 @@ GameObject:
   m_PrefabParentObject: {fileID: 1563167440737888, guid: 8fa7168838974c64db6cdfadfbdc0e29,
     type: 2}
   m_PrefabInternal: {fileID: 1252254532}
+--- !u!82 &523843236 stripped
+AudioSource:
+  m_PrefabParentObject: {fileID: 82236698319907846, guid: 8fa7168838974c64db6cdfadfbdc0e29,
+    type: 2}
+  m_PrefabInternal: {fileID: 1252254532}
 --- !u!4 &523843244 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4172756543011498, guid: 8fa7168838974c64db6cdfadfbdc0e29,
@@ -31964,6 +31969,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114918467163974758, guid: 8fa7168838974c64db6cdfadfbdc0e29,
+        type: 2}
+      propertyPath: seekSoundClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4172756543011498, guid: 8fa7168838974c64db6cdfadfbdc0e29, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0.32
@@ -32019,6 +32029,21 @@ Prefab:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114918467163974758, guid: 8fa7168838974c64db6cdfadfbdc0e29,
+        type: 2}
+      propertyPath: seekSoundClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 09287e251b545e54f8d39275c5fc28a4, type: 3}
+    - target: {fileID: 114918467163974758, guid: 8fa7168838974c64db6cdfadfbdc0e29,
+        type: 2}
+      propertyPath: cantSeePlayerCountdown
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114918467163974758, guid: 8fa7168838974c64db6cdfadfbdc0e29,
+        type: 2}
+      propertyPath: seekSound
+      value: 
+      objectReference: {fileID: 523843236}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8fa7168838974c64db6cdfadfbdc0e29, type: 2}
   m_IsPrefabParent: 0
