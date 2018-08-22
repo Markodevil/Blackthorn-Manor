@@ -63,10 +63,18 @@ public class GhostAI : MonoBehaviour
 
     [Header("Seek Variables")]
     public float cantSeePlayerCountdown;
+    public AudioSource seekSound;
+    public AudioClip[] seekSoundClips;
+    public int seekSoundClipIndex;
 
     private string ghostName;
     private GameObject singleton;
     private MenuManager mm;
+
+    private SeekState seekState;
+    private WanderState wanderState;
+    private PatrolState patrolState;
+
 
     // Use this for initialization
     void Start()
@@ -133,6 +141,8 @@ public class GhostAI : MonoBehaviour
             {
                 FSM.ChangeState(SeekState.GetInstance);
                 hasHeardSomething = false;
+                if (seekSound)
+                    seekSound.PlayOneShot(seekSoundClips[seekSoundClipIndex]);
             }
 
         }
@@ -140,6 +150,8 @@ public class GhostAI : MonoBehaviour
         {
             destination = sight.visibleTargets[0].gameObject.transform.position;
             FSM.ChangeState(SeekState.GetInstance);
+            if (seekSound)
+                seekSound.PlayOneShot(seekSoundClips[seekSoundClipIndex]);
         }
         if (FSM.currentState == PatrolState.GetInstance)
         {
@@ -196,7 +208,7 @@ public class GhostAI : MonoBehaviour
             default:
                 break;
         }
-        
+
         //update current state
         FSM.Update();
     }
