@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 234492340}
-  m_IndirectSpecularColor: {r: 0.22510481, g: 0.25166202, b: 0.32264084, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -16829,8 +16829,8 @@ MonoBehaviour:
   mouseY: 0
   doorOpenSpeed: 12
   rb: {fileID: 318865115}
-  audio: {fileID: 0}
-  doorCreakSound: {fileID: 0}
+  audio: {fileID: 1128343255}
+  doorCreakSound: {fileID: 8300000, guid: 417645705b325f94aa9520e73c6a5cdd, type: 3}
   doorCloseTime: 0
   closeTimer: 0
 --- !u!59 &318865114
@@ -26084,8 +26084,8 @@ MonoBehaviour:
   mouseY: 0
   doorOpenSpeed: 12
   rb: {fileID: 428033068}
-  audio: {fileID: 0}
-  doorCreakSound: {fileID: 0}
+  audio: {fileID: 1128343255}
+  doorCreakSound: {fileID: 8300000, guid: 417645705b325f94aa9520e73c6a5cdd, type: 3}
   doorCloseTime: 0
   closeTimer: 0
 --- !u!59 &428033067
@@ -37402,8 +37402,8 @@ MonoBehaviour:
   mouseY: 0
   doorOpenSpeed: 12
   rb: {fileID: 626174969}
-  audio: {fileID: 0}
-  doorCreakSound: {fileID: 0}
+  audio: {fileID: 1128343255}
+  doorCreakSound: {fileID: 8300000, guid: 417645705b325f94aa9520e73c6a5cdd, type: 3}
   doorCloseTime: 0
   closeTimer: 0
 --- !u!59 &626174968
@@ -46998,8 +46998,8 @@ MonoBehaviour:
   mouseY: 0
   doorOpenSpeed: 12
   rb: {fileID: 785443092}
-  audio: {fileID: 0}
-  doorCreakSound: {fileID: 0}
+  audio: {fileID: 1128343255}
+  doorCreakSound: {fileID: 8300000, guid: 417645705b325f94aa9520e73c6a5cdd, type: 3}
   doorCloseTime: 0
   closeTimer: 0
 --- !u!59 &785443091
@@ -54811,6 +54811,7 @@ Transform:
   - {fileID: 785443088}
   - {fileID: 1807976683}
   - {fileID: 1049274738}
+  - {fileID: 1128343254}
   m_Father: {fileID: 1721952415}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -60310,8 +60311,8 @@ MonoBehaviour:
   mouseY: 0
   doorOpenSpeed: 12
   rb: {fileID: 1007544310}
-  audio: {fileID: 0}
-  doorCreakSound: {fileID: 0}
+  audio: {fileID: 1128343255}
+  doorCreakSound: {fileID: 8300000, guid: 417645705b325f94aa9520e73c6a5cdd, type: 3}
   doorCloseTime: 0
   closeTimer: 0
 --- !u!59 &1007544309
@@ -63395,8 +63396,8 @@ MonoBehaviour:
   mouseY: 0
   doorOpenSpeed: 12
   rb: {fileID: 1049274742}
-  audio: {fileID: 0}
-  doorCreakSound: {fileID: 0}
+  audio: {fileID: 1128343255}
+  doorCreakSound: {fileID: 8300000, guid: 417645705b325f94aa9520e73c6a5cdd, type: 3}
   doorCloseTime: 0
   closeTimer: 0
 --- !u!59 &1049274741
@@ -64988,7 +64989,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1083396864}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.209, y: 1.237, z: 17.58}
+  m_LocalPosition: {x: -0.044, y: 1.237, z: 17.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1163611548}
@@ -66903,6 +66904,115 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1120477869}
   m_Mesh: {fileID: 4300014, guid: b36eeb43e0bbee94cb836d8fa564b849, type: 3}
+--- !u!1 &1128343253
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1128343254}
+  - component: {fileID: 1128343255}
+  m_Layer: 9
+  m_Name: Audio Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1128343254
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1128343253}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 926049534}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1128343255
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1128343253}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 417645705b325f94aa9520e73c6a5cdd, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!43 &1130888185
 Mesh:
   m_ObjectHideFlags: 0
@@ -73202,8 +73312,8 @@ MonoBehaviour:
   mouseY: 0
   doorOpenSpeed: 12
   rb: {fileID: 1212414836}
-  audio: {fileID: 0}
-  doorCreakSound: {fileID: 0}
+  audio: {fileID: 1128343255}
+  doorCreakSound: {fileID: 8300000, guid: 417645705b325f94aa9520e73c6a5cdd, type: 3}
   doorCloseTime: 0
   closeTimer: 0
 --- !u!59 &1212414835
@@ -75870,7 +75980,7 @@ Prefab:
     - target: {fileID: 136117756694166234, guid: 8fa7168838974c64db6cdfadfbdc0e29,
         type: 2}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8fa7168838974c64db6cdfadfbdc0e29, type: 2}
@@ -97749,7 +97859,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1591048288}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.911, y: 0.758, z: 3.472}
+  m_LocalPosition: {x: -14.025, y: 0.0108, z: -5.123}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1163611548}
@@ -98392,6 +98502,16 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1131695672}
+    - target: {fileID: 114646339720346438, guid: 907e993f9c1e148408e9fee4a5dbb0a2,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1131695672}
+    - target: {fileID: 114646339720346438, guid: 907e993f9c1e148408e9fee4a5dbb0a2,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeGameState
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 907e993f9c1e148408e9fee4a5dbb0a2, type: 2}
   m_IsPrefabParent: 0
@@ -102339,8 +102459,8 @@ MonoBehaviour:
   mouseY: 0
   doorOpenSpeed: 12
   rb: {fileID: 1678175328}
-  audio: {fileID: 0}
-  doorCreakSound: {fileID: 0}
+  audio: {fileID: 1128343255}
+  doorCreakSound: {fileID: 8300000, guid: 417645705b325f94aa9520e73c6a5cdd, type: 3}
   doorCloseTime: 0
   closeTimer: 0
 --- !u!59 &1678175327
@@ -107203,8 +107323,8 @@ MonoBehaviour:
   mouseY: 0
   doorOpenSpeed: 12
   rb: {fileID: 1762857037}
-  audio: {fileID: 0}
-  doorCreakSound: {fileID: 0}
+  audio: {fileID: 1128343255}
+  doorCreakSound: {fileID: 8300000, guid: 417645705b325f94aa9520e73c6a5cdd, type: 3}
   doorCloseTime: 0
   closeTimer: 0
 --- !u!59 &1762857036
@@ -110699,8 +110819,8 @@ MonoBehaviour:
   mouseY: 0
   doorOpenSpeed: 12
   rb: {fileID: 1807976687}
-  audio: {fileID: 0}
-  doorCreakSound: {fileID: 0}
+  audio: {fileID: 1128343255}
+  doorCreakSound: {fileID: 8300000, guid: 417645705b325f94aa9520e73c6a5cdd, type: 3}
   doorCloseTime: 0
   closeTimer: 0
 --- !u!59 &1807976686
