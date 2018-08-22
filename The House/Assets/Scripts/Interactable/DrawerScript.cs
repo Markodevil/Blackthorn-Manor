@@ -26,7 +26,6 @@ public class DrawerScript : MonoBehaviour {
     void Start () {
 
         isOpen = false;
-        OnCollisionEnter(Col);
 
     }
 
@@ -64,11 +63,7 @@ public class DrawerScript : MonoBehaviour {
             rb.AddForceAtPosition(Player.transform.forward * mouseY * drawerSpeed, Player.transform.position);
 
         }
-        if (IsOutlineOff == false)
-        {
-            Outline.SetActive(false);
-
-        }
+        
 
     }
 
@@ -83,13 +78,17 @@ public class DrawerScript : MonoBehaviour {
         drawerSoundBool = true;
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag != "RequiredItem")
+     private void OnCollisionEnter(Collision collision)
+     {
+         if (collision.gameObject.tag == "RequiredItem")
+         {
+            Debug.Log("CupInside");
+            Outline.SetActive(true);
+         }
+         else
         {
-            Debug.Log("Cup not inside");
-            IsOutlineOff = false;
+            Outline.SetActive(false);
         }
- 
-    }
+     }
+
 }
