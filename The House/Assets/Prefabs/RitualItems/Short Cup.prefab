@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65881049745565172}
   m_Layer: 9
   m_Name: Cup3 (1)
-  m_TagString: RequiredItem
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1382856261543002}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.1387596, y: -0.23000002, z: 6.62903}
+  m_LocalPosition: {x: -8.300416, y: 0.9974854, z: 9.35581}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 4405820763028082}
