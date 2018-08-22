@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65502693523759912}
   m_Layer: 9
   m_Name: Pot (1)
-  m_TagString: Untagged
+  m_TagString: RequiredItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1549159357023704}
   m_LocalRotation: {x: -0, y: -0.85046077, z: -0, w: 0.52603847}
-  m_LocalPosition: {x: -8.194065, y: 0.9974855, z: 9.276539}
+  m_LocalPosition: {x: -8.388086, y: 0.9974854, z: 9.93948}
   m_LocalScale: {x: 0.8044028, y: 0.80440277, z: 0.8044028}
   m_Children:
   - {fileID: 4824957582091002}
@@ -193,8 +193,8 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1103907205731208}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
+  m_IsTrigger: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.3036932, y: 0.126501, z: 0.2458233}
   m_Center: {x: -0.000012516975, y: -0.053892236, z: 0.000000018626304}
