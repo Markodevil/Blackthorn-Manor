@@ -63,9 +63,9 @@ public class SeekState : State<GhostAI>
         //}
 
         //check if we have a path
-        if (owner.NMA.pathPending != false)
+        if (owner.NMA.pathPending != true)
         { //If we have a path increase speed while within 10 meters
-            if (owner.NMA.remainingDistance >= 1.0f && owner.NMA.remainingDistance <= 11.0f)
+            if (owner.NMA.remainingDistance <= 10.0f)
             {
                 //Increase Speed as we get closer
                 if (owner.NMA.speed < 3.0f)
@@ -73,7 +73,7 @@ public class SeekState : State<GhostAI>
                     owner.NMA.speed += 0.1f;
                 }
             } // If we've gotten far enought away reset speed
-            else if (owner.NMA.remainingDistance >= 3.0f)
+            else if (owner.NMA.remainingDistance >= 10.0f)
                 owner.NMA.speed = 1.0f;
         }
 
