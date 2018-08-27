@@ -74,17 +74,35 @@ public class HingeDoorScript : MonoBehaviour {
 
         }
         
-        if (doorSoundEnabled && mouseY > 0)
+        //if (doorSoundEnabled && mouseY > 0)
+        //{
+        //    audio.PlayOneShot(doorCreakSound, 1);
+        //    doorSoundEnabled = false;
+        //
+        //}
+        //else if (doorSoundEnabled && mouseY < 0)
+        //{
+        //    audio.PlayOneShot(doorCreakSound, 1);
+        //    doorSoundEnabled = false;
+        //}
+
+        if(doorSoundEnabled && mouseY == 0)
         {
-            audio.PlayOneShot(doorCreakSound, 1);
-            doorSoundEnabled = false;
-        
+            audio.Pause();
         }
-        else if (doorSoundEnabled && mouseY < 0)
+        else if(doorSoundEnabled && mouseY > 0)
         {
-            audio.PlayOneShot(doorCreakSound, 1);
-            doorSoundEnabled = false;
+            audio.pitch = 1;
+            audio.Play();
         }
+        else if(doorSoundEnabled && mouseY < 0)
+        {
+            audio.pitch = -1;
+            audio.Play();
+        }
+
+
+
         // Adds force to the players forward direction to the door which will open or close 
         // the door depending on which side the player is located 
         if (isOpen)
@@ -107,7 +125,7 @@ public class HingeDoorScript : MonoBehaviour {
     void PlayDoorSound()
     {
         doorSoundEnabled = true;
-        //   audio.PlayOneShot(doorCreakSound, 1);
+        audio.PlayOneShot(doorCreakSound, 1);
     }
     // When the ghosts interacts with the door it makes a noise 
 

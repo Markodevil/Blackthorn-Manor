@@ -30,6 +30,7 @@ public class FPSCamera : MonoBehaviour
     {
         //fix to rotation bug - dont know if its the best way to do it
         transform.localRotation = Quaternion.Euler(new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0));
+        Debug.Log("Am I touching something: " + isTouchingSomething);
         if (!IsPeeking && !isTouchingSomething)
         {
             RotateCamera();
@@ -136,7 +137,6 @@ public class FPSCamera : MonoBehaviour
         XAxisClamp -= RotAmountY;
 
         TargetRotationCamera.x -= RotAmountY;
-
         //TargetRotationCamera.z = 0;  --- changed to \/ to fix leaning problem
         TargetRotationCamera.z = transform.rotation.eulerAngles.z;
 

@@ -31,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
     public bool playerHasBeenHeard = false;
 
     private bool isTouchingSomething = false;
+
+    public bool useHeadbob;
     public Animator headbobAnim;
 
     [Header("Crouching")]
@@ -73,15 +75,17 @@ public class PlayerMovement : MonoBehaviour
         {
             isRunning = false;
             isCreepin = false;
-            if(currentMovementState == howAmIMoving.running)
+            if (currentMovementState == howAmIMoving.running)
                 playerSoundLvl /= 2;
             currentMovementState = howAmIMoving.walking;
-            headbobAnim.SetBool("isRunning", isRunning);
+            if (useHeadbob)
+                headbobAnim.SetBool("isRunning", isRunning);
             return;
         }
 
         //set headbob anim bool
-        headbobAnim.SetBool("isRunning", isRunning);
+        if (useHeadbob)
+            headbobAnim.SetBool("isRunning", isRunning);
 
         //if(!Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.LeftControl))
         //{

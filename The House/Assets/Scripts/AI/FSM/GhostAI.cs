@@ -243,7 +243,6 @@ public class GhostAI : MonoBehaviour
         {
             PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
             SceneManager.LoadScene("GameOver");
-            Debug.Log("Touched le ghost");
         }
     }
 
