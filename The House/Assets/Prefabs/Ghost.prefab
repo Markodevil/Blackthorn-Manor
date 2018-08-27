@@ -24,9 +24,6 @@ GameObject:
   - component: {fileID: 23779637150278552}
   - component: {fileID: 195637789827195374}
   - component: {fileID: 114984319624796110}
-  - component: {fileID: 114936691259406164}
-  - component: {fileID: 114093386475967958}
-  - component: {fileID: 114582267437493180}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Ghost
@@ -172,56 +169,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114093386475967958
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1297902697834458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 533e0dea3bf165642b61b3d1e742baf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  partrolWaiting: 0
-  totalWaitTime: 3
-  waiting: 0
---- !u!114 &114582267437493180
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1297902697834458}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca277ab9b0aba8d4798f74ae897454c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wanderRadius: 10
-  wanderTimer: 10
-  wanderTimerActual: 0
-  wanderTick: 2
---- !u!114 &114936691259406164
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1297902697834458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06901e3ef26a53a41b40001e5ee85dcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destination: {fileID: 0}
-  patrolSpeed: 2
-  chaseTime: 10
-  chaseSpeed: 3
-  stageThree: 0
-  Clone: {fileID: 1297902697834458, guid: 6c6b6a7a82d6ca24ea18a71b3cf0bf6d, type: 2}
-  navMeshAgent: {fileID: 0}
-  connectedWayPatrol: {fileID: 114093386475967958}
-  wanderBehavior: {fileID: 0}
-  interactableItems: []
 --- !u!114 &114984319624796110
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -22,6 +22,8 @@ public class GhostAI : MonoBehaviour
     /*   My Things   */
     [HideInInspector]
     public NavMeshAgent NMA;
+    [HideInInspector]
+    public Rigidbody r;
 
     /*   Public Variables   */
     public float patrolSpeed = 1.5f;
@@ -77,6 +79,8 @@ public class GhostAI : MonoBehaviour
     public WanderState wanderState;
     [HideInInspector]
     public PatrolState patrolState;
+    [HideInInspector]
+    public GameOverState gameOverState;
 
 
     // Use this for initialization
@@ -90,6 +94,7 @@ public class GhostAI : MonoBehaviour
 
         NMA = this.GetComponent<NavMeshAgent>();
         sight = this.GetComponent<Sight>();
+        r = GetComponent<Rigidbody>();
         if (player != null)
         {
             itemsCollectionCS = player.GetComponent<ItemCollection>();
@@ -162,15 +167,14 @@ public class GhostAI : MonoBehaviour
         dist = Vector3.Distance(playerPosition, currentPosition);
         if (FSM.currentState == PatrolState.GetInstance(this))
         {
-        if      (dist <= 5.0f)
-            NMA.speed = 0.5f;
-        else if (dist <= 10.0f)
-            NMA.speed = 1.0f;
-        else if (dist >= 10.0f)
-            NMA.speed = 1.5f;
-
+            if (dist <= 5.0f)
+                NMA.speed = 0.5f;
+            else if (dist <= 10.0f)
+                NMA.speed = 1.0f;
+            else if (dist >= 10.0f)
+                NMA.speed = 1.5f;
         }
-        
+
 
         //Ryan's totaly awsome bool toggling ghost buffs
         switch (itemsCollectionCS.currentNumberOfItems)
@@ -241,10 +245,12 @@ public class GhostAI : MonoBehaviour
         //Ryan's totaly bestest game over trigger
         if (other.gameObject.tag == "Player")
         {
-            PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
-            SceneManager.LoadScene("GameOver");
+            FSM.ChangeState(GameOverState.GetInstance(this));
+            //PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
+            //SceneManager.LoadScene("GameOver");
         }
     }
+
 
     // private void OnCollisionEnter(Collision collision)
     // {
