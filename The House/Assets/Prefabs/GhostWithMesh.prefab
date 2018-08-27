@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4537037916153914}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Thumb2_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +49,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4718961764514978}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Middle2_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4036890352534478}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Heel_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4577055228549318}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Thumb3_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4956533777326386}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Ring1_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4016719116552380}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Elbow_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4326549805804810}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Ling4_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4279113394859840}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Hip_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +275,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4182934773540514}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Ring2_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,7 +320,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4101482275820490}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Pinkie4_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -350,7 +350,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4065891568924706}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Ring4_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,7 +425,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4785744712465888}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Middle4_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -455,7 +455,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4340894929521052}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Thumb3_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -470,7 +470,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4772788813663976}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Loc_Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,7 +485,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4763837154141742}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Middle2_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -520,7 +520,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4094604073836990}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Elbow_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -535,7 +535,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4651128581167228}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Middle3_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -611,7 +611,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4273849853393124}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Index4_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -626,7 +626,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4376425367621528}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Index4_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -686,7 +686,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4226382007595560}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Spine_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -731,7 +731,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4806793663332660}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Hand_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -746,7 +746,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4067231164656404}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Ling3_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -761,7 +761,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4190152878908014}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Middle4_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -776,7 +776,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4255754153270694}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Foot_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -791,7 +791,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4213449138221968}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Index3_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -821,7 +821,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4742215609071694}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Pinkie3_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -882,7 +882,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4253116929506426}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_CollarBone_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -897,7 +897,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4256789512835212}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Ling1_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -912,7 +912,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4078427205850684}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Knee_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -927,7 +927,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4411660008401194}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1002,7 +1002,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4669661173775654}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Pinkie3_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1017,7 +1017,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4640083111137296}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Pinkie4_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1032,7 +1032,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4301567361096972}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Knee_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1062,7 +1062,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4792909757859338}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Hip_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1164,7 +1164,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4250836573492618}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_BKnee_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1179,7 +1179,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4701355192223512}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Index2_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1194,7 +1194,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4333385371021576}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Shoulder_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1209,7 +1209,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4728682312774246}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Thumb_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1224,7 +1224,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4925687913923626}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Index2_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1314,7 +1314,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4187887122456512}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_BKnee_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1344,7 +1344,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4797579057533090}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Index3_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1434,7 +1434,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4776087490838562}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Middle1_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1449,7 +1449,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4451904683654280}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Foot_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1481,7 +1481,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4747027013715204}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1496,7 +1496,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4120332382733294}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Shoulder_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1511,7 +1511,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4094128550269434}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Thumb2_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1573,7 +1573,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4396830094210294}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Thumb_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1588,7 +1588,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4929972727476866}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Middle1_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1603,7 +1603,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4696695436605200}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1618,7 +1618,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4875073272175798}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1648,7 +1648,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4788561855185276}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Middle3_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1663,7 +1663,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4251464657936402}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Hand_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1708,7 +1708,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4087038358436276}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Pinkie2_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1723,7 +1723,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4520107588239112}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Pinkie1_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1739,7 +1739,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4819633863606474}
   - component: {fileID: 137145289170634266}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Ghooost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1770,7 +1770,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4963574672940648}
   - component: {fileID: 95368805504023318}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spirit_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1830,7 +1830,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4369870615447084}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Pelvis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1860,7 +1860,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4452945921881296}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Heel_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1875,7 +1875,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4297826506448896}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Ring3_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1890,7 +1890,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4236635974471928}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Pinkie2_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1935,7 +1935,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4678472322596704}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Index1_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1965,7 +1965,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4447678764680722}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Index1_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1995,7 +1995,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4234874593923136}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Ling2_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2040,7 +2040,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4779597727704048}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_CollarBone_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2085,7 +2085,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4142088548792644}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Ghost_Rig:Jnt_Pinkie1_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4604,7 +4604,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9e4a6993240d14d43a1acdbb8a987c54, type: 3}
+  - {fileID: 2100000, guid: 3168c0450696ec04aba9056b8924591f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
