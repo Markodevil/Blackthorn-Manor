@@ -72,7 +72,7 @@ public class OpenDrawerScript : MonoBehaviour
         // Return 
         //      Changes Camscript to true so player can check cameras 
         //--------------------------------------------------------------------------------------
-        if (Input.GetKeyUp(KeyCode.Mouse0))
+        if (Input.GetKeyUp(KeyCode.Mouse0) && isHoldingDown)
         {
             //camScript.enabled = true;
             fpsCamera.SetTouching(false);
