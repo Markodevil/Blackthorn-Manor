@@ -130,11 +130,11 @@ public class InteractableItems : MonoBehaviour
         Collider[] hitCollider = Physics.OverlapSphere(transform.position, soundRange);
         for (int i = 0; i < hitCollider.Length; i++)
         {
-            if (hitCollider[i].gameObject.tag == "Ghost")
+            if (hitCollider[i].gameObject.tag == "SoundTrigger")
             {
                 
                 Debug.Log("Ghost heard the sound");
-                GhostAI ghostAI = hitCollider[i].gameObject.GetComponent<GhostAI>();
+                GhostAI ghostAI = hitCollider[i].gameObject.GetComponentInParent<GhostAI>();
                 if(ghostAI)
                 {
                     ghostAI.HearSomething(gameObject.transform.position);

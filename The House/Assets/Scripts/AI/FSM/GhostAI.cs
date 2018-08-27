@@ -95,7 +95,9 @@ public class GhostAI : MonoBehaviour
             itemsCollectionCS = player.GetComponent<ItemCollection>();
             playerMovementCS = player.GetComponent<PlayerMovement>();
         }
-        hearingTrigger = this.GetComponent<SphereCollider>();
+        //hearingTrigger = this.GetComponent<SphereCollider>();
+
+        hearingTrigger = GetComponentInChildren<SphereCollider>();
 
         hearingTrigger.radius = hearingRange;
 
@@ -137,7 +139,7 @@ public class GhostAI : MonoBehaviour
 
         Direction.Normalize();
 
-        Debug.Log("Current AI state: " + FSM.currentState.stateName);
+        //Debug.Log("Current AI state: " + FSM.currentState.stateName);
 
         dist = Vector3.Distance(playerPosition, currentPosition);
         if (FSM.currentState != SeekState.GetInstance(this))
@@ -228,7 +230,7 @@ public class GhostAI : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Ryan's totaly bestest game over trigger
-        if (other.gameObject.layer == 8 && dist < 2)
+        if (other.gameObject.tag == "Player")
         {
             PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
             SceneManager.LoadScene("GameOver");

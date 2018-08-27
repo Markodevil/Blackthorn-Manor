@@ -201,7 +201,7 @@ public class PlayerMovement : MonoBehaviour
                     for (int i = 0; i < hitCollider.Length; i++)
                     {
                         //if current collider's gameobject in array is tagged Ghost
-                        if (hitCollider[i].gameObject.tag == "Ghost")
+                        if (hitCollider[i].gameObject.tag == "SoundTrigger")
                         {
                             //We've heard the player
                             Debug.Log("Ghost heard the sound");
@@ -214,7 +214,7 @@ public class PlayerMovement : MonoBehaviour
                             //    playerHasBeenHeard = true;
                             //    Debug.Log("The Ghost is responding to the sound:");
                             //}
-                            GhostAI ghostAI = hitCollider[i].gameObject.GetComponent<GhostAI>();
+                            GhostAI ghostAI = hitCollider[i].gameObject.GetComponentInParent<GhostAI>();
                             if (ghostAI)
                             {
                                 //Vector3 direction = GhostTransform.position - footsies[footIndex].transform.position;

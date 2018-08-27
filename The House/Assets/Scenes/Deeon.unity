@@ -31521,6 +31521,10 @@ Prefab:
       propertyPath: seekSound
       value: 
       objectReference: {fileID: 523843236}
+    - target: {fileID: 1317352103558808, guid: 8fa7168838974c64db6cdfadfbdc0e29, type: 2}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8fa7168838974c64db6cdfadfbdc0e29, type: 2}
   m_IsPrefabParent: 0
