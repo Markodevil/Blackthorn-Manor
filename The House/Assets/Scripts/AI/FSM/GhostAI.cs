@@ -141,7 +141,6 @@ public class GhostAI : MonoBehaviour
 
         //Debug.Log("Current AI state: " + FSM.currentState.stateName);
 
-        dist = Vector3.Distance(playerPosition, currentPosition);
         if (FSM.currentState != SeekState.GetInstance(this))
         {
             if (hasHeardSomething)
@@ -157,11 +156,21 @@ public class GhostAI : MonoBehaviour
             if (FSM.currentState != SeekState.GetInstance(this))
                 FSM.ChangeState(SeekState.GetInstance(this));
         }
+
+        //Ghost Speed Changer
+        //If the Ghost is close = 0.5f, medium = 1.0f, Far = 1.50f
+        dist = Vector3.Distance(playerPosition, currentPosition);
         if (FSM.currentState == PatrolState.GetInstance(this))
         {
-            NMA.speed = patrolSpeed;
-        }
+        if      (dist <= 5.0f)
+            NMA.speed = 0.5f;
+        else if (dist <= 10.0f)
+            NMA.speed = 1.0f;
+        else if (dist >= 10.0f)
+            NMA.speed = 1.5f;
 
+        }
+        
 
         //Ryan's totaly awsome bool toggling ghost buffs
         switch (itemsCollectionCS.currentNumberOfItems)
