@@ -12078,6 +12078,86 @@ Transform:
   m_PrefabParentObject: {fileID: 4133396066711436, guid: a51fd2e6b8a438140a22e485a23d726e,
     type: 2}
   m_PrefabInternal: {fileID: 1206166449}
+--- !u!82 &435356597
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 435356588}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &439749121
 GameObject:
   m_ObjectHideFlags: 0
@@ -32186,6 +32266,26 @@ Prefab:
       propertyPath: m_CullingMask.m_Bits
       value: 4294963967
       objectReference: {fileID: 0}
+    - target: {fileID: 114786340771772000, guid: a51fd2e6b8a438140a22e485a23d726e,
+        type: 2}
+      propertyPath: cameraSoundManager
+      value: 
+      objectReference: {fileID: 435356597}
+    - target: {fileID: 114786340771772000, guid: a51fd2e6b8a438140a22e485a23d726e,
+        type: 2}
+      propertyPath: openCameraSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 18689f6d2c39e52479c3c9008f0888e4, type: 3}
+    - target: {fileID: 114786340771772000, guid: a51fd2e6b8a438140a22e485a23d726e,
+        type: 2}
+      propertyPath: closeCameraSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ec7ca8d1e44a49b4c8f40aa2cd04c919, type: 3}
+    - target: {fileID: 114786340771772000, guid: a51fd2e6b8a438140a22e485a23d726e,
+        type: 2}
+      propertyPath: changeCameraSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 3c2391d4d1a4af54fa188175987322f2, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a51fd2e6b8a438140a22e485a23d726e, type: 2}
   m_IsPrefabParent: 0
