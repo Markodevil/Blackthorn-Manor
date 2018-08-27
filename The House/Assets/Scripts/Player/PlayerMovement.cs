@@ -274,7 +274,8 @@ public class PlayerMovement : MonoBehaviour
         return isTouchingSomething;
     }
 
-    private void OnCollisionEnter(Collision collision)
+  
+    private void OnCollisionStay(Collision collision)
     {
         // When the player collides with a wall
         // the player can no longer run 
@@ -282,8 +283,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isRunning = false;
         }
-    
-    }
 
+    }
 
 }
