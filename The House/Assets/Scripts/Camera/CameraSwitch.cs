@@ -41,7 +41,8 @@ public class CameraSwitch : MonoBehaviour
         }
         cameras[0].SetActive(true);
         playerCamera = GetComponentInChildren<Camera>().gameObject;
-        SetCanvasPosition(cameras[0].transform);
+        if (canvasOverlay != null)
+            SetCanvasPosition(cameras[0].transform);
         UpdateCanvasIndex();
     }
 
@@ -81,7 +82,8 @@ public class CameraSwitch : MonoBehaviour
                     cameraIndex--;
                 //set new index to active
                 cameras[cameraIndex].SetActive(true);
-                SetCanvasPosition(cameras[cameraIndex].transform);
+                if (canvasOverlay != null)
+                    SetCanvasPosition(cameras[cameraIndex].transform);
                 UpdateCanvasIndex();
 
                 if (cameraSoundManager)
@@ -98,7 +100,8 @@ public class CameraSwitch : MonoBehaviour
                     cameraIndex++;
                 //set new index to active
                 cameras[cameraIndex].SetActive(true);
-                SetCanvasPosition(cameras[cameraIndex].transform);
+                if (canvasOverlay != null)
+                    SetCanvasPosition(cameras[cameraIndex].transform);
                 UpdateCanvasIndex();
 
                 if (cameraSoundManager)
