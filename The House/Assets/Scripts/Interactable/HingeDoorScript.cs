@@ -37,7 +37,9 @@ public class HingeDoorScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update()
-    {       
+    {
+
+        Physics.IgnoreCollision(Player.GetComponent<CapsuleCollider>(), this.GetComponent<BoxCollider>());
         //// Doors position 
         Vector3 doorPosition = transform.position;
         //// Players position
