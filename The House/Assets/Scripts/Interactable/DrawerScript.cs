@@ -31,6 +31,8 @@ public class DrawerScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        Physics.IgnoreCollision(Player.GetComponent<CapsuleCollider>(), this.GetComponent<BoxCollider>());
+
 
         Vector3 drawerPosition = transform.position;
         // Players position
@@ -79,8 +81,8 @@ public class DrawerScript : MonoBehaviour {
     }
 
      private void OnCollisionEnter(Collision collision)
-     {
-         if (collision.gameObject.tag == "RequiredItem")
+    {          
+        if (collision.gameObject.tag == "RequiredItem")
          {
             Debug.Log("CupInside");
             Outline.SetActive(true);
