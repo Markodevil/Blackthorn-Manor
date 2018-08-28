@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
 
     public Transform ghostLookAt;
 
+    private CameraSwitch CS;
+
     public enum GameStates
     {
         Playing,
@@ -55,6 +57,7 @@ public class GameManager : MonoBehaviour
     {
         menuManager = FindObjectOfType<MenuManager>();
         Player = GameObject.FindGameObjectWithTag("Player");
+        CS = FindObjectOfType<CameraSwitch>();
     }
 
     // Use this for initialization
@@ -154,6 +157,9 @@ public class GameManager : MonoBehaviour
                 {
                     mon.enabled = false;
                 }
+                CS.phoneThing.SetActive(false);
+                CS.lookingAtPhone = false;
+                CS.enabled = false;
                 break;
             case GameStates.ChangingScene:
                 Time.timeScale = 1;
