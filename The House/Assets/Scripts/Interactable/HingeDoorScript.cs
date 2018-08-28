@@ -18,7 +18,7 @@ public class HingeDoorScript : MonoBehaviour {
     // Sets the value for closeTimer
     public float doorCloseTime; 
     // Timer until door closes 
-    public float closeTimer;
+    private float closeTimer;
     //closes the door when closeTimer is 0 
     bool closeDoor = false;
     bool doorSoundEnabled;
