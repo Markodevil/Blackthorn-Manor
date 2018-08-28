@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//This script is attached to the player so that the door can be opened 
 public class OpenDoorScript : MonoBehaviour {
 
     // Distance in which the player can interact with the door 
@@ -39,7 +40,8 @@ public class OpenDoorScript : MonoBehaviour {
         // Return 
         //      Changes the doorState so that the door can be opened
         //--------------------------------------------------------------------------------------
-        if (Input.GetKeyDown(KeyCode.Mouse0) && Physics.Raycast(ray, out hit, interactDistance))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Physics.Raycast(ray, out hit, interactDistance) ||
+            (Input.GetKeyDown(KeyCode.E) && Physics.Raycast(ray, out hit, interactDistance)))
         {
             if (hit.collider.CompareTag("Door"))
             {
@@ -48,31 +50,10 @@ public class OpenDoorScript : MonoBehaviour {
                 distance.y = 0;
                 dist = distance.magnitude;
                 isHoldingDown = true;
-                fpsCamera.SetTouching(true);
+            //    fpsCamera.SetTouching(true);
                 //Goes into HingeDoorScript and allows player to open doors 
                 hit.collider.transform.GetComponent<HingeDoorScript>().ChangeDoorState();
             }
-        }
-
-        // if player is holding down mouse1 and moves away from the door
-        // camera movement will be enabled 
-        if (dist > 4 && isHoldingDown)
-        {
-            fpsCamera.SetTouching(false);
-            isHoldingDown = false;
-        }
-        //--------------------------------------------------------------------------------------
-        // Checks if the Mouse0 button is up  
-        //
-        // Param 
-        //      Determines if Camscript is true 
-        // Return 
-        //      Changes Camscript to true so player can check cameras 
-        //--------------------------------------------------------------------------------------
-        if (Input.GetKeyUp(KeyCode.Mouse0) && isHoldingDown)
-        {
-            //camScript.enabled = true;
-			fpsCamera.SetTouching(false);
         }
 
     }

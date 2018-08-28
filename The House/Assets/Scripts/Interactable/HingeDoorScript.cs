@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//This script is attached to the door to open 
 public class HingeDoorScript : MonoBehaviour {
 
     public HingeJoint hinge;
@@ -21,6 +22,7 @@ public class HingeDoorScript : MonoBehaviour {
     //closes the door when closeTimer is 0 
     bool closeDoor = false;
     bool doorSoundEnabled;
+    bool DoorSoundCooldown = false;
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -53,7 +55,7 @@ public class HingeDoorScript : MonoBehaviour {
         mouseY = Input.GetAxis("Mouse Y");
         
         // lets go of the door when Mouse0 is released 
-        if (Input.GetKeyUp(KeyCode.Mouse0) || dist > 3.5f)
+        if (Input.GetKeyUp(KeyCode.Mouse0) || Input.GetKeyUp(KeyCode.E) || dist > 3.5f)
         {
             isOpen = false;
         }
@@ -69,39 +71,22 @@ public class HingeDoorScript : MonoBehaviour {
             hinge.spring = hingeSpring;
             hinge.useSpring = true;
             closeDoor = false;
+            DoorSoundCooldown = false;
           //  audio.PlayOneShot(doorCreakSound, 1);
           //  Debug.Log("Played Closing Sound");
 
         }
         
-       // if(doorSoundEnabled && mouseY == 0)
-       // {
-       //     audio.Pause();
-       // }
-       // else if(doorSoundEnabled && mouseY > 0)
-       // {
-       //     audio.pitch = 1;
-       //     audio.Play();
-       // }
-       // else if(doorSoundEnabled && mouseY < 0)
-       // {
-       //     audio.pitch = -1;
-       //     audio.Play();
-       // }
-        if (doorSoundEnabled && mouseY > 0)
+        if (doorSoundEnabled && Input.GetKey(KeyCode.Mouse0) && DoorSoundCooldown == false 
+            || doorSoundEnabled && Input.GetKey(KeyCode.E) && DoorSoundCooldown == false)
         {
+            Debug.Log("DoorSoundPlayed");
             // audio.pitch = 1;
-            audio.PlayOneShot(doorCreakSound, 1);
+            audio.Play();
             doorSoundEnabled = false;
-        }
-        else if (doorSoundEnabled && mouseY < 0)
-        {
-            //audio.pitch = -1;
-            audio.PlayOneShot(doorCreakSound, 1);
-            doorSoundEnabled = false;
-        }
+            DoorSoundCooldown = true;
 
-
+        }
 
         // Adds force to the players forward direction to the door which will open or close 
         // the door depending on which side the player is located 
@@ -109,10 +94,9 @@ public class HingeDoorScript : MonoBehaviour {
         {
             hingeSpring.spring = 0;
             hinge.spring = hingeSpring;
-            rb.AddForceAtPosition(Player.transform.forward * mouseY * doorOpenSpeed, Player.transform.position);
+            rb.AddForceAtPosition(Player.transform.forward *  doorOpenSpeed * 10, Player.transform.position);
             closeTimer = doorCloseTime;
             closeDoor = true;
-
         }
 
     }
@@ -126,14 +110,5 @@ public class HingeDoorScript : MonoBehaviour {
     {
         doorSoundEnabled = true;
     }
-    // When the ghosts interacts with the door it makes a noise 
 
-    //  private void OnCollisionEnter(Collision collision)
- //  {
- //      if (collision.gameObject.tag == "Ghost")
- //      {
- //          Debug.Log("EnemyCollided with me ");
- //          closeDoor = true;
- //      }
- //  }
 }
