@@ -43,7 +43,7 @@ public class ItemCollection : MonoBehaviour
         //Sets the object outline back to true
         toggleOutline = true;
         //check for key input
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0))
         {
             //raycast from camera forward
             RaycastHit hit;
