@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     [Header("Debug stuff")]
     public bool useGhost;
     public GameObject Ghost;
+    private GameObject Player;
 
 
     public enum GameStates
@@ -53,6 +54,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         menuManager = FindObjectOfType<MenuManager>();
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Use this for initialization
@@ -133,9 +135,15 @@ public class GameManager : MonoBehaviour
                 break;
             case GameStates.GameOver:
                 //set timescale to 0
-                Time.timeScale = 0;
+                //Time.timeScale = 0;
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
+
+
+                Vector3 relativePos = (Ghost.transform.position + new Vector3(0, 1, 0)) - Player.transform.position;
+                Quaternion rotation = Quaternion.LookRotation(relativePos);
+                Quaternion targetRot = Quaternion.Euler(Vector3.Slerp(Camera.main.transform.rotation.eulerAngles, rotation.eulerAngles, 0.1f));
+                Camera.main.transform.rotation = targetRot;
 
 
                 foreach (MonoBehaviour mon in scriptsToTurnOff)
@@ -364,6 +372,11 @@ public class GameManager : MonoBehaviour
     public void ChangeGameState()
     {
         currentState = GameStates.Playing;
+    }
+
+    public void ChangeGameStates(GameStates state)
+    {
+        currentState = state;
     }
 
     public void ChangeGhostStatus()

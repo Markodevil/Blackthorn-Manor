@@ -72,6 +72,7 @@ public class GhostAI : MonoBehaviour
     private string ghostName;
     private GameObject singleton;
     private MenuManager mm;
+    private GameManager gm;
 
     [HideInInspector]
     public SeekState seekState;
@@ -81,7 +82,7 @@ public class GhostAI : MonoBehaviour
     public PatrolState patrolState;
     [HideInInspector]
     public GameOverState gameOverState;
-
+    
 
     // Use this for initialization
     void Start()
@@ -107,6 +108,8 @@ public class GhostAI : MonoBehaviour
         hearingTrigger.radius = hearingRange;
 
         ghostName = GameObject.FindGameObjectWithTag("Ghost").name;
+
+        gm = FindObjectOfType<GameManager>();
 
         //start in wander state
         FSM.ChangeState(PatrolState.GetInstance(this));
@@ -254,6 +257,7 @@ public class GhostAI : MonoBehaviour
                 return;
             }
             FSM.ChangeState(GameOverState.GetInstance(this));
+            gm.ChangeGameStates(GameManager.GameStates.GameOver);
             //PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
             //SceneManager.LoadScene("GameOver");
         }
