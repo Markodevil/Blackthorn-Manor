@@ -41025,7 +41025,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -49519,6 +49519,56 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114079228938368974, guid: bb7234f89b14bfd42beffcc18eefa4d3,
+        type: 2}
+      propertyPath: doorCloseTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114115811244605734, guid: bb7234f89b14bfd42beffcc18eefa4d3,
+        type: 2}
+      propertyPath: doorCloseTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114660571782549156, guid: bb7234f89b14bfd42beffcc18eefa4d3,
+        type: 2}
+      propertyPath: doorCloseTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114138603139882450, guid: bb7234f89b14bfd42beffcc18eefa4d3,
+        type: 2}
+      propertyPath: doorCloseTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114732441029862582, guid: bb7234f89b14bfd42beffcc18eefa4d3,
+        type: 2}
+      propertyPath: doorCloseTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114392948497666564, guid: bb7234f89b14bfd42beffcc18eefa4d3,
+        type: 2}
+      propertyPath: doorCloseTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114468715487233164, guid: bb7234f89b14bfd42beffcc18eefa4d3,
+        type: 2}
+      propertyPath: doorCloseTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114758919988185476, guid: bb7234f89b14bfd42beffcc18eefa4d3,
+        type: 2}
+      propertyPath: doorCloseTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114241809480286894, guid: bb7234f89b14bfd42beffcc18eefa4d3,
+        type: 2}
+      propertyPath: doorCloseTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114281223187521914, guid: bb7234f89b14bfd42beffcc18eefa4d3,
+        type: 2}
+      propertyPath: doorCloseTime
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb7234f89b14bfd42beffcc18eefa4d3, type: 2}
