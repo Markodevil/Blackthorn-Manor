@@ -74,31 +74,31 @@ public class HingeDoorScript : MonoBehaviour {
 
         }
         
-        //if (doorSoundEnabled && mouseY > 0)
-        //{
-        //    audio.PlayOneShot(doorCreakSound, 1);
-        //    doorSoundEnabled = false;
-        //
-        //}
-        //else if (doorSoundEnabled && mouseY < 0)
-        //{
-        //    audio.PlayOneShot(doorCreakSound, 1);
-        //    doorSoundEnabled = false;
-        //}
-
-        if(doorSoundEnabled && mouseY == 0)
+       // if(doorSoundEnabled && mouseY == 0)
+       // {
+       //     audio.Pause();
+       // }
+       // else if(doorSoundEnabled && mouseY > 0)
+       // {
+       //     audio.pitch = 1;
+       //     audio.Play();
+       // }
+       // else if(doorSoundEnabled && mouseY < 0)
+       // {
+       //     audio.pitch = -1;
+       //     audio.Play();
+       // }
+        if (doorSoundEnabled && mouseY > 0)
         {
-            audio.Pause();
+            // audio.pitch = 1;
+            audio.PlayOneShot(doorCreakSound, 1);
+            doorSoundEnabled = false;
         }
-        else if(doorSoundEnabled && mouseY > 0)
+        else if (doorSoundEnabled && mouseY < 0)
         {
-            audio.pitch = 1;
-            audio.Play();
-        }
-        else if(doorSoundEnabled && mouseY < 0)
-        {
-            audio.pitch = -1;
-            audio.Play();
+            //audio.pitch = -1;
+            audio.PlayOneShot(doorCreakSound, 1);
+            doorSoundEnabled = false;
         }
 
 
@@ -125,7 +125,6 @@ public class HingeDoorScript : MonoBehaviour {
     void PlayDoorSound()
     {
         doorSoundEnabled = true;
-        audio.PlayOneShot(doorCreakSound, 1);
     }
     // When the ghosts interacts with the door it makes a noise 
 
