@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 64219612783755514}
   - component: {fileID: 153648303624921016}
   - component: {fileID: 114338857974651610}
-  - component: {fileID: 65709545845649172}
+  - component: {fileID: 65801237128566858}
   m_Layer: 0
   m_Name: polySurface128
   m_TagString: Drawer
@@ -717,7 +717,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.16051807, y: 1.0226412, z: 1}
   m_Center: {x: 0.85043025, y: 0.14016485, z: 2.1255106e-15}
---- !u!65 &65709545845649172
+--- !u!65 &65801237128566858
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -727,8 +727,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5465457, y: 0.16814412, z: 0.05633351}
-  m_Center: {x: -8.6231104e-17, y: -0.035456594, z: -0.025182018}
+  m_Size: {x: 1.5465457, y: 0.1384743, z: 0.8792466}
+  m_Center: {x: 1.6161329e-15, y: -0.050291497, z: 0.38627464}
 --- !u!65 &65857759398865398
 BoxCollider:
   m_ObjectHideFlags: 1
