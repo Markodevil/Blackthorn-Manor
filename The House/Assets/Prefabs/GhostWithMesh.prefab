@@ -1770,6 +1770,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4963574672940648}
   - component: {fileID: 95368805504023318}
+  - component: {fileID: 114355497937951986}
   m_Layer: 10
   m_Name: Spirit_Prefab
   m_TagString: Untagged
@@ -4411,6 +4412,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114355497937951986
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1859667042912524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 255c18bcbcb43a74abb4492ef9c63502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114588399965623072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4521,6 +4533,7 @@ MonoBehaviour:
   sight: {fileID: 0}
   dist: 0
   NMA: {fileID: 0}
+  r: {fileID: 0}
   patrolSpeed: 1.5
   heardSomethingAnim: {fileID: 95109340341193408}
   wanderRadius: 30
