@@ -257,41 +257,31 @@ public class GhostAI : MonoBehaviour
                 return;
             }
             FSM.ChangeState(GameOverState.GetInstance(this));
-<<<<<<< .mine
             PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
-||||||| .r258
             //PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
-=======
             gm.ChangeGameStates(GameManager.GameStates.GameOver);
             //PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
->>>>>>> .r259
             //SceneManager.LoadScene("GameOver");
         }
     }
 
-
-    // private void OnCollisionEnter(Collision collision)
-    // {
-    //     if (collision.gameObject.layer == 8)
-    //     {
-    //         Cursor.visible = true;
-    //         Cursor.lockState = CursorLockMode.Confined;
-    //         PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
-    //         if (mm)
-    //         {
-    //             mm.sceneName = "GameOver";
-    //             mm.fade.ResetTrigger("FadeIn");
-    //             mm.fade.SetTrigger("FadeOut");
-    //
-    //         }
-    //         else
-    //         {
-    //             SceneManager.LoadScene("GameOver");
-    //
-    //         }
-    //         Debug.Log("Touched le ghost");
-    //     }
-    // }
+    private void OnCollisionEnter(Collision collision)
+    {
+        //Ryan's totaly bestest game over trigger
+        if (collision.gameObject.tag == "Player")
+        {
+            if (FSM.currentState == GameOverState.GetInstance(this))
+            {
+                return;
+            }
+            FSM.ChangeState(GameOverState.GetInstance(this));
+            PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
+            //PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
+            gm.ChangeGameStates(GameManager.GameStates.GameOver);
+            //PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
+            //SceneManager.LoadScene("GameOver");
+        }
+    }
 
     //This code was taken from a youtube tutorial from here https://www.youtube.com/watch?v=mBGUY7EUxXQ
     //It calculates the total distance to the player taking into account the amount of corners. 

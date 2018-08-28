@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour
     public Transform ritualItemsParent;
 
     [Header("UI Tings")]
-    public GameObject gameOverText;
     private MenuManager menuManager;
     public GameObject ingameUI;
     public GameObject menuUI;
@@ -40,6 +39,7 @@ public class GameManager : MonoBehaviour
     public GameObject Ghost;
     private GameObject Player;
 
+    public Transform ghostLookAt;
 
     public enum GameStates
     {
@@ -118,7 +118,6 @@ public class GameManager : MonoBehaviour
                 {
                     mon.enabled = true;
                 }
-                gameOverText.SetActive(false);
                 break;
             case GameStates.Pause:
                 //set timescale to 0
@@ -134,23 +133,27 @@ public class GameManager : MonoBehaviour
 
                 break;
             case GameStates.GameOver:
-                //set timescale to 0
-                //Time.timeScale = 0;
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
 
 
-                Vector3 relativePos = (Ghost.transform.position + new Vector3(0, 1, 0)) - Player.transform.position;
-                Quaternion rotation = Quaternion.LookRotation(relativePos);
-                Quaternion targetRot = Quaternion.Euler(Vector3.Slerp(Camera.main.transform.rotation.eulerAngles, rotation.eulerAngles, 0.1f));
-                Camera.main.transform.rotation = targetRot;
+                //Vector3 relativePos = (Ghost.transform.position) - Player.transform.position;
+                //Quaternion rotation = Quaternion.LookRotation(relativePos);
+                //Quaternion targetRot = Quaternion.Euler(Vector3.Slerp(Camera.main.transform.rotation.eulerAngles, rotation.eulerAngles, 0.1f));
+                //Camera.main.transform.rotation = targetRot;
+
+                Vector3 direction = ghostLookAt.position - Camera.main.transform.position;
+                //Quaternion toRotation = Quaternion.FromToRotation(Camera.main.transform.forward, direction);
+                //Camera.main.transform.rotation = Quaternion.Lerp(Camera.main.transform.rotation, toRotation, 1.0f * Time.deltaTime);
+
+                //Camera.main.transform.LookAt(ghostLookAt);
+                Camera.main.transform.rotation = Quaternion.Lerp(Camera.main.transform.rotation, Quaternion.LookRotation(direction), 0.01f * Time.time);
 
 
                 foreach (MonoBehaviour mon in scriptsToTurnOff)
                 {
                     mon.enabled = false;
                 }
-                gameOverText.SetActive(true);
                 break;
             case GameStates.ChangingScene:
                 Time.timeScale = 1;
@@ -158,10 +161,7 @@ public class GameManager : MonoBehaviour
         }
 
     }
-
-
-
-
+    
     //--------------------------------------------------------------------------------------
     // Checks for keyboard inputs to find a secret code
     // 

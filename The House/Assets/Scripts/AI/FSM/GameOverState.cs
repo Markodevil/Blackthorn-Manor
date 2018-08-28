@@ -48,7 +48,8 @@ public class GameOverState : State<GhostAI>
 
         //plays the anim and freezes the ghost and player
         owner.heardSomethingAnim.SetInteger("KillAnim", 1);
-        owner.NMA.speed = 0;
+        owner.NMA.isStopped = true;
+        owner.NMA.velocity = Vector3.zero;
         owner.r.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
         playerRigidBody.constraints = RigidbodyConstraints.FreezePosition;
         playerMovement.enabled = false;

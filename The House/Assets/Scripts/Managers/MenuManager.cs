@@ -260,6 +260,11 @@ public class MenuManager : MonoBehaviour
         //Debug.Log(mode);
         fade.ResetTrigger("FadeOut");
         fade.SetTrigger("FadeIn");
+        if(SceneManager.GetActiveScene().name != "Deeon")
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+        }
         //RenderSettings.ambientLight = new Color(brightness, brightness, brightness, 1);
     }
 
