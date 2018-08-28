@@ -9835,7 +9835,7 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1946142427734924}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 2
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -11739,7 +11739,7 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1029829188814832}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 2
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -40005,7 +40005,7 @@ MonoBehaviour:
   rb: {fileID: 54455977750983130}
   audio: {fileID: 82642308563049104}
   doorCreakSound: {fileID: 8300000, guid: 417645705b325f94aa9520e73c6a5cdd, type: 3}
-  doorCloseTime: 0
+  doorCloseTime: 3
   closeTimer: 0
 --- !u!114 &114243284150188514
 MonoBehaviour:
