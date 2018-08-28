@@ -257,8 +257,14 @@ public class GhostAI : MonoBehaviour
                 return;
             }
             FSM.ChangeState(GameOverState.GetInstance(this));
+<<<<<<< .mine
+            PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
+||||||| .r258
+            //PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
+=======
             gm.ChangeGameStates(GameManager.GameStates.GameOver);
             //PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
+>>>>>>> .r259
             //SceneManager.LoadScene("GameOver");
         }
     }
