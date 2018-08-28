@@ -830,6 +830,11 @@ Prefab:
       propertyPath: m_Center.y
       value: -0.18366265
       objectReference: {fileID: 0}
+    - target: {fileID: 20579935015346334, guid: a51fd2e6b8a438140a22e485a23d726e,
+        type: 2}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294963967
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a51fd2e6b8a438140a22e485a23d726e, type: 2}
   m_IsPrefabParent: 0
@@ -3718,6 +3723,11 @@ Prefab:
         type: 2}
       propertyPath: m_Center.z
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54952066864852642, guid: 8fa7168838974c64db6cdfadfbdc0e29,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8fa7168838974c64db6cdfadfbdc0e29, type: 2}

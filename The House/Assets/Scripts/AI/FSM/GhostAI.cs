@@ -138,94 +138,98 @@ public class GhostAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 currentPosition = transform.position;
-        Vector3 playerPosition = player.transform.position;
-        Vector3 Direction = currentPosition - playerPosition;
-
-        Direction.Normalize();
-
-        //Debug.Log("Current AI state: " + FSM.currentState.stateName);
-
-        if (FSM.currentState != SeekState.GetInstance(this))
+        if (FSM.currentState != GameOverState.GetInstance(this))
         {
-            if (hasHeardSomething)
+
+            Vector3 currentPosition = transform.position;
+            Vector3 playerPosition = player.transform.position;
+            Vector3 Direction = currentPosition - playerPosition;
+
+            Direction.Normalize();
+
+            //Debug.Log("Current AI state: " + FSM.currentState.stateName);
+
+            if (FSM.currentState != SeekState.GetInstance(this))
             {
-                FSM.ChangeState(SeekState.GetInstance(this));
-                hasHeardSomething = false;
+                if (hasHeardSomething)
+                {
+                    FSM.ChangeState(SeekState.GetInstance(this));
+                    hasHeardSomething = false;
+                }
+
+            }
+            if (sight.visibleTargets.Count > 0)
+            {
+                destination = sight.visibleTargets[0].gameObject.transform.position;
+                if (FSM.currentState != SeekState.GetInstance(this))
+                    FSM.ChangeState(SeekState.GetInstance(this));
             }
 
-        }
-        if (sight.visibleTargets.Count > 0)
-        {
-            destination = sight.visibleTargets[0].gameObject.transform.position;
-            if (FSM.currentState != SeekState.GetInstance(this))
-                FSM.ChangeState(SeekState.GetInstance(this));
-        }
-
-        //Ghost Speed Changer
-        //If the Ghost is close = 0.5f, medium = 1.0f, Far = 1.50f
-        dist = Vector3.Distance(playerPosition, currentPosition);
-        if (FSM.currentState == PatrolState.GetInstance(this))
-        {
-            if (dist <= 5.0f)
-                NMA.speed = 0.5f;
-            else if (dist <= 10.0f)
-                NMA.speed = 1.0f;
-            else if (dist >= 10.0f)
-                NMA.speed = 1.5f;
-        }
+            //Ghost Speed Changer
+            //If the Ghost is close = 0.5f, medium = 1.0f, Far = 1.50f
+            dist = Vector3.Distance(playerPosition, currentPosition);
+            if (FSM.currentState == PatrolState.GetInstance(this))
+            {
+                if (dist <= 5.0f)
+                    NMA.speed = 0.5f;
+                else if (dist <= 10.0f)
+                    NMA.speed = 1.0f;
+                else if (dist >= 10.0f)
+                    NMA.speed = 1.5f;
+            }
 
 
-        //Ryan's totaly awsome bool toggling ghost buffs
-        switch (itemsCollectionCS.currentNumberOfItems)
-        {
-            case 1:
-                //Increase ghost speed
-                if (stage1 == false)
-                {
-                    patrolSpeed *= speedMultiplyer;
-                    NMA.speed = patrolSpeed;
-                }
-                stage1 = true;
-                break;
-            case 2:
-                //Increase ghost hearing
-                if (stage2 == false)
-                    hearingRange *= soundResponceMultiplyer;
-                stage2 = true;
-                break;
-            case 3:
-                //Ghost starts teleporting to its waypoints
-                //time += Time.deltaTime;
-                //if (time >= 3f)
-                //{
-                //    gameObject.transform.position = NMA.destination;
-                //    time = 0;
-                //}
-                break;
-            case 4:
-                //Ghost duplicates it self
-                //if (this.name != ghostName + "(Clone)")
-                //{
-                //    if (stage4 == false)
-                //        Instantiate(Clone, transform.position, transform.rotation);
-                //    stage4 = true;
-                //}
-                //else if(this.name == ghostName + "(Clone)")
-                //{
-                //    //Ghost Clone Buffs
-                //    if (CloneBuffs == false)
-                //    {
-                //        patrolSpeed *= speedMultiplyer;
-                //        NMA.speed = patrolSpeed;
-                //    }
-                //    CloneBuffs = true;
-                //}
-                break;
-            default:
-                break;
-        }
+            //Ryan's totaly awsome bool toggling ghost buffs
+            switch (itemsCollectionCS.currentNumberOfItems)
+            {
+                case 1:
+                    //Increase ghost speed
+                    if (stage1 == false)
+                    {
+                        patrolSpeed *= speedMultiplyer;
+                        NMA.speed = patrolSpeed;
+                    }
+                    stage1 = true;
+                    break;
+                case 2:
+                    //Increase ghost hearing
+                    if (stage2 == false)
+                        hearingRange *= soundResponceMultiplyer;
+                    stage2 = true;
+                    break;
+                case 3:
+                    //Ghost starts teleporting to its waypoints
+                    //time += Time.deltaTime;
+                    //if (time >= 3f)
+                    //{
+                    //    gameObject.transform.position = NMA.destination;
+                    //    time = 0;
+                    //}
+                    break;
+                case 4:
+                    //Ghost duplicates it self
+                    //if (this.name != ghostName + "(Clone)")
+                    //{
+                    //    if (stage4 == false)
+                    //        Instantiate(Clone, transform.position, transform.rotation);
+                    //    stage4 = true;
+                    //}
+                    //else if(this.name == ghostName + "(Clone)")
+                    //{
+                    //    //Ghost Clone Buffs
+                    //    if (CloneBuffs == false)
+                    //    {
+                    //        patrolSpeed *= speedMultiplyer;
+                    //        NMA.speed = patrolSpeed;
+                    //    }
+                    //    CloneBuffs = true;
+                    //}
+                    break;
+                default:
+                    break;
 
+            }
+        }
         //update current state
         FSM.Update();
     }
@@ -245,6 +249,10 @@ public class GhostAI : MonoBehaviour
         //Ryan's totaly bestest game over trigger
         if (other.gameObject.tag == "Player")
         {
+            if (FSM.currentState == GameOverState.GetInstance(this))
+            {
+                return;
+            }
             FSM.ChangeState(GameOverState.GetInstance(this));
             //PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
             //SceneManager.LoadScene("GameOver");

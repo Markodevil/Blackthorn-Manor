@@ -80,6 +80,8 @@ public class SeekState : State<GhostAI>
 
 
 
+
+
         //if ghost loses sight of you, it goes back to wander
         if (owner.sight.visibleTargets.Count == 0)
         {
