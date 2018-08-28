@@ -311,4 +311,13 @@ public class GhostAI : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, hearingRange);
     }
+
+    public void LoadGameOver()
+    {
+        if (mm == null)
+            return;
+        mm.sceneName = "GameOver";
+        mm.fade.ResetTrigger("FadeIn");
+        mm.fade.SetTrigger("FadeOut");
+    }
 }

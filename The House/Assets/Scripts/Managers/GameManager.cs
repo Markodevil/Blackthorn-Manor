@@ -102,9 +102,7 @@ public class GameManager : MonoBehaviour
                 //set currentState to game over
                 if (clickyWinThing.GetComponent<Horcruxes>().completed/* || KilledByGhost()*/)
                 {
-                    menuManager.sceneName = "WinnerWinnerChickenDinner";
-                    menuManager.fade.ResetTrigger("FadeIn");
-                    menuManager.fade.SetTrigger("FadeOut");
+                    LoadGameOver();
                 }
 
                 if (Input.GetKeyDown(KeyCode.Escape))
@@ -371,5 +369,12 @@ public class GameManager : MonoBehaviour
     public void ChangeGhostStatus()
     {
         useGhost = !useGhost;
+    }
+
+    public void LoadGameOver()
+    {
+        menuManager.sceneName = "WinnerWinnerChickenDinner";
+        menuManager.fade.ResetTrigger("FadeIn");
+        menuManager.fade.SetTrigger("FadeOut");
     }
 }
