@@ -243,7 +243,7 @@ public class GhostAI : MonoBehaviour
         {
             hasHeardSomething = true;
             destination = position;
-            heardSomethingAnim.SetTrigger("hasHeardSomething");
+            //heardSomethingAnim.SetTrigger("hasHeardSomething");
         }
     }
 
