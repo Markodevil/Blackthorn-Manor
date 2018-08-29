@@ -14,6 +14,7 @@ public class IgnorePhysics : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        // Ignroe collision between player and ritual items collider
         Physics.IgnoreCollision(Player.GetComponent<CapsuleCollider>(), this.GetComponent<BoxCollider>());
 	}
 }

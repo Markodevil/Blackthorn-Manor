@@ -38,7 +38,7 @@ public class DrawerScript : MonoBehaviour {
         // Players position
         Vector3 playerPosition = Player.transform.position;
 
-        // Gets the direction of the player from the door 
+        // Gets the direction of the player from the drawer 
         Vector3 Direction = drawerPosition - playerPosition;
         Direction.Normalize();
 
@@ -61,30 +61,37 @@ public class DrawerScript : MonoBehaviour {
         if (isOpen && Vector3.Dot(transform.forward, Direction) > 0)
         {
 
-            // Adds force from the players forward position to the door 
+            // Adds force from the players forward position to the drawer 
             rb.AddForceAtPosition(Player.transform.forward * mouseY * drawerSpeed, Player.transform.position);
 
         }
         
 
     }
-
+    // Sets isOpen to true and enables the drawer sound
     public void changeDrawerState()
     {
         isOpen = !isOpen;
         playDrawerSound();
     }
-
+    // sets bool to true to play the drawer sound
     void playDrawerSound()
     {
         drawerSoundBool = true;
     }
-
-     private void OnCollisionEnter(Collision collision)
+    //--------------------------------------------------------------------------------------
+    // Checks if there is a collision between the dresser and a required item
+    //
+    // Param 
+    //      Gameobject: determines if the outlined gamesobject is on or off
+    // Return 
+    //     if theres a collision between the dresser and required item the dressers outline
+    //     will be enabled
+    //--------------------------------------------------------------------------------------
+    private void OnCollisionEnter(Collision collision)
     {          
         if (collision.gameObject.tag == "RequiredItem")
          {
-            Debug.Log("CupInside");
             Outline.SetActive(true);
          }
          else

@@ -40,8 +40,10 @@ public class PlayerMovement : MonoBehaviour
     public float crouchCameraHeight;
     float initialCameraHeight;
     public float crouchSpeed;
-
-
+    public AudioClip Breathing;
+  //  public AudioClip Heartbeat;
+    public AudioSource audio;
+    bool isBreathing = true;
     public enum howAmIMoving
     {
         notMoving,
@@ -82,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
                 headbobAnim.SetBool("isRunning", isRunning);
             return;
         }
-
+  
         //set headbob anim bool
         if (useHeadbob)
             headbobAnim.SetBool("isRunning", isRunning);
@@ -102,11 +104,18 @@ public class PlayerMovement : MonoBehaviour
                 speed = initialSpeed / 2;
 
                 Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, new Vector3(0, crouchCameraHeight, 0.25f), crouchSpeed);
-
+                if (isBreathing == true)
+                {
+                    audio.Play();
+                    isBreathing = false;
+                } 
+                //audio.Play();
                 if (Input.GetKeyUp(KeyCode.LeftControl) || Input.GetKeyUp(KeyCode.Space))
                 {
                     isCreepin = false;
                     currentMovementState = howAmIMoving.walking;
+                    isBreathing = true;
+                    audio.Stop();
                 }
 
                 break;

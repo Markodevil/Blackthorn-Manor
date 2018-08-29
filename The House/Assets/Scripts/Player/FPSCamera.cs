@@ -67,81 +67,31 @@ public class FPSCamera : MonoBehaviour
             if (hand)
                 hand.SetActive(true);
         }
-        //if (Input.GetKey(KeyCode.Q))
-        //{
-        //    if (!CheckDirections(false))
-        //    {
-        //        IsPeeking = true;
-        //        PeekLeft();
-        //
-        //    }
-        //
-        //}
-        //else if (Input.GetKeyUp(KeyCode.Q))
-        //{
-        //    NoPeek();
-        //    IsPeeking = false;
-        //
-        //}
-        //
-        //if (Input.GetKey(KeyCode.E))
-        //{
-        //    if (!CheckDirections(true))
-        //    {
-        //        IsPeeking = true;
-        //        PeekRight();
-        //    }
-        //}
-        //else if (Input.GetKeyUp(KeyCode.E))
-        //{
-        //
-        //    NoPeek();
-        //    IsPeeking = false;
-        //
-        //
-        //}
-        //
-        //if (!Input.GetKey(KeyCode.E) && !Input.GetKey(KeyCode.Q))
-        //{
-        //    NoPeek();
-        //}
-    }
 
-    void PeekRight()
-    {
-        leanPivot.transform.rotation = Quaternion.Lerp(leanPivot.transform.rotation, Quaternion.Euler(leanPivot.transform.rotation.eulerAngles.x, leanPivot.transform.rotation.eulerAngles.y, -leanAngle), Time.deltaTime * 1.5f);
     }
-
-    void PeekLeft()
-    {
-        leanPivot.transform.rotation = Quaternion.Lerp(leanPivot.transform.rotation, Quaternion.Euler(leanPivot.transform.rotation.eulerAngles.x, leanPivot.transform.rotation.eulerAngles.y, leanAngle), Time.deltaTime * 1.5f);
-    }
-
-    void NoPeek()
-    {
-        //leanPivot.transform.rotation = Quaternion.Euler(0, 0, 0);
-        leanPivot.transform.rotation = Quaternion.Lerp(leanPivot.transform.rotation, Quaternion.Euler(leanPivot.transform.rotation.eulerAngles.x, leanPivot.transform.rotation.eulerAngles.y, 0), Time.deltaTime * 1.5f);
-    }
+    // moves the camera around with mouse
     void RotateCamera()
     {
         float MouseX = Input.GetAxis("Mouse X");
         float MouseY = Input.GetAxis("Mouse Y");
 
+        // Sets mouse sensitivity 
         float RotAmountX = MouseX * Sensitivity;
-
         float RotAmountY = MouseY * Sensitivity;
 
+        // Target rotation of the camera 
         Vector3 TargetRotationCamera = transform.rotation.eulerAngles;
+        //Target rotation of the player
         Vector3 TargetRotationBody = PlayerBody.rotation.eulerAngles;
 
+        
+        // Clamps the cameras rotation 
         XAxisClamp -= RotAmountY;
-
         TargetRotationCamera.x -= RotAmountY;
-        //TargetRotationCamera.z = 0;  --- changed to \/ to fix leaning problem
         TargetRotationCamera.z = transform.rotation.eulerAngles.z;
-
         TargetRotationBody.y += RotAmountX;
 
+        // Keeps the camera from turning too much
         if (XAxisClamp > 90)
         {
             XAxisClamp = 90;
@@ -153,8 +103,9 @@ public class FPSCamera : MonoBehaviour
             TargetRotationCamera.x = 270;
         }
 
-
+        // Rotates the camera 
         transform.rotation = Quaternion.Euler(TargetRotationCamera);
+        // Rotates the player
         PlayerBody.rotation = Quaternion.Euler(TargetRotationBody);
     }
 

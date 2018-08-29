@@ -29,13 +29,6 @@ public class OutlineShaderScript : MonoBehaviour {
              gameObject.SetActive(false);
          }
 
-       // if (dist <= 3)
-       // {
-       //     Debug.Log("Close to dresser");
-       //     gameObject.SetActive(false);
-       //
-       // }
-       // 
     }
 
 }

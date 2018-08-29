@@ -36,7 +36,7 @@ public class OpenDoorScript : MonoBehaviour {
         // Raycasts in front of the player checking if their is a Door infront of the player 
         //
         // Param 
-        //      Direction: the direction in which i want to check if there is a door 
+        //      Raycast : The raycast distance between the player and the drawer
         // Return 
         //      Changes the doorState so that the door can be opened
         //--------------------------------------------------------------------------------------

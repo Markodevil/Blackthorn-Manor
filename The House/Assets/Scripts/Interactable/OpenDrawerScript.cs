@@ -25,12 +25,12 @@ public class OpenDrawerScript : MonoBehaviour
     {
 
         //--------------------------------------------------------------------------------------
-        // Raycasts in front of the player checking if their is a Door infront of the player 
+        // Raycasts in front of the player checking if their is a Drawer infront of the player 
         //
         // Param 
-        //      Direction: the direction in which i want to check if there is a door 
+        //      Raycast : The raycast distance between the player and the drawer
         // Return 
-        //      Changes the DrawerState so that the door can be opened
+        //      Changes the DrawerState so that the drawer can be opened
         //--------------------------------------------------------------------------------------
 
         Vector3 distance;
@@ -50,7 +50,7 @@ public class OpenDrawerScript : MonoBehaviour
             dist = distance.magnitude;
             isHoldingDown = true;
             fpsCamera.SetTouching(true);
-            //Goes into HingeDoorScript and allows player to open doors 
+            //Goes into DrawerScript and allows player to open drawers 
             hit.collider.transform.GetComponent<DrawerScript>().changeDrawerState();
 
         }
@@ -68,13 +68,12 @@ public class OpenDrawerScript : MonoBehaviour
         // Checks if the Mouse0 button is up  
         //
         // Param 
-        //      Determines if Camscript is true 
+        //     FPSCamera: Makes the fps Camera appear before the player
         // Return 
         //      Changes Camscript to true so player can check cameras 
         //--------------------------------------------------------------------------------------
         if (Input.GetKeyUp(KeyCode.Mouse0) && isHoldingDown)
         {
-            //camScript.enabled = true;
             fpsCamera.SetTouching(false);
         }
 
