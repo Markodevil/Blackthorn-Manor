@@ -44,6 +44,12 @@ public class GameManager : MonoBehaviour
 
     [Header("Intro stuff")]
     public string[] prompts;
+    private bool hasEnteredState = false;
+    public Animator textAnimation;
+    public GameObject items;
+    public Text tutorialText;
+    int tutorialState = 0;
+    bool hasFinishedTutorial = false;
 
 
     public enum GameStates
@@ -54,6 +60,7 @@ public class GameManager : MonoBehaviour
         GameOver,
         ChangingScene,
     }
+
 
     public GameStates currentState { get; private set; }
 
@@ -103,6 +110,83 @@ public class GameManager : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
 
+                switch (tutorialState)
+                {
+                    //open phone
+                    case 0:
+                        tutorialText.text = prompts[0];
+                        if (Input.GetKeyDown(KeyCode.F))
+                        {
+                            textAnimation.SetTrigger("FadeOut");
+                            tutorialState++;
+                            hasEnteredState = false;
+                            break;
+                        }
+                        hasEnteredState = true;
+                        break;
+                    //put phone away
+                    case 1:
+                        if (!hasEnteredState)
+                        {
+                            textAnimation.SetTrigger("FadeIn");
+                        }
+                        if (Input.GetKeyDown(KeyCode.F))
+                        {
+                            textAnimation.SetTrigger("FadeOut");
+                            tutorialState++;
+                            hasEnteredState = false;
+                            break;
+                        }
+                        hasEnteredState = true;
+                        break;
+                    //open drawer
+                    case 2:
+                        RaycastHit rayHit;
+                        if (!hasEnteredState)
+                        {
+                            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rayHit, 5.0f))
+                            {
+                                if (rayHit.collider.gameObject.tag == "Dresser")
+                                {
+                        
+                                    textAnimation.SetTrigger("FadeIn");
+                                    hasEnteredState = true;
+                                }
+                            }
+                        
+                        }
+                        if (FindObjectOfType<FPSCamera>().GetIsTouchingSomething())
+                        {
+                            textAnimation.SetTrigger("FadeOut");
+                            tutorialState++;
+                            hasEnteredState = false;
+                            break;
+                        }
+                        break;
+                    //pick up item
+                    case 3:
+                        if (!hasEnteredState)
+                        {
+                            textAnimation.SetTrigger("FadeIn");
+                        }
+                        if (Input.GetKeyDown(KeyCode.E))
+                        {
+                            RaycastHit hit;
+                            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward * 2.5f, out hit))
+                            {
+                                if (hit.collider.gameObject.tag == "RequiredItem")
+                                {
+                                    textAnimation.SetTrigger("FadeOut");
+                                    tutorialState++;
+                                    hasEnteredState = false;
+                                    break;
+                                }
+                            }
+                        }
+                        hasEnteredState = true;
+                        break;
+                }
+
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     currentState = GameStates.Pause;
@@ -136,7 +220,7 @@ public class GameManager : MonoBehaviour
                 {
                     mon.enabled = true;
                 }
-                CS.enabled = true;           
+                CS.enabled = true;
                 break;
             case GameStates.Pause:
                 //set timescale to 0
@@ -150,7 +234,7 @@ public class GameManager : MonoBehaviour
                 CS.enabled = false;
                 menuUI.SetActive(true);
                 ingameUI.SetActive(false);
-                if(Input.GetKeyDown(KeyCode.Escape))
+                if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     ChangeGameState();
                 }
@@ -191,7 +275,7 @@ public class GameManager : MonoBehaviour
         }
 
     }
-    
+
     //--------------------------------------------------------------------------------------
     // Checks for keyboard inputs to find a secret code
     // 
@@ -423,5 +507,12 @@ public class GameManager : MonoBehaviour
         menuManager.sceneName = "WinnerWinnerChickenDinner";
         menuManager.fade.ResetTrigger("FadeIn");
         menuManager.fade.SetTrigger("FadeOut");
+    }
+
+    public void UpdateTutorialUI()
+    {
+        if (tutorialState == prompts.Length)
+            items.SetActive(false);
+        tutorialText.text = prompts[tutorialState];
     }
 }

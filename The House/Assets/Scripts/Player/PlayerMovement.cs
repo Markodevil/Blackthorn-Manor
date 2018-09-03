@@ -305,4 +305,8 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    public bool GetIsTouchingSomething()
+    {
+        return isTouchingSomething;
+    }
 }

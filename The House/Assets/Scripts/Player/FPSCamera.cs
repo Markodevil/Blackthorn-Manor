@@ -154,5 +154,10 @@ public class FPSCamera : MonoBehaviour
     public void SetTouching(bool yeah)
     {
         isTouchingSomething = yeah;
+    } 
+    
+    public bool GetIsTouchingSomething()
+    {
+        return isTouchingSomething;
     }
 }
