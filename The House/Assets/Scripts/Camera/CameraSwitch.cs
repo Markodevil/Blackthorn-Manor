@@ -113,6 +113,7 @@ public class CameraSwitch : MonoBehaviour
                 //set player scripts to do things
                 cameraScript.SetTouching(false);
                 playerScript.SetTouchingSomething(false);
+                playerScript.isCreepin = false;
 
                 //turn the phone off
                 phoneThing.SetActive(false);

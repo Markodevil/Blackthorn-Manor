@@ -32,18 +32,18 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isTouchingSomething = false;
 
+    public bool isBreathing = true;
     public bool useHeadbob;
     public Animator headbobAnim;
 
     [Header("Crouching")]
-    bool isCreepin;
+    public bool isCreepin;
     public float crouchCameraHeight;
     float initialCameraHeight;
     public float crouchSpeed;
     public AudioClip Breathing;
   //  public AudioClip Heartbeat;
     public AudioSource audio;
-    bool isBreathing = true;
     public enum howAmIMoving
     {
         notMoving,
@@ -73,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+   
         if (isTouchingSomething)
         {
             isRunning = false;
@@ -84,7 +85,14 @@ public class PlayerMovement : MonoBehaviour
                 headbobAnim.SetBool("isRunning", isRunning);
             return;
         }
-  
+
+        //When the player stops crouching stop playing sound effect
+        if (!isCreepin)
+        {
+            audio.Stop();
+            isBreathing = true;
+        }
+
         //set headbob anim bool
         if (useHeadbob)
             headbobAnim.SetBool("isRunning", isRunning);
@@ -108,16 +116,14 @@ public class PlayerMovement : MonoBehaviour
                 {
                     audio.Play();
                     isBreathing = false;
-                } 
-                //audio.Play();
+                }
+            
                 if (Input.GetKeyUp(KeyCode.LeftControl) || Input.GetKeyUp(KeyCode.Space))
                 {
                     isCreepin = false;
                     currentMovementState = howAmIMoving.walking;
-                    isBreathing = true;
-                    audio.Stop();
                 }
-
+                
                 break;
             case howAmIMoving.walking:
 
