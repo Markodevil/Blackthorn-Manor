@@ -216,7 +216,7 @@ Prefab:
         type: 2}
       propertyPath: scream
       value: 
-      objectReference: {fileID: 8300000, guid: 9b9fbb7b7f0a43b49a160da8b6769909, type: 3}
+      objectReference: {fileID: 8300000, guid: 03c8c23ad15173a41a8ed822e57022e8, type: 3}
     - target: {fileID: 114142357924800330, guid: 763afb75270cdb8458a38e3dab15ff4b,
         type: 2}
       propertyPath: textureQualityDD
@@ -716,7 +716,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
