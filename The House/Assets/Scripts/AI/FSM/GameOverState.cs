@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameOverState : State<GhostAI>
 {
@@ -41,18 +42,20 @@ public class GameOverState : State<GhostAI>
         playerCollider = player.GetComponent<Collider>();
         ghostCollider = owner.GetComponent<Collider>();
 
+        //Freezes the anim
+        playerMovement.enabled = false;
+        playerRigidBody.constraints = RigidbodyConstraints.FreezePosition;
+
         //Makes the ghost visible and turn off the player and ghost colliders
         mainCamera.cullingMask |= 1 << LayerMask.NameToLayer("Ghost");
         ghostCollider.enabled = false;
         playerCollider.enabled = false;
 
-        //plays the anim and freezes the ghost and player
+        //plays the anim and freezes the ghost
         owner.heardSomethingAnim.SetInteger("KillAnim", 1);
         owner.NMA.isStopped = true;
         owner.NMA.velocity = Vector3.zero;
         owner.r.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
-        playerRigidBody.constraints = RigidbodyConstraints.FreezePosition;
-        playerMovement.enabled = false;
     }
 
     public override void UpdateState(GhostAI owner)

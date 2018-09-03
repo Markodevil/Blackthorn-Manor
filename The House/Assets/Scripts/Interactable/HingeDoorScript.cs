@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 //This script is attached to the door to open 
 public class HingeDoorScript : MonoBehaviour {
@@ -11,6 +12,9 @@ public class HingeDoorScript : MonoBehaviour {
     public float mouseY;
     public float doorOpenSpeed;
     private GameObject Player;
+    private GameObject Ghost;
+    private NavMeshAgent ghostAgent;
+    public GameObject SpawnDoor;
     public Rigidbody rb;
     public AudioSource audio;
     public AudioClip doorCreakSound; 
@@ -26,6 +30,8 @@ public class HingeDoorScript : MonoBehaviour {
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+        Ghost = GameObject.FindGameObjectWithTag("Ghost");
+        ghostAgent = Ghost.GetComponent<NavMeshAgent>();
     }
 
     private void Start()
@@ -57,6 +63,7 @@ public class HingeDoorScript : MonoBehaviour {
         if (Input.GetKeyUp(KeyCode.Mouse0) || Input.GetKeyUp(KeyCode.E) || dist > 3.5f)
         {
             isOpen = false;
+            
         }
         if (closeDoor)
         {
@@ -92,7 +99,10 @@ public class HingeDoorScript : MonoBehaviour {
             // Stops the door sound from playing more than once
             doorSoundEnabled = false;
             DoorSoundCooldown = true;
-
+            if (SpawnDoor != null)
+            {
+                ghostAgent.areaMask = NavMesh.AllAreas;
+            }
         }
 
         // Adds force to the players forward direction to the door which will open or close 
@@ -106,6 +116,7 @@ public class HingeDoorScript : MonoBehaviour {
             rb.AddForceAtPosition(Player.transform.forward *  doorOpenSpeed * 10, Player.transform.position);
             closeTimer = doorCloseTime;
             closeDoor = true;
+            
         }
 
     }
