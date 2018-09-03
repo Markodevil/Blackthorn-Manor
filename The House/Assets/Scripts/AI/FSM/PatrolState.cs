@@ -43,7 +43,9 @@ public class PatrolState : State<GhostAI>
         //if (instance == null)
         //{
         if (owner.patrolState == null)
+        {
             new PatrolState(owner);
+        }
         //}
 
         return instance;

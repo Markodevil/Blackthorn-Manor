@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     [Header("End Game Stuff")]
     public GameObject clickyWinThing;
     public MonoBehaviour[] scriptsToTurnOff;
+    private CameraSwitch CS;
 
     [Header("Req. Items")]
     public GameObject[] requiredItems;
@@ -41,17 +42,20 @@ public class GameManager : MonoBehaviour
 
     public Transform ghostLookAt;
 
-    private CameraSwitch CS;
+    [Header("Intro stuff")]
+    public string[] prompts;
+
 
     public enum GameStates
     {
+        Intro,
         Playing,
         Pause,
         GameOver,
         ChangingScene,
     }
 
-    private GameStates currentState;
+    public GameStates currentState { get; private set; }
 
     private void Awake()
     {
@@ -63,7 +67,7 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        currentState = GameStates.Playing;
+        currentState = GameStates.Intro;
         SpawnItems();
         //postProcessing.enabled = false;
     }
@@ -71,6 +75,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(currentState);
         /////////////////////
         // Game Logic Here //
         /////////////////////
@@ -93,6 +98,16 @@ public class GameManager : MonoBehaviour
 
         switch (currentState)
         {
+            case GameStates.Intro:
+                Time.timeScale = 1;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    currentState = GameStates.Pause;
+                }
+                break;
             case GameStates.Playing:
                 //set timescale to 1
                 Time.timeScale = 1;
@@ -121,6 +136,7 @@ public class GameManager : MonoBehaviour
                 {
                     mon.enabled = true;
                 }
+                CS.enabled = true;           
                 break;
             case GameStates.Pause:
                 //set timescale to 0
@@ -131,8 +147,13 @@ public class GameManager : MonoBehaviour
                 {
                     mon.enabled = false;
                 }
+                CS.enabled = false;
                 menuUI.SetActive(true);
                 ingameUI.SetActive(false);
+                if(Input.GetKeyDown(KeyCode.Escape))
+                {
+                    ChangeGameState();
+                }
 
                 break;
             case GameStates.GameOver:
@@ -150,7 +171,10 @@ public class GameManager : MonoBehaviour
                 //Camera.main.transform.rotation = Quaternion.Lerp(Camera.main.transform.rotation, toRotation, 1.0f * Time.deltaTime);
 
                 //Camera.main.transform.LookAt(ghostLookAt);
-                Camera.main.transform.rotation = Quaternion.Lerp(Camera.main.transform.rotation, Quaternion.LookRotation(direction), 0.01f * Time.time);
+                Camera.main.transform.rotation = Quaternion.Lerp(Camera.main.transform.rotation,
+                    Quaternion.LookRotation(direction), 0.01f * Time.time);
+                Player.transform.rotation = Quaternion.Lerp(Player.transform.rotation,
+                    Quaternion.LookRotation(direction), 0.01f * Time.time);
 
 
                 foreach (MonoBehaviour mon in scriptsToTurnOff)
@@ -375,21 +399,25 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //change gamestate to playing
     public void ChangeGameState()
     {
         currentState = GameStates.Playing;
     }
 
+    //change state to whatever state you put as argument
     public void ChangeGameStates(GameStates state)
     {
         currentState = state;
     }
 
+    //change ghost status to whatever it isnt
     public void ChangeGhostStatus()
     {
         useGhost = !useGhost;
     }
 
+    //load gameover scene with fades
     public void LoadGameOver()
     {
         menuManager.sceneName = "WinnerWinnerChickenDinner";

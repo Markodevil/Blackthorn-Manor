@@ -28,7 +28,9 @@ public class SeekState : State<GhostAI>
         //if (instance == null)
         //{
         if (owner.seekState == null)
+        {
             new SeekState(owner);
+        }
         //}
 
         return instance;

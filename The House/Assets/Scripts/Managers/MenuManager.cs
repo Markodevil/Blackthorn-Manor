@@ -42,6 +42,7 @@ public class MenuManager : MonoBehaviour
     private float brightness;
     public Slider brightnessSlider;
 
+    public bool loadedMainScene = false;
 
     private void OnEnable()
     {

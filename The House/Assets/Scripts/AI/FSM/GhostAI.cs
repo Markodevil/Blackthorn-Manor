@@ -82,6 +82,9 @@ public class GhostAI : MonoBehaviour
     public PatrolState patrolState;
     [HideInInspector]
     public GameOverState gameOverState;
+
+    [HideInInspector]
+    public int instances = 0;
     
 
     // Use this for initialization
@@ -141,6 +144,7 @@ public class GhostAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Ghost instances: " + instances);
         if (FSM.currentState != GameOverState.GetInstance(this))
         {
 

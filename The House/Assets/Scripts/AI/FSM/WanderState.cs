@@ -37,7 +37,9 @@ public class WanderState : State<GhostAI>
         //if (instance == null)
         //{
         if (owner.wanderState == null)
+        {
             new WanderState(owner);
+        }
         //}
 
         return instance;

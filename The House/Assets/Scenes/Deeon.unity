@@ -30489,6 +30489,7 @@ MonoBehaviour:
   useGhost: 1
   Ghost: {fileID: 523843235}
   ghostLookAt: {fileID: 1801517638}
+  prompts: []
 --- !u!114 &1131695673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32958,7 +32959,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1567143541054042, guid: a51fd2e6b8a438140a22e485a23d726e, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 33568627892871860, guid: a51fd2e6b8a438140a22e485a23d726e,
         type: 2}
@@ -32972,11 +32973,11 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 4bd656b13104738469bca8c6ab41cc9d, type: 2}
     - target: {fileID: 1287732645365118, guid: a51fd2e6b8a438140a22e485a23d726e, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1844887156323596, guid: a51fd2e6b8a438140a22e485a23d726e, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a51fd2e6b8a438140a22e485a23d726e, type: 2}
