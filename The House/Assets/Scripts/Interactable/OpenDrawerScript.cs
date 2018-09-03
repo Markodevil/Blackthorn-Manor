@@ -52,6 +52,7 @@ public class OpenDrawerScript : MonoBehaviour
             fpsCamera.SetTouching(true);
             //Goes into DrawerScript and allows player to open drawers 
             hit.collider.transform.GetComponent<DrawerScript>().changeDrawerState();
+            FindObjectOfType<GameManager>().hasTouchedDresser = true;
 
         }
 

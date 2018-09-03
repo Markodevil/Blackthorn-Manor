@@ -93,7 +93,6 @@ public class HingeDoorScript : MonoBehaviour {
         if (doorSoundEnabled && Input.GetKey(KeyCode.Mouse0) && DoorSoundCooldown == false 
             || doorSoundEnabled && Input.GetKey(KeyCode.E) && DoorSoundCooldown == false)
         {
-            Debug.Log("DoorSoundPlayed");
             // audio.pitch = 1;
             audio.Play();
             // Stops the door sound from playing more than once

@@ -29,8 +29,7 @@ public class FPSCamera : MonoBehaviour
     void Update()
     {
         //fix to rotation bug - dont know if its the best way to do it
-        transform.localRotation = Quaternion.Euler(new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0));
-        Debug.Log("Am I touching something: " + isTouchingSomething);
+        //transform.localRotation = Quaternion.Euler(new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0));
         if (!IsPeeking && !isTouchingSomething)
         {
             RotateCamera();

@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     public GameObject items;
     public Text tutorialText;
     int tutorialState = 0;
-    bool hasFinishedTutorial = false;
+    public bool hasTouchedDresser = false;
 
 
     public enum GameStates
@@ -74,7 +74,15 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        currentState = GameStates.Intro;
+        if (menuManager)
+        {
+            if (!menuManager.hasCompletedTutorial)
+                currentState = GameStates.Intro;
+            else
+                currentState = GameStates.Playing;
+        }
+        else
+            currentState = GameStates.Playing;
         SpawnItems();
         //postProcessing.enabled = false;
     }
@@ -109,9 +117,12 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 1;
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
+                menuUI.SetActive(false);
+                ingameUI.SetActive(true);
 
                 switch (tutorialState)
                 {
+
                     //open phone
                     case 0:
                         tutorialText.text = prompts[0];
@@ -148,18 +159,19 @@ public class GameManager : MonoBehaviour
                             {
                                 if (rayHit.collider.gameObject.tag == "Dresser")
                                 {
-                        
+
                                     textAnimation.SetTrigger("FadeIn");
                                     hasEnteredState = true;
                                 }
                             }
-                        
+
                         }
-                        if (FindObjectOfType<FPSCamera>().GetIsTouchingSomething())
+                        if (hasTouchedDresser)
                         {
                             textAnimation.SetTrigger("FadeOut");
                             tutorialState++;
                             hasEnteredState = false;
+                            hasTouchedDresser = false;
                             break;
                         }
                         break;
@@ -169,16 +181,19 @@ public class GameManager : MonoBehaviour
                         {
                             textAnimation.SetTrigger("FadeIn");
                         }
-                        if (Input.GetKeyDown(KeyCode.E))
+
+                        RaycastHit hit;
+                        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2.5f))
                         {
-                            RaycastHit hit;
-                            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward * 2.5f, out hit))
+                            if (hit.collider.gameObject.tag == "RequiredItem")
                             {
-                                if (hit.collider.gameObject.tag == "RequiredItem")
+                                if (Input.GetKeyDown(KeyCode.E))
                                 {
                                     textAnimation.SetTrigger("FadeOut");
                                     tutorialState++;
                                     hasEnteredState = false;
+                                    menuManager.hasCompletedTutorial = true;
+                                    currentState = GameStates.Playing;
                                     break;
                                 }
                             }
@@ -200,6 +215,7 @@ public class GameManager : MonoBehaviour
                 CheckSecretCode();
                 menuUI.SetActive(false);
                 ingameUI.SetActive(true);
+                items.SetActive(false);
 
                 //if you've brought all items to the spot
                 //or you have been killed by the ghost
@@ -486,7 +502,10 @@ public class GameManager : MonoBehaviour
     //change gamestate to playing
     public void ChangeGameState()
     {
-        currentState = GameStates.Playing;
+        if (menuManager.hasCompletedTutorial)
+            currentState = GameStates.Playing;
+        else
+            currentState = GameStates.Intro;
     }
 
     //change state to whatever state you put as argument
@@ -513,6 +532,7 @@ public class GameManager : MonoBehaviour
     {
         if (tutorialState == prompts.Length)
             items.SetActive(false);
-        tutorialText.text = prompts[tutorialState];
+        else
+            tutorialText.text = prompts[tutorialState];
     }
 }

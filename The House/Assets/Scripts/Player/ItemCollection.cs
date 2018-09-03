@@ -38,7 +38,7 @@ public class ItemCollection : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         //Sets the object outline back to true
         toggleOutline = true;
