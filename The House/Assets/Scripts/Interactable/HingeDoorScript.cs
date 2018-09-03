@@ -99,9 +99,13 @@ public class HingeDoorScript : MonoBehaviour {
             // Stops the door sound from playing more than once
             doorSoundEnabled = false;
             DoorSoundCooldown = true;
+            //checks if there is a door in the scene that is the spawn door
             if (SpawnDoor != null)
             {
-                ghostAgent.areaMask = NavMesh.AllAreas;
+                //|=turns on the bit/mask, ^= toggles the bit/mask
+                //navMesh.getareafromname gives us the amount of bits we need to shift to get te mask we want 
+                //NOT the actual mask
+                ghostAgent.areaMask |= (1 << NavMesh.GetAreaFromName("Spawn"));
             }
         }
 
