@@ -74,15 +74,16 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        if (menuManager)
-        {
-            if (!menuManager.hasCompletedTutorial)
-                currentState = GameStates.Intro;
-            else
-                currentState = GameStates.Playing;
-        }
-        else
-            currentState = GameStates.Playing;
+        //if (menuManager)
+        //{
+        //    if (!menuManager.hasCompletedTutorial)
+        //        currentState = GameStates.Intro;
+        //    else
+        //        currentState = GameStates.Playing;
+        //}
+        //else
+        //    currentState = GameStates.Playing;
+        currentState = GameStates.Intro;
         SpawnItems();
 
         FindObjectOfType<PlayerMovement>().SetTouchingSomething(true);
@@ -93,6 +94,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(tutorialState);
         Debug.Log(currentState);
         /////////////////////
         // Game Logic Here //
@@ -136,6 +138,7 @@ public class GameManager : MonoBehaviour
                         if (Input.GetKeyDown(KeyCode.F))
                         {
                             textAnimation.SetTrigger("FadeOut");
+                            //textAnimation.SetBool("bFadeOut", true);
                             tutorialState++;
                             hasEnteredState = false;
                             break;
@@ -147,10 +150,14 @@ public class GameManager : MonoBehaviour
                         if (!hasEnteredState)
                         {
                             textAnimation.SetTrigger("FadeIn");
+                            //textAnimation.SetBool("bFadeOut", false);
+                            //textAnimation.SetBool("bFadeIn", true);
                         }
                         if (Input.GetKeyDown(KeyCode.F))
                         {
                             textAnimation.SetTrigger("FadeOut");
+                            //textAnimation.SetBool("bFadeIn", false);
+                            //textAnimation.SetBool("bFadeOut", true);
                             tutorialState++;
                             hasEnteredState = false;
                             FindObjectOfType<PlayerMovement>().SetTouchingSomething(false);
@@ -168,8 +175,9 @@ public class GameManager : MonoBehaviour
                             {
                                 if (rayHit.collider.gameObject.tag == "Dresser")
                                 {
-
                                     textAnimation.SetTrigger("FadeIn");
+                                    //textAnimation.SetBool("bFadeOut", false);
+                                    //textAnimation.SetBool("bFadeIn", true);
                                     hasEnteredState = true;
                                 }
                             }
@@ -178,6 +186,8 @@ public class GameManager : MonoBehaviour
                         if (hasTouchedDresser)
                         {
                             textAnimation.SetTrigger("FadeOut");
+                            //textAnimation.SetBool("bFadeIn", false);
+                            //textAnimation.SetBool("bFadeOut", true);
                             tutorialState++;
                             hasEnteredState = false;
                             hasTouchedDresser = false;
