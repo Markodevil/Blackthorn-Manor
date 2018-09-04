@@ -11090,7 +11090,7 @@ MonoBehaviour:
   throwForce: 1000
   releaseForce: 0
   playerHere: 0
-  beingCarried: 0
+  throwSoundReady: 0
   touched: 0
   collisionClip: {fileID: 8300000, guid: df89340609410f9489803d3efe29bd25, type: 3}
   heading: 2
@@ -12884,6 +12884,11 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!82 &435356593 stripped
+AudioSource:
+  m_PrefabParentObject: {fileID: 82208002692330926, guid: a51fd2e6b8a438140a22e485a23d726e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1206166449}
 --- !u!82 &435356597
 AudioSource:
   m_ObjectHideFlags: 0
@@ -34266,6 +34271,16 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 3d8f9b670b6d42842bbefc156f45b44d,
         type: 3}
+    - target: {fileID: 114603926043642028, guid: a51fd2e6b8a438140a22e485a23d726e,
+        type: 2}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 435356593}
+    - target: {fileID: 114603926043642028, guid: a51fd2e6b8a438140a22e485a23d726e,
+        type: 2}
+      propertyPath: soundClip
+      value: 
+      objectReference: {fileID: 8300000, guid: bd968f543c343b341ba066bc8c81334e, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a51fd2e6b8a438140a22e485a23d726e, type: 2}
   m_IsPrefabParent: 0
@@ -43419,7 +43434,7 @@ MonoBehaviour:
   throwForce: 100
   releaseForce: 10
   playerHere: 0
-  beingCarried: 0
+  throwSoundReady: 0
   touched: 0
   collisionClip: {fileID: 8300000, guid: df89340609410f9489803d3efe29bd25, type: 3}
   heading: 2
