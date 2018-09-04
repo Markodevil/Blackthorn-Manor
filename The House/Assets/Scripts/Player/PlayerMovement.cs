@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector]
     public bool playerHasBeenHeard = false;
 
+    [SerializeField]
     private bool isTouchingSomething = false;
 
     public bool isBreathing = true;
@@ -313,5 +314,10 @@ public class PlayerMovement : MonoBehaviour
     public void DisableAnimator()
     {
         GetComponent<Animator>().enabled = false;
+    }
+
+    public void EnableMovement()
+    {
+        FindObjectOfType<GameManager>().EnableMovement();
     }
 }

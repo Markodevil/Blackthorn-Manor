@@ -84,6 +84,9 @@ public class GameManager : MonoBehaviour
         else
             currentState = GameStates.Playing;
         SpawnItems();
+
+        FindObjectOfType<PlayerMovement>().SetTouchingSomething(true);
+        FindObjectOfType<FPSCamera>().SetTouching(true);
         //postProcessing.enabled = false;
     }
 
@@ -119,13 +122,16 @@ public class GameManager : MonoBehaviour
                 Cursor.visible = false;
                 menuUI.SetActive(false);
                 ingameUI.SetActive(true);
+                foreach (MonoBehaviour mon in scriptsToTurnOff)
+                {
+                    mon.enabled = true;
+                }
 
                 switch (tutorialState)
                 {
 
                     //open phone
                     case 0:
-                        FindObjectOfType<PlayerMovement>().SetTouchingSomething(true);
                         tutorialText.text = prompts[0];
                         if (Input.GetKeyDown(KeyCode.F))
                         {
@@ -148,6 +154,7 @@ public class GameManager : MonoBehaviour
                             tutorialState++;
                             hasEnteredState = false;
                             FindObjectOfType<PlayerMovement>().SetTouchingSomething(false);
+                            FindObjectOfType<FPSCamera>().SetTouching(false);
                             break;
                         }
                         hasEnteredState = true;
@@ -366,6 +373,7 @@ public class GameManager : MonoBehaviour
     //--------------------------------------------------------------------------------------
     private void SpawnItems()
     {
+        /*
         ////initialize temp list of spawn points that have been chosen
         //List<int> chosenSpots = new List<int>();
         ////initialize temp int for random position index
@@ -462,6 +470,7 @@ public class GameManager : MonoBehaviour
         //            break;
         //    }
         //}
+        */
 
         //foreach required item
         for (int i = 0; i < requiredItems.Length; i++)
@@ -542,5 +551,20 @@ public class GameManager : MonoBehaviour
             items.SetActive(false);
         else
             tutorialText.text = prompts[tutorialState];
+    }
+
+    public void EnableMovement()
+    {
+        switch (currentState)
+        {
+            case GameStates.Intro:
+
+                break;
+            case GameStates.Playing:
+                FindObjectOfType<PlayerMovement>().SetTouchingSomething(false);
+                FindObjectOfType<FPSCamera>().SetTouching(false);
+                break;
+        }
+
     }
 }
