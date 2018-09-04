@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour
                 {
                     mon.enabled = true;
                 }
-
+                CS.enabled = true;
                 switch (tutorialState)
                 {
 
@@ -209,6 +209,17 @@ public class GameManager : MonoBehaviour
                         }
                         hasEnteredState = true;
                         break;
+
+                    default:
+                        foreach (MonoBehaviour mon in scriptsToTurnOff)
+                        {
+                            mon.enabled = true;
+                        }
+                        break;
+                }
+                foreach (MonoBehaviour mon in scriptsToTurnOff)
+                {
+                    mon.enabled = true;
                 }
 
                 if (Input.GetKeyDown(KeyCode.Escape))
@@ -225,6 +236,10 @@ public class GameManager : MonoBehaviour
                 menuUI.SetActive(false);
                 ingameUI.SetActive(true);
                 items.SetActive(false);
+                foreach (MonoBehaviour mon in scriptsToTurnOff)
+                {
+                    mon.enabled = true;
+                }
 
                 //if you've brought all items to the spot
                 //or you have been killed by the ghost
@@ -239,12 +254,6 @@ public class GameManager : MonoBehaviour
                     currentState = GameStates.Pause;
                 }
 
-                //turn all the scripts back on
-                //if coming from game over
-                foreach (MonoBehaviour mon in scriptsToTurnOff)
-                {
-                    mon.enabled = true;
-                }
                 CS.enabled = true;
                 break;
             case GameStates.Pause:
@@ -252,10 +261,12 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 0;
                 Cursor.lockState = CursorLockMode.Confined;
                 Cursor.visible = true;
+
                 foreach (MonoBehaviour mon in scriptsToTurnOff)
                 {
                     mon.enabled = false;
                 }
+
                 CS.enabled = false;
                 menuUI.SetActive(true);
                 ingameUI.SetActive(false);
