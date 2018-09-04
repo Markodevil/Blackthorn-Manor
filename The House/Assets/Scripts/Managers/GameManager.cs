@@ -76,16 +76,16 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        //if (menuManager)
-        //{
-        //    if (!menuManager.hasCompletedTutorial)
-        //        currentState = GameStates.Intro;
-        //    else
-        //        currentState = GameStates.Playing;
-        //}
-        //else
-        //    currentState = GameStates.Playing;
-        currentState = GameStates.Intro;
+        if (menuManager)
+        {
+            if (!menuManager.hasCompletedTutorial)
+                currentState = GameStates.Intro;
+            else
+                currentState = GameStates.Playing;
+        }
+        else
+            currentState = GameStates.Playing;
+        //currentState = GameStates.Intro;
         SpawnItems();
 
         FindObjectOfType<PlayerMovement>().SetTouchingSomething(true);
