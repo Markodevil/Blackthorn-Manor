@@ -10,7 +10,7 @@ public class ItemCollection : MonoBehaviour
     public int goalNumberOfItems;
     //[HideInInspector]
     public int currentNumberOfItems;
-    public bool toggleOutline; 
+    public bool toggleOutline;
     [SerializeField]
     private Camera playerCamera;
     [Tooltip("Interact Range in metres")]
@@ -29,6 +29,9 @@ public class ItemCollection : MonoBehaviour
 
     public Sprite filled;
     public Sprite unfilled;
+
+    public AudioClip soundClip;
+    public AudioSource audioSource;
 
     // Use this for initialization
     void Start()
@@ -73,9 +76,11 @@ public class ItemCollection : MonoBehaviour
                     toggleOutline = false;
                     //add to number of items
                     currentNumberOfItems++;
-                   // hitObject.GetComponent<AudioSource>().Play();
+                    // hitObject.GetComponent<AudioSource>().Play();
 
                     hitObject.SetActive(false);
+                    if (audioSource && soundClip)
+                        audioSource.PlayOneShot(soundClip);
                 }
 
                 //if the object hit is the ritual
