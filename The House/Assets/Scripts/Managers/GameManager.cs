@@ -125,6 +125,7 @@ public class GameManager : MonoBehaviour
 
                     //open phone
                     case 0:
+                        FindObjectOfType<PlayerMovement>().SetTouchingSomething(true);
                         tutorialText.text = prompts[0];
                         if (Input.GetKeyDown(KeyCode.F))
                         {
@@ -146,6 +147,7 @@ public class GameManager : MonoBehaviour
                             textAnimation.SetTrigger("FadeOut");
                             tutorialState++;
                             hasEnteredState = false;
+                            FindObjectOfType<PlayerMovement>().SetTouchingSomething(false);
                             break;
                         }
                         hasEnteredState = true;
@@ -502,10 +504,16 @@ public class GameManager : MonoBehaviour
     //change gamestate to playing
     public void ChangeGameState()
     {
-        if (menuManager.hasCompletedTutorial)
-            currentState = GameStates.Playing;
+        if (menuManager)
+        {
+
+            if (menuManager.hasCompletedTutorial)
+                currentState = GameStates.Playing;
+            else
+                currentState = GameStates.Intro;
+        }
         else
-            currentState = GameStates.Intro;
+            currentState = GameStates.Playing;
     }
 
     //change state to whatever state you put as argument

@@ -309,4 +309,9 @@ public class PlayerMovement : MonoBehaviour
     {
         return isTouchingSomething;
     }
+
+    public void DisableAnimator()
+    {
+        GetComponent<Animator>().enabled = false;
+    }
 }
