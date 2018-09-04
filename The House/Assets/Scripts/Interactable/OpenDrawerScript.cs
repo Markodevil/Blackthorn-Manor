@@ -50,6 +50,7 @@ public class OpenDrawerScript : MonoBehaviour
             dist = distance.magnitude;
             isHoldingDown = true;
             fpsCamera.SetTouching(true);
+            fpsCamera.SetTouchingDrawer(true);
             //Goes into DrawerScript and allows player to open drawers 
             hit.collider.transform.GetComponent<DrawerScript>().changeDrawerState();
             FindObjectOfType<GameManager>().hasTouchedDresser = true;
@@ -62,6 +63,7 @@ public class OpenDrawerScript : MonoBehaviour
         {
             isHoldingDown = false;
             fpsCamera.SetTouching(false);
+            fpsCamera.SetTouchingDrawer(false);
         }
 
 
@@ -76,6 +78,7 @@ public class OpenDrawerScript : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Mouse0) && isHoldingDown)
         {
             fpsCamera.SetTouching(false);
+            fpsCamera.SetTouchingDrawer(false);
         }
 
     }

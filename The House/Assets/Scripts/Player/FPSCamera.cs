@@ -19,7 +19,10 @@ public class FPSCamera : MonoBehaviour
     public GameObject hand;
     public Sprite touchableSprite;
     public Sprite pickUpSprite;
+    public Sprite closedHandSprite;
     public SpringPickup pickupBool;
+
+    private bool touchingDrawer = false;
 
     // Use this for initialization
     private void Start()
@@ -39,25 +42,25 @@ public class FPSCamera : MonoBehaviour
 
         if (!pickupBool.holdingSomething)
         {
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit, interactableDistance))
+            if (!touchingDrawer)
             {
-                GameObject hitObj = hit.collider.gameObject;
-                if (hitObj.tag == "Interactable" || hitObj.tag == "Door" || hitObj.tag == "HorcruxManager" || hitObj.tag == "Drawer")
-                {
-                    if (hand)
-                    {
-                        hand.SetActive(true);
-                        hand.GetComponent<Image>().sprite = touchableSprite;
-                    }
-                }
-                else if (hitObj.tag == "RequiredItem")
-                {
-                    if (hand)
-                    {
 
-                        hand.SetActive(true);
-                        hand.GetComponent<Image>().sprite = pickUpSprite;
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, transform.forward, out hit, interactableDistance))
+                {
+                    GameObject hitObj = hit.collider.gameObject;
+                    if (hitObj.tag == "Interactable" || hitObj.tag == "Door" || hitObj.tag == "HorcruxManager" || hitObj.tag == "Drawer")
+                    {
+                        UpdateSprite(touchableSprite);
+                    }
+                    else if (hitObj.tag == "RequiredItem")
+                    {
+                        UpdateSprite(pickUpSprite);
+                    }
+                    else
+                    {
+                        if (hand)
+                            hand.SetActive(false);
                     }
                 }
                 else
@@ -68,17 +71,8 @@ public class FPSCamera : MonoBehaviour
             }
             else
             {
-                if (hand)
-                    hand.SetActive(false);
-
+                UpdateSprite(closedHandSprite);
             }
-
-
-        }
-        else
-        {
-            if (hand)
-                hand.SetActive(true);
         }
 
     }
@@ -172,5 +166,19 @@ public class FPSCamera : MonoBehaviour
     public bool GetIsTouchingSomething()
     {
         return isTouchingSomething;
+    }
+
+    private void UpdateSprite(Sprite spriteToUse)
+    {
+        if (!hand)
+            return;
+
+        hand.SetActive(true);
+        hand.GetComponent<Image>().sprite = spriteToUse;
+    }
+
+    public void SetTouchingDrawer(bool state)
+    {
+        touchingDrawer = state;
     }
 }

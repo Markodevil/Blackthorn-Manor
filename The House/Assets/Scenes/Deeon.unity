@@ -10763,7 +10763,7 @@ MonoBehaviour:
   throwForce: 1000
   releaseForce: 0
   playerHere: 0
-  beingCarried: 0
+  throwSoundReady: 0
   touched: 0
   collisionClip: {fileID: 8300000, guid: df89340609410f9489803d3efe29bd25, type: 3}
   heading: 2
@@ -33241,7 +33241,7 @@ Prefab:
     - target: {fileID: 20579935015346334, guid: a51fd2e6b8a438140a22e485a23d726e,
         type: 2}
       propertyPath: m_CullingMask.m_Bits
-      value: 4294963967
+      value: 4294964991
       objectReference: {fileID: 0}
     - target: {fileID: 114786340771772000, guid: a51fd2e6b8a438140a22e485a23d726e,
         type: 2}
@@ -33332,6 +33332,12 @@ Prefab:
       propertyPath: pickUpSprite
       value: 
       objectReference: {fileID: 21300000, guid: 610dc3db39201f24a8f82eabe193d024,
+        type: 3}
+    - target: {fileID: 114209887467727460, guid: a51fd2e6b8a438140a22e485a23d726e,
+        type: 2}
+      propertyPath: closedHandSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6903ebde30aff494288702f65092c744,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a51fd2e6b8a438140a22e485a23d726e, type: 2}
@@ -42157,7 +42163,7 @@ MonoBehaviour:
   throwForce: 100
   releaseForce: 10
   playerHere: 0
-  beingCarried: 0
+  throwSoundReady: 0
   touched: 0
   collisionClip: {fileID: 8300000, guid: df89340609410f9489803d3efe29bd25, type: 3}
   heading: 2
