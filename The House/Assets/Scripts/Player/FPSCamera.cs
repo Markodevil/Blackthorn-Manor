@@ -90,16 +90,16 @@ public class FPSCamera : MonoBehaviour
         TargetRotationCamera.z = transform.rotation.eulerAngles.z;
         TargetRotationBody.y += RotAmountX;
 
-        // Keeps the camera from turning too much
-        if (XAxisClamp > 90)
+        // Keeps the camera from snapping 
+        if (XAxisClamp > 75)
         {
-            XAxisClamp = 90;
-            TargetRotationCamera.x = 90;
+            XAxisClamp = 75;
+            TargetRotationCamera.x = 75;
         }
-        else if (XAxisClamp < -90)
+        else if (XAxisClamp < -75)
         {
-            XAxisClamp = -90;
-            TargetRotationCamera.x = 270;
+            XAxisClamp = -75;
+            TargetRotationCamera.x = -75;
         }
 
         // Rotates the camera 
