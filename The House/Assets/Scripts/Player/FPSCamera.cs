@@ -17,6 +17,8 @@ public class FPSCamera : MonoBehaviour
     public float interactableDistance;
 
     public GameObject hand;
+    public Sprite touchableSprite;
+    public Sprite pickUpSprite;
     public SpringPickup pickupBool;
 
     // Use this for initialization
@@ -41,10 +43,22 @@ public class FPSCamera : MonoBehaviour
             if (Physics.Raycast(transform.position, transform.forward, out hit, interactableDistance))
             {
                 GameObject hitObj = hit.collider.gameObject;
-                if (hitObj.tag == "Interactable" || hitObj.tag == "RequiredItem" || hitObj.tag == "Door" || hitObj.tag == "HorcruxManager" || hitObj.tag == "Drawer")
+                if (hitObj.tag == "Interactable" || hitObj.tag == "Door" || hitObj.tag == "HorcruxManager" || hitObj.tag == "Drawer")
                 {
                     if (hand)
+                    {
                         hand.SetActive(true);
+                        hand.GetComponent<Image>().sprite = touchableSprite;
+                    }
+                }
+                else if (hitObj.tag == "RequiredItem")
+                {
+                    if (hand)
+                    {
+
+                        hand.SetActive(true);
+                        hand.GetComponent<Image>().sprite = pickUpSprite;
+                    }
                 }
                 else
                 {
@@ -83,7 +97,7 @@ public class FPSCamera : MonoBehaviour
         //Target rotation of the player
         Vector3 TargetRotationBody = PlayerBody.rotation.eulerAngles;
 
-        
+
         // Clamps the cameras rotation 
         XAxisClamp -= RotAmountY;
         TargetRotationCamera.x -= RotAmountY;
@@ -153,8 +167,8 @@ public class FPSCamera : MonoBehaviour
     public void SetTouching(bool yeah)
     {
         isTouchingSomething = yeah;
-    } 
-    
+    }
+
     public bool GetIsTouchingSomething()
     {
         return isTouchingSomething;
