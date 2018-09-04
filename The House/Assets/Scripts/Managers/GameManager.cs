@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
     int tutorialState = 0;
     public bool hasTouchedDresser = false;
 
+    float dumbTimer = 2.0f;
+
 
     public enum GameStates
     {
@@ -129,6 +131,8 @@ public class GameManager : MonoBehaviour
                     mon.enabled = true;
                 }
                 CS.enabled = true;
+
+                dumbTimer -= Time.deltaTime;
                 switch (tutorialState)
                 {
 
@@ -141,6 +145,7 @@ public class GameManager : MonoBehaviour
                             //textAnimation.SetBool("bFadeOut", true);
                             tutorialState++;
                             hasEnteredState = false;
+                            dumbTimer = 2.0f;
                             break;
                         }
                         hasEnteredState = true;
@@ -153,16 +158,20 @@ public class GameManager : MonoBehaviour
                             //textAnimation.SetBool("bFadeOut", false);
                             //textAnimation.SetBool("bFadeIn", true);
                         }
-                        if (Input.GetKeyDown(KeyCode.F))
+                        if (dumbTimer <= 0)
                         {
-                            textAnimation.SetTrigger("FadeOut");
-                            //textAnimation.SetBool("bFadeIn", false);
-                            //textAnimation.SetBool("bFadeOut", true);
-                            tutorialState++;
-                            hasEnteredState = false;
-                            FindObjectOfType<PlayerMovement>().SetTouchingSomething(false);
-                            FindObjectOfType<FPSCamera>().SetTouching(false);
-                            break;
+                            if (Input.GetKeyDown(KeyCode.F))
+                            {
+                                textAnimation.SetTrigger("FadeOut");
+                                //textAnimation.SetBool("bFadeIn", false);
+                                //textAnimation.SetBool("bFadeOut", true);
+                                tutorialState++;
+                                hasEnteredState = false;
+                                FindObjectOfType<PlayerMovement>().SetTouchingSomething(false);
+                                FindObjectOfType<FPSCamera>().SetTouching(false);
+                                dumbTimer = 2.0f;
+                                break;
+                            }
                         }
                         hasEnteredState = true;
                         break;
