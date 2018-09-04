@@ -95,7 +95,7 @@ public class GhostAI : MonoBehaviour
             mm = GameObject.FindGameObjectWithTag("Singleton").GetComponent<MenuManager>();
         FSM = new FiniteStateMachine<GhostAI>(this);
         player = GameObject.FindGameObjectWithTag("Player");
-
+        
         NMA = this.GetComponent<NavMeshAgent>();
         sight = this.GetComponent<Sight>();
         r = GetComponent<Rigidbody>();

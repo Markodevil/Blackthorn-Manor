@@ -42,9 +42,16 @@ public class PlayerMovement : MonoBehaviour
     public float crouchCameraHeight;
     float initialCameraHeight;
     public float crouchSpeed;
-    public AudioClip Breathing;
-  //  public AudioClip Heartbeat;
+    public AudioClip[] playerStressSounds;
+    private AudioClip playSound;
+
+    //  Breathing/hear Audiosource for crouching 
     public AudioSource audio;
+    // Panic Audiosource for hiding 
+    public AudioSource PanicSource;
+
+    public bool Panic = false;
+    bool PlayPanicSound = true;
     public enum howAmIMoving
     {
         notMoving,
@@ -74,7 +81,36 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-   
+        //  if (Panic)
+        //  {
+        //      PlayPanicSound = true;
+        //      audio.Play();
+        //  }
+        // if (Panic)
+        //{        
+        //    PlayPanicSound = true;
+        //}
+         if (Panic && PlayPanicSound)
+        {
+            Debug.Log("PLAYPANIC");
+
+            audio.Stop();
+            playSound = playerStressSounds[1];
+            PanicSource.clip = playSound;
+            PanicSource.Play();
+            PlayPanicSound = false;
+            isBreathing = false;
+
+        }
+
+        if (Panic == false && PlayPanicSound == false)
+        {
+            Debug.Log("AUDIOSTOP");
+            PanicSource.Stop();
+            PlayPanicSound = true;
+            isBreathing = true;
+
+        }
         if (isTouchingSomething)
         {
             isRunning = false;
@@ -115,6 +151,8 @@ public class PlayerMovement : MonoBehaviour
                 Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, new Vector3(0, crouchCameraHeight, 0.25f), crouchSpeed);
                 if (isBreathing == true)
                 {
+                    playSound = playerStressSounds[0];
+                    audio.clip = playSound;
                     audio.Play();
                     isBreathing = false;
                 }

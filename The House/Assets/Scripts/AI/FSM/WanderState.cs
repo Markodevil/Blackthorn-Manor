@@ -18,6 +18,8 @@ public class WanderState : State<GhostAI>
     public float wanderTimerActual;
     private float wanderTick = 1;
     private float timer;
+    public PlayerMovement playerScript;
+    public GameObject Player;
 
     private WanderState(GhostAI owner)
     {
@@ -55,6 +57,8 @@ public class WanderState : State<GhostAI>
         navMeshAgent = owner.gameObject.GetComponent<NavMeshAgent>();
         timer = 0;
         wanderTimerActual = wanderTimer;
+        Player = GameObject.FindGameObjectWithTag("Player");
+        playerScript = Player.GetComponent<PlayerMovement>();
     }
 
     public override void ExitState(GhostAI owner)
@@ -64,11 +68,20 @@ public class WanderState : State<GhostAI>
 
     public override void UpdateState(GhostAI owner)
     {
+     
+        if (playerScript.Panic == false)
+        {
+            Debug.Log("ITSTRUE");
+            playerScript.Panic = true;
+        }
+
         //when updating wander state
         timer += Time.deltaTime;
         wanderTimerActual -= Time.deltaTime;
+   
         if (wanderTimerActual > 0.0f)
         {
+
             if (timer >= wanderTick)
             {
                 Vector3 newPos = RandomNavSphere(owner.gameObject.transform.position, wanderRadius, -1);
@@ -76,12 +89,15 @@ public class WanderState : State<GhostAI>
                 {
                     navMeshAgent.SetDestination(newPos);
                     timer = 0.0f;
+
                 }
             }
         }
         else
         {
             owner.FSM.ChangeState(PatrolState.GetInstance(owner));
+            playerScript.Panic = false;
+            Debug.Log("Ghost stopped searching");
         }
     }
 
