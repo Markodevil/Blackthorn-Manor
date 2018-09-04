@@ -54841,7 +54841,7 @@ Prefab:
         type: 2}
       propertyPath: seekSoundClips.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: f07347458d16b584299026279e74734c, type: 3}
+      objectReference: {fileID: 8300000, guid: 43d611a23cb96e5479c1775661aeb76b, type: 3}
     - target: {fileID: 4172756543011498, guid: 8fa7168838974c64db6cdfadfbdc0e29, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -453.07
