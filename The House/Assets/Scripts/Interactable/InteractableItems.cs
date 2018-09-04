@@ -13,7 +13,7 @@ public class InteractableItems : MonoBehaviour
     public float throwForce;
     public float releaseForce;
     public bool playerHere;
-    public bool beingCarried;
+    public bool throwSoundReady;
     public bool touched;
 
     public AudioClip collisionClip;
@@ -21,6 +21,7 @@ public class InteractableItems : MonoBehaviour
     Rigidbody rb;
     AudioSource audioSource;
     PlayerMovement playerMovementCS;
+    SpringPickup playerSpringPickUp;
 
     public float heading;
     public float speed;
@@ -40,6 +41,7 @@ public class InteractableItems : MonoBehaviour
         if (player != null)
         {
             playerMovementCS = player.GetComponent<PlayerMovement>();
+            playerSpringPickUp = player.GetComponentInChildren<SpringPickup>();
         }
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
@@ -93,31 +95,33 @@ public class InteractableItems : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //if currently being carried
-        if (beingCarried)
+        if (playerSpringPickUp.holdingSomething == true)
+            throwSoundReady = true;
+        if (throwSoundReady == true && playerSpringPickUp.holdingSomething != true)
         {
-            //i've been touched
-            touched = true;
-
+            if (collision.gameObject.tag != "Ghost")
+            {
+                //play a sound 
+                audioSource.pitch = Random.Range(1, 3);
+                audioSource.PlayOneShot(collisionClip);
+                //sound collision stuff for AI
+                CreateSoundColliders();
+                throwSoundReady = false;
+            }
         }
 
-        //play a sound 
-        audioSource.pitch = Random.Range(1, 3);
-        audioSource.PlayOneShot(collisionClip);
-        //sound collision stuff for AI
-        CreateSoundColliders();
     }
 
     public void SetHolding(bool status)
     {
-        beingCarried = status;
+        throwSoundReady = status;
     }
 
     public void Drop()
     {
         rb.isKinematic = false;
-        transform.parent = null;
-        beingCarried = false;
+        //transform.parent = null;
+        //throwSoundReady = false;
         rb.AddForce(currentPosition - previousPosition);
         // Debug.Log("ButtonUp");
         //  rb.AddForce(new Vector3(mouseX * releaseForce, 0, 0));
@@ -132,10 +136,10 @@ public class InteractableItems : MonoBehaviour
         {
             if (hitCollider[i].gameObject.tag == "SoundTrigger")
             {
-                
+
                 Debug.Log("Ghost heard the sound");
                 GhostAI ghostAI = hitCollider[i].gameObject.GetComponentInParent<GhostAI>();
-                if(ghostAI)
+                if (ghostAI)
                 {
                     ghostAI.HearSomething(gameObject.transform.position);
                 }
