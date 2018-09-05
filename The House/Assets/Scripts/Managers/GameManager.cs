@@ -208,6 +208,7 @@ public class GameManager : MonoBehaviour
                         if (!hasEnteredState)
                         {
                             textAnimation.SetTrigger("FadeIn");
+                            dumbTimer = 5.0f;
                         }
 
                         RaycastHit hit;
@@ -225,6 +226,15 @@ public class GameManager : MonoBehaviour
                                     break;
                                 }
                             }
+                        }
+                        if(dumbTimer <= 0)
+                        {
+                            textAnimation.SetTrigger("FadeOut");
+                            tutorialState++;
+                            hasEnteredState = false;
+                            menuManager.hasCompletedTutorial = true;
+                            currentState = GameStates.Playing;
+                            break;
                         }
                         hasEnteredState = true;
                         break;
