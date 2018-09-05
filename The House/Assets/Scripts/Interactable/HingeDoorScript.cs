@@ -24,7 +24,7 @@ public class HingeDoorScript : MonoBehaviour {
     // Timer until door closes 
     private float closeTimer;
     //closes the door when closeTimer is 0 
-    bool closeDoor = false;
+    public bool closeDoor = false;
     bool doorSoundEnabled;
     bool DoorSoundCooldown = false;
     bool GhostOpenDoor = false;
@@ -125,8 +125,11 @@ public class HingeDoorScript : MonoBehaviour {
         }
         if (GhostOpenDoor)
         {
+            hingeSpring.spring = 0;
+            hinge.spring = hingeSpring;
             closeTimer = doorCloseTime;
             closeDoor = true;
+            GhostOpenDoor = false;
         }
     }
     // Sets isopen to true and enables the doorSound
@@ -142,12 +145,13 @@ public class HingeDoorScript : MonoBehaviour {
     }
 
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.tag == "Ghost")
         {
             Debug.Log("Ghost Opened Door");
             GhostOpenDoor = true;
+
         }
     }
 }
