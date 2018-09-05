@@ -69,6 +69,7 @@ public class HingeDoorScript : MonoBehaviour {
         if (closeDoor)
         {
             closeTimer -= Time.deltaTime;
+            Debug.Log(closeTimer);
         }
         //--------------------------------------------------------------------------------------
         // Checks if the closeTimer is lessthan zero and closeDoor is true
@@ -111,7 +112,7 @@ public class HingeDoorScript : MonoBehaviour {
 
         // Adds force to the players forward direction to the door which will open or close 
         // the door depending on which side the player is located 
-        if (isOpen || GhostOpenDoor)
+        if (isOpen)
         {
             //Sets the spring to 0 on open to make the door open easier
             hingeSpring.spring = 0;
@@ -122,7 +123,11 @@ public class HingeDoorScript : MonoBehaviour {
             closeDoor = true;
             
         }
-
+        if (GhostOpenDoor)
+        {
+            closeTimer = doorCloseTime;
+            closeDoor = true;
+        }
     }
     // Sets isopen to true and enables the doorSound
     public void ChangeDoorState()

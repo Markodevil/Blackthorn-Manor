@@ -54,7 +54,7 @@ public class OpenDrawerScript : MonoBehaviour
             Dresser = hit.collider.gameObject;
             distance = transform.position - Dresser.transform.position;
             distance.y = 0;
-            //dist = distance.magnitude;
+            dist = distance.magnitude;
             isHoldingDown = true;
             fpsCamera.SetTouching(true);
             fpsCamera.SetTouchingDrawer(true);
@@ -65,7 +65,7 @@ public class OpenDrawerScript : MonoBehaviour
         }
         // if player is holding down mouse1 and moves away from the dresser
         // camera movement will be enabled 
-        if (isHoldingDown && dist > 3)
+        if (isHoldingDown && dist > 3.2f)
         {
             isHoldingDown = false;
             fpsCamera.SetTouching(false);
