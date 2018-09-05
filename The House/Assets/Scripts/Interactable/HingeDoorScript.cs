@@ -27,6 +27,7 @@ public class HingeDoorScript : MonoBehaviour {
     bool closeDoor = false;
     bool doorSoundEnabled;
     bool DoorSoundCooldown = false;
+    bool GhostOpenDoor = false;
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -63,7 +64,7 @@ public class HingeDoorScript : MonoBehaviour {
         if (Input.GetKeyUp(KeyCode.Mouse0) || Input.GetKeyUp(KeyCode.E) || dist > 3.5f)
         {
             isOpen = false;
-            
+           
         }
         if (closeDoor)
         {
@@ -110,8 +111,8 @@ public class HingeDoorScript : MonoBehaviour {
 
         // Adds force to the players forward direction to the door which will open or close 
         // the door depending on which side the player is located 
-        if (isOpen)
-        { 
+        if (isOpen || GhostOpenDoor)
+        {
             //Sets the spring to 0 on open to make the door open easier
             hingeSpring.spring = 0;
             hinge.spring = hingeSpring;
@@ -135,4 +136,13 @@ public class HingeDoorScript : MonoBehaviour {
         doorSoundEnabled = true;
     }
 
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ghost")
+        {
+            Debug.Log("Ghost Opened Door");
+            GhostOpenDoor = true;
+        }
+    }
 }
