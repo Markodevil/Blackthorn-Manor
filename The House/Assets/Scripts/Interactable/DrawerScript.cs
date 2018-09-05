@@ -6,6 +6,7 @@ public class DrawerScript : MonoBehaviour {
 
     bool isOpen = false;
     public float mouseY;
+    public float mouseX;
     public float drawerSpeed; 
     private GameObject Player;
     private GameObject Outline;
@@ -44,6 +45,7 @@ public class DrawerScript : MonoBehaviour {
 
         float dist = Vector3.Distance(playerPosition, drawerPosition);
         mouseY = Input.GetAxis("Mouse Y");
+        mouseX = Input.GetAxis("Mouse X");
 
         // lets go of the drawer when Mouse0 is released 
         if (Input.GetKeyUp(KeyCode.Mouse0) || dist > 2)
@@ -60,12 +62,24 @@ public class DrawerScript : MonoBehaviour {
         // Checks if can be opened and if player is positioned infront of the Dresser 
         if (isOpen && Vector3.Dot(transform.forward, Direction) > 0)
         {
+            Debug.Log("PLAYER IS IN FRONT");
 
             // Adds force from the players forward position to the drawer 
             rb.AddForceAtPosition(Player.transform.forward * mouseY * drawerSpeed, Player.transform.position);
 
         }
-        
+        if (isOpen && Vector3.Dot(transform.right, Direction) < 0)
+        {
+            Debug.Log("PLAYER IS ON THE RIGHT");
+            rb.AddForceAtPosition(Player.transform.forward * mouseX * drawerSpeed, Player.transform.position);
+        }
+
+        if (isOpen && Vector3.Dot(-transform.right, Direction) < 0)
+        {
+            Debug.Log("PLAYER IS ON THE LEFT");
+            rb.AddForceAtPosition(Player.transform.forward * -mouseX * drawerSpeed, Player.transform.position);
+        }
+
 
     }
     // Sets isOpen to true and enables the drawer sound

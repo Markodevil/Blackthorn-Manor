@@ -33,9 +33,16 @@ public class OpenDrawerScript : MonoBehaviour
         //      Changes the DrawerState so that the drawer can be opened
         //--------------------------------------------------------------------------------------
 
-        Vector3 distance;
-        distance.y = 0;
-        float dist = 0.0f;
+        // Vector3 distance;
+        // distance.y = 0;
+        // float dist = 0.0f;
+        Vector3 dresserPosition = Dresser.transform.position;
+        Vector3 playerPosition = transform.position;
+
+        Vector3 distance = playerPosition - dresserPosition;
+        distance.Normalize();
+
+        float dist = Vector3.Distance(playerPosition, dresserPosition);
 
         // checks if the player is in distance to open the Dresser     
         Ray ray = new Ray(transform.position, transform.forward);
@@ -47,7 +54,7 @@ public class OpenDrawerScript : MonoBehaviour
             Dresser = hit.collider.gameObject;
             distance = transform.position - Dresser.transform.position;
             distance.y = 0;
-            dist = distance.magnitude;
+            //dist = distance.magnitude;
             isHoldingDown = true;
             fpsCamera.SetTouching(true);
             fpsCamera.SetTouchingDrawer(true);
@@ -56,10 +63,9 @@ public class OpenDrawerScript : MonoBehaviour
             FindObjectOfType<GameManager>().hasTouchedDresser = true;
 
         }
-
         // if player is holding down mouse1 and moves away from the dresser
         // camera movement will be enabled 
-        if (isHoldingDown && dist > 2)
+        if (isHoldingDown && dist > 3)
         {
             isHoldingDown = false;
             fpsCamera.SetTouching(false);
