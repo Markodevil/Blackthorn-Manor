@@ -51,6 +51,11 @@ public class GameOverState : State<GhostAI>
         ghostCollider.enabled = false;
         playerCollider.enabled = false;
 
+        //Rotates the ghost to the player
+        Vector3 relativePos = player.transform.position - owner.transform.position;
+        Quaternion rotation = Quaternion.LookRotation(relativePos);
+        owner.transform.rotation = rotation;
+
         //plays the anim and freezes the ghost
         owner.heardSomethingAnim.SetInteger("KillAnim", 1);
         owner.NMA.isStopped = true;

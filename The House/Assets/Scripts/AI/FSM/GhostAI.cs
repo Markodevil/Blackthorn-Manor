@@ -19,6 +19,7 @@ public class GhostAI : MonoBehaviour
     [HideInInspector]
     public Sight sight;
     public float dist;
+
     /*   My Things   */
     [HideInInspector]
     public NavMeshAgent NMA;
@@ -45,24 +46,6 @@ public class GhostAI : MonoBehaviour
     /*   Seek Variables   */
     [HideInInspector]
     public Vector3 destination;
-
-    /*   Ghost Upgrade Variables   */
-    [Header("ItemCollection related")]
-    private GameObject player;
-    public GameObject Clone;
-    private ItemCollection itemsCollectionCS;
-    private float time = 0;
-    private bool stage1 = false;
-    private bool stage2 = false;
-    private bool stage3 = false;
-    private bool stage4 = false;
-    private bool CloneBuffs = false;
-    [SerializeField]
-    private float speedMultiplyer = 2;
-    [SerializeField]
-    private float soundResponceMultiplyer = 2;
-    private PlayerMovement playerMovementCS;
-
     [Header("Seek Variables")]
     public float cantSeePlayerCountdown;
     public AudioSource seekSound;
@@ -73,6 +56,25 @@ public class GhostAI : MonoBehaviour
     private GameObject singleton;
     private MenuManager mm;
     private GameManager gm;
+
+    #region Ghost Upgrade Variables
+    /*   Ghost Upgrade Variables   */
+    [Header("ItemCollection related")]
+    private GameObject player;
+    public GameObject Clone;
+    private ItemCollection itemsCollectionCS;
+    //private float time = 0;
+    private bool stage1 = false;
+    private bool stage2 = false;
+    //private bool stage3 = false;
+    //private bool stage4 = false;
+    //private bool CloneBuffs = false;
+    [SerializeField]
+    private float speedMultiplyer = 2;
+    [SerializeField]
+    private float soundResponceMultiplyer = 2;
+    //private PlayerMovement playerMovementCS;
+    #endregion
 
     [HideInInspector]
     public SeekState seekState;
@@ -102,7 +104,7 @@ public class GhostAI : MonoBehaviour
         if (player != null)
         {
             itemsCollectionCS = player.GetComponent<ItemCollection>();
-            playerMovementCS = player.GetComponent<PlayerMovement>();
+            //playerMovementCS = player.GetComponent<PlayerMovement>();
         }
         //hearingTrigger = this.GetComponent<SphereCollider>();
 
@@ -268,23 +270,23 @@ public class GhostAI : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        //Ryan's totaly bestest game over trigger
-        if (collision.gameObject.tag == "Player")
-        {
-            if (FSM.currentState == GameOverState.GetInstance(this))
-            {
-                return;
-            }
-            FSM.ChangeState(GameOverState.GetInstance(this));
-            PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
-            //PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
-            gm.ChangeGameStates(GameManager.GameStates.GameOver);
-            //PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
-            //SceneManager.LoadScene("GameOver");
-        }
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    //Ryan's totaly bestest game over trigger
+    //    if (collision.gameObject.tag == "Player")
+    //    {
+    //        if (FSM.currentState == GameOverState.GetInstance(this))
+    //        {
+    //            return;
+    //        }
+    //        FSM.ChangeState(GameOverState.GetInstance(this));
+    //        PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
+    //        //PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
+    //        gm.ChangeGameStates(GameManager.GameStates.GameOver);
+    //        //PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
+    //        //SceneManager.LoadScene("GameOver");
+    //    }
+    //}
 
     //This code was taken from a youtube tutorial from here https://www.youtube.com/watch?v=mBGUY7EUxXQ
     //It calculates the total distance to the player taking into account the amount of corners. 
