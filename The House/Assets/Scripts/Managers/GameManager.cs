@@ -120,6 +120,7 @@ public class GameManager : MonoBehaviour
 
         switch (currentState)
         {
+            //In intro state
             case GameStates.Intro:
                 Time.timeScale = 1;
                 Cursor.lockState = CursorLockMode.Locked;
@@ -132,10 +133,12 @@ public class GameManager : MonoBehaviour
                 }
                 CS.enabled = true;
 
+                //iterate dumbTimer for safety 
                 dumbTimer -= Time.deltaTime;
+
+                //what state in the tutorial we are in
                 switch (tutorialState)
                 {
-
                     //open phone
                     case 0:
                         tutorialText.text = prompts[0];

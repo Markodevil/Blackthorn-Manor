@@ -39,8 +39,15 @@ public class MenuManager : MonoBehaviour
     public Dropdown vSyncDD;
     public Dropdown resolutionDD;
 
-    private float brightness;
+    [HideInInspector]
+    public float brightness;
     public Slider brightnessSlider;
+    [HideInInspector]
+    public float saturation;
+    public Slider saturationSlider;
+    [HideInInspector]
+    public float contrast;
+    public Slider contrastSlider;
 
     public bool hasCompletedTutorial = false;
 
@@ -91,8 +98,6 @@ public class MenuManager : MonoBehaviour
         //control global volume
         SetGlobalVolume();
         //SetBrightness();
-        Debug.Log("Brightness: " + brightness);
-        Debug.Log("Actual brightness: " + RenderSettings.ambientIntensity);
         //if (AsyncOp != null)
         //{
         //    if (fade.GetCurrentAnimatorStateInfo(0).IsName("New State"))
@@ -100,6 +105,10 @@ public class MenuManager : MonoBehaviour
         //        AsyncOp.allowSceneActivation = true;
         //    }
         //}
+
+        brightness = brightnessSlider.value;
+        saturation = saturationSlider.value;
+        contrast = contrastSlider.value;
 
         if(SceneManager.GetActiveScene().name == "Menu")
         {

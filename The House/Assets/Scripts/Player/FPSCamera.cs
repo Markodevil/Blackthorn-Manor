@@ -40,22 +40,32 @@ public class FPSCamera : MonoBehaviour
             RotateCamera();
         }
 
-        if (!pickupBool.holdingSomething)
+        //if you aren't touching anything
+        if (!isTouchingSomething && !touchingDrawer)
         {
-            if (!touchingDrawer)
+            //so long as you aren't holding an interactable object
+            if (!pickupBool.holdingSomething)
             {
-
-                RaycastHit hit;
-                if (Physics.Raycast(transform.position, transform.forward, out hit, interactableDistance))
+                //not touching a drawer
+                if (!touchingDrawer)
                 {
-                    GameObject hitObj = hit.collider.gameObject;
-                    if (hitObj.tag == "Interactable" || hitObj.tag == "Door" || hitObj.tag == "HorcruxManager" || hitObj.tag == "Drawer")
+                    RaycastHit hit;
+                    if (Physics.Raycast(transform.position, transform.forward, out hit, interactableDistance))
                     {
-                        UpdateSprite(touchableSprite);
-                    }
-                    else if (hitObj.tag == "RequiredItem")
-                    {
-                        UpdateSprite(pickUpSprite);
+                        GameObject hitObj = hit.collider.gameObject;
+                        if (hitObj.tag == "Interactable" || hitObj.tag == "Door" || hitObj.tag == "HorcruxManager" || hitObj.tag == "Drawer")
+                        {
+                            UpdateSprite(touchableSprite);
+                        }
+                        else if (hitObj.tag == "RequiredItem")
+                        {
+                            UpdateSprite(pickUpSprite);
+                        }
+                        else
+                        {
+                            if (hand)
+                                hand.SetActive(false);
+                        }
                     }
                     else
                     {
@@ -63,16 +73,18 @@ public class FPSCamera : MonoBehaviour
                             hand.SetActive(false);
                     }
                 }
+                //if you are touching a drawer
                 else
                 {
-                    if (hand)
-                        hand.SetActive(false);
+                    UpdateSprite(closedHandSprite);
                 }
             }
-            else
-            {
-                UpdateSprite(closedHandSprite);
-            }
+        }
+        //you're touching something
+        else
+        {
+            if (hand)
+                hand.SetActive(false);
         }
 
     }
@@ -168,6 +180,17 @@ public class FPSCamera : MonoBehaviour
         return isTouchingSomething;
     }
 
+    //--------------------------------------------------------------------------------------
+    //  Updates the sprite of hand UI
+    //                                                        
+    // 
+    // Param
+    //		spriteToUse: what sprite to use 
+    //		 
+    // Return:
+    //		nothing if hand UI element isn't present
+    //      changes sprite to spriteToUse if it is present
+    //--------------------------------------------------------------------------------------
     private void UpdateSprite(Sprite spriteToUse)
     {
         if (!hand)
