@@ -180,7 +180,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: WINNER WINNER YOU HAVE WON CONGRATULATIONS THE GHOST THING IS GONE
+  m_Text: YOU HAVE BANISHED THE GHOST. IT'S TIME YOU YEEEEET YOUR WAY OUT THE HOUSE
 --- !u!222 &178721074
 CanvasRenderer:
   m_ObjectHideFlags: 0
