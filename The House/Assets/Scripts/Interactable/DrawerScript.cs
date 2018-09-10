@@ -48,7 +48,7 @@ public class DrawerScript : MonoBehaviour {
         mouseX = Input.GetAxis("Mouse X");
 
         // lets go of the drawer when Mouse0 is released 
-        if (Input.GetKeyUp(KeyCode.Mouse0) || dist > 2)
+        if (Input.GetKeyUp(KeyCode.Mouse0) || dist > 2.5f)
         {
             isOpen = false;
         }

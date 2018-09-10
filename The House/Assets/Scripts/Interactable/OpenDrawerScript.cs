@@ -65,7 +65,7 @@ public class OpenDrawerScript : MonoBehaviour
         }
         // if player is holding down mouse1 and moves away from the dresser
         // camera movement will be enabled 
-        if (isHoldingDown && dist > 3.2f)
+        if (isHoldingDown && dist > 3)
         {
             isHoldingDown = false;
             fpsCamera.SetTouching(false);
