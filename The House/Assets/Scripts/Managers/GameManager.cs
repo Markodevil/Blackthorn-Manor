@@ -292,7 +292,7 @@ public class GameManager : MonoBehaviour
                         tutorialPageThing.SetActive(true);
 
 
-                        if (Input.GetKeyDown(KeyCode.F))
+                        if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.E))
                         {
                             tutorialState++;
                             hasEnteredState = false;
