@@ -52,8 +52,12 @@ public class GameManager : MonoBehaviour
     public Text tutorialText;
     int tutorialState = 0;
     public bool hasTouchedDresser = false;
+    public OpenDoorScript doorScript;
+    public GameObject tutorialPageThing;
 
     float dumbTimer = 2.0f;
+
+
 
 
     public enum GameStates
@@ -76,6 +80,7 @@ public class GameManager : MonoBehaviour
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera");
 
         CS = FindObjectOfType<CameraSwitch>();
+        doorScript = FindObjectOfType<OpenDoorScript>();
     }
 
     // Use this for initialization
@@ -84,12 +89,21 @@ public class GameManager : MonoBehaviour
         if (menuManager)
         {
             if (!menuManager.hasCompletedTutorial)
+            {
                 currentState = GameStates.Intro;
+                doorScript.isLocked = true;
+            }
             else
+            {
                 currentState = GameStates.Playing;
+                doorScript.isLocked = false;
+            }
         }
         else
+        {
             currentState = GameStates.Playing;
+            doorScript.isLocked = false;
+        }
         //currentState = GameStates.Intro;
         SpawnItems();
 
@@ -101,7 +115,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(tutorialState);
+        //Debug.Log(tutorialState);
         Debug.Log(currentState);
         /////////////////////
         // Game Logic Here //
@@ -147,14 +161,26 @@ public class GameManager : MonoBehaviour
                     //open phone
                     case 0:
                         tutorialText.text = prompts[0];
-                        if (Input.GetKeyDown(KeyCode.F))
+                        if (Player.GetComponent<Animator>().enabled)
                         {
-                            textAnimation.SetTrigger("FadeOut");
-                            //textAnimation.SetBool("bFadeOut", true);
-                            tutorialState++;
-                            hasEnteredState = false;
-                            dumbTimer = 2.0f;
-                            break;
+                            CS.enabled = false;
+                        }
+                        else
+                        {
+                            CS.enabled = true;
+                        }
+
+                        if (CS.enabled)
+                        {
+                            if (Input.GetKeyDown(KeyCode.F))
+                            {
+                                textAnimation.SetTrigger("FadeOut");
+                                //textAnimation.SetBool("bFadeOut", true);
+                                tutorialState++;
+                                hasEnteredState = false;
+                                dumbTimer = 2.0f;
+                                break;
+                            }
                         }
                         hasEnteredState = true;
                         break;
@@ -222,29 +248,54 @@ public class GameManager : MonoBehaviour
                         RaycastHit hit;
                         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2.5f))
                         {
-                            if (hit.collider.gameObject.tag == "RequiredItem")
+                            if (hit.collider.gameObject.name == "TutorialBook")
                             {
-                                if (Input.GetKeyDown(KeyCode.E))
+                                if (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0))
                                 {
                                     textAnimation.SetTrigger("FadeOut");
                                     tutorialState++;
                                     hasEnteredState = false;
-                                    menuManager.hasCompletedTutorial = true;
-                                    currentState = GameStates.Playing;
+                                    //menuManager.hasCompletedTutorial = true;
+                                    //doorScript.isLocked = false;
+                                    //currentState = GameStates.Playing;
                                     break;
                                 }
                             }
                         }
-                        if(dumbTimer <= 0)
+                        //if (dumbTimer <= 0)
+                        //{
+                        //    textAnimation.SetTrigger("FadeOut");
+                        //    tutorialState++;
+                        //    hasEnteredState = false;
+                        //    menuManager.hasCompletedTutorial = true;
+                        //    currentState = GameStates.Playing;
+                        //    break;
+                        //}
+                        hasEnteredState = true;
+                        break;
+
+                    case 4:
+                        FindObjectOfType<PlayerMovement>().SetTouchingSomething(true);
+                        FindObjectOfType<FPSCamera>().SetTouching(true);
+                        CS.enabled = false;
+                        tutorialPageThing.SetActive(true);
+
+
+                        if (Input.GetKeyDown(KeyCode.F))
                         {
-                            textAnimation.SetTrigger("FadeOut");
                             tutorialState++;
                             hasEnteredState = false;
                             menuManager.hasCompletedTutorial = true;
+                            doorScript.isLocked = false;
                             currentState = GameStates.Playing;
+
+                            tutorialPageThing.SetActive(false);
+
+                            FindObjectOfType<PlayerMovement>().SetTouchingSomething(false);
+                            FindObjectOfType<FPSCamera>().SetTouching(false);
+                            CS.enabled = true;
                             break;
                         }
-                        hasEnteredState = true;
                         break;
 
                     default:
@@ -273,6 +324,7 @@ public class GameManager : MonoBehaviour
                 menuUI.SetActive(false);
                 ingameUI.SetActive(true);
                 items.SetActive(false);
+                tutorialPageThing.SetActive(false);
                 foreach (MonoBehaviour mon in scriptsToTurnOff)
                 {
                     mon.enabled = true;
@@ -291,7 +343,12 @@ public class GameManager : MonoBehaviour
                     currentState = GameStates.Pause;
                 }
 
-                CS.enabled = true;
+                if (Player.GetComponent<Animator>().enabled)
+                {
+                    CS.enabled = false;
+                }
+                else
+                    CS.enabled = true;
                 break;
             case GameStates.Pause:
                 //set timescale to 0

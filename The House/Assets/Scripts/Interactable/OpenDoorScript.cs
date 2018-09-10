@@ -11,7 +11,8 @@ public class OpenDoorScript : MonoBehaviour {
     FPSCamera fpsCamera;
     private GameObject Door;
     public MonoBehaviour camScript;
-    bool isHoldingDown = false; 
+    bool isHoldingDown = false;
+    public bool isLocked = true;
 
 	// Use this for initialization
 	void Start () {
@@ -21,7 +22,8 @@ public class OpenDoorScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (isLocked)
+            return;
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
 

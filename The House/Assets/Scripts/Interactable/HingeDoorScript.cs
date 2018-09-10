@@ -69,7 +69,6 @@ public class HingeDoorScript : MonoBehaviour {
         if (closeDoor)
         {
             closeTimer -= Time.deltaTime;
-            Debug.Log(closeTimer);
         }
         //--------------------------------------------------------------------------------------
         // Checks if the closeTimer is lessthan zero and closeDoor is true
@@ -149,7 +148,7 @@ public class HingeDoorScript : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Ghost")
         {
-            Debug.Log("Ghost Opened Door");
+            //Debug.Log("Ghost Opened Door");
             GhostOpenDoor = true;
 
         }
