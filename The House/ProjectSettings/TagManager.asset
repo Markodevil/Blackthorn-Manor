@@ -20,6 +20,7 @@ TagManager:
   - SoundTrigger
   - Dresser
   - DeathCam
+  - TutorialOutlined
   layers:
   - Default
   - TransparentFX

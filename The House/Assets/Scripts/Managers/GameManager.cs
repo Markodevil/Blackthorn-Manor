@@ -25,6 +25,10 @@ public class GameManager : MonoBehaviour
     private CameraSwitch CS;
     private GameObject deathCamera;
     private GameObject playerCamera;
+    private bool isDead;
+    public Animator deathAnim;
+    
+    public GameObject playerMesh;
     [Header("Req. Items")]
     public GameObject[] requiredItems;
     public TransformArray[] itemSpawns;
@@ -48,7 +52,8 @@ public class GameManager : MonoBehaviour
     private bool hasEnteredState = false;
     public Animator textAnimation;
     public GameObject items;
-
+    private DrawerScript SetOutline;
+    private GameObject Dresser;
     public Text tutorialText;
     int tutorialState = 0;
     public bool hasTouchedDresser = false;
@@ -79,6 +84,7 @@ public class GameManager : MonoBehaviour
         deathCamera = GameObject.FindGameObjectWithTag("DeathCam");
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera");
 
+
         CS = FindObjectOfType<CameraSwitch>();
         doorScript = FindObjectOfType<OpenDoorScript>();
     }
@@ -107,6 +113,9 @@ public class GameManager : MonoBehaviour
         //currentState = GameStates.Intro;
         SpawnItems();
 
+        Dresser = GameObject.FindGameObjectWithTag("TutorialOutlined");
+        Dresser.SetActive(false);
+
         FindObjectOfType<PlayerMovement>().SetTouchingSomething(true);
         FindObjectOfType<FPSCamera>().SetTouching(true);
         //postProcessing.enabled = false;
@@ -133,6 +142,7 @@ public class GameManager : MonoBehaviour
             Ghost.SetActive(true);
             foreach (MonoBehaviour mb in Ghost.GetComponents<MonoBehaviour>())
             {
+                
                 mb.enabled = true;
             }
         }
@@ -204,6 +214,7 @@ public class GameManager : MonoBehaviour
                                 FindObjectOfType<PlayerMovement>().SetTouchingSomething(false);
                                 FindObjectOfType<FPSCamera>().SetTouching(false);
                                 dumbTimer = 2.0f;
+                                Dresser.SetActive(true);
                                 break;
                             }
                         }
@@ -388,7 +399,13 @@ public class GameManager : MonoBehaviour
                 playerCamera.SetActive(false);
                 deathCamera.transform.rotation = Quaternion.Lerp(deathCamera.transform.rotation,
                       Quaternion.LookRotation(direction), 0.01f * Time.time);
-                //  Player.transform.rotation = Quaternion.Lerp(Player.transform.rotation,
+                playerMesh.SetActive(false);
+                isDead = true;
+                if (isDead)
+                {
+                    deathAnim.SetBool("DeathTrigger", isDead);
+                }
+                    //  Player.transform.rotation = Quaternion.Lerp(Player.transform.rotation,
                 //      Quaternion.LookRotation(direction), 0.01f * Time.time);
                 
 

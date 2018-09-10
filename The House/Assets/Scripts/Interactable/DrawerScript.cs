@@ -9,7 +9,7 @@ public class DrawerScript : MonoBehaviour {
     public float mouseX;
     public float drawerSpeed; 
     private GameObject Player;
-    private GameObject Outline;
+    public GameObject Outline;
     public Rigidbody rb;
     public AudioSource audio;
     public AudioClip drawerSound;
@@ -48,7 +48,7 @@ public class DrawerScript : MonoBehaviour {
         mouseX = Input.GetAxis("Mouse X");
 
         // lets go of the drawer when Mouse0 is released 
-        if (Input.GetKeyUp(KeyCode.Mouse0) || dist > 2.5f)
+        if (Input.GetKeyUp(KeyCode.Mouse0) || dist > 2.65f)
         {
             isOpen = false;
         }
