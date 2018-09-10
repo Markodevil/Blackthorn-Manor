@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 0aece2429a149ae42881434411a34ce4
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Main Scene.unity
     guid: c6ce7f04c0100eb41b3a0b67e708cf16
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Deeon.unity
     guid: 7364b9413b12a034e839de4dc35daa19
   - enabled: 1
