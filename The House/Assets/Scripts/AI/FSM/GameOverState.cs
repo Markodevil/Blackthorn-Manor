@@ -13,6 +13,7 @@ public class GameOverState : State<GhostAI>
     private Rigidbody playerRigidBody;
     private PlayerMovement playerMovement;
     private GameObject cameraObject;
+    private GameObject deathCamera;
     private Camera mainCamera;
     private Vector3 targetPoint;
     private Quaternion targetRotation;
@@ -35,6 +36,7 @@ public class GameOverState : State<GhostAI>
     public override void EnterState(GhostAI owner)
     {
         cameraObject = GameObject.FindGameObjectWithTag("MainCamera");
+        deathCamera = GameObject.FindGameObjectWithTag("DeathCam");
         mainCamera = cameraObject.GetComponent<Camera>();
         player = GameObject.FindGameObjectWithTag("Player");
         playerRigidBody = player.GetComponent<Rigidbody>();

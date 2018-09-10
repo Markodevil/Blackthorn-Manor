@@ -19,6 +19,7 @@ TagManager:
   - GameManager
   - SoundTrigger
   - Dresser
+  - DeathCam
   layers:
   - Default
   - TransparentFX

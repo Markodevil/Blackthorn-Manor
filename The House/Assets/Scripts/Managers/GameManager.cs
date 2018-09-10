@@ -23,7 +23,8 @@ public class GameManager : MonoBehaviour
     public GameObject clickyWinThing;
     public MonoBehaviour[] scriptsToTurnOff;
     private CameraSwitch CS;
-
+    private GameObject deathCamera;
+    private GameObject playerCamera;
     [Header("Req. Items")]
     public GameObject[] requiredItems;
     public TransformArray[] itemSpawns;
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
     private bool hasEnteredState = false;
     public Animator textAnimation;
     public GameObject items;
+
     public Text tutorialText;
     int tutorialState = 0;
     public bool hasTouchedDresser = false;
@@ -70,6 +72,9 @@ public class GameManager : MonoBehaviour
     {
         menuManager = FindObjectOfType<MenuManager>();
         Player = GameObject.FindGameObjectWithTag("Player");
+        deathCamera = GameObject.FindGameObjectWithTag("DeathCam");
+        playerCamera = GameObject.FindGameObjectWithTag("MainCamera");
+
         CS = FindObjectOfType<CameraSwitch>();
     }
 
@@ -318,15 +323,17 @@ public class GameManager : MonoBehaviour
                 //Quaternion targetRot = Quaternion.Euler(Vector3.Slerp(Camera.main.transform.rotation.eulerAngles, rotation.eulerAngles, 0.1f));
                 //Camera.main.transform.rotation = targetRot;
 
-                Vector3 direction = ghostLookAt.position - Camera.main.transform.position;
+                Vector3 direction = ghostLookAt.position - deathCamera.transform.position;
                 //Quaternion toRotation = Quaternion.FromToRotation(Camera.main.transform.forward, direction);
                 //Camera.main.transform.rotation = Quaternion.Lerp(Camera.main.transform.rotation, toRotation, 1.0f * Time.deltaTime);
 
-                //Camera.main.transform.LookAt(ghostLookAt);
-                Camera.main.transform.rotation = Quaternion.Lerp(Camera.main.transform.rotation,
-                    Quaternion.LookRotation(direction), 0.01f * Time.time);
-                Player.transform.rotation = Quaternion.Lerp(Player.transform.rotation,
-                    Quaternion.LookRotation(direction), 0.01f * Time.time);
+                //  //Camera.main.transform.LookAt(ghostLookAt);
+                playerCamera.SetActive(false);
+                deathCamera.transform.rotation = Quaternion.Lerp(deathCamera.transform.rotation,
+                      Quaternion.LookRotation(direction), 0.01f * Time.time);
+                //  Player.transform.rotation = Quaternion.Lerp(Player.transform.rotation,
+                //      Quaternion.LookRotation(direction), 0.01f * Time.time);
+                
 
 
                 foreach (MonoBehaviour mon in scriptsToTurnOff)

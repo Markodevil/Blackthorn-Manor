@@ -62,21 +62,17 @@ public class DrawerScript : MonoBehaviour {
         // Checks if can be opened and if player is positioned infront of the Dresser 
         if (isOpen && Vector3.Dot(transform.forward, Direction) > 0)
         {
-            Debug.Log("PLAYER IS IN FRONT");
-
             // Adds force from the players forward position to the drawer 
             rb.AddForceAtPosition(Player.transform.forward * mouseY * drawerSpeed, Player.transform.position);
 
         }
         if (isOpen && Vector3.Dot(transform.right, Direction) < 0)
         {
-            Debug.Log("PLAYER IS ON THE RIGHT");
             rb.AddForceAtPosition(Player.transform.forward * mouseX * drawerSpeed, Player.transform.position);
         }
 
         if (isOpen && Vector3.Dot(-transform.right, Direction) < 0)
         {
-            Debug.Log("PLAYER IS ON THE LEFT");
             rb.AddForceAtPosition(Player.transform.forward * -mouseX * drawerSpeed, Player.transform.position);
         }
 
