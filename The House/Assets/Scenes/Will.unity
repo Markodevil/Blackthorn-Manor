@@ -3065,6 +3065,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 23796257814095940, guid: 7682b7a66294f374dbfde4bde7861eb1,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b8d5c82d2bd7392489c6d5d6f49f3f7b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7682b7a66294f374dbfde4bde7861eb1, type: 2}
   m_IsPrefabParent: 0
@@ -14370,6 +14375,7 @@ MonoBehaviour:
   audio: {fileID: 1647395782}
   doorCreakSound: {fileID: 8300000, guid: 417645705b325f94aa9520e73c6a5cdd, type: 3}
   doorCloseTime: 0
+  closeDoor: 0
 --- !u!59 &292716112
 HingeJoint:
   m_ObjectHideFlags: 0
@@ -17572,6 +17578,7 @@ MonoBehaviour:
   audio: {fileID: 1647395782}
   doorCreakSound: {fileID: 8300000, guid: 417645705b325f94aa9520e73c6a5cdd, type: 3}
   doorCloseTime: 0
+  closeDoor: 0
 --- !u!59 &340941162
 HingeJoint:
   m_ObjectHideFlags: 0
@@ -41893,6 +41900,7 @@ MonoBehaviour:
   audio: {fileID: 1647395782}
   doorCreakSound: {fileID: 8300000, guid: 417645705b325f94aa9520e73c6a5cdd, type: 3}
   doorCloseTime: 0
+  closeDoor: 0
 --- !u!59 &716256404
 HingeJoint:
   m_ObjectHideFlags: 0
@@ -44456,6 +44464,7 @@ MonoBehaviour:
   audio: {fileID: 1647395782}
   doorCreakSound: {fileID: 8300000, guid: 417645705b325f94aa9520e73c6a5cdd, type: 3}
   doorCloseTime: 0
+  closeDoor: 0
 --- !u!59 &746037598
 HingeJoint:
   m_ObjectHideFlags: 0
@@ -71461,6 +71470,7 @@ MonoBehaviour:
   audio: {fileID: 1647395782}
   doorCreakSound: {fileID: 8300000, guid: 417645705b325f94aa9520e73c6a5cdd, type: 3}
   doorCloseTime: 0
+  closeDoor: 0
 --- !u!59 &1139885900
 HingeJoint:
   m_ObjectHideFlags: 0
@@ -73075,6 +73085,7 @@ MonoBehaviour:
   audio: {fileID: 1647395782}
   doorCreakSound: {fileID: 8300000, guid: 417645705b325f94aa9520e73c6a5cdd, type: 3}
   doorCloseTime: 0
+  closeDoor: 0
 --- !u!59 &1160312171
 HingeJoint:
   m_ObjectHideFlags: 0
@@ -77130,6 +77141,7 @@ MonoBehaviour:
   audio: {fileID: 1647395782}
   doorCreakSound: {fileID: 8300000, guid: 417645705b325f94aa9520e73c6a5cdd, type: 3}
   doorCloseTime: 0
+  closeDoor: 0
 --- !u!59 &1273078539
 HingeJoint:
   m_ObjectHideFlags: 0
@@ -85722,6 +85734,7 @@ MonoBehaviour:
   audio: {fileID: 1647395782}
   doorCreakSound: {fileID: 8300000, guid: 417645705b325f94aa9520e73c6a5cdd, type: 3}
   doorCloseTime: 0
+  closeDoor: 0
 --- !u!59 &1430916508
 HingeJoint:
   m_ObjectHideFlags: 0
@@ -89921,6 +89934,7 @@ MonoBehaviour:
   audio: {fileID: 1647395782}
   doorCreakSound: {fileID: 8300000, guid: 417645705b325f94aa9520e73c6a5cdd, type: 3}
   doorCloseTime: 0
+  closeDoor: 0
 --- !u!59 &1514016556
 HingeJoint:
   m_ObjectHideFlags: 0
@@ -94456,6 +94470,7 @@ MonoBehaviour:
   audio: {fileID: 1647395782}
   doorCreakSound: {fileID: 8300000, guid: 417645705b325f94aa9520e73c6a5cdd, type: 3}
   doorCloseTime: 0
+  closeDoor: 0
 --- !u!59 &1568624316
 HingeJoint:
   m_ObjectHideFlags: 0
