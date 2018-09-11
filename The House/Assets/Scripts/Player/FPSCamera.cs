@@ -57,7 +57,7 @@ public class FPSCamera : MonoBehaviour
                         {
                             UpdateSprite(touchableSprite);
                         }
-                        else if (hitObj.tag == "RequiredItem")
+                        else if (hitObj.tag == "RequiredItem" || hitObj.tag == "TutorialBook")
                         {
                             UpdateSprite(pickUpSprite);
                         }

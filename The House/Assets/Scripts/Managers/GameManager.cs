@@ -63,6 +63,9 @@ public class GameManager : MonoBehaviour
     float dumbTimer = 2.0f;
 
 
+    private bool stuffInMyFace = false;
+    private float inMyFaceTimer = 5.0f;
+
 
 
     public enum GameStates
@@ -267,6 +270,7 @@ public class GameManager : MonoBehaviour
                                     textAnimation.SetTrigger("FadeOut");
                                     tutorialState++;
                                     hasEnteredState = false;
+                                    Destroy(hit.collider.gameObject);
                                     //menuManager.hasCompletedTutorial = true;
                                     //doorScript.isLocked = false;
                                     //currentState = GameStates.Playing;
@@ -336,7 +340,6 @@ public class GameManager : MonoBehaviour
                 menuUI.SetActive(false);
                 ingameUI.SetActive(true);
                 items.SetActive(false);
-                tutorialPageThing.SetActive(false);
                 foreach (MonoBehaviour mon in scriptsToTurnOff)
                 {
                     mon.enabled = true;
@@ -353,6 +356,40 @@ public class GameManager : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     currentState = GameStates.Pause;
+                }
+
+                RaycastHit hitty;
+                if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hitty, 2.5f))
+                {
+                    if (hitty.collider.gameObject.name == "TutorialBook")
+                    {
+                        if (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0))
+                        {
+                            Destroy(hitty.collider.gameObject);
+                            tutorialPageThing.SetActive(true);
+                            FindObjectOfType<PlayerMovement>().SetTouchingSomething(true);
+                            FindObjectOfType<FPSCamera>().SetTouching(true);
+                            CS.enabled = false;
+
+                            stuffInMyFace = true;
+
+                            break;
+                        }
+                    }
+                }
+
+                if(stuffInMyFace)
+                {
+                    inMyFaceTimer -= Time.deltaTime;
+                    if(inMyFaceTimer <= 0 || Input.GetKeyDown(KeyCode.E))
+                    {
+                        tutorialPageThing.SetActive(false);
+                        FindObjectOfType<PlayerMovement>().SetTouchingSomething(false);
+                        FindObjectOfType<FPSCamera>().SetTouching(false);
+                        CS.enabled = true;
+
+                        stuffInMyFace = false;
+                    }
                 }
 
                 if (Player.GetComponent<Animator>().enabled)
