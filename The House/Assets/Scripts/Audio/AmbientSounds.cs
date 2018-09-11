@@ -8,7 +8,7 @@ public class AmbientSounds : MonoBehaviour {
     private AudioClip playSound;
     int soundIndex;
     public float SoundTimer;
-    private int SoundTimerReset = 20;
+    public int SetSoundTimer;
     bool RandomiseTimer = true;
     bool PlaySoundEffect = false;
     // Update is called once per frame
@@ -16,7 +16,7 @@ public class AmbientSounds : MonoBehaviour {
 	
         if (RandomiseTimer)
         {
-            SoundTimer = Random.Range(3, SoundTimerReset);
+            SoundTimer = Random.Range(3, SetSoundTimer);
             RandomiseTimer = false;
         }
         SoundTimer -= Time.deltaTime;

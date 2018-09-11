@@ -10,13 +10,14 @@ public class DrawerScript : MonoBehaviour {
     public float drawerSpeed; 
     private GameObject Player;
     public GameObject Outline;
+
     public Rigidbody rb;
     public AudioSource audio;
     public AudioClip drawerSound;
     private Collision Col;
     FPSCamera fpsCamera;
     bool drawerSoundBool;
-    bool IsOutlineOff;
+
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -102,11 +103,14 @@ public class DrawerScript : MonoBehaviour {
     {          
         if (collision.gameObject.tag == "RequiredItem")
          {
-            Outline.SetActive(true);
-         }
-         else
+            this.Outline.SetActive(true);
+            Debug.Log("itemisiN");
+
+        }
+        else
         {
-            Outline.SetActive(false);
+            this.Outline.SetActive(false);
+            Debug.Log("itemisout");
         }
      }
 

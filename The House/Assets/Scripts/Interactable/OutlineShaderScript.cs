@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// this script is used to turn off the outline when a required item has been collected.
 public class OutlineShaderScript : MonoBehaviour {
 
     private GameObject Player;
@@ -21,10 +22,10 @@ public class OutlineShaderScript : MonoBehaviour {
         Vector3 currentPosition = transform.position;
         Vector3 playerPosition = Player.transform.position;
         float dist = Vector3.Distance(playerPosition, currentPosition);
-
+   
         // when the player is close and toggleoutline is false 
         // Disable the object outline
-         if (dist < 2 && isOutlined.toggleOutline == false)
+         if (dist < 3 && isOutlined.toggleOutline == false)
          {
              gameObject.SetActive(false);
          }
