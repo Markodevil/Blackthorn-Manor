@@ -55,15 +55,19 @@ public class CameraSwitch : MonoBehaviour
             //if you press the f key
             if (Input.GetKeyDown(KeyCode.F))
             {
-                //set the player scripts to not do things
-                cameraScript.SetTouching(true);
-                playerScript.SetTouchingSomething(true);
-                //set the phone to true
-                phoneThing.SetActive(true);
-                lookingAtPhone = true;
+                RaycastHit hit;
+                if (!Physics.Raycast(transform.position, transform.forward, out hit, 1.0f))
+                {
+                    //set the player scripts to not do things
+                    cameraScript.SetTouching(true);
+                    playerScript.SetTouchingSomething(true);
+                    //set the phone to true
+                    phoneThing.SetActive(true);
+                    lookingAtPhone = true;
 
-                if (cameraSoundManager)
-                    cameraSoundManager.PlayOneShot(openCameraSound);
+                    if (cameraSoundManager)
+                        cameraSoundManager.PlayOneShot(openCameraSound);
+                }
             }
 
         }
