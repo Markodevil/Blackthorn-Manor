@@ -6,13 +6,18 @@ using UnityEngine;
 public class OutlineShaderScript : MonoBehaviour {
 
     private GameObject Player;
-    public ItemCollection isOutlined;
+    private GameObject Dresser;
 
+    public ItemCollection isOutlined;
+    public DrawerScript dresserOutline;
   
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+        Dresser = GameObject.FindGameObjectWithTag("Drawer");
+
         isOutlined = Player.GetComponent<ItemCollection>();
+        dresserOutline = Dresser.GetComponent<DrawerScript>();
     }
     
     // Update is called once per frame
@@ -28,6 +33,8 @@ public class OutlineShaderScript : MonoBehaviour {
          if (dist < 4 && isOutlined.toggleOutline == false)
          {
              gameObject.SetActive(false);
+             dresserOutline.toggleOutline = false;
+
          }
 
     }

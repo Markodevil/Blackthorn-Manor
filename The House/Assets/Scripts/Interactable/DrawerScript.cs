@@ -17,7 +17,8 @@ public class DrawerScript : MonoBehaviour {
     private Collision Col;
     FPSCamera fpsCamera;
     bool drawerSoundBool;
-
+    // Toggles the outline when collided with the back of the dresser
+    public bool toggleOutline;
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -104,6 +105,7 @@ public class DrawerScript : MonoBehaviour {
         if (collision.gameObject.tag == "RequiredItem")
          {
             this.Outline.SetActive(true);
+            toggleOutline = true;
             Debug.Log("itemisiN");
 
         }
@@ -112,6 +114,14 @@ public class DrawerScript : MonoBehaviour {
             this.Outline.SetActive(false);
             Debug.Log("itemisout");
         }
-     }
+        if (toggleOutline)
+        {
+            if (collision.gameObject.tag == "Back")
+            {
+                this.Outline.SetActive(true);
+            }
+        }
+   
+    }
 
 }
