@@ -21,6 +21,8 @@ TagManager:
   - Dresser
   - DeathCam
   - TutorialOutlined
+  - TutorialBook
+  - Back
   layers:
   - Default
   - TransparentFX
