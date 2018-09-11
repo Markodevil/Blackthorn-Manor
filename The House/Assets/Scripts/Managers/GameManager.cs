@@ -383,7 +383,7 @@ public class GameManager : MonoBehaviour
                 if(stuffInMyFace)
                 {
                     inMyFaceTimer -= Time.deltaTime;
-                    if(inMyFaceTimer <= 0 || Input.GetKeyDown(KeyCode.E))
+                    if(inMyFaceTimer <= 0 || Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0))
                     {
                         tutorialPageThing.SetActive(false);
                         FindObjectOfType<PlayerMovement>().SetTouchingSomething(false);
