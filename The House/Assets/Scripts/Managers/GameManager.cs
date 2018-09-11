@@ -386,8 +386,7 @@ public class GameManager : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
                 deathCamera.SetActive(true);
-
-                skeeeeeet
+                
                 //Vector3 relativePos = (Ghost.transform.position) - Player.transform.position;
                 //Quaternion rotation = Quaternion.LookRotation(relativePos);
                 //Quaternion targetRot = Quaternion.Euler(Vector3.Slerp(Camera.main.transform.rotation.eulerAngles, rotation.eulerAngles, 0.1f));
