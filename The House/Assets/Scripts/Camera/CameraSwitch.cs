@@ -55,9 +55,9 @@ public class CameraSwitch : MonoBehaviour
             //if you press the f key
             if (Input.GetKeyDown(KeyCode.F))
             {
-                RaycastHit hit;
-                if (!Physics.Raycast(transform.position, transform.forward, out hit, 1.0f))
-                {
+                //RaycastHit hit;
+                //if (!Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 1.0f))
+                //{
                     //set the player scripts to not do things
                     cameraScript.SetTouching(true);
                     playerScript.SetTouchingSomething(true);
@@ -67,7 +67,7 @@ public class CameraSwitch : MonoBehaviour
 
                     if (cameraSoundManager)
                         cameraSoundManager.PlayOneShot(openCameraSound);
-                }
+                //}
             }
 
         }

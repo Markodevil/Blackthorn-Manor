@@ -118,6 +118,7 @@ public class GameManager : MonoBehaviour
 
         FindObjectOfType<PlayerMovement>().SetTouchingSomething(true);
         FindObjectOfType<FPSCamera>().SetTouching(true);
+        deathCamera.SetActive(false);
         //postProcessing.enabled = false;
     }
 
@@ -384,6 +385,7 @@ public class GameManager : MonoBehaviour
             case GameStates.GameOver:
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
+                deathCamera.SetActive(true);
 
 
                 //Vector3 relativePos = (Ghost.transform.position) - Player.transform.position;
