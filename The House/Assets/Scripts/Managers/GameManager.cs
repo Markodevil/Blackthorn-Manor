@@ -274,6 +274,8 @@ public class GameManager : MonoBehaviour
                                     //menuManager.hasCompletedTutorial = true;
                                     //doorScript.isLocked = false;
                                     //currentState = GameStates.Playing;
+                                    Dresser.SetActive(false);
+
                                     break;
                                 }
                             }
