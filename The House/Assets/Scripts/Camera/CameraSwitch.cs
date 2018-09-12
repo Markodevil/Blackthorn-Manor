@@ -27,6 +27,7 @@ public class CameraSwitch : MonoBehaviour
     public AudioClip closeCameraSound;
     public AudioClip changeCameraSound;
 
+   
     private void Awake()
     {
 

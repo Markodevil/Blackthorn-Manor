@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -52,6 +53,11 @@ public class PlayerMovement : MonoBehaviour
 
     public bool Panic = false;
     bool PlayPanicSound = true;
+
+    public Image movementStateImage;
+    public Sprite walking;
+    public Sprite sprinting;
+    public Sprite crouching;
     public enum howAmIMoving
     {
         notMoving,
@@ -149,7 +155,8 @@ public class PlayerMovement : MonoBehaviour
         switch (currentMovementState)
         {
             case howAmIMoving.creeping:
-
+                if (movementStateImage)
+                    movementStateImage.sprite = crouching;
                 speed = initialSpeed / 2;
 
                 Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, new Vector3(0, crouchCameraHeight, 0.25f), crouchSpeed);
@@ -169,7 +176,8 @@ public class PlayerMovement : MonoBehaviour
 
                 break;
             case howAmIMoving.walking:
-
+                if (movementStateImage)
+                    movementStateImage.sprite = walking;
                 Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, new Vector3(0, initialCameraHeight, 0.25f), crouchSpeed);
                 //speed is equal to initial speed
                 speed = initialSpeed;
@@ -195,7 +203,8 @@ public class PlayerMovement : MonoBehaviour
 
                 break;
             case howAmIMoving.running:
-
+                if (movementStateImage)
+                    movementStateImage.sprite = sprinting;
                 Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, new Vector3(0, initialCameraHeight, 0.25f), crouchSpeed);
                 //speed is equal to twice the initial speed
                 speed = initialSpeed * 2;
