@@ -55,7 +55,7 @@ public class OpenDoorScript : MonoBehaviour {
             //    fpsCamera.SetTouching(true);
                 //Goes into HingeDoorScript and allows player to open doors 
                 hit.collider.transform.GetComponent<HingeDoorScript>().ChangeDoorState();
-              //  hit.collider.transform.GetComponent<DoorScript>().changeDoorState();
+               // hit.collider.transform.GetComponent<DoorScript>().changeDoorState();
 
             }
         }

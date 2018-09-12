@@ -28,6 +28,9 @@ public class HingeDoorScript : MonoBehaviour {
     bool doorSoundEnabled;
     bool DoorSoundCooldown = false;
     bool GhostOpenDoor = false;
+    bool ActivateTimer;
+    float Timer = 1;
+   public  float Reset;
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -44,6 +47,7 @@ public class HingeDoorScript : MonoBehaviour {
         hingeSpring = hinge.spring;
         hingeSpring.spring = 0;
         hinge.spring = hingeSpring;
+        Reset = Timer;
     }
 
     // Update is called once per frame
@@ -109,16 +113,29 @@ public class HingeDoorScript : MonoBehaviour {
                 ghostAgent.areaMask |= (1 << NavMesh.GetAreaFromName("Spawn"));
             }
         }
-
+        // Door opens within the timer
         // Adds force to the players forward direction to the door which will open or close 
-        // the door depending on which side the player is located 
-        if (isOpen)
+        if (ActivateTimer)
         {
-            //Sets the spring to 0 on open to make the door open easier
+            Timer -= Time.deltaTime;
+       //     Debug.Log("TIMERACTIVATE");
             hingeSpring.spring = 0;
             hinge.spring = hingeSpring;
             // Adds force from the players forward position towards the door
-            rb.AddForceAtPosition(Player.transform.forward *  doorOpenSpeed * 13, Player.transform.position);
+            rb.AddForceAtPosition(Player.transform.forward * doorOpenSpeed * 13, Player.transform.position);
+        }
+        //when timer is zero the door stops opening and resets the door timer
+        if (Timer <= 0)
+        {
+        //    Debug.Log("TIMERDEACTIVATE");
+            ActivateTimer = false;
+            Timer = Reset;
+        }
+        // the door depending on which side the player is located 
+        if (isOpen)
+        {
+            ActivateTimer = true;
+            //Sets the spring to 0 on open to make the door open easier         
             closeTimer = doorCloseTime;
             closeDoor = true;
             
