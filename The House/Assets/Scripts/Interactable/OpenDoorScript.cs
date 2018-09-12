@@ -42,8 +42,8 @@ public class OpenDoorScript : MonoBehaviour {
         // Return 
         //      Changes the doorState so that the door can be opened
         //--------------------------------------------------------------------------------------
-        if (Input.GetKeyDown(KeyCode.Mouse0) && Physics.Raycast(ray, out hit, interactDistance) ||
-            (Input.GetKeyDown(KeyCode.E) && Physics.Raycast(ray, out hit, interactDistance)))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Physics.Raycast(ray, out hit, interactDistance))
+        //    (Input.GetKeyDown(KeyCode.E) && Physics.Raycast(ray, out hit, interactDistance)))
         {
             if (hit.collider.CompareTag("Door"))
             {
@@ -55,6 +55,8 @@ public class OpenDoorScript : MonoBehaviour {
             //    fpsCamera.SetTouching(true);
                 //Goes into HingeDoorScript and allows player to open doors 
                 hit.collider.transform.GetComponent<HingeDoorScript>().ChangeDoorState();
+              //  hit.collider.transform.GetComponent<DoorScript>().changeDoorState();
+
             }
         }
 

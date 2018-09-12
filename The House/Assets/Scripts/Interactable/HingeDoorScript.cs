@@ -61,9 +61,10 @@ public class HingeDoorScript : MonoBehaviour {
         mouseY = Input.GetAxis("Mouse Y");
         
         // lets go of the door when Mouse0 is released 
-        if (Input.GetKeyUp(KeyCode.Mouse0) || Input.GetKeyUp(KeyCode.E) || dist > 3.5f)
+       // if (Input.GetKeyUp(KeyCode.Mouse0) || Input.GetKeyUp(KeyCode.E) || dist > 3.5f)
+        if (Input.GetKeyUp(KeyCode.Mouse0) || dist > 3.5f)
         {
-            isOpen = false;
+               isOpen = false;
            
         }
         if (closeDoor)
@@ -91,8 +92,8 @@ public class HingeDoorScript : MonoBehaviour {
         }
         
         // Door makes sound when opened
-        if (doorSoundEnabled && Input.GetKey(KeyCode.Mouse0) && DoorSoundCooldown == false 
-            || doorSoundEnabled && Input.GetKey(KeyCode.E) && DoorSoundCooldown == false)
+        if (doorSoundEnabled && Input.GetKey(KeyCode.Mouse0) && DoorSoundCooldown == false )
+           // || doorSoundEnabled && Input.GetKey(KeyCode.E) && DoorSoundCooldown == false)
         {
             // audio.pitch = 1;
             audio.Play();
@@ -117,7 +118,7 @@ public class HingeDoorScript : MonoBehaviour {
             hingeSpring.spring = 0;
             hinge.spring = hingeSpring;
             // Adds force from the players forward position towards the door
-            rb.AddForceAtPosition(Player.transform.forward *  doorOpenSpeed * 10, Player.transform.position);
+            rb.AddForceAtPosition(Player.transform.forward *  doorOpenSpeed * 13, Player.transform.position);
             closeTimer = doorCloseTime;
             closeDoor = true;
             
