@@ -90,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
         //{        
         //    PlayPanicSound = true;
         //}
-         if (Panic && PlayPanicSound)
+        if (Panic && PlayPanicSound)
         {
             Debug.Log("PLAYPANIC");
 
@@ -113,14 +113,21 @@ public class PlayerMovement : MonoBehaviour
         }
         if (isTouchingSomething)
         {
-            isRunning = false;
-            isCreepin = false;
-            if (currentMovementState == howAmIMoving.running)
-                playerSoundLvl /= 2;
-            currentMovementState = howAmIMoving.walking;
+            headbobAnim.SetBool("isRunning", false);
+            //isRunning = false;
+            //isCreepin = false;
+            //if (currentMovementState == howAmIMoving.running)
+            //    playerSoundLvl /= 2;
+            //currentMovementState = howAmIMoving.walking;
+            //if (useHeadbob)
+            //    headbobAnim.SetBool("isRunning", isRunning);
+            return;
+        }
+        else
+        {
+            //set headbob anim bool
             if (useHeadbob)
                 headbobAnim.SetBool("isRunning", isRunning);
-            return;
         }
 
         //When the player stops crouching stop playing sound effect
@@ -130,9 +137,6 @@ public class PlayerMovement : MonoBehaviour
             isBreathing = true;
         }
 
-        //set headbob anim bool
-        if (useHeadbob)
-            headbobAnim.SetBool("isRunning", isRunning);
 
         //if(!Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.LeftControl))
         //{
@@ -156,13 +160,13 @@ public class PlayerMovement : MonoBehaviour
                     audio.Play();
                     isBreathing = false;
                 }
-            
-                if (Input.GetKeyUp(KeyCode.LeftControl) || Input.GetKeyUp(KeyCode.Space))
+
+                if (!Input.GetKey(KeyCode.LeftControl) || Input.GetKeyUp(KeyCode.Space))
                 {
                     isCreepin = false;
                     currentMovementState = howAmIMoving.walking;
                 }
-                
+
                 break;
             case howAmIMoving.walking:
 
@@ -204,7 +208,7 @@ public class PlayerMovement : MonoBehaviour
                 }
 
                 //if you let go of shift
-                if (Input.GetKeyUp(KeyCode.LeftShift))
+                if (!Input.GetKey(KeyCode.LeftShift))
                 {
                     //no longer running
                     isRunning = false;
@@ -332,7 +336,7 @@ public class PlayerMovement : MonoBehaviour
         return isTouchingSomething;
     }
 
-  
+
     private void OnCollisionStay(Collision collision)
     {
         // When the player collides with a wall
