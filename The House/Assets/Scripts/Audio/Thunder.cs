@@ -50,7 +50,7 @@ public class Thunder : MonoBehaviour
             destroyObject -= Time.deltaTime;
             if (destroyObject <= 0)
             {
-                Destroy(objectThingy);
+                //Destroy(objectThingy);
                 destroyObject = 0.2f;
             }
         }
