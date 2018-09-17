@@ -55,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
     bool PlayPanicSound = true;
 
     public Image movementStateImage;
+    public Sprite notMoving;
     public Sprite walking;
     public Sprite sprinting;
     public Sprite crouching;
@@ -142,6 +143,10 @@ public class PlayerMovement : MonoBehaviour
             audio.Stop();
             isBreathing = true;
         }
+        if (Horizontal == 0 && Vertical == 0)
+        {
+            currentMovementState = howAmIMoving.notMoving;
+        }
 
 
         //if(!Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.LeftControl))
@@ -154,6 +159,15 @@ public class PlayerMovement : MonoBehaviour
         //}
         switch (currentMovementState)
         {
+            case howAmIMoving.notMoving:
+                if (movementStateImage)
+                    movementStateImage.sprite = notMoving;
+
+                if(Horizontal != 0 || Vertical != 0)
+                {
+                    currentMovementState = howAmIMoving.walking;
+                }
+                break;
             case howAmIMoving.creeping:
                 if (movementStateImage)
                     movementStateImage.sprite = crouching;
