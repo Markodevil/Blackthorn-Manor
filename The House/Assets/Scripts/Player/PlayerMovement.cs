@@ -142,10 +142,11 @@ public class PlayerMovement : MonoBehaviour
         {
             audio.Stop();
             isBreathing = true;
-        }
-        if (Horizontal == 0 && Vertical == 0)
-        {
-            currentMovementState = howAmIMoving.notMoving;
+
+            if (Horizontal == 0 && Vertical == 0)
+            {
+                currentMovementState = howAmIMoving.notMoving;
+            }
         }
 
 
@@ -163,9 +164,15 @@ public class PlayerMovement : MonoBehaviour
                 if (movementStateImage)
                     movementStateImage.sprite = notMoving;
 
-                if(Horizontal != 0 || Vertical != 0)
+                Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, new Vector3(0, initialCameraHeight, 0.25f), crouchSpeed);
+                if (Horizontal != 0 || Vertical != 0)
                 {
                     currentMovementState = howAmIMoving.walking;
+                }
+                if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.Space))
+                {
+                    isCreepin = true;
+                    currentMovementState = howAmIMoving.creeping;
                 }
                 break;
             case howAmIMoving.creeping:
