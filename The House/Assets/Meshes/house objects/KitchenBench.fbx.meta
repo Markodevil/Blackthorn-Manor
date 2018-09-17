@@ -1,16 +1,43 @@
 fileFormatVersion: 2
-guid: c8b67791e68651347bb163e2c0e0853b
-timeCreated: 1537155424
+guid: 83197ead97ef1e5428160e1bca97a315
+timeCreated: 1537165520
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
+    100000: Bench
+    100002: Door
+    100004: Door1
+    100006: Door2
+    100008: Door3
+    100010: //RootNode
+    100012: Shelf
+    400000: Bench
+    400002: Door
+    400004: Door1
+    400006: Door2
+    400008: Door3
+    400010: //RootNode
+    400012: Shelf
     2100000: lambert1
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: pCube10
+    2300000: Bench
+    2300002: Door
+    2300004: Door1
+    2300006: Door2
+    2300008: Door3
+    2300010: Shelf
+    3300000: Bench
+    3300002: Door
+    3300004: Door1
+    3300006: Door2
+    3300008: Door3
+    3300010: Shelf
+    4300000: Bench
+    4300002: Shelf
+    4300004: Door
+    4300006: Door1
+    4300008: Door2
+    4300010: Door3
   externalObjects: {}
   materials:
     importMaterials: 1
