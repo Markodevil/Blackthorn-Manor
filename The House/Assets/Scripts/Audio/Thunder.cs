@@ -51,8 +51,8 @@ public class Thunder : MonoBehaviour
             destroyObject -= Time.deltaTime;
             if (destroyObject <= 0)
             {
-                //Destroy(objectThingy);
-                //destroyObject = 0.2f;
+                Destroy(objectThingy);
+                destroyObject = 0.2f;
             }
         }
 
@@ -62,7 +62,7 @@ public class Thunder : MonoBehaviour
             if (thunderTimer <= 0)
             {
                 audioSource.PlayOneShot(thunderSounds[Random.Range(0, thunderSounds.Length)]);
-                //playThunder = false;
+                playThunder = false;
                 thunderTimer = thunderDelay;
             }
         }
