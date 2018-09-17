@@ -19,6 +19,10 @@ public class Thunder : MonoBehaviour
     bool playThunder = false;
     GameObject objectThingy;
 
+    public Quaternion spawnRot;
+
+    float destroyObject = 0.2f;
+
 
     // Use this for initialization
     void Start()
@@ -36,9 +40,19 @@ public class Thunder : MonoBehaviour
         {
             if (objectThingy != null)
                 Destroy(objectThingy);
-            objectThingy = Instantiate(lightningObject, lightningSpawns[Random.Range(0, lightningSpawns.Length)].position, Quaternion.identity);
+            objectThingy = Instantiate(lightningObject, lightningSpawns[Random.Range(0, lightningSpawns.Length)].position, spawnRot);
             playThunder = true;
             lightningTimer = lightningDelay;
+        }
+
+        if (objectThingy)
+        {
+            destroyObject -= Time.deltaTime;
+            if (destroyObject <= 0)
+            {
+                Destroy(objectThingy);
+                destroyObject = 0.2f;
+            }
         }
 
         if (playThunder)
