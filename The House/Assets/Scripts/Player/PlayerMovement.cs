@@ -69,6 +69,22 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector]
     public howAmIMoving currentMovementState;
 
+    public enum floorType
+    {
+        timber,
+        carpet,
+        tiles
+    }
+
+    [HideInInspector]
+    public floorType currentFloorType;
+
+    [Header("Sounds for walking")]
+    public AudioClip timberStep;
+    public AudioClip carpetStep;
+    public AudioClip tileStep;
+
+
     // Use this for initialization
     void Awake()
     {
@@ -83,6 +99,23 @@ public class PlayerMovement : MonoBehaviour
         speed = initialSpeed;
         initialCameraHeight = Camera.main.transform.localPosition.y;
         currentMovementState = howAmIMoving.walking;
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.up, out hit, 5.0f, LayerMask.NameToLayer("Floor")))
+        {
+            switch (hit.collider.gameObject.tag)
+            {
+                case "Timber":
+                    currentFloorType = floorType.timber;
+                    break;
+                case "Carpet":
+                    currentFloorType = floorType.carpet;
+                    break;
+                case "Tile":
+                    currentFloorType = floorType.tiles;
+                    break;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -97,6 +130,9 @@ public class PlayerMovement : MonoBehaviour
         //{        
         //    PlayPanicSound = true;
         //}
+
+
+
         if (Panic && PlayPanicSound)
         {
             Debug.Log("PLAYPANIC");
@@ -286,7 +322,19 @@ public class PlayerMovement : MonoBehaviour
                 if (footstepTimer <= 0)
                 {
                     //play a footstep sound
-                    footstepsSound.Play();
+                    //footstepsSound.Play();
+                    switch(currentFloorType)
+                    {
+                        case floorType.timber:
+                            footstepsSound.PlayOneShot(timberStep);
+                            break;
+                        case floorType.carpet:
+                            footstepsSound.PlayOneShot(carpetStep);
+                            break;
+                        case floorType.tiles:
+                            footstepsSound.PlayOneShot(tileStep);
+                            break;
+                    }
 
                     //create array of colliders overlapping with a sphere who's origin is our foot 
                     Collider[] hitCollider = Physics.OverlapSphere(footsies[footIndex].transform.position, playerSoundLvl);
@@ -348,6 +396,23 @@ public class PlayerMovement : MonoBehaviour
         //move
         charControl.SimpleMove(MoveDirectionSide);
         charControl.SimpleMove(MoveDirectionForward);
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.up, out hit, 5.0f, LayerMask.NameToLayer("Floor")))
+        {
+            switch (hit.collider.gameObject.tag)
+            {
+                case "Timber":
+                    currentFloorType = floorType.timber;
+                    break;
+                case "Carpet":
+                    currentFloorType = floorType.carpet;
+                    break;
+                case "Tile":
+                    currentFloorType = floorType.tiles;
+                    break;
+            }
+        }
     }
 
     public void SetTouchingSomething(bool yeah)
