@@ -213,7 +213,19 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case howAmIMoving.creeping:
                 if (movementStateImage)
-                    movementStateImage.sprite = crouching;
+                {
+                    if (Vertical != 0 || Horizontal != 0)
+                    {
+
+                        movementStateImage.sprite = crouching;
+
+                    }
+                    else
+                    {
+                        movementStateImage.sprite = notMoving;
+                    }
+
+                }
                 speed = initialSpeed / 2;
 
                 Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, new Vector3(0, crouchCameraHeight, 0.25f), crouchSpeed);
@@ -323,7 +335,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     //play a footstep sound
                     //footstepsSound.Play();
-                    switch(currentFloorType)
+                    switch (currentFloorType)
                     {
                         case floorType.timber:
                             footstepsSound.PlayOneShot(timberStep);
