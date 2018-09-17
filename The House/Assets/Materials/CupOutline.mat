@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Outline
-  m_Shader: {fileID: 4800000, guid: 4f3bbeca6f5160f41bdd18065c1d4870, type: 3}
+  m_Name: CupOutline
+  m_Shader: {fileID: 4800000, guid: 201328e30ab3da447b3d8d2d821d5302, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -54,33 +54,35 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _mainTex:
-        m_Texture: {fileID: 2800000, guid: e985334e4a9d3ab448b77393b5c06265, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _Gloss: 0.8
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
+    - _ObjectWidth: 0.0001
     - _OcclusionStrength: 1
-    - _Outline: 0
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - _outline: 0.2
+    - _node_3481: 0
+    - _node_4141: 1
+    - _node_4888: 0.3
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Colour: {r: 0, g: 1, b: 0.8758619, a: 1}
+    - _Color_copy_copy: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _OutlineColor: {r: 0, g: 0.17241383, b: 1, a: 1}
-    - _outlineColor: {r: 0, g: 1, b: 0.95862055, a: 1}
-    - _outlineColour: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineColour: {r: 1, g: 1, b: 0, a: 1}
+    - _Tint: {r: 0.909, g: 0, b: 0, a: 1}
+    - _node_5536: {r: 1, g: 0, b: 0, a: 1}
+    - _node_6450_copy_copy: {r: 1, g: 0, b: 0, a: 1}
+    - _node_7261: {r: 0.03448272, g: 1, b: 0, a: 1}
+    - _node_8801: {r: 1, g: 0, b: 0, a: 1}
