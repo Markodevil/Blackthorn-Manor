@@ -29,7 +29,7 @@ public class HingeDoorScript : MonoBehaviour {
     bool DoorSoundCooldown = false;
     bool GhostOpenDoor = false;
     bool ActivateTimer;
-    float Timer = 1;
+   private float Timer = 0.50f;
    public  float Reset;
     private void Awake()
     {
