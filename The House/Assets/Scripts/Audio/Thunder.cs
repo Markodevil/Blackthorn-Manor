@@ -40,7 +40,8 @@ public class Thunder : MonoBehaviour
         {
             if (objectThingy != null)
                 Destroy(objectThingy);
-            objectThingy = Instantiate(lightningObject, lightningSpawns[Random.Range(0, lightningSpawns.Length)].position, spawnRot);
+            Transform randomSpawn = lightningSpawns[Random.Range(0, lightningSpawns.Length)];
+            objectThingy = Instantiate(lightningObject, randomSpawn.position, randomSpawn.rotation);
             playThunder = true;
             lightningTimer = lightningDelay;
         }
@@ -51,7 +52,7 @@ public class Thunder : MonoBehaviour
             if (destroyObject <= 0)
             {
                 //Destroy(objectThingy);
-                destroyObject = 0.2f;
+                //destroyObject = 0.2f;
             }
         }
 
@@ -61,7 +62,7 @@ public class Thunder : MonoBehaviour
             if (thunderTimer <= 0)
             {
                 audioSource.PlayOneShot(thunderSounds[Random.Range(0, thunderSounds.Length)]);
-                playThunder = false;
+                //playThunder = false;
                 thunderTimer = thunderDelay;
             }
         }
