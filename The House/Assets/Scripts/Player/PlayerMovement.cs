@@ -237,7 +237,7 @@ public class PlayerMovement : MonoBehaviour
                     isBreathing = false;
                 }
 
-                if (!Input.GetKey(KeyCode.LeftControl) || Input.GetKeyUp(KeyCode.Space))
+                if (!Input.GetKey(KeyCode.LeftControl))
                 {
                     isCreepin = false;
                     currentMovementState = howAmIMoving.walking;
@@ -264,7 +264,7 @@ public class PlayerMovement : MonoBehaviour
                     }
                 }
 
-                if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.LeftControl))
                 {
                     isCreepin = true;
                     currentMovementState = howAmIMoving.creeping;
@@ -293,7 +293,7 @@ public class PlayerMovement : MonoBehaviour
                     playerSoundLvl /= 2;
                     currentMovementState = howAmIMoving.walking;
                 }
-                if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.LeftControl))
                 {
                     isRunning = false;
                     playerSoundLvl /= 2;
