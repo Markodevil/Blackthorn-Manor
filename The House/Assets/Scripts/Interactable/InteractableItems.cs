@@ -20,7 +20,7 @@ public class InteractableItems : MonoBehaviour
 
     Rigidbody rb;
     AudioSource audioSource;
-    PlayerMovement playerMovementCS;
+    //PlayerMovement playerMovementCS;
     SpringPickup playerSpringPickUp;
 
     public float heading;
@@ -40,7 +40,7 @@ public class InteractableItems : MonoBehaviour
     {
         if (player != null)
         {
-            playerMovementCS = player.GetComponent<PlayerMovement>();
+            //playerMovementCS = player.GetComponent<PlayerMovement>();
             playerSpringPickUp = player.GetComponentInChildren<SpringPickup>();
         }
         rb = GetComponent<Rigidbody>();
@@ -57,6 +57,7 @@ public class InteractableItems : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        #region Old Code
         //currentPosition = transform.position;
         //
         //mouseX = Input.GetAxis("Mouse X");
@@ -91,12 +92,13 @@ public class InteractableItems : MonoBehaviour
         //
         //
         //previousPosition = transform.position;
+        #endregion 
+        if (playerSpringPickUp.holdingSomething == true)
+            throwSoundReady = true;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (playerSpringPickUp.holdingSomething == true)
-            throwSoundReady = true;
         if (throwSoundReady == true && playerSpringPickUp.holdingSomething != true)
         {
             if (collision.gameObject.tag != "Ghost")
