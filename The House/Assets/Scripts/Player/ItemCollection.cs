@@ -32,6 +32,7 @@ public class ItemCollection : MonoBehaviour
 
     public AudioClip soundClip;
     public AudioSource audioSource;
+    int thingyIndex = 0;
 
     // Use this for initialization
     void Start()
@@ -81,6 +82,9 @@ public class ItemCollection : MonoBehaviour
                     hitObject.SetActive(false);
                     if (audioSource && soundClip)
                         audioSource.PlayOneShot(soundClip);
+
+                    if (Thing1 && Thing2 && Thing3 && Thing4)
+                        UpdateUI();
                 }
 
                 //if the object hit is the ritual
@@ -90,12 +94,13 @@ public class ItemCollection : MonoBehaviour
                     if (inventory.Count > 0)
                     {
                         //send the first item in the inventoy to the ritual
-                        SendToRitual(inventory[0], hitObject.GetComponent<Horcruxes>());
+                        SendToRitual(inventory[thingyIndex], hitObject.GetComponent<Horcruxes>());
+                        thingyIndex++;
                     }
                 }
             }
-            if (Thing1 && Thing2 && Thing3 && Thing4)
-                UpdateUI();
+            //if (Thing1 && Thing2 && Thing3 && Thing4)
+            //    UpdateUI();
         }
     }
 
@@ -113,7 +118,7 @@ public class ItemCollection : MonoBehaviour
     {
         script.AddHorcruxToRitual(ritualItem);
         currentNumberOfItems--;
-        inventory.RemoveAt(0);
+        //inventory.RemoveAt(0);
     }
 
     //--------------------------------------------------------------------------------------
