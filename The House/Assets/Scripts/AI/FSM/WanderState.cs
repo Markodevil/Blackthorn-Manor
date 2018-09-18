@@ -55,6 +55,7 @@ public class WanderState : State<GhostAI>
         wanderTimer = owner.wanderTimer;
         wanderTick = owner.wanderTick;
         navMeshAgent = owner.gameObject.GetComponent<NavMeshAgent>();
+        owner.heardSomethingAnim.SetBool("WaitBool", false);
         timer = 0;
         wanderTimerActual = wanderTimer;
         Player = GameObject.FindGameObjectWithTag("Player");

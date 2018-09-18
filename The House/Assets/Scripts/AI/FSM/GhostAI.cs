@@ -40,6 +40,9 @@ public class GhostAI : MonoBehaviour
     public float wanderTick = 1;
 
     /*   Patrol Variables   */
+    [Header("Patrol Variables")]
+    public bool wait;
+    public float totalWaitTime;
     public ConnectedWayPoint currentWayPoint;
     ConnectedWayPoint previousWayPoint;
 
@@ -52,7 +55,7 @@ public class GhostAI : MonoBehaviour
     public AudioClip[] seekSoundClips;
     public int seekSoundClipIndex;
 
-    private string ghostName;
+    //private string ghostName;
     private GameObject singleton;
     private MenuManager mm;
     private GameManager gm;
@@ -112,7 +115,7 @@ public class GhostAI : MonoBehaviour
 
         hearingTrigger.radius = hearingRange;
 
-        ghostName = GameObject.FindGameObjectWithTag("Ghost").name;
+        //ghostName = GameObject.FindGameObjectWithTag("Ghost").name;
 
         gm = FindObjectOfType<GameManager>();
 

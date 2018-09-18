@@ -56,6 +56,9 @@ public class PatrolState : State<GhostAI>
     {
         navMeshAgent = owner.gameObject.GetComponent<NavMeshAgent>();
         currentWayPoint = owner.currentWayPoint;
+        partrolWaiting = owner.wait;
+        totalWaitTime = owner.totalWaitTime;
+        owner.heardSomethingAnim.SetBool("WaitBool", false);
 
 
         if (navMeshAgent == null)
@@ -77,7 +80,7 @@ public class PatrolState : State<GhostAI>
     {
         //Debug.Log(navMeshAgent.remainingDistance);
         //Check if we're close to the destination
-        if (/*(*/travelling && navMeshAgent.remainingDistance <= 1.0f)// || (ghostCS.stageThree == true))
+        if (/*(*/travelling && navMeshAgent.remainingDistance <= 0.3f)// || (ghostCS.stageThree == true))
         {
             travelling = false;
             waypointsVisited++;
@@ -98,8 +101,11 @@ public class PatrolState : State<GhostAI>
         if (waiting)
         {
             waitTimer += Time.deltaTime;
+            //Start an idle animation
+            owner.heardSomethingAnim.SetBool("WaitBool", true);
             if (waitTimer >= totalWaitTime)
             {
+                owner.heardSomethingAnim.SetBool("WaitBool", false);
                 waiting = false;
                 SetDestination();
             }

@@ -40,6 +40,7 @@ public class SeekState : State<GhostAI>
     {
         cantSeePlayerCountdown = owner.cantSeePlayerCountdown;
         timer = cantSeePlayerCountdown;
+        owner.heardSomethingAnim.SetBool("WaitBool", false);
 
         if (owner.seekSound)
         {
