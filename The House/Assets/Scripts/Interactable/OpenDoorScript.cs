@@ -42,23 +42,20 @@ public class OpenDoorScript : MonoBehaviour {
         // Return 
         //      Changes the doorState so that the door can be opened
         //--------------------------------------------------------------------------------------
-        if (Input.GetKeyDown(KeyCode.Mouse0) && Physics.Raycast(ray, out hit, interactDistance))
-        //    (Input.GetKeyDown(KeyCode.E) && Physics.Raycast(ray, out hit, interactDistance)))
+        if (Physics.Raycast(ray, out hit, interactDistance))
         {
-            if (hit.collider.CompareTag("Door"))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                Door = hit.collider.gameObject;
-                distance = transform.position - Door.transform.position;
-                distance.y = 0;
-                dist = distance.magnitude;
-                isHoldingDown = true;
-            //    fpsCamera.SetTouching(true);
-                //Goes into HingeDoorScript and allows player to open doors 
-                hit.collider.transform.GetComponent<HingeDoorScript>().ChangeDoorState();
-               // hit.collider.transform.GetComponent<DoorScript>().changeDoorState();
+
+                if (hit.collider.CompareTag("Door"))
+                {
+                    hit.collider.transform.parent.GetComponent<DoorScript>().ChangeDoorState();
+
+                }
 
             }
         }
+
 
     }
 }

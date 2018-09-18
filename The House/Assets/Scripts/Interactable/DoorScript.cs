@@ -7,88 +7,93 @@ public class DoorScript : MonoBehaviour
 
     public bool isOpen = false;
     public float doorOpenAngle;
-    float doorCloseAngle = 0;
+    public float doorCloseAngle ;
     public float mouseY;
     public bool OpeningDoor = false;
     public float interactDistance = 5;
     public float doorOpenSpeed;
-    public GameObject Player; 
-
+    public GameObject Player;
+    bool OpenedRight;
+    bool OpenedLeft;
+    bool DoorClosed;
+    int doorOpenToggle;
     // Use this for initialization
     void Start()
     {
         doorCloseAngle = transform.rotation.eulerAngles.y;
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        mouseY = Input.GetAxis("Mouse Y");
+        Vector3 Doorpos = transform.position;
+        Vector3 playrpos = Player.transform.position;
+        Vector3 Direction = Doorpos - playrpos;
 
-
-        if (Input.GetKeyUp(KeyCode.Mouse0))
+        float dist = Vector3.Distance(playrpos, Doorpos);
+        
+        if (OpenedRight)
         {
-            
-            isOpen = false;
+            Quaternion targetRotation = Quaternion.Euler(0, -doorOpenAngle, 0);
+            transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, doorOpenSpeed * Time.deltaTime);
         }
-
-        Vector3 HingePosition = transform.position;
-        Vector3 Playerposition = Player.transform.position;
-
-        Vector3 Direction = HingePosition = Playerposition;
-
-        Vector3.Normalize(Direction);
-
-        //--------------------------------------------------------------------------------------
-        // Checks if the players posiition is infront or behind the door 
-        //
-        // Param 
-        //     The direction of the player 
-        // Return 
-        //      Reverses the mouse axis when opening the door to give a more comfortable feel to  
-        //      doors on either side 
-        //--------------------------------------------------------------------------------------
-
-
-        //MAKE SURE DOORS X AXIS IS FACING THE PLAYER WHEN FIRST OPENING THE DOOR 
-        if (Vector3.Dot(Direction, Player.transform.right) > 0)
+        if (OpenedLeft)
         {
-
-            if (isOpen && mouseY > 0)
-            {
-                Quaternion targetRotation = Quaternion.Euler(0, doorCloseAngle, 0);
-                transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, mouseY * Time.deltaTime * doorOpenSpeed);
-            }
-
-
-            if (isOpen && mouseY < 0)
-            {
-                Quaternion targetRotation2 = Quaternion.Euler(0, doorOpenAngle, 0);
-                transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation2, -mouseY * Time.deltaTime * doorOpenSpeed);
-            }
-
-
+            Quaternion targetRotation = Quaternion.Euler(0, doorOpenAngle, 0);
+            transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, doorOpenSpeed * Time.deltaTime);
         }
-        else
+        if (DoorClosed)
         {
-            if (isOpen && mouseY > 0)
+            Quaternion targetRotation2 = Quaternion.Euler(0, doorCloseAngle, 0);
+            transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation2, doorOpenSpeed * Time.deltaTime);
+        }
+        if (isOpen)
+        {
+            if (Input.GetKeyUp(KeyCode.Mouse0))
             {
-                Quaternion targetRotation = Quaternion.Euler(0, doorOpenAngle, 0);
-                transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, mouseY * Time.deltaTime * doorOpenSpeed);
+                Debug.Log("false");
+                isOpen = false;
             }
+            //if (Input.GetKeyDown(KeyCode.Mouse0))
+            //{
+            //    doorOpenToggle++;
+            //}
             
             
-            if (isOpen && mouseY < 0)
+            switch (doorOpenToggle)
             {
-                Quaternion targetRotation2 = Quaternion.Euler(0, doorCloseAngle, 0);
-                transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation2, -mouseY * Time.deltaTime * doorOpenSpeed);
+                case 1:
+                    if (Vector3.Dot(Direction, Player.transform.right) > 0)
+                    {
+                        OpenedRight = true;
+                        doorOpenToggle++;
+                    }
+                    else
+                    {
+                        OpenedLeft = true;
+                        doorOpenToggle++;
+
+                    }
+                    break;
+                case 3:
+                    OpenedRight = false;
+                    OpenedLeft = false;
+                    DoorClosed = true;
+                    break;
+                case 4:
+                    DoorClosed = false;
+                    doorOpenToggle = 1;
+                   
+                    break;
             }
+
         }
+
     }
-
-    public void changeDoorState()
+   public void ChangeDoorState()
     {
-        isOpen = !isOpen;
+        isOpen = true;
+        doorOpenToggle++;
     }
-
 }
