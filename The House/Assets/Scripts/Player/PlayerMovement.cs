@@ -205,7 +205,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     currentMovementState = howAmIMoving.walking;
                 }
-                if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.LeftControl))
                 {
                     isCreepin = true;
                     currentMovementState = howAmIMoving.creeping;
