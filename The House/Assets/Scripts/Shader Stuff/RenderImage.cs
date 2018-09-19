@@ -88,4 +88,14 @@ public class RenderImage : MonoBehaviour
         }
 
     }
+
+    public void ReloadSettings()
+    {
+        if (menuManager)
+        {
+            brightnessAmount = menuManager.brightness;
+            saturationAmount = menuManager.saturation;
+            contrastAmount = menuManager.contrast;
+        }
+    }
 }

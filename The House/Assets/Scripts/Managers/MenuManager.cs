@@ -9,7 +9,10 @@ public class MenuManager : MonoBehaviour
 
 
     [Header("Main Menu Items")]
+    public GameObject MenuCanvas;
     public GameObject mainMenuItems;
+    public string sceneToLoad;
+    [HideInInspector]
     public string sceneName;
 
     [Header("Options Menu Items")]
@@ -50,6 +53,11 @@ public class MenuManager : MonoBehaviour
     public Slider contrastSlider;
 
     public bool hasCompletedTutorial = false;
+    private RenderImage renderImage;
+    private bool brandNew;
+    
+    private static MenuManager instance;
+    private static GameObject instanceOfCanvas;
 
     private void OnEnable()
     {
@@ -65,6 +73,25 @@ public class MenuManager : MonoBehaviour
     private void Awake()
     {
         fade = GetComponent<Animator>();
+        renderImage = FindObjectOfType<RenderImage>();
+        sceneName = sceneToLoad;
+        if (!instance)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        if(!instanceOfCanvas)
+        {
+            instanceOfCanvas = MenuCanvas;
+        }
+        else
+        {
+            Destroy(MenuCanvas);
+        }
     }
 
     // Use this for initialization
@@ -74,6 +101,7 @@ public class MenuManager : MonoBehaviour
         aa = QualitySettings.antiAliasing;
         vSync = QualitySettings.vSyncCount;
         resolution = Screen.currentResolution.ToString();
+        brandNew = true;
 
         textureQualityDD.value = textureQuality;
         aaDD.value = aa;
@@ -90,6 +118,7 @@ public class MenuManager : MonoBehaviour
 
         //dont destroy this thing
         DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(MenuCanvas);
     }
 
     // Update is called once per frame
@@ -106,11 +135,15 @@ public class MenuManager : MonoBehaviour
         //    }
         //}
 
-        brightness = brightnessSlider.value;
-        saturation = saturationSlider.value;
-        contrast = contrastSlider.value;
+        if (brightnessSlider && saturationSlider && contrastSlider)
+        {
 
-        if(SceneManager.GetActiveScene().name == "Menu")
+            brightness = brightnessSlider.value;
+            saturation = saturationSlider.value;
+            contrast = contrastSlider.value;
+        }
+
+        if (SceneManager.GetActiveScene().name == "Menu")
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -270,11 +303,37 @@ public class MenuManager : MonoBehaviour
         //Debug.Log(mode);
         fade.ResetTrigger("FadeOut");
         fade.SetTrigger("FadeIn");
-        if(SceneManager.GetActiveScene().name != "Deeon")
+        if (SceneManager.GetActiveScene().name == "WinnerWinnerChickenDinner" || SceneManager.GetActiveScene().name == "GameOver")
         {
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
+            MenuCanvas.SetActive(false);
         }
+        else if (SceneManager.GetActiveScene().name == sceneToLoad)
+        {
+            if (!renderImage)
+                renderImage = FindObjectOfType<RenderImage>();
+            if (renderImage)
+                renderImage.ReloadSettings();
+
+            MenuCanvas.SetActive(false);
+            brandNew = false;
+        }
+        else if (SceneManager.GetActiveScene().name == "Menu")
+        {
+            MenuCanvas.SetActive(true);
+            sceneName = sceneToLoad;
+            GameObject[] dontDestroys = GameObject.FindGameObjectsWithTag("Singleton");
+            for (int i = 0; i < dontDestroys.Length; i++)
+            {
+                if (dontDestroys[i] != this)
+                {
+                    if (this.brandNew)
+                        dontDestroys[i].GetComponent<MenuManager>().hasCompletedTutorial = hasCompletedTutorial;
+                }
+            }
+        }
+
         //RenderSettings.ambientLight = new Color(brightness, brightness, brightness, 1);
     }
 
