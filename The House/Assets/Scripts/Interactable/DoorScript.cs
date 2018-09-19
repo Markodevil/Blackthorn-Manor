@@ -12,10 +12,13 @@ public class DoorScript : MonoBehaviour
     public bool OpeningDoor = false;
     public float interactDistance = 5;
     public float doorOpenSpeed;
+    private float doorDelayTime = 0.55f;
     public GameObject Player;
     bool OpenedRight;
     bool OpenedLeft;
+    bool OpenZeroRotation;
     bool DoorClosed;
+    bool DelayTimer;
     int doorOpenToggle;
     // Use this for initialization
     void Start()
@@ -32,7 +35,8 @@ public class DoorScript : MonoBehaviour
         Vector3 Direction = Doorpos - playrpos;
 
         float dist = Vector3.Distance(playrpos, Doorpos);
-        
+        Quaternion Zerorotation = Quaternion.Euler(0, 90, 0);
+
         if (OpenedRight)
         {
             Quaternion targetRotation = Quaternion.Euler(0, -doorOpenAngle, 0);
@@ -43,10 +47,26 @@ public class DoorScript : MonoBehaviour
             Quaternion targetRotation = Quaternion.Euler(0, doorOpenAngle, 0);
             transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, doorOpenSpeed * Time.deltaTime);
         }
+        if (OpenZeroRotation)
+        {
+            Quaternion targetRotation = Quaternion.Euler(0, 180, 0);
+            transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, doorOpenSpeed * Time.deltaTime);
+        }
+
         if (DoorClosed)
         {
             Quaternion targetRotation2 = Quaternion.Euler(0, doorCloseAngle, 0);
             transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation2, doorOpenSpeed * Time.deltaTime);
+        }
+        if (DelayTimer)
+        {
+            doorDelayTime -= Time.deltaTime;
+
+        }
+        if (doorDelayTime <= 0 )
+        {
+            DelayTimer = false;
+            doorDelayTime = 0.55f;
         }
         if (isOpen)
         {
@@ -66,23 +86,46 @@ public class DoorScript : MonoBehaviour
                 case 1:
                     if (Vector3.Dot(Direction, Player.transform.right) > 0)
                     {
-                        OpenedRight = true;
-                        doorOpenToggle++;
+
+                       
+                        if (transform.localRotation == Zerorotation)
+                        {
+                            Debug.Log("thescuffedRotation");
+                            OpenZeroRotation = true;
+                            doorOpenToggle++;
+
+                        }
+                        if (transform.localRotation != Zerorotation)
+                        {
+                            Debug.Log("NormalRotation");
+
+                            OpenedRight = true;
+                            doorOpenToggle++;
+                        }
+
                     }
+
                     else
                     {
+                        Debug.Log("Behind ");
+
                         OpenedLeft = true;
                         doorOpenToggle++;
 
                     }
+
                     break;
                 case 3:
                     OpenedRight = false;
                     OpenedLeft = false;
+                    OpenZeroRotation = false;
+
                     DoorClosed = true;
+                 
                     break;
                 case 4:
                     DoorClosed = false;
+                    OpenZeroRotation = false;
                     doorOpenToggle = 1;
                    
                     break;
@@ -94,6 +137,11 @@ public class DoorScript : MonoBehaviour
    public void ChangeDoorState()
     {
         isOpen = true;
-        doorOpenToggle++;
+
+        if (DelayTimer == false)
+        {
+            doorOpenToggle++;
+            DelayTimer = true;
+        }
     }
 }
