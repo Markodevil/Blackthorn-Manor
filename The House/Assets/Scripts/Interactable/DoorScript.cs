@@ -90,14 +90,12 @@ public class DoorScript : MonoBehaviour
                        
                         if (transform.localRotation == Zerorotation)
                         {
-                            Debug.Log("thescuffedRotation");
                             OpenZeroRotation = true;
                             doorOpenToggle++;
 
                         }
                         if (transform.localRotation != Zerorotation)
                         {
-                            Debug.Log("NormalRotation");
 
                             OpenedRight = true;
                             doorOpenToggle++;
@@ -107,7 +105,6 @@ public class DoorScript : MonoBehaviour
 
                     else
                     {
-                        Debug.Log("Behind ");
 
                         OpenedLeft = true;
                         doorOpenToggle++;
