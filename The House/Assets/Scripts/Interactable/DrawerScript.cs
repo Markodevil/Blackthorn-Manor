@@ -114,13 +114,11 @@ public class DrawerScript : MonoBehaviour {
          {
             this.Outline.SetActive(true);
             toggleOutline = true;
-            Debug.Log("itemisiN");
 
         }
         else
         {
             this.Outline.SetActive(false);
-            Debug.Log("itemisout");
         }
         if (toggleOutline)
         {
