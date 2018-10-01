@@ -8,6 +8,7 @@ public class Interactables : MonoBehaviour
     public GameObject playerCam;
     bool isHoldingItem = false;
     GameObject heldItem;
+    public SpringPickup sp;
 
     // Use this for initialization
     void Start()
@@ -43,5 +44,15 @@ public class Interactables : MonoBehaviour
                 isHoldingItem = false;
             }
         }
+
+        if(!sp.holdingSomething)
+        {
+            isHoldingItem = false;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        
     }
 }
