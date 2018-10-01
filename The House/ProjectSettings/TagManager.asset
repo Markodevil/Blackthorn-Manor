@@ -23,6 +23,9 @@ TagManager:
   - TutorialOutlined
   - TutorialBook
   - Back
+  - Carpet
+  - Timber
+  - Tile
   layers:
   - Default
   - TransparentFX
