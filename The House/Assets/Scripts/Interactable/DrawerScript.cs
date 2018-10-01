@@ -68,11 +68,13 @@ public class DrawerScript : MonoBehaviour {
             rb.AddForceAtPosition(Player.transform.forward * mouseY * drawerSpeed, Player.transform.position);
 
         }
+        // checks if player is on the right or left of the dresser
+        // if on the right the player can open the dresser using mouseX 
         if (isOpen && Vector3.Dot(transform.right, Direction) < 0)
         {
             rb.AddForceAtPosition(Player.transform.forward * mouseX * drawerSpeed, Player.transform.position);
         }
-
+        // if on the left the player can open the dresser using -mouseX 
         if (isOpen && Vector3.Dot(-transform.right, Direction) < 0)
         {
             rb.AddForceAtPosition(Player.transform.forward * -mouseX * drawerSpeed, Player.transform.position);
