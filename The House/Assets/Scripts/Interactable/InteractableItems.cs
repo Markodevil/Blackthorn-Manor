@@ -74,11 +74,11 @@ public class InteractableItems : MonoBehaviour
         //
         //    Vector3 velocity = currentPosition - previousPosition;
         //
-        //    if (touched)
-        //    {
-        //        Drop();
-        //        touched = false;
-        //    }
+        if (touched)
+        {
+            playerSpringPickUp.InputEnd();
+            touched = false;
+        }
         //
         //    if (Input.GetMouseButtonDown(1))
         //    {
@@ -110,6 +110,10 @@ public class InteractableItems : MonoBehaviour
                 CreateSoundColliders();
                 throwSoundReady = false;
             }
+        }
+        if (playerSpringPickUp.holdingSomething)
+        {
+            touched = true;
         }
 
     }
