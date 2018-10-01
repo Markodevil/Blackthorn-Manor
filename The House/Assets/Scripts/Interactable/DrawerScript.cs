@@ -34,18 +34,24 @@ public class DrawerScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        // ignores physics between player and dresser
         Physics.IgnoreCollision(Player.GetComponent<CapsuleCollider>(), this.GetComponent<BoxCollider>());
-
-
+        //--------------------------------------------------------------------------------------
+        // Gets the distance from the player to the Dresser
+        //
+        // Param 
+        //      Vector3.Distance : gets the position of the player and the Dresser 
+        // Return 
+        //      checks if the player is at a certain distance to open the Dresser 
+        //--------------------------------------------------------------------------------------
         Vector3 drawerPosition = transform.position;
         // Players position
         Vector3 playerPosition = Player.transform.position;
-
         // Gets the direction of the player from the drawer 
         Vector3 Direction = drawerPosition - playerPosition;
         Direction.Normalize();
-
         float dist = Vector3.Distance(playerPosition, drawerPosition);
+        // Gets the Mouse Y and Mouse X coordinates 
         mouseY = Input.GetAxis("Mouse Y");
         mouseX = Input.GetAxis("Mouse X");
 

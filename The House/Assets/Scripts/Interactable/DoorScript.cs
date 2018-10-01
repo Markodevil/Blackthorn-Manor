@@ -11,6 +11,9 @@ public class DoorScript : MonoBehaviour
     public float doorOpenAngle;
     // the angle the door will close to 
     public float doorCloseAngle ;
+    public AudioClip[] doorSounds;
+    private AudioClip playSound;
+    public AudioSource audioSource;
     // How fast the door opens
     public float doorOpenSpeed;
     // How long until the door can be opened/closed to avoid spam
@@ -26,6 +29,7 @@ public class DoorScript : MonoBehaviour
     bool DelayTimer;
     // helps door progress through open and closing stages 
     int doorOpenToggle;
+    int RandomDoorSound;
 
     // Use this for initialization
     void Start()
@@ -37,7 +41,14 @@ public class DoorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Gets the distance from the player from the door
+        //--------------------------------------------------------------------------------------
+        // Gets the distance from the player to the door
+        //
+        // Param 
+        //      Vector3.Distance : gets the position of the player and the door 
+        // Return 
+        //      checks if the player is at a certain distance to open the door 
+        //--------------------------------------------------------------------------------------
         Vector3 Doorpos = transform.position;
         Vector3 playrpos = Player.transform.position;
         Vector3 Direction = Doorpos - playrpos;
@@ -113,13 +124,18 @@ public class DoorScript : MonoBehaviour
                             OpenedRight = true;
                             doorOpenToggle++;
                         }
-
+                            playSound = doorSounds[RandomDoorSound];
+                            audioSource.clip = playSound;
+                            audioSource.Play();
                     }
 
                     else
                     {
 
                         OpenedLeft = true;
+                        playSound = doorSounds[RandomDoorSound];
+                        audioSource.clip = playSound;
+                        audioSource.Play();
                         doorOpenToggle++;
 
                     }
@@ -127,6 +143,10 @@ public class DoorScript : MonoBehaviour
                     break;
                 // closes the door
                 case 3:
+                    RandomDoorSound = Random.Range(0, doorSounds.Length);
+                    playSound = doorSounds[RandomDoorSound];
+                    audioSource.clip = playSound;
+                    audioSource.Play();
                     OpenedRight = false;
                     OpenedLeft = false;
                     OpenZeroRotation = false;
@@ -146,12 +166,22 @@ public class DoorScript : MonoBehaviour
         }
 
     }
-    // changes the state of the door from false to true
-    // (is accessed from OpenDoorScript)
-   public void ChangeDoorState()
+     
+    //--------------------------------------------------------------------------------------
+    // changes the doors state (is accessed from OpenDoorScript)
+    //
+    // Param 
+    //     isOpen: changes isOpen from false to true
+    // Return 
+    //      opens and closes the door when the player interacts with it 
+    //--------------------------------------------------------------------------------------
+    public void ChangeDoorState()
     {
         isOpen = true;
 
+        RandomDoorSound = Random.Range(0, doorSounds.Length);
+
+        Debug.Log(RandomDoorSound);
         if (DelayTimer == false)
         {
             doorOpenToggle++;
