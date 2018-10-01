@@ -84,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip carpetStep;
     public AudioClip tileStep;
 
-
+    int floorLayerMask;
     // Use this for initialization
     void Awake()
     {
@@ -93,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        floorLayerMask = LayerMask.GetMask("Floor");
         isRunning = false;
         isCreepin = false;
         footstepTimer = timeBetweenStepsWalking;
@@ -101,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
         currentMovementState = howAmIMoving.walking;
 
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.up, out hit, 5.0f, LayerMask.NameToLayer("Floor")))
+        if (Physics.Raycast(transform.position, -transform.up, out hit, 15.0f, floorLayerMask))
         {
             switch (hit.collider.gameObject.tag)
             {
@@ -410,7 +411,7 @@ public class PlayerMovement : MonoBehaviour
         charControl.SimpleMove(MoveDirectionForward);
 
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.up, out hit, 5.0f, LayerMask.NameToLayer("Floor")))
+        if (Physics.Raycast(transform.position, -transform.up, out hit, 15.0f, floorLayerMask))
         {
             switch (hit.collider.gameObject.tag)
             {
