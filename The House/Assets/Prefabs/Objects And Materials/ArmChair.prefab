@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4089321468580496}
   - component: {fileID: 33796934353030786}
   - component: {fileID: 23094774208457534}
+  - component: {fileID: 64901195602174582}
   m_Layer: 0
   m_Name: ArmChair
   m_TagString: Untagged
@@ -81,4 +82,18 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1979078579927768}
+  m_Mesh: {fileID: 4300000, guid: d311973d2015a7c4cbbae5f5a8bbe744, type: 3}
+--- !u!64 &64901195602174582
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1979078579927768}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: d311973d2015a7c4cbbae5f5a8bbe744, type: 3}
