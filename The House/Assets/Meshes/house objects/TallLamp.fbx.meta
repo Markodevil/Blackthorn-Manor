@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: a19032993674de34a8af6829a3b47b8b
-timeCreated: 1536646594
+guid: 3a3476534110ae84cb8baa62e01fd779
+timeCreated: 1538456119
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -10,7 +10,7 @@ ModelImporter:
     2100000: lambert1
     2300000: //RootNode
     3300000: //RootNode
-    4300000: TallLamp
+    4300000: pCube6
   externalObjects: {}
   materials:
     importMaterials: 1
