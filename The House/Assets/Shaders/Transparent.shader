@@ -5,7 +5,7 @@
 		_MainTex("Albedo Texture", 2D) = "white" {}
 	    _Tint("Tint Colour", Color) = (1,1,1,1)
 		_Transparency("Transparency", Range(0.0,1)) = 0.25
-		_CutoutThreshold("Cutout Threshold", Range(0.0,1.0)) = 0.2
+		_CutoutThreshold("Cutout Threshold", Range(0.0,1.0)) = 0.6
 	}
 
 		SubShader
