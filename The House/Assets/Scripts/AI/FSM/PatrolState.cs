@@ -12,7 +12,9 @@ public class PatrolState : State<GhostAI>
     bool partrolWaiting = false;
 
     //Total time we wait at each node
-    float totalWaitTime = 3f;
+    private float totalWaitTime = 3f;
+    private int randomChance;
+
 
     //private variables for base behaviour
     NavMeshAgent navMeshAgent;
@@ -68,6 +70,7 @@ public class PatrolState : State<GhostAI>
         else
         {
             SetDestination();
+            Debug.Log("OnEnter");
         }
     }
 
@@ -78,37 +81,61 @@ public class PatrolState : State<GhostAI>
 
     public override void UpdateState(GhostAI owner)
     {
-        //Debug.Log(navMeshAgent.remainingDistance);
-        //Check if we're close to the destination
-        if (/*(*/travelling && navMeshAgent.remainingDistance <= 0.3f)// || (ghostCS.stageThree == true))
+        //Check if the path is ready
+        if (navMeshAgent.pathPending != true)
         {
-            travelling = false;
-            waypointsVisited++;
+        //Check if we're close to the destination
+            if (/*(*/travelling && navMeshAgent.remainingDistance <= 0.10f)// || (ghostCS.stageThree == true))
+            {
+                travelling = false;
+                waypointsVisited++;
 
-            //If you whant waiting
-            if (partrolWaiting)
-            {
-                waiting = true;
-                waitTimer = 0;
-            }
-            else
-            {
-                SetDestination();
+                //If you whant waiting
+                if (partrolWaiting && !travelling)
+                {
+                    randomChance = Random.Range(1, 10);
+                    Debug.Log("Random Roll = " + randomChance);
+                    if (randomChance <= 5)
+                    {
+                        waiting = true;
+                        waitTimer = 0;
+                    }
+                    else
+                    {
+                        Debug.Log("Random Chance");
+                        SetDestination();
+                        Debug.Log(navMeshAgent.remainingDistance);
+                    }
+                }
+                else
+                {
+                    //This can never fire because we are unless we arnt waiting
+                    Debug.Log("Not PartrolWaiting");
+                    SetDestination();
+                    Debug.Log(navMeshAgent.remainingDistance);
+                }
             }
         }
+
 
         //Check If were waiting
         if (waiting)
         {
             waitTimer += Time.deltaTime;
+            //Debug.Log(waitTimer);
             //Start an idle animation
             owner.heardSomethingAnim.SetBool("WaitBool", true);
             if (waitTimer >= totalWaitTime)
             {
                 owner.heardSomethingAnim.SetBool("WaitBool", false);
                 waiting = false;
+                Debug.Log("WaitTimer >=");
                 SetDestination();
+                Debug.Log(navMeshAgent.remainingDistance);
+                travelling = true;
+                waitTimer = 0;
             }
+
         }
     }
 
@@ -123,7 +150,12 @@ public class PatrolState : State<GhostAI>
         }
 
         Vector3 targetVector = currentWayPoint.transform.position;
-        navMeshAgent.SetDestination(targetVector);
+        if (!navMeshAgent.SetDestination(targetVector))
+        {
+            Debug.Log("Error setting destination");
+        }
+        Debug.Log(currentWayPoint.name + " " + targetVector);
+
         travelling = true;
     }
 }
