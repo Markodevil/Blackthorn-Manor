@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class DoorScript : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class DoorScript : MonoBehaviour
     private float doorDelayTime = 0.55f;
 
     // Opens the door from the direction of the player
+    public bool normalTrack = false;
+    [HideInInspector]
+    public bool SpawnAvalible = false;
     bool OpenedRight;
     bool OpenedLeft;
     bool OpenZeroRotation;
@@ -101,6 +105,7 @@ public class DoorScript : MonoBehaviour
             {
                 Debug.Log("false");
                 isOpen = false;
+                normalTrack = true;
             }
             
             // goes though all stages of the door 
@@ -164,7 +169,7 @@ public class DoorScript : MonoBehaviour
             }
 
         }
-
+        
     }
      
     //--------------------------------------------------------------------------------------
@@ -178,6 +183,7 @@ public class DoorScript : MonoBehaviour
     public void ChangeDoorState()
     {
         isOpen = true;
+        
 
         RandomDoorSound = Random.Range(0, doorSounds.Length);
 

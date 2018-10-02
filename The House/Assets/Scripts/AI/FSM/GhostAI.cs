@@ -44,7 +44,11 @@ public class GhostAI : MonoBehaviour
     public bool wait;
     public float totalWaitTime;
     public ConnectedWayPoint currentWayPoint;
+    public GameObject tutorialWayPoints;
+    public GameObject normalWayPoints;
+    public ConnectedWayPoint normalTrackWayPoint;
     ConnectedWayPoint previousWayPoint;
+    public DoorScript spawnDoor;
 
     /*   Seek Variables   */
     [HideInInspector]
@@ -121,6 +125,8 @@ public class GhostAI : MonoBehaviour
 
         //start in wander state
         FSM.ChangeState(PatrolState.GetInstance(this));
+
+        normalWayPoints.SetActive(false);
     }
 
     //For assigning var's on re-try
@@ -189,6 +195,15 @@ public class GhostAI : MonoBehaviour
                     NMA.speed = 1.5f;
             }
 
+            //Track Swap;
+            if (spawnDoor != null)
+                if (spawnDoor.normalTrack == true)
+                {
+                    NMA.areaMask |= (1 << NavMesh.GetAreaFromName("Spawn"));
+                    tutorialWayPoints.SetActive(false);
+                    normalWayPoints.SetActive(true);
+                    currentWayPoint = normalTrackWayPoint;
+                }
 
             //Ryan's totaly awsome bool toggling ghost buffs
             switch (itemsCollectionCS.currentNumberOfItems)
