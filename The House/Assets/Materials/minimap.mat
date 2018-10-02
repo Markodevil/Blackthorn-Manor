@@ -62,7 +62,7 @@ Material:
     - _ContrastAmount: 1
     - _Cutoff: 1
     - _CutoutThresh: 0.35
-    - _CutoutThreshold: 0.14
+    - _CutoutThreshold: 0.06
     - _DetailNormalMapScale: 1
     - _Distance: 1
     - _DstBlend: 0
