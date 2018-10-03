@@ -120,14 +120,15 @@ public class DrawerScript : MonoBehaviour {
         {
             this.Outline.SetActive(false);
         }
+       
+    }
+    private void OnCollisionStay(Collision collision)
+    {
         if (toggleOutline)
         {
-            if (collision.gameObject.tag == "Back")
-            {
-                this.Outline.SetActive(true);
-            }
+     
+           this.Outline.SetActive(true);    
         }
-   
     }
 
 }
