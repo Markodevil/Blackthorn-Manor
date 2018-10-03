@@ -131,12 +131,13 @@ public class PlayerMovement : MonoBehaviour
         //{        
         //    PlayPanicSound = true;
         //}
-
+        Debug.Log(isRunning);
+        Debug.Log(currentMovementState);
 
 
         if (Panic && PlayPanicSound)
         {
-            Debug.Log("PLAYPANIC");
+            //Debug.Log("PLAYPANIC");
 
             audio.Stop();
             playSound = playerStressSounds[1];
@@ -149,7 +150,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Panic == false && PlayPanicSound == false)
         {
-            Debug.Log("AUDIOSTOP");
+            //Debug.Log("AUDIOSTOP");
             PanicSource.Stop();
             PlayPanicSound = true;
             isBreathing = true;
@@ -171,7 +172,13 @@ public class PlayerMovement : MonoBehaviour
         {
             //set headbob anim bool
             if (useHeadbob)
-                headbobAnim.SetBool("isRunning", isRunning);
+            {
+                if (currentMovementState == howAmIMoving.running)
+                    headbobAnim.SetBool("isRunning", true);
+                else
+                    headbobAnim.SetBool("isRunning", false);
+
+            }
         }
 
         //When the player stops crouching stop playing sound effect
@@ -200,6 +207,8 @@ public class PlayerMovement : MonoBehaviour
             case howAmIMoving.notMoving:
                 if (movementStateImage)
                     movementStateImage.sprite = notMoving;
+
+                //headbobAnim.SetBool("isRunning", false);
 
                 Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, new Vector3(0, initialCameraHeight, 0.25f), crouchSpeed);
                 if (Horizontal != 0 || Vertical != 0)
@@ -279,6 +288,8 @@ public class PlayerMovement : MonoBehaviour
                 //speed is equal to twice the initial speed
                 speed = initialSpeed * 2;
 
+                //headbobAnim.SetBool("isRunning", true);
+
                 //if you begin to move backwards
                 if (Vertical <= 0)
                 {
@@ -293,6 +304,7 @@ public class PlayerMovement : MonoBehaviour
                     isRunning = false;
                     playerSoundLvl /= 2;
                     currentMovementState = howAmIMoving.walking;
+
                 }
                 if (Input.GetKeyDown(KeyCode.LeftControl))
                 {
@@ -357,7 +369,7 @@ public class PlayerMovement : MonoBehaviour
                         if (hitCollider[i].gameObject.tag == "SoundTrigger")
                         {
                             //We've heard the player
-                            Debug.Log("Ghost heard the sound");
+                            //Debug.Log("Ghost heard the sound");
                             //Ghost temp = hitCollider[i].gameObject.GetComponent<Ghost>();
                             ////ICANTBELIVEIMISSEDTHISFREAKINMISSTAKE
                             //if (temp.CalulatePathLength(footsies[footIndex].transform.position) <= ghostSoundResponceLvl)

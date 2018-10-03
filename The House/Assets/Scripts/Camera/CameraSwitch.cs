@@ -125,6 +125,7 @@ public class CameraSwitch : MonoBehaviour
                 lookingAtPhone = false;
                 if (cameraSoundManager)
                     cameraSoundManager.PlayOneShot(closeCameraSound);
+                
             }
         }
     }
