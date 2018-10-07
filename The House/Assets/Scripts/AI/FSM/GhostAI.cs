@@ -48,7 +48,8 @@ public class GhostAI : MonoBehaviour
     public GameObject normalWayPoints;
     public ConnectedWayPoint normalTrackWayPoint;
     ConnectedWayPoint previousWayPoint;
-    public DoorScript spawnDoor;
+    public GameObject[] spawnDoors;
+    private DoorScript spawnDoor;
 
     /*   Seek Variables   */
     [HideInInspector]
@@ -127,6 +128,11 @@ public class GhostAI : MonoBehaviour
         FSM.ChangeState(PatrolState.GetInstance(this));
 
         normalWayPoints.SetActive(false);
+
+        for (int i = 0; i < spawnDoors.Length; i++)
+        {
+            spawnDoor = spawnDoors[i].GetComponent<DoorScript>();
+        }
     }
 
     //For assigning var's on re-try
