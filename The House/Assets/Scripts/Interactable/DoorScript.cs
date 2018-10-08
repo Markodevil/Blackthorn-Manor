@@ -20,10 +20,12 @@ public class DoorScript : MonoBehaviour
     // How long until the door can be opened/closed to avoid spam
     private float doorDelayTime = 0.55f;
 
-    // Opens the door from the direction of the player
-    public bool normalTrack = false;
+    [Header("SpawnDoor Stuff")]
     [HideInInspector]
-    public bool SpawnAvalible = false;
+    public bool normalTrack = false;
+    public bool SpawnDoor = false;
+
+    // Opens the door from the direction of the player
     bool OpenedRight;
     bool OpenedLeft;
     bool OpenZeroRotation;
@@ -105,7 +107,10 @@ public class DoorScript : MonoBehaviour
             {
                 Debug.Log("false");
                 isOpen = false;
-                normalTrack = true;
+                if (SpawnDoor == true)
+                {
+                    normalTrack = true;
+                }
             }
             
             // goes though all stages of the door 
