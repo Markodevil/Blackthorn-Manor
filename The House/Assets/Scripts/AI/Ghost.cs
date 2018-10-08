@@ -19,8 +19,6 @@ public class Ghost : MonoBehaviour
     public float chaseSpeed = 7f;
     [SerializeField]
     private float speedMultiplyer = 2;
-    [SerializeField]
-    private float soundResponceMultiplyer = 2;
     private float time;
     private bool stageOne = false;
     private bool stageTwo = false;
