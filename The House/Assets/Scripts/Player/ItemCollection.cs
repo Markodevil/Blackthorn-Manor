@@ -88,7 +88,7 @@ public class ItemCollection : MonoBehaviour
                 }
 
                 //if the object hit is the ritual
-                if (hitObject.tag == "HorcruxManager")
+                if (hitObject.tag == "HorcruxManager" && currentNumberOfItems > 0)
                 {
                     //make sure something is in the inventory
                     if (inventory.Count > 0)
@@ -118,6 +118,7 @@ public class ItemCollection : MonoBehaviour
     {
         script.AddHorcruxToRitual(ritualItem);
         currentNumberOfItems--;
+        Debug.Log(currentNumberOfItems);
         //inventory.RemoveAt(0);
     }
 
