@@ -425,20 +425,24 @@ public class GameManager : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
                 deathCamera.SetActive(true);
+                playerCamera.SetActive(false);
                 
                 //Vector3 relativePos = (Ghost.transform.position) - Player.transform.position;
                 //Quaternion rotation = Quaternion.LookRotation(relativePos);
                 //Quaternion targetRot = Quaternion.Euler(Vector3.Slerp(Camera.main.transform.rotation.eulerAngles, rotation.eulerAngles, 0.1f));
                 //Camera.main.transform.rotation = targetRot;
 
-                Vector3 direction = ghostLookAt.position - deathCamera.transform.position;
                 //Quaternion toRotation = Quaternion.FromToRotation(Camera.main.transform.forward, direction);
                 //Camera.main.transform.rotation = Quaternion.Lerp(Camera.main.transform.rotation, toRotation, 1.0f * Time.deltaTime);
-
                 //  //Camera.main.transform.LookAt(ghostLookAt);
-                playerCamera.SetActive(false);
-                deathCamera.transform.rotation = Quaternion.Lerp(deathCamera.transform.rotation,
-                      Quaternion.LookRotation(direction), 0.01f * Time.time);
+
+                Vector3 direction = Ghost.transform.position - Player.transform.position;
+                Quaternion rotation = Quaternion.LookRotation(direction);
+                deathCamera.transform.rotation = rotation;
+
+                //deathCamera.transform.rotation = Quaternion.Lerp(deathCamera.transform.rotation,
+                //      Quaternion.LookRotation(direction), 0.01f * Time.time);
+
                 playerMesh.SetActive(false);
                 isDead = true;
                 if (isDead)
