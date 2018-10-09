@@ -30,10 +30,16 @@ public class ItemCollection : MonoBehaviour
     public Sprite filled;
     public Sprite unfilled;
 
-    public Sprite knife;
-    public Sprite chalk;
-    public Sprite skull;
-    public Sprite candle;
+    [Header("Unfilled sprites")]
+    public Sprite knifeUnfilled ;
+    public Sprite chalkUnfilled ;
+    public Sprite skullUnfilled ;
+    public Sprite candleUnfilled ;
+    [Header("Filled sprites")]
+    public Sprite knifeFilled;
+    public Sprite chalkFilled;
+    public Sprite skullFilled;
+    public Sprite candleFilled;
 
     public AudioClip soundClip;
     public AudioSource audioSource;
@@ -141,10 +147,10 @@ public class ItemCollection : MonoBehaviour
         //Thing2.color = new Color(Thing2.color.r, Thing2.color.g, Thing2.color.b, 0.25f);
         //Thing3.color = new Color(Thing3.color.r, Thing3.color.g, Thing3.color.b, 0.25f);
         //Thing4.color = new Color(Thing4.color.r, Thing4.color.g, Thing4.color.b, 0.25f);
-        Thing1.sprite = unfilled;
-        Thing2.sprite = unfilled;
-        Thing3.sprite = unfilled;
-        Thing4.sprite = unfilled;
+        Thing1.sprite = skullUnfilled;
+        Thing2.sprite = knifeUnfilled;
+        Thing3.sprite = candleUnfilled;
+        Thing4.sprite = chalkUnfilled;
 
 
         foreach (GameObject go in inventory)
@@ -153,19 +159,19 @@ public class ItemCollection : MonoBehaviour
             {
                 case "knife":
                     //Thing1.color = new Color(Thing1.color.r, Thing1.color.g, Thing1.color.b, 0.5f);
-                    Thing1.sprite = knife;
+                    Thing1.sprite = knifeFilled;
                     break;
                 case "skull":
                     //Thing2.color = new Color(Thing2.color.r, Thing2.color.g, Thing2.color.b, 0.5f);
-                    Thing2.sprite = skull;
+                    Thing2.sprite = skullFilled;
                     break;
                 case "candle":
                     //Thing3.color = new Color(Thing3.color.r, Thing3.color.g, Thing3.color.b, 0.5f);
-                    Thing3.sprite = candle;
+                    Thing3.sprite = candleFilled;
                     break;
                 case "chalk":
                     //Thing4.color = new Color(Thing4.color.r, Thing4.color.g, Thing4.color.b, 0.5f);
-                    Thing4.sprite = chalk;
+                    Thing4.sprite = chalkFilled;
                     break;
             }
 
