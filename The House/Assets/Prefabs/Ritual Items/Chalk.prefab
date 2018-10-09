@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 54359946446492164}
   - component: {fileID: 65081060079535250}
   m_Layer: 9
-  m_Name: chalk
+  m_Name: Chalk
   m_TagString: RequiredItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
