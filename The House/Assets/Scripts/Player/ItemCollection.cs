@@ -157,19 +157,19 @@ public class ItemCollection : MonoBehaviour
         {
             switch (go.name)
             {
-                case "knife":
+			case "knife(Clone)":
                     //Thing1.color = new Color(Thing1.color.r, Thing1.color.g, Thing1.color.b, 0.5f);
                     Thing1.sprite = knifeFilled;
                     break;
-                case "skull":
+			case "skull(Clone)":
                     //Thing2.color = new Color(Thing2.color.r, Thing2.color.g, Thing2.color.b, 0.5f);
                     Thing2.sprite = skullFilled;
                     break;
-                case "candle":
+			case "candle(Clone)":
                     //Thing3.color = new Color(Thing3.color.r, Thing3.color.g, Thing3.color.b, 0.5f);
                     Thing3.sprite = candleFilled;
                     break;
-                case "chalk":
+			case "chalk(Clone)":
                     //Thing4.color = new Color(Thing4.color.r, Thing4.color.g, Thing4.color.b, 0.5f);
                     Thing4.sprite = chalkFilled;
                     break;
