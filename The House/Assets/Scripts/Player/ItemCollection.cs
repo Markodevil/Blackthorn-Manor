@@ -30,6 +30,11 @@ public class ItemCollection : MonoBehaviour
     public Sprite filled;
     public Sprite unfilled;
 
+    public Sprite knife;
+    public Sprite chalk;
+    public Sprite skull;
+    public Sprite candle;
+
     public AudioClip soundClip;
     public AudioSource audioSource;
     int thingyIndex = 0;
@@ -146,21 +151,21 @@ public class ItemCollection : MonoBehaviour
         {
             switch (go.name)
             {
-                case "Cup3":
+                case "knife":
                     //Thing1.color = new Color(Thing1.color.r, Thing1.color.g, Thing1.color.b, 0.5f);
-                    Thing1.sprite = filled;
+                    Thing1.sprite = knife;
                     break;
-                case "Plate9":
+                case "skull":
                     //Thing2.color = new Color(Thing2.color.r, Thing2.color.g, Thing2.color.b, 0.5f);
-                    Thing2.sprite = filled;
+                    Thing2.sprite = skull;
                     break;
-                case "Pot":
+                case "candle":
                     //Thing3.color = new Color(Thing3.color.r, Thing3.color.g, Thing3.color.b, 0.5f);
-                    Thing3.sprite = filled;
+                    Thing3.sprite = candle;
                     break;
-                case "Mug4":
+                case "chalk":
                     //Thing4.color = new Color(Thing4.color.r, Thing4.color.g, Thing4.color.b, 0.5f);
-                    Thing4.sprite = filled;
+                    Thing4.sprite = chalk;
                     break;
             }
 
