@@ -43,10 +43,15 @@ public class GhostAI : MonoBehaviour
     [Header("Patrol Variables")]
     public bool wait;
     public float totalWaitTime;
+
+    /*Track Swap Variables */
     public ConnectedWayPoint currentWayPoint;
     public GameObject tutorialWayPoints;
     public GameObject normalWayPoints;
     public ConnectedWayPoint normalTrackWayPoint;
+    [HideInInspector]
+    public bool ReadyToSwapTrack;
+
     ConnectedWayPoint previousWayPoint;
     public GameObject[] spawnDoors;
     private DoorScript spawnDoor;
@@ -114,13 +119,9 @@ public class GhostAI : MonoBehaviour
             itemsCollectionCS = player.GetComponent<ItemCollection>();
             //playerMovementCS = player.GetComponent<PlayerMovement>();
         }
-        //hearingTrigger = this.GetComponent<SphereCollider>();
 
         hearingTrigger = GetComponentInChildren<SphereCollider>();
-
         hearingTrigger.radius = hearingRange;
-
-        //ghostName = GameObject.FindGameObjectWithTag("Ghost").name;
 
         gm = FindObjectOfType<GameManager>();
 
@@ -128,6 +129,7 @@ public class GhostAI : MonoBehaviour
         FSM.ChangeState(PatrolState.GetInstance(this));
 
         normalWayPoints.SetActive(false);
+        ReadyToSwapTrack = false;
 
         for (int i = 0; i < spawnDoors.Length; i++)
         {
@@ -209,6 +211,7 @@ public class GhostAI : MonoBehaviour
                     tutorialWayPoints.SetActive(false);
                     normalWayPoints.SetActive(true);
                     currentWayPoint = normalTrackWayPoint;
+                    ReadyToSwapTrack = true;
                 }
 
             //Ryan's totaly awsome bool toggling ghost buffs

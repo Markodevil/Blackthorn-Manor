@@ -102,6 +102,12 @@ public class PatrolState : State<GhostAI>
                     }
                     else
                     {
+                        //Swaping to new track
+                        if (owner.ReadyToSwapTrack == true)
+                        {
+                            currentWayPoint = owner.normalTrackWayPoint;
+                            owner.ReadyToSwapTrack = false;
+                        }
                         Debug.Log("Random Chance");
                         SetDestination();
                         Debug.Log(navMeshAgent.remainingDistance);
@@ -109,6 +115,12 @@ public class PatrolState : State<GhostAI>
                 }
                 else
                 {
+                    //Swaping to new track
+                    if (owner.ReadyToSwapTrack == true)
+                    {
+                        currentWayPoint = owner.normalTrackWayPoint;
+                        owner.ReadyToSwapTrack = false;
+                    }
                     //This can never fire because we are unless we arnt waiting
                     Debug.Log("Not PartrolWaiting");
                     SetDestination();
