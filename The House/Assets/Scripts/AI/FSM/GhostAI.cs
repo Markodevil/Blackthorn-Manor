@@ -53,7 +53,7 @@ public class GhostAI : MonoBehaviour
     public bool ReadyToSwapTrack;
     ConnectedWayPoint previousWayPoint;
     public GameObject[] spawnDoors;
-    private DoorScript spawnDoor;
+    private List<DoorScript> spawnDoorList;
 
     /*   Seek Variables   */
     [HideInInspector]
@@ -130,9 +130,10 @@ public class GhostAI : MonoBehaviour
         normalWayPoints.SetActive(false);
         ReadyToSwapTrack = false;
 
+        spawnDoorList = new List<DoorScript>();
         for (int i = 0; i < spawnDoors.Length; i++)
         {
-            spawnDoor = spawnDoors[i].GetComponent<DoorScript>();
+            spawnDoorList.Add(spawnDoors[i].GetComponent<DoorScript>());
         }
     }
 
@@ -203,16 +204,17 @@ public class GhostAI : MonoBehaviour
             }
 
             //Track Swap;
-            if (spawnDoor != null)
-                if (spawnDoor.normalTrack == true)
-                {
-                    NMA.areaMask |= (1 << NavMesh.GetAreaFromName("Spawn"));
-                    tutorialWayPoints.SetActive(false);
-                    normalWayPoints.SetActive(true);
-                    currentWayPoint = normalTrackWayPoint;
-                    ReadyToSwapTrack = true;
-                    spawnDoor.normalTrack = false;
-                }
+            if (spawnDoorList != null)
+                foreach (DoorScript d in spawnDoorList)
+                    if (d.normalTrack == true)
+                    {
+                        NMA.areaMask |= (1 << NavMesh.GetAreaFromName("Spawn"));
+                        tutorialWayPoints.SetActive(false);
+                        normalWayPoints.SetActive(true);
+                        currentWayPoint = normalTrackWayPoint;
+                        ReadyToSwapTrack = true;
+                        d.normalTrack = false;
+                    }
 
             //Ryan's totaly awsome bool toggling ghost buffs
             switch (itemsCollectionCS.currentNumberOfItems)
