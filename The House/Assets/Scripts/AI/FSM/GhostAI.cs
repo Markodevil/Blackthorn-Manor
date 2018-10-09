@@ -352,6 +352,9 @@ public class GhostAI : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, hearingRange);
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere(currentWayPoint.transform.position, 1);
     }
 
     public void LoadGameOver()

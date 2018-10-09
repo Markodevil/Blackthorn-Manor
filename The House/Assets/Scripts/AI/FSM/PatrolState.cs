@@ -69,7 +69,7 @@ public class PatrolState : State<GhostAI>
         }
         else
         {
-            SetDestination();
+            SetDestination(owner);
             Debug.Log("OnEnter");
         }
     }
@@ -106,10 +106,12 @@ public class PatrolState : State<GhostAI>
                         if (owner.ReadyToSwapTrack == true)
                         {
                             currentWayPoint = owner.normalTrackWayPoint;
+                            //deeons test thingy
+                            owner.currentWayPoint = currentWayPoint;
                             owner.ReadyToSwapTrack = false;
                         }
                         Debug.Log("Random Chance");
-                        SetDestination();
+                        SetDestination(owner);
                         Debug.Log(navMeshAgent.remainingDistance);
                     }
                 }
@@ -119,11 +121,13 @@ public class PatrolState : State<GhostAI>
                     if (owner.ReadyToSwapTrack == true)
                     {
                         currentWayPoint = owner.normalTrackWayPoint;
+                        //deeons test thingy
+                        owner.currentWayPoint = currentWayPoint;
                         owner.ReadyToSwapTrack = false;
                     }
                     //This can never fire because we are unless we arnt waiting
                     Debug.Log("Not PartrolWaiting");
-                    SetDestination();
+                    SetDestination(owner);
                     Debug.Log(navMeshAgent.remainingDistance);
                 }
             }
@@ -142,7 +146,7 @@ public class PatrolState : State<GhostAI>
                 owner.heardSomethingAnim.SetBool("WaitBool", false);
                 waiting = false;
                 Debug.Log("WaitTimer >=");
-                SetDestination();
+                SetDestination(owner);
                 Debug.Log(navMeshAgent.remainingDistance);
                 travelling = true;
                 waitTimer = 0;
@@ -152,13 +156,16 @@ public class PatrolState : State<GhostAI>
     }
 
 
-    public void SetDestination()
+    public void SetDestination(GhostAI owner)
     {
         if (waypointsVisited > 0)
         {
             ConnectedWayPoint nextWaypoint = currentWayPoint.NextWayPoint(previousWayPoint);
             previousWayPoint = currentWayPoint;
             currentWayPoint = nextWaypoint;
+
+            //deeons test thingy
+            owner.currentWayPoint = currentWayPoint;
         }
 
         Vector3 targetVector = currentWayPoint.transform.position;
