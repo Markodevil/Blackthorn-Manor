@@ -51,7 +51,6 @@ public class GhostAI : MonoBehaviour
     public ConnectedWayPoint normalTrackWayPoint;
     [HideInInspector]
     public bool ReadyToSwapTrack;
-
     ConnectedWayPoint previousWayPoint;
     public GameObject[] spawnDoors;
     private DoorScript spawnDoor;
@@ -212,6 +211,7 @@ public class GhostAI : MonoBehaviour
                     normalWayPoints.SetActive(true);
                     currentWayPoint = normalTrackWayPoint;
                     ReadyToSwapTrack = true;
+                    spawnDoor.normalTrack = false;
                 }
 
             //Ryan's totaly awsome bool toggling ghost buffs
