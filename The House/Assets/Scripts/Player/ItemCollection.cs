@@ -45,6 +45,11 @@ public class ItemCollection : MonoBehaviour
     public AudioSource audioSource;
     int thingyIndex = 0;
 
+    public GameObject skullPrefab;
+    public GameObject knifePrefab;
+    public GameObject candlePrefab;
+    public GameObject chalkPrefab;
+
     // Use this for initialization
     void Start()
     {
@@ -152,29 +157,44 @@ public class ItemCollection : MonoBehaviour
         Thing3.sprite = candleUnfilled;
         Thing4.sprite = chalkUnfilled;
 
-
         foreach (GameObject go in inventory)
         {
-            switch (go.name)
-            {
-			case "knife(Clone)":
-                    //Thing1.color = new Color(Thing1.color.r, Thing1.color.g, Thing1.color.b, 0.5f);
-                    Thing2.sprite = knifeFilled;
-                    break;
-			case "skull(Clone)":
-                    //Thing2.color = new Color(Thing2.color.r, Thing2.color.g, Thing2.color.b, 0.5f);
-                    Thing1.sprite = skullFilled;
-                    break;
-			case "candle(Clone)":
-                    //Thing3.color = new Color(Thing3.color.r, Thing3.color.g, Thing3.color.b, 0.5f);
-                    Thing3.sprite = candleFilled;
-                    break;
-			case "chalk(Clone)":
-                    //Thing4.color = new Color(Thing4.color.r, Thing4.color.g, Thing4.color.b, 0.5f);
-                    Thing4.sprite = chalkFilled;
-                    break;
-            }
+            //switch (go.name)
+            //{
+			//case "(Clone)":
+            //        //Thing1.color = new Color(Thing1.color.r, Thing1.color.g, Thing1.color.b, 0.5f);
+            //        Thing2.sprite = knifeFilled;
+            //        break;
+			//case knifePrefabName + "(Clone)":
+            //        //Thing2.color = new Color(Thing2.color.r, Thing2.color.g, Thing2.color.b, 0.5f);
+            //        Thing1.sprite = skullFilled;
+            //        break;
+			//case "(Clone)":
+            //        //Thing3.color = new Color(Thing3.color.r, Thing3.color.g, Thing3.color.b, 0.5f);
+            //        Thing3.sprite = candleFilled;
+            //        break;
+			//case "(Clone)":
+            //        //Thing4.color = new Color(Thing4.color.r, Thing4.color.g, Thing4.color.b, 0.5f);
+            //        Thing4.sprite = chalkFilled;
+            //        break;
+            //}
 
+            if(go.name == knifePrefab.name + "(Clone)")
+            {
+                Thing2.sprite = knifeFilled;
+            }
+            else if(go.name == skullPrefab.name + "(Clone)")
+            {
+                Thing1.sprite = skullFilled;
+            }
+            else if (go.name == candlePrefab.name + "(Clone)")
+            {
+                Thing3.sprite = candleFilled;
+            }
+            else if (go.name == chalkPrefab.name + "(Clone)")
+            {
+                Thing4.sprite = chalkFilled;
+            }
         }
     }
 }
