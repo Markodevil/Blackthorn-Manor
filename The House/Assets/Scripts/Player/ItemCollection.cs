@@ -159,11 +159,11 @@ public class ItemCollection : MonoBehaviour
             {
 			case "knife(Clone)":
                     //Thing1.color = new Color(Thing1.color.r, Thing1.color.g, Thing1.color.b, 0.5f);
-                    Thing1.sprite = knifeFilled;
+                    Thing2.sprite = knifeFilled;
                     break;
 			case "skull(Clone)":
                     //Thing2.color = new Color(Thing2.color.r, Thing2.color.g, Thing2.color.b, 0.5f);
-                    Thing2.sprite = skullFilled;
+                    Thing1.sprite = skullFilled;
                     break;
 			case "candle(Clone)":
                     //Thing3.color = new Color(Thing3.color.r, Thing3.color.g, Thing3.color.b, 0.5f);
