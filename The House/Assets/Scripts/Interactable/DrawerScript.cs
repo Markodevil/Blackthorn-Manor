@@ -13,12 +13,13 @@ public class DrawerScript : MonoBehaviour {
 
     public Rigidbody rb;
     public AudioSource audio;
-    public AudioClip drawerSound;
+    public AudioClip[] drawerSound;
     private Collision Col;
     FPSCamera fpsCamera;
     bool drawerSoundBool;
     // Toggles the outline when collided with the back of the dresser
     public bool toggleOutline;
+    private int RandomDrawerSound;
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -63,7 +64,7 @@ public class DrawerScript : MonoBehaviour {
         // Plays a sound on Drawers Direction
         if (drawerSoundBool && mouseY > 0 || drawerSoundBool && mouseY < 0)
         {
-            audio.PlayOneShot(drawerSound, 1);
+            audio.Play();
             drawerSoundBool = false;
         }
       
@@ -97,6 +98,8 @@ public class DrawerScript : MonoBehaviour {
     // sets bool to true to play the drawer sound
     void playDrawerSound()
     {
+        RandomDrawerSound = Random.Range(0, drawerSound.Length);
+        audio.clip = drawerSound[RandomDrawerSound];
         drawerSoundBool = true;
     }
     //--------------------------------------------------------------------------------------

@@ -189,8 +189,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1849316316551622}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -8.507, y: 0.510816, z: 18.84}
-  m_LocalScale: {x: 1.5885785, y: 1, z: 1}
+  m_LocalPosition: {x: -8.507, y: 0.365, z: 19.115}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4036444396087032}
   - {fileID: 4125145106553146}
@@ -355,7 +355,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 55ccaed43d8ddef43a3a9ea1cb7f7447, type: 3}
+  - {fileID: 2100000, guid: e5cb3b49de270104d9c46f78b6f5f38c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -389,7 +389,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 55ccaed43d8ddef43a3a9ea1cb7f7447, type: 3}
+  - {fileID: 2100000, guid: e5cb3b49de270104d9c46f78b6f5f38c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -457,7 +457,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ed951a128c211be4fa95b8f2f4425598, type: 2}
+  - {fileID: 2100000, guid: e5cb3b49de270104d9c46f78b6f5f38c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -491,7 +491,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ed951a128c211be4fa95b8f2f4425598, type: 2}
+  - {fileID: 2100000, guid: e5cb3b49de270104d9c46f78b6f5f38c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -867,7 +867,8 @@ MonoBehaviour:
   Outline: {fileID: 1328262685777928}
   rb: {fileID: 54540809963847444}
   audio: {fileID: 82644652613830674}
-  drawerSound: {fileID: 8300000, guid: f8c3cd8ab14997d43b241d8af672f968, type: 3}
+  drawerSound:
+  - {fileID: 8300000, guid: f8c3cd8ab14997d43b241d8af672f968, type: 3}
   toggleOutline: 0
 --- !u!114 &114453197484993206
 MonoBehaviour:
@@ -886,7 +887,8 @@ MonoBehaviour:
   Outline: {fileID: 0}
   rb: {fileID: 54969021116228588}
   audio: {fileID: 82644652613830674}
-  drawerSound: {fileID: 8300000, guid: f8c3cd8ab14997d43b241d8af672f968, type: 3}
+  drawerSound:
+  - {fileID: 8300000, guid: f8c3cd8ab14997d43b241d8af672f968, type: 3}
   toggleOutline: 0
 --- !u!114 &114481283810992820
 MonoBehaviour:
@@ -905,7 +907,8 @@ MonoBehaviour:
   Outline: {fileID: 0}
   rb: {fileID: 54810900165283808}
   audio: {fileID: 82644652613830674}
-  drawerSound: {fileID: 8300000, guid: f8c3cd8ab14997d43b241d8af672f968, type: 3}
+  drawerSound:
+  - {fileID: 8300000, guid: f8c3cd8ab14997d43b241d8af672f968, type: 3}
   toggleOutline: 0
 --- !u!114 &114778340361706800
 MonoBehaviour:
@@ -930,7 +933,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0.5, z: -0.35}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -7.7009997, y: 1.4174216, z: 18.781223}
+  m_ConnectedAnchor: {x: -7.7009997, y: 1.2716056, z: 19.078}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -1024,7 +1027,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0.5, z: -0.35}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -7.711345, y: 1.0784216, z: 18.78129}
+  m_ConnectedAnchor: {x: -7.711345, y: 0.9326057, z: 19.078041}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -1118,7 +1121,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0.5, z: -0.35}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -7.711345, y: 0.7038343, z: 18.78129}
+  m_ConnectedAnchor: {x: -7.711345, y: 0.5580183, z: 19.078041}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
