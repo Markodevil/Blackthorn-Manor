@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65485630846527688}
   - component: {fileID: 54736491779290094}
   m_Layer: 9
-  m_Name: candle
+  m_Name: Candle
   m_TagString: RequiredItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
