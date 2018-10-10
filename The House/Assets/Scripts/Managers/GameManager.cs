@@ -39,7 +39,8 @@ public class GameManager : MonoBehaviour
     public GameObject ingameUI;
     public GameObject menuUI;
     public GameObject gameoverUI;
-
+    private GameObject camView;
+    private CameraPositions camPosScript;
     [Header("Debug stuff")]
     public bool useGhost;
     public GameObject Ghost;
@@ -118,6 +119,8 @@ public class GameManager : MonoBehaviour
 
         Dresser = GameObject.FindGameObjectWithTag("TutorialOutlined");
         Dresser.SetActive(false);
+        camView = GameObject.FindGameObjectWithTag("camView");
+        camPosScript = camView.GetComponent<CameraPositions>();
 
         FindObjectOfType<PlayerMovement>().SetTouchingSomething(true);
         FindObjectOfType<FPSCamera>().SetTouching(true);
@@ -415,8 +418,10 @@ public class GameManager : MonoBehaviour
                 CS.enabled = false;
                 menuUI.SetActive(true);
                 ingameUI.SetActive(false);
+                camPosScript.isNotPaused = false;
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
+                    camPosScript.isNotPaused = true;
                     ChangeGameState();
                 }
 
@@ -685,12 +690,22 @@ public class GameManager : MonoBehaviour
         {
 
             if (menuManager.hasCompletedTutorial)
+            {
+                camPosScript.isNotPaused = true;
                 currentState = GameStates.Playing;
+            }
             else
+            {
+                camPosScript.isNotPaused = true;
+
                 currentState = GameStates.Intro;
+            }
         }
         else
+        {
+            camPosScript.isNotPaused = true;
             currentState = GameStates.Playing;
+        }
     }
 
     //change state to whatever state you put as argument

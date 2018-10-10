@@ -26,6 +26,9 @@ TagManager:
   - Carpet
   - Timber
   - Tile
+  - Spawn
+  - EasterEgg
+  - camView
   layers:
   - Default
   - TransparentFX
