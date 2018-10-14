@@ -196,11 +196,24 @@ public class GhostAI : MonoBehaviour
             if (FSM.currentState == PatrolState.GetInstance(this))
             {
                 if (dist <= 5.0f)
+                {
                     NMA.speed = 0.5f;
+                    heardSomethingAnim.speed = 0.5f;
+                }
                 else if (dist <= 10.0f)
+                {
                     NMA.speed = 1.0f;
+                    heardSomethingAnim.speed = 1.0f;
+                }
                 else if (dist >= 10.0f)
+                {
                     NMA.speed = 1.5f;
+                    heardSomethingAnim.speed = 1.5f;
+                }
+            }
+            else if(FSM.currentState != PatrolState.GetInstance(this))
+            {
+                heardSomethingAnim.speed = 1.0f;
             }
 
             //Track Swap;
