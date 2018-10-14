@@ -131,8 +131,8 @@ public class PlayerMovement : MonoBehaviour
         //{        
         //    PlayPanicSound = true;
         //}
-        Debug.Log(isRunning);
-        Debug.Log(currentMovementState);
+        //Debug.Log(isRunning);
+        //Debug.Log(currentMovementState);
 
 
         if (Panic && PlayPanicSound)
