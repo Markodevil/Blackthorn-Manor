@@ -11,18 +11,16 @@ public class ClosetScript : MonoBehaviour {
     public JointSpring hingeSpring;
     bool isOpen = false;
     public float mouseY;
+    public float mouseX;
+
     public float closetOpenSpeed;
     private GameObject Player;
     public Rigidbody rb;
     public AudioSource audio;
     public AudioClip closetSound;
     private float soundPlayTimer;
-    // Sets the value for closeTimer
-    public float closetCloseTime;
-    // Timer until closet closes 
-    public float closeTimer;
+
     //closes the closet when closeTimer is 0 
-    bool closeCloset = false;
     bool closetSoundEnabled;
     private void Awake()
     {
@@ -31,7 +29,6 @@ public class ClosetScript : MonoBehaviour {
 
     private void Start()
     {
-        closeTimer = closetCloseTime;
         hinge = GetComponent<HingeJoint>();
         hingeSpring = hinge.spring;
         hingeSpring.spring = 0;
@@ -47,33 +44,21 @@ public class ClosetScript : MonoBehaviour {
         Vector3 closetPosition = transform.position;
         //// Players position
         Vector3 playerPosition = Player.transform.position;
-
+        Vector3 Direction = closetPosition - playerPosition;
+        Direction.Normalize();
         float dist = Vector3.Distance(playerPosition, closetPosition);
 
         //returns mouseY Axis
         mouseY = Input.GetAxis("Mouse Y");
+        mouseX = Input.GetAxis("Mouse X");
 
         // lets go of the closet when Mouse0 is released 
         if (Input.GetKeyUp(KeyCode.Mouse0) || dist > 3.5f)
         {
             isOpen = false;
         }
-        if (closeCloset)
-        {
-            closeTimer -= Time.deltaTime;
-
-        }
-        // Doors spring returns closet back to starting position 
-        if (closeTimer <= 0 && closeCloset == true)
-        {
-            hingeSpring.spring = 5;
-            hinge.spring = hingeSpring;
-            hinge.useSpring = true;
-            closeCloset = false;
-            //  audio.PlayOneShot(doorCreakSound, 1);
-            //  Debug.Log("Played Closing Sound");
-
-        }
+  
+      
 
         if (closetSoundEnabled && mouseY > 0)
         {
@@ -95,13 +80,22 @@ public class ClosetScript : MonoBehaviour {
         // the closet depending on which side the player is located 
         if (isOpen)
         {
-            Debug.Log("ISOPEN");
             hingeSpring.spring = 0;
             hinge.spring = hingeSpring;
             rb.AddForceAtPosition(Player.transform.forward * mouseY * closetOpenSpeed, Player.transform.position);
-            closeTimer = closetCloseTime;
-            closeCloset = true;
 
+        }
+       
+        // checks if player is on the right or left of the dresser
+        // if on the right the player can open the dresser using mouseX 
+        if (isOpen && Vector3.Dot(transform.right, Direction) < 0)
+        {
+            rb.AddForceAtPosition(Player.transform.forward * mouseX * closetOpenSpeed, Player.transform.position);
+        }
+        // if on the left the player can open the dresser using -mouseX 
+        if (isOpen && Vector3.Dot(-transform.right, Direction) < 0)
+        {
+            rb.AddForceAtPosition(Player.transform.forward * -mouseX * closetOpenSpeed, Player.transform.position);
         }
 
     }
