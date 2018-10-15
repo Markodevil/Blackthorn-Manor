@@ -755,7 +755,7 @@ Prefab:
     - target: {fileID: 114839570683861482, guid: feb67016b036b214f9dac1552eeb1552,
         type: 2}
       propertyPath: m_Text
-      value: "Blackthorn \nManor"
+      value: The House
       objectReference: {fileID: 0}
     - target: {fileID: 114839570683861482, guid: feb67016b036b214f9dac1552eeb1552,
         type: 2}
@@ -770,7 +770,7 @@ Prefab:
     - target: {fileID: 224610113345412168, guid: feb67016b036b214f9dac1552eeb1552,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 106.81
+      value: 46.7
       objectReference: {fileID: 0}
     - target: {fileID: 224610113345412168, guid: feb67016b036b214f9dac1552eeb1552,
         type: 2}
