@@ -432,32 +432,19 @@ public class GameManager : MonoBehaviour
                 deathCamera.SetActive(true);
                 playerCamera.SetActive(false);
 
-                //Vector3 relativePos = (Ghost.transform.position) - Player.transform.position;
-                //Quaternion rotation = Quaternion.LookRotation(relativePos);
-                //Quaternion targetRot = Quaternion.Euler(Vector3.Slerp(Camera.main.transform.rotation.eulerAngles, rotation.eulerAngles, 0.1f));
-                //Camera.main.transform.rotation = targetRot;
-
-                //Quaternion toRotation = Quaternion.FromToRotation(Camera.main.transform.forward, direction);
-                //Camera.main.transform.rotation = Quaternion.Lerp(Camera.main.transform.rotation, toRotation, 1.0f * Time.deltaTime);
-                //  //Camera.main.transform.LookAt(ghostLookAt);
-
+                //get direction vector from camera to ghost 
                 Vector3 direction = ghostLookAt.transform.position - deathCamera.transform.position;
+                //make quaternion using direction vector
                 Quaternion rotation = Quaternion.LookRotation(direction);
-                //deathCamera.transform.rotation = rotation;
 
-                //deathCamera.transform.LookAt(ghostLookAt);
-
+                //slerp rotation from current to desired
                 deathCamera.transform.rotation = Quaternion.Lerp(deathCamera.transform.rotation,
                       Quaternion.LookRotation(direction), 0.01f * Time.time);
 
+                //deactivate mesh 
                 playerMesh.SetActive(false);
                 isDead = true;
-                //if (isDead)
-                //{
                 deathAnim.SetBool("DeathTrigger", isDead);
-                //}
-                //  Player.transform.rotation = Quaternion.Lerp(Player.transform.rotation,
-                //      Quaternion.LookRotation(direction), 0.01f * Time.time);
 
 
 
@@ -528,12 +515,13 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
+    //restarts the game
     public void RestartGame()
     {
         if (menuManager)
             menuManager.ToGame();
         else
-            SceneManager.LoadScene("Mark");
+            SceneManager.LoadScene("Sandbox");
     }
 
 
