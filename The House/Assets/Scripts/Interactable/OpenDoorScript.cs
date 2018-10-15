@@ -52,11 +52,9 @@ public class OpenDoorScript : MonoBehaviour {
                     hit.collider.transform.parent.GetComponent<DoorScript>().ChangeDoorState();
 
                 }
-
+             
             }
         }
-
-
     }
 }
 

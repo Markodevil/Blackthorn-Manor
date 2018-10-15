@@ -29,6 +29,7 @@ TagManager:
   - Spawn
   - EasterEgg
   - camView
+  - Closet
   layers:
   - Default
   - TransparentFX
