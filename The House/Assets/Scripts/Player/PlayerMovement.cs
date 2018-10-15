@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     float Horizontal = 0;
     float Vertical = 0;
     public float initialSpeed;
+    public float sprintMultiplier;
+    public float crouchMultiplier;
     private float speed;
     //bool LookingAtCameras = false;
     bool isRunning;
@@ -236,7 +238,7 @@ public class PlayerMovement : MonoBehaviour
                     }
 
                 }
-                speed = initialSpeed / 2;
+                speed = initialSpeed * crouchMultiplier;
 
                 Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, new Vector3(0, crouchCameraHeight, 0.25f), crouchSpeed);
                 if (isBreathing == true)
@@ -286,7 +288,7 @@ public class PlayerMovement : MonoBehaviour
                     movementStateImage.sprite = sprinting;
                 Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, new Vector3(0, initialCameraHeight, 0.25f), crouchSpeed);
                 //speed is equal to twice the initial speed
-                speed = initialSpeed * 2;
+                speed = initialSpeed * sprintMultiplier;
 
                 //headbobAnim.SetBool("isRunning", true);
 
