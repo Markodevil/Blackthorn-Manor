@@ -81,6 +81,7 @@ public class PatrolState : State<GhostAI>
 
     public override void UpdateState(GhostAI owner)
     {
+        owner.wait = waiting;
         //Check if the path is ready
         if (navMeshAgent.pathPending != true)
         {

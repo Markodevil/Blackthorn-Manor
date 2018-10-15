@@ -99,7 +99,7 @@ public class GhostAI : MonoBehaviour
 
     [HideInInspector]
     public int instances = 0;
-    
+
 
     // Use this for initialization
     void Start()
@@ -109,7 +109,7 @@ public class GhostAI : MonoBehaviour
             mm = GameObject.FindGameObjectWithTag("Singleton").GetComponent<MenuManager>();
         FSM = new FiniteStateMachine<GhostAI>(this);
         player = GameObject.FindGameObjectWithTag("Player");
-        
+
         NMA = this.GetComponent<NavMeshAgent>();
         sight = this.GetComponent<Sight>();
         r = GetComponent<Rigidbody>();
@@ -163,6 +163,7 @@ public class GhostAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Anim speed" + heardSomethingAnim.speed);
         if (FSM.currentState != GameOverState.GetInstance(this))
         {
 
@@ -198,22 +199,27 @@ public class GhostAI : MonoBehaviour
                 if (dist <= 5.0f)
                 {
                     NMA.speed = 0.5f;
-                    heardSomethingAnim.speed = 0.5f;
+                    if (!wait)
+                        heardSomethingAnim.speed = 0.5f;
+                    else
+                        heardSomethingAnim.speed = 1.0f;
                 }
                 else if (dist <= 10.0f)
                 {
                     NMA.speed = 1.0f;
-                    heardSomethingAnim.speed = 1.0f;
+                    if (!wait)
+                        heardSomethingAnim.speed = 1.0f;
+                    else
+                        heardSomethingAnim.speed = 1.0f;
                 }
                 else if (dist >= 10.0f)
                 {
                     NMA.speed = 1.5f;
-                    heardSomethingAnim.speed = 1.5f;
+                    if (!wait)
+                        heardSomethingAnim.speed = 1.5f;
+                    else
+                        heardSomethingAnim.speed = 1.0f;
                 }
-            }
-            else if(FSM.currentState != PatrolState.GetInstance(this))
-            {
-                heardSomethingAnim.speed = 1.0f;
             }
 
             //Track Swap;
@@ -366,8 +372,8 @@ public class GhostAI : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, hearingRange);
 
-        Gizmos.color = Color.green;
-        Gizmos.DrawSphere(currentWayPoint.transform.position, 1);
+        //Gizmos.color = Color.green;
+        //Gizmos.DrawSphere(currentWayPoint.transform.position, 1);
     }
 
     public void LoadGameOver()
