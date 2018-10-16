@@ -15,9 +15,10 @@ public class PatrolState : State<GhostAI>
     private float totalWaitTime = 3f;
     private int randomChance;
 
-
     //private variables for base behaviour
     NavMeshAgent navMeshAgent;
+    GameObject[] normalWayPoints;
+    Vector3[] reletivepos;
     ConnectedWayPoint currentWayPoint;
     ConnectedWayPoint previousWayPoint;
 
@@ -25,6 +26,8 @@ public class PatrolState : State<GhostAI>
     bool waiting;
     float waitTimer;
     int waypointsVisited;
+    GameObject thingy;
+    float lowestMag;
 
     private PatrolState(GhostAI owner)
     {
@@ -85,7 +88,7 @@ public class PatrolState : State<GhostAI>
         //Check if the path is ready
         if (navMeshAgent.pathPending != true)
         {
-        //Check if we're close to the destination
+            //Check if we're close to the destination
             if (/*(*/travelling && navMeshAgent.remainingDistance <= 0.10f)// || (ghostCS.stageThree == true))
             {
                 travelling = false;
@@ -98,6 +101,40 @@ public class PatrolState : State<GhostAI>
                     Debug.Log("Random Roll = " + randomChance);
                     if (randomChance <= 5)
                     {
+                        //Swaping to new track
+                        if (owner.ReadyToSwapTrack == true)
+                        {
+                            //Grab a list of waypoints
+                            normalWayPoints = GameObject.FindGameObjectsWithTag("Waypoint");
+                            //Assign a distance to each waypoint from the ghost
+                            for (int i = 0; i < normalWayPoints.Length; i++)
+                            {
+                                //if compare gameobject thing is null
+                                if (!thingy)
+                                {
+                                    //set the stuff
+                                    thingy = normalWayPoints[i];
+                                    lowestMag = (normalWayPoints[i].transform.position - owner.transform.position).magnitude;
+                                }
+                                //otherwise
+                                else
+                                {
+                                    //compare magnitude of current waypoint to the lowest magnitude
+                                    if ((normalWayPoints[i].transform.position - owner.transform.position).magnitude < lowestMag)
+                                    {
+                                        //set the stuff if current magnitude is less than lowestmag
+                                        thingy = normalWayPoints[i];
+                                        lowestMag = (normalWayPoints[i].transform.position - owner.transform.position).magnitude;
+                                    }
+                                }
+                            }
+                            //Assign the lowest distance waypoint to a temp var 
+                            currentWayPoint = thingy.GetComponent<ConnectedWayPoint>();
+                            //Assign the currentwaypoint to the owner's currentwaypoint wich will be set as the new way point
+                            owner.currentWayPoint = currentWayPoint;
+                            owner.ReadyToSwapTrack = false;
+                        }
+
                         waiting = true;
                         waitTimer = 0;
                     }
@@ -106,11 +143,35 @@ public class PatrolState : State<GhostAI>
                         //Swaping to new track
                         if (owner.ReadyToSwapTrack == true)
                         {
-                            currentWayPoint = owner.normalTrackWayPoint;
-                            //deeons test thingy
+                            //Grab a list of waypoints
+                            normalWayPoints = GameObject.FindGameObjectsWithTag("Waypoint");
+                            //Assign a distance to each waypoint from the ghost
+                            for (int i = 0; i < normalWayPoints.Length; i++)
+                            {
+                                //if compare gameobject thing is null
+                                if (!thingy)
+                                {
+                                    //set the stuff
+                                    thingy = normalWayPoints[i];
+                                    lowestMag = (normalWayPoints[i].transform.position - owner.transform.position).magnitude;
+                                }
+                                //otherwise
+                                else
+                                {
+                                    //compare magnitude of current waypoint to the lowest magnitude
+                                    if ((normalWayPoints[i].transform.position - owner.transform.position).magnitude < lowestMag)
+                                    {
+                                        //set the stuff if current magnitude is less than lowestmag
+                                        thingy = normalWayPoints[i];
+                                        lowestMag = (normalWayPoints[i].transform.position - owner.transform.position).magnitude;
+                                    }
+                                }
+                            }
+                            currentWayPoint = thingy.GetComponent<ConnectedWayPoint>();
                             owner.currentWayPoint = currentWayPoint;
                             owner.ReadyToSwapTrack = false;
                         }
+
                         Debug.Log("Random Chance");
                         SetDestination(owner);
                         Debug.Log(navMeshAgent.remainingDistance);
@@ -126,7 +187,7 @@ public class PatrolState : State<GhostAI>
                         owner.currentWayPoint = currentWayPoint;
                         owner.ReadyToSwapTrack = false;
                     }
-                    //This can never fire because we are unless we arnt waiting
+                    //This can never fire if we are waiting
                     Debug.Log("Not PartrolWaiting");
                     SetDestination(owner);
                     Debug.Log(navMeshAgent.remainingDistance);

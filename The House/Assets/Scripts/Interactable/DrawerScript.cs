@@ -15,14 +15,14 @@ public class DrawerScript : MonoBehaviour
     public AudioSource audio;
     public AudioClip[] drawerSound;
     private Collision Col;
-    FPSCamera fpsCamera;
+    //FPSCamera fpsCamera;
     bool drawerSoundBool;
 
     private int RandomDrawerSound;
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        fpsCamera = GetComponent<FPSCamera>();
+        //fpsCamera = GetComponent<FPSCamera>();
     }
     // Use this for initialization
     void Start()
