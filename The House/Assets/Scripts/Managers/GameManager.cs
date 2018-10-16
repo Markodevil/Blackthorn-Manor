@@ -49,6 +49,8 @@ public class GameManager : MonoBehaviour
     public Transform ghostLookAt;
 
     [Header("Intro stuff")]
+    
+    public bool runTutorial = false;
     public string[] prompts;
     private bool hasEnteredState = false;
     public Animator textAnimation;
@@ -66,6 +68,7 @@ public class GameManager : MonoBehaviour
 
     private bool stuffInMyFace = false;
     private float inMyFaceTimer = 5.0f;
+
 
 
 
@@ -98,12 +101,20 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        if (menuManager)
+        if (runTutorial)
         {
-            if (!menuManager.hasCompletedTutorial)
+            if (menuManager)
             {
-                currentState = GameStates.Intro;
-                doorScript.isLocked = true;
+                if (!menuManager.hasCompletedTutorial)
+                {
+                    currentState = GameStates.Intro;
+                    doorScript.isLocked = true;
+                }
+                else
+                {
+                    currentState = GameStates.Playing;
+                    doorScript.isLocked = false;
+                }
             }
             else
             {
@@ -121,8 +132,8 @@ public class GameManager : MonoBehaviour
 
         Dresser = GameObject.FindGameObjectWithTag("TutorialOutlined");
         Dresser.SetActive(false);
-        
-        
+
+
 
         FindObjectOfType<PlayerMovement>().SetTouchingSomething(true);
         FindObjectOfType<FPSCamera>().SetTouching(true);

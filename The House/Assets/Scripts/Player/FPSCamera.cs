@@ -53,7 +53,7 @@ public class FPSCamera : MonoBehaviour
                     if (Physics.Raycast(transform.position, transform.forward, out hit, interactableDistance))
                     {
                         GameObject hitObj = hit.collider.gameObject;
-                        if (hitObj.tag == "Interactable" || hitObj.tag == "Door" || hitObj.tag == "HorcruxManager" || hitObj.tag == "Drawer")
+                        if (hitObj.tag == "Interactable" || hitObj.tag == "Door" || hitObj.tag == "HorcruxManager" || hitObj.tag == "Drawer" || hitObj.tag == "Closet")
                         {
                             UpdateSprite(touchableSprite);
                         }
