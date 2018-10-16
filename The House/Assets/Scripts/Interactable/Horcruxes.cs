@@ -11,6 +11,11 @@ public class Horcruxes : MonoBehaviour
 
     public Transform[] positions;
 
+    public GameObject Skull;
+    public GameObject Knife;
+    public GameObject Candle;
+    public GameObject Chalk;
+
     //public GameObject[] items;
 
     // Use this for initialization
@@ -43,49 +48,81 @@ public class Horcruxes : MonoBehaviour
             Debug.Log("You need to give me positions to put the items");
             return;
         }
-        switch (ritualItem.name)
+        //switch (ritualItem.name)
+        //{
+        //    case "Item1":
+        //        //set gameobject position here
+        //        ritualItem.transform.position = positions[0].transform.position;
+        //        //reenable object
+        //        ritualItem.SetActive(true);
+        //        //items[0].SetActive(true);
+        //
+        //        break;
+        //    case "Item2":
+        //        //set gameobject position here
+        //        ritualItem.transform.position = positions[1].transform.position;
+        //        //reenable object
+        //        ritualItem.SetActive(true);
+        //        //items[1].SetActive(true);
+        //
+        //        break;
+        //    case "Item3":
+        //        //set gameobject position here
+        //        ritualItem.transform.position = positions[2].transform.position;
+        //        //reenable object
+        //        ritualItem.SetActive(true);
+        //        //items[2].SetActive(true);
+        //
+        //        break;
+        //    case "Item4":
+        //        //set gameobject position here
+        //        ritualItem.transform.position = positions[3].transform.position;
+        //        //reenable object
+        //        ritualItem.SetActive(true);
+        //        //items[3].SetActive(true);
+        //
+        //        break;
+        //    default:
+        //        //set gameobject position here
+        //        ritualItem.transform.position = positions[0].transform.position;
+        //        //reenable object
+        //        ritualItem.SetActive(true);
+        //
+        //        break;
+        //}
+        if (ritualItem.name == Skull.name + "(Clone)")
         {
-            case "Item1":
-                //set gameobject position here
-                ritualItem.transform.position = positions[0].transform.position;
-                //reenable object
-                ritualItem.SetActive(true);
-                //items[0].SetActive(true);
-
-                break;
-            case "Item2":
-                //set gameobject position here
-                ritualItem.transform.position = positions[1].transform.position;
-                //reenable object
-                ritualItem.SetActive(true);
-                //items[1].SetActive(true);
-
-                break;
-            case "Item3":
-                //set gameobject position here
-                ritualItem.transform.position = positions[2].transform.position;
-                //reenable object
-                ritualItem.SetActive(true);
-                //items[2].SetActive(true);
-
-                break;
-            case "Item4":
-                //set gameobject position here
-                ritualItem.transform.position = positions[3].transform.position;
-                //reenable object
-                ritualItem.SetActive(true);
-                //items[3].SetActive(true);
-
-                break;
-            default:
-                //set gameobject position here
-                ritualItem.transform.position = positions[0].transform.position;
-                //reenable object
-                ritualItem.SetActive(true);
-
-                break;
+            //set gameobject position here
+            ritualItem.transform.position = positions[0].transform.position;
+            //reenable object
+            ritualItem.SetActive(true);
+            //items[0].SetActive(true);
         }
-        
+        else if (ritualItem.name == Knife.name + "(Clone)")
+        {
+            //set gameobject position here
+            ritualItem.transform.position = positions[1].transform.position;
+            //reenable object
+            ritualItem.SetActive(true);
+            //items[1].SetActive(true);
+        }
+        else if (ritualItem.name == Candle.name + "(Clone)")
+        {
+            //set gameobject position here
+            ritualItem.transform.position = positions[2].transform.position;
+            //reenable object
+            ritualItem.SetActive(true);
+            //items[2].SetActive(true);
+        }
+        else if (ritualItem.name == Chalk.name + "(Clone)")
+        {
+            //set gameobject position here
+            ritualItem.transform.position = positions[3].transform.position;
+            //reenable object
+            ritualItem.SetActive(true);
+            //items[3].SetActive(true);
+        }
+
         currentNumberOfHorcruxes++;
     }
 }
