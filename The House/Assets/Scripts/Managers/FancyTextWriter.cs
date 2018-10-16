@@ -18,8 +18,11 @@ public class FancyTextWriter : MonoBehaviour
     bool doTheThing = false;
     public Animator anim;
     public GameObject other;
+	public float viewDistance;
 
     private Camera mainCamera;
+
+	public float timeToRead;
 
     private void Awake()
     {
@@ -37,7 +40,7 @@ public class FancyTextWriter : MonoBehaviour
     void Update()
     {
         RaycastHit hitty;
-        if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hitty, 2.5f))
+		if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hitty, viewDistance))
         {
             if (hitty.collider.gameObject == myCollider)
             {
@@ -63,7 +66,10 @@ public class FancyTextWriter : MonoBehaviour
 
         if(index >= desiredString.Length)
         {
-            anim.SetTrigger("FadeText");
+			timeToRead -= Time.deltaTime;
+			if(timeToRead <= 0)
+				anim.SetTrigger("FadeText");
+				
         }
     }
 
