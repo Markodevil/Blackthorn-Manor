@@ -182,11 +182,35 @@ public class PatrolState : State<GhostAI>
                     //Swaping to new track
                     if (owner.ReadyToSwapTrack == true)
                     {
-                        currentWayPoint = owner.normalTrackWayPoint;
-                        //deeons test thingy
+                        //Grab a list of waypoints
+                        normalWayPoints = GameObject.FindGameObjectsWithTag("Waypoint");
+                        //Assign a distance to each waypoint from the ghost
+                        for (int i = 0; i < normalWayPoints.Length; i++)
+                        {
+                            //if compare gameobject thing is null
+                            if (!thingy)
+                            {
+                                //set the stuff
+                                thingy = normalWayPoints[i];
+                                lowestMag = (normalWayPoints[i].transform.position - owner.transform.position).magnitude;
+                            }
+                            //otherwise
+                            else
+                            {
+                                //compare magnitude of current waypoint to the lowest magnitude
+                                if ((normalWayPoints[i].transform.position - owner.transform.position).magnitude < lowestMag)
+                                {
+                                    //set the stuff if current magnitude is less than lowestmag
+                                    thingy = normalWayPoints[i];
+                                    lowestMag = (normalWayPoints[i].transform.position - owner.transform.position).magnitude;
+                                }
+                            }
+                        }
+                        currentWayPoint = thingy.GetComponent<ConnectedWayPoint>();
                         owner.currentWayPoint = currentWayPoint;
                         owner.ReadyToSwapTrack = false;
                     }
+
                     //This can never fire if we are waiting
                     Debug.Log("Not PartrolWaiting");
                     SetDestination(owner);
