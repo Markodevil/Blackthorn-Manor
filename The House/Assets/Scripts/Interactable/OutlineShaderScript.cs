@@ -57,12 +57,10 @@ public class OutlineShaderScript : MonoBehaviour {
     {
         if(other.tag == "RequiredItem")
         {
-            Debug.Log("Collision");
             toggleOutline = true;
         }
         else
         {
-            Debug.Log("NoCollision");
             toggleOutline = false;
 
         }
