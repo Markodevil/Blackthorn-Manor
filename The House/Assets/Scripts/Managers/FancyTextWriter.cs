@@ -14,6 +14,15 @@ public class FancyTextWriter : MonoBehaviour
     public float timeBetweenCharacters;
     float timer;
     int index = 0;
+    public GameObject myCollider;
+    bool doTheThing = false;
+
+    private Camera mainCamera;
+
+    private void Awake()
+    {
+        mainCamera = Camera.main;
+    }
 
     // Use this for initialization
     void Start()
@@ -25,16 +34,28 @@ public class FancyTextWriter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
-        if (timer <= 0)
+        RaycastHit hitty;
+        if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hitty, 2.5f))
         {
-            index++;
-            if (index <= desiredString.Length)
+            if (hitty.collider.gameObject == myCollider)
             {
-                currentString = desiredString.Substring(0, index);
-                UIText.text = currentString;
-                timer = timeBetweenCharacters;
+                doTheThing = true;
+            }
+        }
 
+        if (doTheThing)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                index++;
+                if (index <= desiredString.Length)
+                {
+                    currentString = desiredString.Substring(0, index);
+                    UIText.text = currentString;
+                    timer = timeBetweenCharacters;
+
+                }
             }
         }
     }
