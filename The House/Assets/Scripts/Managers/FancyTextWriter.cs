@@ -16,6 +16,8 @@ public class FancyTextWriter : MonoBehaviour
     int index = 0;
     public GameObject myCollider;
     bool doTheThing = false;
+    public Animator anim;
+    public GameObject other;
 
     private Camera mainCamera;
 
@@ -58,5 +60,15 @@ public class FancyTextWriter : MonoBehaviour
                 }
             }
         }
+
+        if(index >= desiredString.Length)
+        {
+            anim.SetTrigger("FadeText");
+        }
+    }
+
+    public void FadeThingies()
+    {
+        anim.SetTrigger("FadeStuff");
     }
 }
