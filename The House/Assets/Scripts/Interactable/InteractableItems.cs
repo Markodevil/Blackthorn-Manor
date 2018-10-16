@@ -8,17 +8,17 @@ public class InteractableItems : MonoBehaviour
 {
 
     public GameObject player;
-    //public GameObject playerCam;
+    private GameObject playerCam;
+    public float throwForce;
+    private bool throwReady = false;
     //float mouseX;
-    //public float throwForce;
     //public float releaseForce;
     //public bool playerHere;
-    public bool throwSoundReady;
     //public bool touched;
     //
     //public AudioClip collisionClip;
     //
-    //Rigidbody rb;
+    Rigidbody rb;
     AudioSource audioSource;
     ////PlayerMovement playerMovementCS;
     SpringPickup playerSpringPickUp;
@@ -42,8 +42,9 @@ public class InteractableItems : MonoBehaviour
         {
             //playerMovementCS = player.GetComponent<PlayerMovement>();
             playerSpringPickUp = player.GetComponentInChildren<SpringPickup>();
+            playerCam = GameObject.FindGameObjectWithTag("MainCamera");
         }
-        //rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
     }
     //
@@ -96,25 +97,39 @@ public class InteractableItems : MonoBehaviour
     //    if (playerSpringPickUp.holdingSomething == true)
     //        throwSoundReady = true;
     //}
+    private void Update()
+    {
+        //Check if we have picked up an item
+        if (playerSpringPickUp.holdingSomething)
+        {
+            //We are holding the item
+            throwReady = true;
+        }
+        //If we have check if we've let go of the item 
+        if (throwReady && playerSpringPickUp.holdingSomething == false)
+        {
+            //If we have throw the item
+            rb.AddForce(playerCam.transform.forward * throwForce);
+            throwReady = false;
+        }
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (playerSpringPickUp.holdingSomething)
         {
-            throwSoundReady = true;
+            throwReady = true;
         }
         else
         {
             //playerSpringPickUp.InputEnd();
-            if (throwSoundReady)
+            if (throwReady)
             {
                 audioSource.Play();
                 CreateSoundColliders();
-                throwSoundReady = false;
+                throwReady = false;
             }
         }
-
-
     }
 
     //public void SetHolding(bool status)
