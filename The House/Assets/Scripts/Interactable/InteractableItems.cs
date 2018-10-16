@@ -13,7 +13,7 @@ public class InteractableItems : MonoBehaviour
     //public float throwForce;
     //public float releaseForce;
     //public bool playerHere;
-    //public bool throwSoundReady;
+    public bool throwSoundReady;
     //public bool touched;
     //
     //public AudioClip collisionClip;
@@ -99,11 +99,21 @@ public class InteractableItems : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        CreateSoundColliders();
-        if(playerSpringPickUp.holdingSomething)
+        if (playerSpringPickUp.holdingSomething)
         {
-            playerSpringPickUp.InputEnd();
+            throwSoundReady = true;
         }
+        else
+        {
+            //playerSpringPickUp.InputEnd();
+            if (throwSoundReady)
+            {
+                audioSource.Play();
+                CreateSoundColliders();
+                throwSoundReady = false;
+            }
+        }
+
 
     }
 
@@ -125,13 +135,13 @@ public class InteractableItems : MonoBehaviour
     //
     public void CreateSoundColliders()
     {
-    
+
         Collider[] hitCollider = Physics.OverlapSphere(transform.position, soundRange);
         for (int i = 0; i < hitCollider.Length; i++)
         {
             if (hitCollider[i].gameObject.tag == "SoundTrigger")
             {
-    
+
                 Debug.Log("Ghost heard the sound");
                 GhostAI ghostAI = hitCollider[i].gameObject.GetComponentInParent<GhostAI>();
                 if (ghostAI)
@@ -142,9 +152,9 @@ public class InteractableItems : MonoBehaviour
         }
     }
     //
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.red;
-    //    Gizmos.DrawWireSphere(transform.position, soundRange);
-    //}
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, soundRange);
+    }
 }
