@@ -87,6 +87,8 @@ public class GameManager : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player");
         deathCamera = GameObject.FindGameObjectWithTag("DeathCam");
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        camView = GameObject.FindGameObjectWithTag("camView");
+        camPosScript = camView.GetComponent<CameraPositions>();
 
 
         CS = FindObjectOfType<CameraSwitch>();
@@ -119,8 +121,8 @@ public class GameManager : MonoBehaviour
 
         Dresser = GameObject.FindGameObjectWithTag("TutorialOutlined");
         Dresser.SetActive(false);
-        camView = GameObject.FindGameObjectWithTag("camView");
-        camPosScript = camView.GetComponent<CameraPositions>();
+        
+        
 
         FindObjectOfType<PlayerMovement>().SetTouchingSomething(true);
         FindObjectOfType<FPSCamera>().SetTouching(true);
