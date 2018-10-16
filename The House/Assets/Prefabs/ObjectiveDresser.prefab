@@ -117,7 +117,6 @@ GameObject:
   - component: {fileID: 33319395597143078}
   - component: {fileID: 23235425588309252}
   - component: {fileID: 114389390798211134}
-  - component: {fileID: 65749580284274834}
   m_Layer: 0
   m_Name: TutorialOutline
   m_TagString: TutorialOutlined
@@ -810,18 +809,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5206193, y: 1, z: 0.25}
   m_Center: {x: 0.008333564, y: 1.1543031e-10, z: -0.013463993}
---- !u!65 &65749580284274834
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1611758612671534}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.3270438, y: 1.2430866, z: 0.9901743}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65801237128566858
 BoxCollider:
   m_ObjectHideFlags: 1
