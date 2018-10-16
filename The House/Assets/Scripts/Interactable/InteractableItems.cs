@@ -11,6 +11,7 @@ public class InteractableItems : MonoBehaviour
     private GameObject playerCam;
     public float throwForce;
     private bool throwReady = false;
+    private bool soundReady = false;
     //float mouseX;
     //public float releaseForce;
     //public bool playerHere;
@@ -104,6 +105,7 @@ public class InteractableItems : MonoBehaviour
         {
             //We are holding the item
             throwReady = true;
+            soundReady = true;
         }
         //If we have check if we've let go of the item 
         if (throwReady && playerSpringPickUp.holdingSomething == false)
@@ -116,18 +118,14 @@ public class InteractableItems : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (playerSpringPickUp.holdingSomething)
-        {
-            throwReady = true;
-        }
-        else
+        if (playerSpringPickUp.holdingSomething == false)
         {
             //playerSpringPickUp.InputEnd();
-            if (throwReady)
+            if (soundReady)
             {
                 audioSource.Play();
                 CreateSoundColliders();
-                throwReady = false;
+                soundReady = false;
             }
         }
     }
