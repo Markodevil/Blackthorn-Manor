@@ -10,7 +10,6 @@ public class DrawerScript : MonoBehaviour
     public float mouseX;
     public float drawerSpeed;
     private GameObject Player;
-    public GameObject Outline;
 
     public Rigidbody rb;
     public AudioSource audio;
@@ -18,13 +17,11 @@ public class DrawerScript : MonoBehaviour
     private Collision Col;
     FPSCamera fpsCamera;
     bool drawerSoundBool;
-    // Toggles the outline when collided with the back of the dresser
-    public bool toggleOutline;
+
     private int RandomDrawerSound;
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        Outline = GameObject.FindGameObjectWithTag("Outlined");
         fpsCamera = GetComponent<FPSCamera>();
     }
     // Use this for initialization
