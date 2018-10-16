@@ -70,6 +70,7 @@ GameObject:
   - component: {fileID: 33169508218819464}
   - component: {fileID: 23857943184161544}
   - component: {fileID: 114778340361706800}
+  - component: {fileID: 65593752745620136}
   m_Layer: 0
   m_Name: Outline
   m_TagString: Outlined
@@ -717,6 +718,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5465457, y: 0.1384743, z: 0.8792466}
   m_Center: {x: 1.6161329e-15, y: -0.050291497, z: 0.38627464}
+--- !u!65 &65593752745620136
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1328262685777928}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.3270438, y: 1.0991368, z: 0.88908744}
+  m_Center: {x: 1.6991312e-16, y: -0.07197487, z: 0.050543413}
 --- !u!65 &65717021115057316
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -921,8 +934,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1ff96e55a97ef4fb4eeefb343db4bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOutlined: {fileID: 0}
-  dresserOutline: {fileID: 0}
 --- !u!153 &153251918165938214
 ConfigurableJoint:
   m_ObjectHideFlags: 1

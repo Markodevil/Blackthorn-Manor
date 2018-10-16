@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DrawerScript : MonoBehaviour {
+public class DrawerScript : MonoBehaviour
+{
 
     bool isOpen = false;
     public float mouseY;
     public float mouseX;
-    public float drawerSpeed; 
+    public float drawerSpeed;
     private GameObject Player;
     public GameObject Outline;
 
@@ -27,14 +28,16 @@ public class DrawerScript : MonoBehaviour {
         fpsCamera = GetComponent<FPSCamera>();
     }
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
 
         isOpen = false;
 
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         // ignores physics between player and dresser
         Physics.IgnoreCollision(Player.GetComponent<CapsuleCollider>(), this.GetComponent<BoxCollider>());
         //--------------------------------------------------------------------------------------
@@ -67,7 +70,7 @@ public class DrawerScript : MonoBehaviour {
             audio.Play();
             drawerSoundBool = false;
         }
-      
+
         // Checks if can be opened and if player is positioned infront of the Dresser 
         if (isOpen && Vector3.Dot(transform.forward, Direction) > 0)
         {
@@ -102,36 +105,6 @@ public class DrawerScript : MonoBehaviour {
         audio.clip = drawerSound[RandomDrawerSound];
         drawerSoundBool = true;
     }
-    //--------------------------------------------------------------------------------------
-    // Checks if there is a collision between the dresser and a required item
-    //
-    // Param 
-    //      Gameobject: determines if the outlined gamesobject is on or off
-    // Return 
-    //     if theres a collision between the dresser and required item the dressers outline
-    //     will be enabled
-    //--------------------------------------------------------------------------------------
-    private void OnCollisionEnter(Collision collision)
-    {          
-        if (collision.gameObject.tag == "RequiredItem")
-         {
-            this.Outline.SetActive(true);
-            toggleOutline = true;
 
-        }
-        else
-        {
-            this.Outline.SetActive(false);
-        }
-       
-    }
-    private void OnCollisionStay(Collision collision)
-    {
-        if (toggleOutline)
-        {
-     
-           this.Outline.SetActive(true);    
-        }
-    }
 
 }
