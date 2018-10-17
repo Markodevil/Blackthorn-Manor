@@ -85,20 +85,43 @@ public class ClosetScript : MonoBehaviour {
             rb.AddForceAtPosition(Player.transform.forward * mouseY * closetOpenSpeed, Player.transform.position);
 
         }
-       
-        // checks if player is on the right or left of the dresser
-        // if on the right the player can open the dresser using mouseX 
-        if (isOpen && Vector3.Dot(transform.right, Direction) < 0)
-        {
-            rb.AddForceAtPosition(Player.transform.forward * mouseX * closetOpenSpeed, Player.transform.position);
-        }
-        // if on the left the player can open the dresser using -mouseX 
-        if (isOpen && Vector3.Dot(-transform.right, Direction) < 0)
-        {
-            rb.AddForceAtPosition(Player.transform.forward * -mouseX * closetOpenSpeed, Player.transform.position);
-        }
 
+
+       // if the player is in the forward position of the dresser you can open it using -mouseX 
+       if (isOpen && Vector3.Dot(transform.forward, Direction) < 0)
+       {
+           Debug.Log("Front");
+           if (isOpen && Vector3.Dot(transform.right, Direction) < 0)
+           {
+       
+               rb.AddForceAtPosition(Player.transform.forward * -mouseX * closetOpenSpeed, Player.transform.position);
+           }
+           else
+           {
+       
+               rb.AddForceAtPosition(Player.transform.forward * mouseX * -closetOpenSpeed, Player.transform.position);
+       
+           }
+       }
+        // if the player is in the -forward position of the dresser you can open it using -mouseX 
+        if (isOpen && Vector3.Dot(transform.forward, Direction) > 0)
+        {
+            Debug.Log("Behind");
+
+            if (isOpen && Vector3.Dot(transform.right, Direction) > 0)
+            {
+
+                rb.AddForceAtPosition(Player.transform.forward * -mouseX * closetOpenSpeed, Player.transform.position);
+            }
+            else
+            {
+
+                rb.AddForceAtPosition(-Player.transform.forward * mouseX * -closetOpenSpeed, Player.transform.position);
+
+            }
+        }
     }
+
 
     public void ChangeClosetState()
     {

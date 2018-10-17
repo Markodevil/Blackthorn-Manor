@@ -30,6 +30,7 @@ TagManager:
   - EasterEgg
   - camView
   - Closet
+  - KitchenDoor
   layers:
   - Default
   - TransparentFX

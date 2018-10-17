@@ -55,7 +55,20 @@ public class OpenClosetScript : MonoBehaviour {
                 hit.collider.transform.GetComponent<ClosetScript>().ChangeClosetState();
             }
         }
-
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Physics.Raycast(ray, out hit, interactDistance))
+        {
+            if (hit.collider.CompareTag("KitchenDoor"))
+            {
+                Closet = hit.collider.gameObject;
+                distance = transform.position - Closet.transform.position;
+                distance.y = 0;
+                dist = distance.magnitude;
+                isHoldingDown = true;
+                fpsCamera.SetTouching(true);
+                //Goes into ClosetScript and allows player to open doors 
+                hit.collider.transform.GetComponent<KitchenDoorScript>().ChangekitchenDoorState();
+            }
+        }
         // if player is holding down mouse1 and moves away from the door
         // camera movement will be enabled 
         if (dist > 4 && isHoldingDown)
