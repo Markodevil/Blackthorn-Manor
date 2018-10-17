@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     public Transform ghostLookAt;
 
     [Header("Intro stuff")]
-    
+
     public bool runTutorial = false;
     public string[] prompts;
     private bool hasEnteredState = false;
@@ -69,8 +69,18 @@ public class GameManager : MonoBehaviour
     private bool stuffInMyFace = false;
     private float inMyFaceTimer = 5.0f;
 
+    class ResetObjects
+    {
+        public GameObject item;
+        public Transform itemPosition;
+        public ResetObjects(GameObject item, Transform itemPosition)
+        {
+            this.item = item;
+            this.itemPosition = itemPosition;
+        }
+    }
 
-
+    private List<ResetObjects> resetItems;
 
     public enum GameStates
     {
@@ -93,6 +103,7 @@ public class GameManager : MonoBehaviour
         camView = GameObject.FindGameObjectWithTag("camView");
         camPosScript = camView.GetComponent<CameraPositions>();
 
+        resetItems = new List<ResetObjects>();
 
         CS = FindObjectOfType<CameraSwitch>();
         doorScript = FindObjectOfType<OpenDoorScript>();
@@ -135,10 +146,17 @@ public class GameManager : MonoBehaviour
 
 
 
-        FindObjectOfType<PlayerMovement>().SetTouchingSomething(true);
-        FindObjectOfType<FPSCamera>().SetTouching(true);
+        FindObjectOfType<PlayerMovement>().SetTouchingSomething(false);
+        FindObjectOfType<FPSCamera>().SetTouching(false);
         deathCamera.SetActive(false);
         //postProcessing.enabled = false;
+
+        GameObject[] items = GameObject.FindObjectsOfType<GameObject>();
+        foreach(GameObject go in items)
+        {
+            ResetObjects tempObj = new ResetObjects(go, go.transform);
+            resetItems.Add(tempObj);
+        }
     }
 
     // Update is called once per frame
@@ -186,96 +204,162 @@ public class GameManager : MonoBehaviour
                 dumbTimer -= Time.deltaTime;
 
                 //what state in the tutorial we are in
+                //switch (tutorialState)
+                //{
+                //    //open phone
+                //    case 0:
+                //        tutorialText.text = prompts[0];
+                //        if (Player.GetComponent<Animator>().enabled)
+                //        {
+                //            CS.enabled = false;
+                //        }
+                //        else
+                //        {
+                //            CS.enabled = true;
+                //        }
+                //
+                //        if (CS.enabled)
+                //        {
+                //            if (Input.GetKeyDown(KeyCode.F))
+                //            {
+                //                textAnimation.SetTrigger("FadeOut");
+                //                //textAnimation.SetBool("bFadeOut", true);
+                //                tutorialState++;
+                //                hasEnteredState = false;
+                //                dumbTimer = 2.0f;
+                //                break;
+                //            }
+                //        }
+                //        hasEnteredState = true;
+                //        break;
+                //    //put phone away
+                //    case 1:
+                //        if (!hasEnteredState)
+                //        {
+                //            textAnimation.SetTrigger("FadeIn");
+                //            //textAnimation.SetBool("bFadeOut", false);
+                //            //textAnimation.SetBool("bFadeIn", true);
+                //        }
+                //        if (dumbTimer <= 0)
+                //        {
+                //            if (Input.GetKeyDown(KeyCode.F))
+                //            {
+                //                textAnimation.SetTrigger("FadeOut");
+                //                //textAnimation.SetBool("bFadeIn", false);
+                //                //textAnimation.SetBool("bFadeOut", true);
+                //                tutorialState++;
+                //                hasEnteredState = false;
+                //                FindObjectOfType<PlayerMovement>().SetTouchingSomething(false);
+                //                FindObjectOfType<FPSCamera>().SetTouching(false);
+                //                dumbTimer = 2.0f;
+                //                Dresser.SetActive(true);
+                //                break;
+                //            }
+                //        }
+                //        hasEnteredState = true;
+                //        break;
+                //    //open drawer
+                //    case 2:
+                //        RaycastHit rayHit;
+                //        if (!hasEnteredState)
+                //        {
+                //            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rayHit, 5.0f))
+                //            {
+                //                if (rayHit.collider.gameObject.tag == "Dresser")
+                //                {
+                //                    textAnimation.SetTrigger("FadeIn");
+                //                    //textAnimation.SetBool("bFadeOut", false);
+                //                    //textAnimation.SetBool("bFadeIn", true);
+                //                    hasEnteredState = true;
+                //                }
+                //            }
+                //
+                //        }
+                //        if (hasTouchedDresser)
+                //        {
+                //            textAnimation.SetTrigger("FadeOut");
+                //            //textAnimation.SetBool("bFadeIn", false);
+                //            //textAnimation.SetBool("bFadeOut", true);
+                //            tutorialState++;
+                //            hasEnteredState = false;
+                //            hasTouchedDresser = false;
+                //            break;
+                //        }
+                //        break;
+                //    //pick up item
+                //    case 3:
+                //        if (!hasEnteredState)
+                //        {
+                //            textAnimation.SetTrigger("FadeIn");
+                //            dumbTimer = 5.0f;
+                //        }
+                //
+                //        RaycastHit hit;
+                //        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2.5f))
+                //        {
+                //            if (hit.collider.gameObject.name == "TutorialBook")
+                //            {
+                //                if (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0))
+                //                {
+                //                    textAnimation.SetTrigger("FadeOut");
+                //                    tutorialState++;
+                //                    hasEnteredState = false;
+                //                    Destroy(hit.collider.gameObject);
+                //                    //menuManager.hasCompletedTutorial = true;
+                //                    //doorScript.isLocked = false;
+                //                    //currentState = GameStates.Playing;
+                //                    Dresser.SetActive(false);
+                //
+                //                    break;
+                //                }
+                //            }
+                //        }
+                //        //if (dumbTimer <= 0)
+                //        //{
+                //        //    textAnimation.SetTrigger("FadeOut");
+                //        //    tutorialState++;
+                //        //    hasEnteredState = false;
+                //        //    menuManager.hasCompletedTutorial = true;
+                //        //    currentState = GameStates.Playing;
+                //        //    break;
+                //        //}
+                //        hasEnteredState = true;
+                //        break;
+                //
+                //    case 4:
+                //        FindObjectOfType<PlayerMovement>().SetTouchingSomething(true);
+                //        FindObjectOfType<FPSCamera>().SetTouching(true);
+                //        CS.enabled = false;
+                //        tutorialPageThing.SetActive(true);
+                //
+                //
+                //        if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0))
+                //        {
+                //            tutorialState++;
+                //            hasEnteredState = false;
+                //            menuManager.hasCompletedTutorial = true;
+                //            doorScript.isLocked = false;
+                //            currentState = GameStates.Playing;
+                //
+                //            tutorialPageThing.SetActive(false);
+                //
+                //            FindObjectOfType<PlayerMovement>().SetTouchingSomething(false);
+                //            FindObjectOfType<FPSCamera>().SetTouching(false);
+                //            CS.enabled = true;
+                //            break;
+                //        }
+                //        break;
+                //
+                //    default:
+                //        foreach (MonoBehaviour mon in scriptsToTurnOff)
+                //        {
+                //            mon.enabled = true;
+                //        }
+                //        break;
+                //}
                 switch (tutorialState)
                 {
-                    //open phone
                     case 0:
-                        tutorialText.text = prompts[0];
-                        if (Player.GetComponent<Animator>().enabled)
-                        {
-                            CS.enabled = false;
-                        }
-                        else
-                        {
-                            CS.enabled = true;
-                        }
-
-                        if (CS.enabled)
-                        {
-                            if (Input.GetKeyDown(KeyCode.F))
-                            {
-                                textAnimation.SetTrigger("FadeOut");
-                                //textAnimation.SetBool("bFadeOut", true);
-                                tutorialState++;
-                                hasEnteredState = false;
-                                dumbTimer = 2.0f;
-                                break;
-                            }
-                        }
-                        hasEnteredState = true;
-                        break;
-                    //put phone away
-                    case 1:
-                        if (!hasEnteredState)
-                        {
-                            textAnimation.SetTrigger("FadeIn");
-                            //textAnimation.SetBool("bFadeOut", false);
-                            //textAnimation.SetBool("bFadeIn", true);
-                        }
-                        if (dumbTimer <= 0)
-                        {
-                            if (Input.GetKeyDown(KeyCode.F))
-                            {
-                                textAnimation.SetTrigger("FadeOut");
-                                //textAnimation.SetBool("bFadeIn", false);
-                                //textAnimation.SetBool("bFadeOut", true);
-                                tutorialState++;
-                                hasEnteredState = false;
-                                FindObjectOfType<PlayerMovement>().SetTouchingSomething(false);
-                                FindObjectOfType<FPSCamera>().SetTouching(false);
-                                dumbTimer = 2.0f;
-                                Dresser.SetActive(true);
-                                break;
-                            }
-                        }
-                        hasEnteredState = true;
-                        break;
-                    //open drawer
-                    case 2:
-                        RaycastHit rayHit;
-                        if (!hasEnteredState)
-                        {
-                            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rayHit, 5.0f))
-                            {
-                                if (rayHit.collider.gameObject.tag == "Dresser")
-                                {
-                                    textAnimation.SetTrigger("FadeIn");
-                                    //textAnimation.SetBool("bFadeOut", false);
-                                    //textAnimation.SetBool("bFadeIn", true);
-                                    hasEnteredState = true;
-                                }
-                            }
-
-                        }
-                        if (hasTouchedDresser)
-                        {
-                            textAnimation.SetTrigger("FadeOut");
-                            //textAnimation.SetBool("bFadeIn", false);
-                            //textAnimation.SetBool("bFadeOut", true);
-                            tutorialState++;
-                            hasEnteredState = false;
-                            hasTouchedDresser = false;
-                            break;
-                        }
-                        break;
-                    //pick up item
-                    case 3:
-                        if (!hasEnteredState)
-                        {
-                            textAnimation.SetTrigger("FadeIn");
-                            dumbTimer = 5.0f;
-                        }
-
                         RaycastHit hit;
                         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2.5f))
                         {
@@ -283,37 +367,19 @@ public class GameManager : MonoBehaviour
                             {
                                 if (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0))
                                 {
-                                    textAnimation.SetTrigger("FadeOut");
                                     tutorialState++;
-                                    hasEnteredState = false;
                                     Destroy(hit.collider.gameObject);
-                                    //menuManager.hasCompletedTutorial = true;
-                                    //doorScript.isLocked = false;
-                                    //currentState = GameStates.Playing;
                                     Dresser.SetActive(false);
-
                                     break;
                                 }
                             }
                         }
-                        //if (dumbTimer <= 0)
-                        //{
-                        //    textAnimation.SetTrigger("FadeOut");
-                        //    tutorialState++;
-                        //    hasEnteredState = false;
-                        //    menuManager.hasCompletedTutorial = true;
-                        //    currentState = GameStates.Playing;
-                        //    break;
-                        //}
-                        hasEnteredState = true;
                         break;
-
-                    case 4:
+                    case 1:
                         FindObjectOfType<PlayerMovement>().SetTouchingSomething(true);
                         FindObjectOfType<FPSCamera>().SetTouching(true);
                         CS.enabled = false;
                         tutorialPageThing.SetActive(true);
-
 
                         if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0))
                         {
@@ -331,14 +397,10 @@ public class GameManager : MonoBehaviour
                             break;
                         }
                         break;
-
                     default:
-                        foreach (MonoBehaviour mon in scriptsToTurnOff)
-                        {
-                            mon.enabled = true;
-                        }
                         break;
                 }
+
                 foreach (MonoBehaviour mon in scriptsToTurnOff)
                 {
                     mon.enabled = true;
@@ -752,5 +814,14 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
+    }
+
+    public void ResetEverything()
+    {
+        for (int i = 0; i < resetItems.Count; i++)
+        {
+            resetItems[i].item.transform.position = resetItems[i].itemPosition.position;
+            resetItems[i].item.transform.rotation = resetItems[i].itemPosition.rotation;
+        }
     }
 }
