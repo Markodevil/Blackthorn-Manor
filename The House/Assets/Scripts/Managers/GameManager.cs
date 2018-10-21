@@ -152,7 +152,7 @@ public class GameManager : MonoBehaviour
         //postProcessing.enabled = false;
 
         GameObject[] items = GameObject.FindObjectsOfType<GameObject>();
-        foreach(GameObject go in items)
+        foreach (GameObject go in items)
         {
             ResetObjects tempObj = new ResetObjects(go, go.transform);
             resetItems.Add(tempObj);
@@ -818,10 +818,15 @@ public class GameManager : MonoBehaviour
 
     public void ResetEverything()
     {
-        for (int i = 0; i < resetItems.Count; i++)
-        {
-            resetItems[i].item.transform.position = resetItems[i].itemPosition.position;
-            resetItems[i].item.transform.rotation = resetItems[i].itemPosition.rotation;
-        }
+        //for (int i = 0; i < resetItems.Count; i++)
+        //{
+        //    resetItems[i].item.transform.position = resetItems[i].itemPosition.position;
+        //    resetItems[i].item.transform.rotation = resetItems[i].itemPosition.rotation;
+        //}
+
+        if (menuManager)
+            SceneManager.LoadScene(menuManager.sceneName);
+        else
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
