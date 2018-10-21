@@ -130,13 +130,13 @@ public class GameManager : MonoBehaviour
             else
             {
                 currentState = GameStates.Playing;
-                doorScript.isLocked = false;
+                doorScript.isLocked = true;
             }
         }
         else
         {
             currentState = GameStates.Playing;
-            doorScript.isLocked = false;
+            doorScript.isLocked = true;
         }
         //currentState = GameStates.Intro;
         SpawnItems();
@@ -467,7 +467,7 @@ public class GameManager : MonoBehaviour
                         FindObjectOfType<PlayerMovement>().SetTouchingSomething(false);
                         FindObjectOfType<FPSCamera>().SetTouching(false);
                         CS.enabled = true;
-
+                        doorScript.isLocked = false;
                         stuffInMyFace = false;
                     }
                 }
