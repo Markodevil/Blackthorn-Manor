@@ -146,8 +146,8 @@ public class GameManager : MonoBehaviour
 
 
 
-        FindObjectOfType<PlayerMovement>().SetTouchingSomething(false);
-        FindObjectOfType<FPSCamera>().SetTouching(false);
+        FindObjectOfType<PlayerMovement>().SetTouchingSomething(true);
+        FindObjectOfType<FPSCamera>().SetTouching(true);
         deathCamera.SetActive(false);
         //postProcessing.enabled = false;
 
