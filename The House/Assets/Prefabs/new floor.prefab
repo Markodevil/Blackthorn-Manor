@@ -38,9 +38,9 @@ GameObject:
   - component: {fileID: 23837210203248088}
   - component: {fileID: 95333397133442478}
   - component: {fileID: 64841755985454686}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: new main flooring
-  m_TagString: Untagged
+  m_TagString: Timber
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,9 +57,9 @@ GameObject:
   - component: {fileID: 23381158162610002}
   - component: {fileID: 95765751329678760}
   - component: {fileID: 64691583737658030}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: new Study Flooring
-  m_TagString: Untagged
+  m_TagString: Carpet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,9 +77,9 @@ GameObject:
   - component: {fileID: 95192781915641950}
   - component: {fileID: 64920126605817394}
   - component: {fileID: 64867893130287916}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: new master bathroom floors
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,9 +96,9 @@ GameObject:
   - component: {fileID: 23165222712312688}
   - component: {fileID: 95754734304303814}
   - component: {fileID: 64507544284915676}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: new Bedroom Flooring
-  m_TagString: Untagged
+  m_TagString: Carpet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,9 +115,9 @@ GameObject:
   - component: {fileID: 23742213207277680}
   - component: {fileID: 95388275469067984}
   - component: {fileID: 64320288654689308}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: new Kitchen Flooring
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,9 +135,9 @@ GameObject:
   - component: {fileID: 95427522562448878}
   - component: {fileID: 64233870066339396}
   - component: {fileID: 64767239692797010}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: new master bedroom floors
-  m_TagString: Untagged
+  m_TagString: Carpet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,9 +154,9 @@ GameObject:
   - component: {fileID: 23084476944197538}
   - component: {fileID: 95576291028908142}
   - component: {fileID: 64970422826185630}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: new Bathroom Flooring
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -188,7 +188,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1692059018070896}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4139197020593288}
@@ -201,7 +201,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1803195272010036}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 432.00003, y: 0, z: 1893}
+  m_LocalPosition: {x: 458, y: 0, z: 1856}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4139197020593288}
@@ -214,7 +214,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1468381071254732}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -607, y: 0, z: 872.99994}
+  m_LocalPosition: {x: -870, y: 0, z: 678}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4139197020593288}
@@ -227,7 +227,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1874428480657106}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -160.1, y: 0, z: 774.99994}
+  m_LocalPosition: {x: -160.1, y: 0, z: 787.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4139197020593288}
@@ -240,7 +240,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1843247697572758}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -994.00006, y: 0, z: -871.0001}
+  m_LocalPosition: {x: -994.00006, y: 0, z: -930}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4139197020593288}
@@ -286,7 +286,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 4ebcce0325ca1584085449d71674a4ee, type: 3}
+  - {fileID: 2100000, guid: 85cda21b9d8e9d84389b06b93e5dcbf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -320,7 +320,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 0d439fda5b32d0543a2d4268bf9b7fc2, type: 3}
+  - {fileID: 2100000, guid: 98789bb070170b24cb9ca27d048d3795, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -354,7 +354,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d4a3266cb41e906489fec3de16b026e1, type: 3}
+  - {fileID: 2100000, guid: 98789bb070170b24cb9ca27d048d3795, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -422,7 +422,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: b3a7192e0a0cbb84a898687052fca657, type: 3}
+  - {fileID: 2100000, guid: 85cda21b9d8e9d84389b06b93e5dcbf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -456,7 +456,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 012f0f5e8b01233488c8900b5f336c16, type: 3}
+  - {fileID: 2100000, guid: 85cda21b9d8e9d84389b06b93e5dcbf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -490,7 +490,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 5192fb291d4e9064083c74bf243035b3, type: 3}
+  - {fileID: 2100000, guid: 133d3435daa4d714891bae9ce9052559, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
