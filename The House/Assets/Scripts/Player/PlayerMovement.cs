@@ -61,8 +61,6 @@ public class PlayerMovement : MonoBehaviour
     public Sprite walking;
     public Sprite sprinting;
     public Sprite crouching;
-
-    public Text velocityTracker;
     public enum howAmIMoving
     {
         notMoving,
@@ -137,8 +135,6 @@ public class PlayerMovement : MonoBehaviour
         //}
         //Debug.Log(isRunning);
         //Debug.Log(currentMovementState);
-
-        //velocityTracker.text = charControl.velocity.magnitude.ToString();
 
         if (Panic && PlayPanicSound)
         {
@@ -338,8 +334,8 @@ public class PlayerMovement : MonoBehaviour
         Horizontal = Input.GetAxis("Horizontal");
         Vertical = Input.GetAxis("Vertical");
 
-        Vector3 MoveDirectionSide = transform.right * Horizontal;
-        Vector3 MoveDirectionForward = transform.forward * Vertical;
+        Vector3 MoveDirectionSide = transform.right * Horizontal * speed;
+        Vector3 MoveDirectionForward = transform.forward * Vertical * speed;
 
         if (!isCreepin)
         {
@@ -424,14 +420,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //move
-        //Vector3 move = new Vector3(Horizontal, Vertical, 0.0f);
-        //charControl.SimpleMove(Vector3.ClampMagnitude(move, speed) * Time.deltaTime);
+        charControl.SimpleMove(MoveDirectionSide);
+        charControl.SimpleMove(MoveDirectionForward);
+        Vector3 Move = MoveDirectionSide + MoveDirectionForward;
+        // Move.Normalize();
+        transform.position += Vector3.ClampMagnitude(Move, speed) * Time.deltaTime;
 
-        Vector3 move = MoveDirectionForward + MoveDirectionSide;
-        move.Normalize();
-        //charControl.SimpleMove(MoveDirectionSide);
-        //charControl.SimpleMove(MoveDirectionForward);
-        charControl.SimpleMove(move * speed);
+       // Vector3.Normalize(Move);
+       // Move = Vector3.ClampMagnitude(Move, 1);
         RaycastHit hit;
         if (Physics.Raycast(transform.position, -transform.up, out hit, 15.0f, floorLayerMask))
         {
