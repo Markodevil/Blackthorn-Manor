@@ -6,18 +6,18 @@ public class DrawerScript : MonoBehaviour
 {
 
     bool isOpen = false;
+    // Gets mouse X and Y Axis
     public float mouseY;
     public float mouseX;
+    // Opening and closing speed of drawer
     public float drawerSpeed;
     private GameObject Player;
-
     public Rigidbody rb;
+    //DrawerSounds 
     public AudioSource audio;
     public AudioClip[] drawerSound;
-    private Collision Col;
-    //FPSCamera fpsCamera;
     bool drawerSoundBool;
-
+    // Picks Random DoorSound to add to the drawersound list
     private int RandomDrawerSound;
     private void Awake()
     {
@@ -27,9 +27,7 @@ public class DrawerScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
         isOpen = false;
-
     }
 
     // Update is called once per frame

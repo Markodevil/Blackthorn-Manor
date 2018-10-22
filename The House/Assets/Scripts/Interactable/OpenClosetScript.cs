@@ -80,13 +80,12 @@ public class OpenClosetScript : MonoBehaviour {
         // Checks if the Mouse0 button is up  
         //
         // Param 
-        //      Determines if Camscript is true 
+        //      Determines if fpscamera.SetTouching is false 
         // Return 
-        //      Changes Camscript to true so player can check cameras 
+        //      Changes fpscamera.SetTouching to false so player can check cameras 
         //--------------------------------------------------------------------------------------
         if (Input.GetKeyUp(KeyCode.Mouse0) && isHoldingDown)
         {
-            //camScript.enabled = true;
             fpsCamera.SetTouching(false);
         }
 

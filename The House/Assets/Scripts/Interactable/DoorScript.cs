@@ -100,12 +100,13 @@ public class DoorScript : MonoBehaviour
             DelayTimer = false;
             doorDelayTime = 0.55f;
         }
-
+        // Begins the door open state 
         if (isOpen)
         {
+            // once player interacts with the first door 
+            // the ghosts patrol expands to MasterBedroom
             if (Input.GetKeyUp(KeyCode.Mouse0))
             {
-                Debug.Log("false");
                 isOpen = false;
                 if (SpawnDoor == true)
                 {
@@ -153,14 +154,17 @@ public class DoorScript : MonoBehaviour
                     break;
                 // closes the door
                 case 3:
+                    // Gets random door sound available in the list
                     RandomDoorSound = Random.Range(0, doorSounds.Length);
                     playSound = doorSounds[RandomDoorSound];
                     audioSource.clip = playSound;
+                    // Plays sound 
                     audioSource.Play();
+                    // Sets all possible open bools to false to ensure the door closes 
                     OpenedRight = false;
                     OpenedLeft = false;
                     OpenZeroRotation = false;
-
+                    //Rotates door to closing position
                     DoorClosed = true;
                  
                     break;

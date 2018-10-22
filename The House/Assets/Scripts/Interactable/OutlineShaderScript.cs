@@ -33,7 +33,7 @@ public class OutlineShaderScript : MonoBehaviour {
         {
             toggleOutline = false;
         }
-
+        // If toggle outline is true the object outline is on
         if (toggleOutline)
         {
             gameObject.SetActive(true);
@@ -48,7 +48,7 @@ public class OutlineShaderScript : MonoBehaviour {
     // Checks if there is a collision between the dresser and a required item
     //
     // Param 
-    //      Gameobject: determines if the outlined gamesobject is on or off
+    //      Gameobject: determines if the outlined gameobject is on or off
     // Return 
     //     if theres a collision between the dresser and required item the dressers outline
     //     will be enabled
@@ -64,6 +64,7 @@ public class OutlineShaderScript : MonoBehaviour {
             toggleOutline = false;
 
         }
+     
     }
 }
    
