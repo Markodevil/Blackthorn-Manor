@@ -334,8 +334,8 @@ public class PlayerMovement : MonoBehaviour
         Horizontal = Input.GetAxis("Horizontal");
         Vertical = Input.GetAxis("Vertical");
 
-        Vector3 MoveDirectionSide = transform.right * Horizontal * speed;
-        Vector3 MoveDirectionForward = transform.forward * Vertical * speed;
+        Vector3 MoveDirectionSide = transform.right * Horizontal;
+        Vector3 MoveDirectionForward = transform.forward * Vertical;
 
         if (!isCreepin)
         {
@@ -420,14 +420,28 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //move
-        charControl.SimpleMove(MoveDirectionSide);
-        charControl.SimpleMove(MoveDirectionForward);
+        //charControl.SimpleMove(MoveDirectionSide);
+        //charControl.SimpleMove(MoveDirectionForward);
         Vector3 Move = MoveDirectionSide + MoveDirectionForward;
-        // Move.Normalize();
-        transform.position += Vector3.ClampMagnitude(Move, speed) * Time.deltaTime;
+        Move = Move.normalized;
+        charControl.Move(Move * speed * Time.deltaTime);
 
-       // Vector3.Normalize(Move);
-       // Move = Vector3.ClampMagnitude(Move, 1);
+        //RaycastHit hitty;
+        //if (Physics.Raycast(transform.position, Move, out hitty, 2.5f))
+        //{
+        //    if (hitty.collider.gameObject.layer == LayerMask.NameToLayer("Obsticle"))
+        //    {
+        //        transform.position += Vector3.ClampMagnitude(Move.normalized * hitty.distance, speed) * Time.deltaTime;
+        //    }
+        //}
+        //else
+        //{
+        //    transform.position += Vector3.ClampMagnitude(Move, speed) * Time.deltaTime;
+        //
+        //}
+
+        // Vector3.Normalize(Move);
+        // Move = Vector3.ClampMagnitude(Move, 1);
         RaycastHit hit;
         if (Physics.Raycast(transform.position, -transform.up, out hit, 15.0f, floorLayerMask))
         {
