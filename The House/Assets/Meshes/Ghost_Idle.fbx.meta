@@ -1,0 +1,228 @@
+fileFormatVersion: 2
+guid: 2a62e2f6db39d914185768ff4b4bc50b
+timeCreated: 1540257361
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Ghost:Ghost
+    100002: Ghost:JNT_Collar_L
+    100004: Ghost:JNT_Collar_R
+    100006: Ghost:JNT_Elbow_L
+    100008: Ghost:JNT_Elbow_R
+    100010: Ghost:JNT_Foot_L
+    100012: Ghost:JNT_Foot_R
+    100014: Ghost:JNT_Hand_L
+    100016: Ghost:JNT_Hand_R
+    100018: Ghost:JNT_Head
+    100020: Ghost:JNT_Heel_L
+    100022: Ghost:JNT_Heel_R
+    100024: Ghost:JNT_Hip_L
+    100026: Ghost:JNT_Hip_R
+    100028: Ghost:JNT_Index_L_1
+    100030: Ghost:JNT_Index_L_2
+    100032: Ghost:JNT_Index_L_3
+    100034: Ghost:JNT_Index_L_4
+    100036: Ghost:JNT_Index_R_1
+    100038: Ghost:JNT_Index_R_2
+    100040: Ghost:JNT_Index_R_3
+    100042: Ghost:JNT_Index_R_4
+    100044: Ghost:JNT_Knee_L
+    100046: Ghost:JNT_Knee_R
+    100048: Ghost:JNT_Middle_L_
+    100050: Ghost:JNT_Middle_L_1
+    100052: Ghost:JNT_Middle_L_2
+    100054: Ghost:JNT_Middle_L_3
+    100056: Ghost:JNT_Middle_R_
+    100058: Ghost:JNT_Middle_R_1
+    100060: Ghost:JNT_Middle_R_2
+    100062: Ghost:JNT_Middle_R_3
+    100064: Ghost:JNT_Neck
+    100066: Ghost:JNT_Pelvus
+    100068: Ghost:JNT_Pinkie_L_1
+    100070: Ghost:JNT_Pinkie_L_2
+    100072: Ghost:JNT_Pinkie_L_3
+    100074: Ghost:JNT_Pinkie_L_4
+    100076: Ghost:JNT_Pinkie_R_1
+    100078: Ghost:JNT_Pinkie_R_2
+    100080: Ghost:JNT_Pinkie_R_3
+    100082: Ghost:JNT_Pinkie_R_4
+    100084: Ghost:JNT_Ring_L_1
+    100086: Ghost:JNT_Ring_L_2
+    100088: Ghost:JNT_Ring_L_3
+    100090: Ghost:JNT_Ring_L_4
+    100092: Ghost:JNT_Ring_R_1
+    100094: Ghost:JNT_Ring_R_2
+    100096: Ghost:JNT_Ring_R_3
+    100098: Ghost:JNT_Ring_R_4
+    100100: Ghost:JNT_Scalp
+    100102: Ghost:JNT_Shoulder_L
+    100104: Ghost:JNT_Shoulder_R
+    100106: Ghost:JNT_Spine_1
+    100108: Ghost:JNT_Spine_2
+    100110: Ghost:JNT_Spine_3
+    100112: Ghost:JNT_Thumb_L_1
+    100114: Ghost:JNT_Thumb_L_2
+    100116: Ghost:JNT_Thumb_L_3
+    100118: Ghost:JNT_Thumb_L_4
+    100120: Ghost:JNT_Thumb_R_1
+    100122: Ghost:JNT_Thumb_R_2
+    100124: Ghost:JNT_Thumb_R_3
+    100126: Ghost:JNT_Thumb_R_4
+    100128: Ghost:JNT_Toes_L
+    100130: Ghost:JNT_Toes_R
+    100132: Ghost:LOC_Root
+    100134: //RootNode
+    400000: Ghost:Ghost
+    400002: Ghost:JNT_Collar_L
+    400004: Ghost:JNT_Collar_R
+    400006: Ghost:JNT_Elbow_L
+    400008: Ghost:JNT_Elbow_R
+    400010: Ghost:JNT_Foot_L
+    400012: Ghost:JNT_Foot_R
+    400014: Ghost:JNT_Hand_L
+    400016: Ghost:JNT_Hand_R
+    400018: Ghost:JNT_Head
+    400020: Ghost:JNT_Heel_L
+    400022: Ghost:JNT_Heel_R
+    400024: Ghost:JNT_Hip_L
+    400026: Ghost:JNT_Hip_R
+    400028: Ghost:JNT_Index_L_1
+    400030: Ghost:JNT_Index_L_2
+    400032: Ghost:JNT_Index_L_3
+    400034: Ghost:JNT_Index_L_4
+    400036: Ghost:JNT_Index_R_1
+    400038: Ghost:JNT_Index_R_2
+    400040: Ghost:JNT_Index_R_3
+    400042: Ghost:JNT_Index_R_4
+    400044: Ghost:JNT_Knee_L
+    400046: Ghost:JNT_Knee_R
+    400048: Ghost:JNT_Middle_L_
+    400050: Ghost:JNT_Middle_L_1
+    400052: Ghost:JNT_Middle_L_2
+    400054: Ghost:JNT_Middle_L_3
+    400056: Ghost:JNT_Middle_R_
+    400058: Ghost:JNT_Middle_R_1
+    400060: Ghost:JNT_Middle_R_2
+    400062: Ghost:JNT_Middle_R_3
+    400064: Ghost:JNT_Neck
+    400066: Ghost:JNT_Pelvus
+    400068: Ghost:JNT_Pinkie_L_1
+    400070: Ghost:JNT_Pinkie_L_2
+    400072: Ghost:JNT_Pinkie_L_3
+    400074: Ghost:JNT_Pinkie_L_4
+    400076: Ghost:JNT_Pinkie_R_1
+    400078: Ghost:JNT_Pinkie_R_2
+    400080: Ghost:JNT_Pinkie_R_3
+    400082: Ghost:JNT_Pinkie_R_4
+    400084: Ghost:JNT_Ring_L_1
+    400086: Ghost:JNT_Ring_L_2
+    400088: Ghost:JNT_Ring_L_3
+    400090: Ghost:JNT_Ring_L_4
+    400092: Ghost:JNT_Ring_R_1
+    400094: Ghost:JNT_Ring_R_2
+    400096: Ghost:JNT_Ring_R_3
+    400098: Ghost:JNT_Ring_R_4
+    400100: Ghost:JNT_Scalp
+    400102: Ghost:JNT_Shoulder_L
+    400104: Ghost:JNT_Shoulder_R
+    400106: Ghost:JNT_Spine_1
+    400108: Ghost:JNT_Spine_2
+    400110: Ghost:JNT_Spine_3
+    400112: Ghost:JNT_Thumb_L_1
+    400114: Ghost:JNT_Thumb_L_2
+    400116: Ghost:JNT_Thumb_L_3
+    400118: Ghost:JNT_Thumb_L_4
+    400120: Ghost:JNT_Thumb_R_1
+    400122: Ghost:JNT_Thumb_R_2
+    400124: Ghost:JNT_Thumb_R_3
+    400126: Ghost:JNT_Thumb_R_4
+    400128: Ghost:JNT_Toes_L
+    400130: Ghost:JNT_Toes_R
+    400132: Ghost:LOC_Root
+    400134: //RootNode
+    2100000: Ghost_Ghost_Mat
+    4300000: Ghost:Ghost
+    7400000: Ghost_Idle
+    9500000: //RootNode
+    13700000: Ghost:Ghost
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
