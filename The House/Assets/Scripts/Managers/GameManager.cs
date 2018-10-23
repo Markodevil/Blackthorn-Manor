@@ -71,6 +71,8 @@ public class GameManager : MonoBehaviour
     private bool stuffInMyFace = false;
     private float inMyFaceTimer = 5.0f;
 
+    public GameObject disableGhostButton;
+
     class ResetObjects
     {
         public GameObject item;
@@ -114,6 +116,11 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        if(!Application.isEditor)
+        {
+            disableGhostButton.SetActive(false);
+        }
+
         if (runTutorial)
         {
             if (menuManager)
