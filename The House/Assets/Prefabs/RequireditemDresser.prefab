@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 114778340361706800}
   - component: {fileID: 65593752745620136}
   - component: {fileID: 65261041452441546}
+  - component: {fileID: 65046438235887070}
   m_Layer: 0
   m_Name: Outline
   m_TagString: Outlined
@@ -671,6 +672,18 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300006, guid: 55ccaed43d8ddef43a3a9ea1cb7f7447, type: 3}
+--- !u!65 &65046438235887070
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1328262685777928}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.3270438, y: 1.0991368, z: 0.88908744}
+  m_Center: {x: 1.6991312e-16, y: -0.07197487, z: 0.050543413}
 --- !u!65 &65055437376711562
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -777,8 +790,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 0.3613117}
+  m_Center: {x: 5.833508e-17, y: 0, z: 0.31934416}
 --- !u!82 &82644652613830674
 AudioSource:
   m_ObjectHideFlags: 1
