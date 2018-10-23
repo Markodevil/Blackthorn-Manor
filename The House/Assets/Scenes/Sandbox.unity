@@ -4178,7 +4178,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-4633950
+  m_Name: pb_Mesh687462
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -8734,6 +8734,18 @@ Prefab:
     - target: {fileID: 1231985913291568, guid: ebe2e274b9dd72b4583d14f7a5c4ca2c, type: 2}
       propertyPath: m_Name
       value: Door12 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4120016025954074, guid: ebe2e274b9dd72b4583d14f7a5c4ca2c, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4120016025954074, guid: ebe2e274b9dd72b4583d14f7a5c4ca2c, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4120016025954074, guid: ebe2e274b9dd72b4583d14f7a5c4ca2c, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ebe2e274b9dd72b4583d14f7a5c4ca2c, type: 2}
@@ -20964,7 +20976,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-4631648
+  m_Name: pb_Mesh25408
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -39219,12 +39231,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   codeInit: yeet
   codeIndex: 0
-  universalSoundManager: {fileID: 0}
+  universalSoundManager: {fileID: 1131695674}
   clickyWinThing: {fileID: 1595418250}
   scriptsToTurnOff:
   - {fileID: 1071783160}
   deathAnim: {fileID: 1902073373}
-  jumpscareSound: {fileID: 0}
+  jumpscareSound: {fileID: 8300000, guid: aabb27263446c4f45b6240bf2bf3ecd8, type: 3}
   playerMesh: {fileID: 788620107}
   requiredItems:
   - {fileID: 1216680574579470, guid: d6adce1681322c845bf420cae6a8e250, type: 2}
