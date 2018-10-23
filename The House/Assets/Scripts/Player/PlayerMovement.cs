@@ -334,8 +334,8 @@ public class PlayerMovement : MonoBehaviour
         Horizontal = Input.GetAxis("Horizontal");
         Vertical = Input.GetAxis("Vertical");
 
-        Vector3 MoveDirectionSide = transform.right * Horizontal;
-        Vector3 MoveDirectionForward = transform.forward * Vertical;
+        Vector3 MoveDirectionSide = transform.right * Horizontal * speed;
+        Vector3 MoveDirectionForward = transform.forward * Vertical * speed;
 
         if (!isCreepin)
         {
@@ -422,10 +422,18 @@ public class PlayerMovement : MonoBehaviour
         //move
         //charControl.SimpleMove(MoveDirectionSide);
         //charControl.SimpleMove(MoveDirectionForward);
-        Vector3 Move = MoveDirectionSide + MoveDirectionForward;
-        Move = Move.normalized;
-        charControl.Move(Move * speed * Time.deltaTime);
+       
+         
+        //Vector3 Move = MoveDirectionSide + MoveDirectionForward;
+        //Move = Move.normalized;
+        //charControl.Move(Move * speed * Time.deltaTime);
 
+        charControl.SimpleMove(MoveDirectionSide);
+        charControl.SimpleMove(MoveDirectionForward);
+        Vector3 Move = MoveDirectionSide + MoveDirectionForward;
+        //Move = Move.normalized;
+        //charControl.Move(Move * speed * Time.deltaTime);
+        transform.position += Vector3.ClampMagnitude(Move, speed) * Time.deltaTime;
         //RaycastHit hitty;
         //if (Physics.Raycast(transform.position, Move, out hitty, 2.5f))
         //{
