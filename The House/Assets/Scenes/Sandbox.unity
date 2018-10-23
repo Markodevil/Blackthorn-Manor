@@ -42002,7 +42002,23 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 95561180141682238, guid: 8fa7168838974c64db6cdfadfbdc0e29,
+        type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f11659a391d53564a98c8cc525511502, type: 2}
+    - target: {fileID: 95561180141682238, guid: 8fa7168838974c64db6cdfadfbdc0e29,
+        type: 2}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 4763abf2f8fac3e40b1169c6a777acae, type: 3}
+    - target: {fileID: 114918467163974758, guid: 8fa7168838974c64db6cdfadfbdc0e29,
+        type: 2}
+      propertyPath: heardSomethingAnim
+      value: 
+      objectReference: {fileID: 2144626542}
+    m_RemovedComponents:
+    - {fileID: 95561180141682238, guid: 8fa7168838974c64db6cdfadfbdc0e29, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 8fa7168838974c64db6cdfadfbdc0e29, type: 2}
   m_IsPrefabParent: 0
 --- !u!43 &1201352993
@@ -73192,6 +73208,11 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300006, guid: 6af431c06bfcd37449f5c7dfa6ff3bf1, type: 3}
+--- !u!95 &2144626542 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 9500000, guid: 4763abf2f8fac3e40b1169c6a777acae,
+    type: 3}
+  m_PrefabInternal: {fileID: 1989985186}
 --- !u!43 &2147096530
 Mesh:
   m_ObjectHideFlags: 0
