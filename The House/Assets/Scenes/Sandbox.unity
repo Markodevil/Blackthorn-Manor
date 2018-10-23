@@ -19218,7 +19218,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -169}
+  m_AnchoredPosition: {x: 0, y: -59.200005}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &614023919
@@ -39219,11 +39219,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   codeInit: yeet
   codeIndex: 0
-  secretMusic: {fileID: 1131695674}
+  universalSoundManager: {fileID: 0}
   clickyWinThing: {fileID: 1595418250}
   scriptsToTurnOff:
   - {fileID: 1071783160}
   deathAnim: {fileID: 1902073373}
+  jumpscareSound: {fileID: 0}
   playerMesh: {fileID: 788620107}
   requiredItems:
   - {fileID: 1216680574579470, guid: d6adce1681322c845bf420cae6a8e250, type: 2}
@@ -53619,6 +53620,21 @@ Prefab:
         type: 2}
       propertyPath: m_Color.b
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224183816700299598, guid: 907e993f9c1e148408e9fee4a5dbb0a2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 109.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 224042738271597970, guid: 907e993f9c1e148408e9fee4a5dbb0a2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 29.599998
+      objectReference: {fileID: 0}
+    - target: {fileID: 224209839773558488, guid: 907e993f9c1e148408e9fee4a5dbb0a2,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 69.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 907e993f9c1e148408e9fee4a5dbb0a2, type: 2}
