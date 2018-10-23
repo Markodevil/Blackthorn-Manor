@@ -47,11 +47,13 @@ public class SeekState : State<GhostAI>
             if (!owner.seekSound.isPlaying)
                 owner.seekSound.PlayOneShot(owner.seekSoundClips[owner.seekSoundClipIndex]);
         }
+
+        owner.heardSomethingAnim.SetBool("Chasing", true);
     }
 
     public override void ExitState(GhostAI owner)
     {
-
+        owner.heardSomethingAnim.SetBool("Chasing", false);
     }
 
     public override void UpdateState(GhostAI owner)
