@@ -428,12 +428,18 @@ public class PlayerMovement : MonoBehaviour
         //Move = Move.normalized;
         //charControl.Move(Move * speed * Time.deltaTime);
 
-        charControl.SimpleMove(MoveDirectionSide);
-        charControl.SimpleMove(MoveDirectionForward);
+        //charControl.SimpleMove(MoveDirectionSide);
+        //charControl.SimpleMove(MoveDirectionForward);
+         
         Vector3 Move = MoveDirectionSide + MoveDirectionForward;
-        //Move = Move.normalized;
-        //charControl.Move(Move * speed * Time.deltaTime);
-        transform.position += Vector3.ClampMagnitude(Move, speed) * Time.deltaTime;
+        Move = Move.normalized;
+        //this works if you change the gravity on input 
+        charControl.Move(Move * speed * Time.deltaTime);
+
+
+        //DO NOT DO THIS \/ EVER IN LIFE 
+        //transform.position += Vector3.ClampMagnitude(Move, speed) * Time.deltaTime;
+
         //RaycastHit hitty;
         //if (Physics.Raycast(transform.position, Move, out hitty, 2.5f))
         //{

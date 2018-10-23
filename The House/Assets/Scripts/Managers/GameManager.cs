@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public string codeInit;
     public int codeIndex = 0;
     private string code1;
-    public AudioSource secretMusic;
+    public AudioSource universalSoundManager;
 
     [Header("End Game Stuff")]
     public GameObject clickyWinThing;
@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     private GameObject playerCamera;
     private bool isDead;
     public Animator deathAnim;
+    public AudioClip jumpscareSound;
+
 
     public GameObject playerMesh;
     [Header("Req. Items")]
@@ -568,7 +570,7 @@ public class GameManager : MonoBehaviour
         if (codeIndex == codeInit.Length)
         {
             //do secret stuff
-            secretMusic.Play();
+            universalSoundManager.Play();
             //postProcessing.enabled = true;
             codeIndex = 0;
         }
@@ -828,5 +830,11 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(menuManager.sceneName);
         else
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void Jumpscare()
+    {
+        if (universalSoundManager && jumpscareSound)
+            universalSoundManager.PlayOneShot(jumpscareSound);
     }
 }
