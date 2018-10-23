@@ -36,6 +36,7 @@ public class OutlineShaderScript : MonoBehaviour {
         // If toggle outline is true the object outline is on
         if (toggleOutline)
         {
+           
             gameObject.SetActive(true);
         }
         else

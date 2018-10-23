@@ -35,8 +35,14 @@ public class KitchenDoorScript : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
-        Physics.IgnoreCollision(Player.GetComponent<CapsuleCollider>(), this.GetComponent<BoxCollider>());
+        //--------------------------------------------------------------------------------------
+        // Gets the distance from the player to the KitchenDoor
+        //
+        // Param 
+        //      Vector3.Distance : gets the position of the player and the KitchenDoor 
+        // Return 
+        //      checks if the player is at a certain distance to open the KitchenDoor 
+        //--------------------------------------------------------------------------------------
         //// Doors position 
         Vector3 kitchenDoorPosition = transform.position;
         //// Players position
@@ -45,6 +51,7 @@ public class KitchenDoorScript : MonoBehaviour {
         Direction.Normalize();
         float dist = Vector3.Distance(playerPosition, kitchenDoorPosition);
 
+        Physics.IgnoreCollision(Player.GetComponent<CapsuleCollider>(), this.GetComponent<BoxCollider>());
         //returns mouseY Axis
         mouseY = Input.GetAxis("Mouse Y");
         mouseX = Input.GetAxis("Mouse X");
@@ -121,7 +128,16 @@ public class KitchenDoorScript : MonoBehaviour {
 
     }
 
-
+    //--------------------------------------------------------------------------------------
+    // Checks if the KitchenDoorState should be changed (is accessed from OpenClosetScript)
+    //
+    // Param 
+    //      Bool : changes isOpen from false to true 
+    // Return 
+    //    if the player interacts with the KitchenDoor it will change the IsOpen bool to true
+    //    which will make the player able to open the door
+    //     
+    //--------------------------------------------------------------------------------------
     public void ChangekitchenDoorState()
     {
         isOpen = !isOpen;

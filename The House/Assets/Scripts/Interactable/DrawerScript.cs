@@ -101,5 +101,13 @@ public class DrawerScript : MonoBehaviour
         drawerSoundBool = true;
     }
 
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "RequiredItem")
+        {
+            collision.transform.SetParent(transform.GetChild(0));
+            transform.GetChild(0).Rotate(0, 0, 90);
+            collision.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        }
+    }
 }

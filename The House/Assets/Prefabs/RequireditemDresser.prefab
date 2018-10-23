@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 23857943184161544}
   - component: {fileID: 114778340361706800}
   - component: {fileID: 65593752745620136}
+  - component: {fileID: 65261041452441546}
   m_Layer: 0
   m_Name: Outline
   m_TagString: Outlined
@@ -236,7 +237,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1165568928023336}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.0029, z: 0.271}
+  m_LocalPosition: {x: 0, y: 0.098, z: 0.271}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4705541040849352}
@@ -694,6 +695,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.071394965, y: 1.0226412, z: 1}
   m_Center: {x: -0.8795359, y: 0.14016485, z: -1.7118942e-15}
+--- !u!65 &65261041452441546
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1328262685777928}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.3270438, y: 1.0991368, z: 0.88908744}
+  m_Center: {x: 1.6991312e-16, y: -0.07197487, z: 0.050543413}
 --- !u!65 &65327747012858894
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -877,12 +890,10 @@ MonoBehaviour:
   mouseY: 0
   mouseX: 0
   drawerSpeed: 5
-  Outline: {fileID: 1328262685777928}
   rb: {fileID: 54540809963847444}
   audio: {fileID: 82644652613830674}
   drawerSound:
   - {fileID: 8300000, guid: f8c3cd8ab14997d43b241d8af672f968, type: 3}
-  toggleOutline: 0
 --- !u!114 &114453197484993206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -897,12 +908,10 @@ MonoBehaviour:
   mouseY: 0
   mouseX: 0
   drawerSpeed: 5
-  Outline: {fileID: 0}
   rb: {fileID: 54969021116228588}
   audio: {fileID: 82644652613830674}
   drawerSound:
   - {fileID: 8300000, guid: f8c3cd8ab14997d43b241d8af672f968, type: 3}
-  toggleOutline: 0
 --- !u!114 &114481283810992820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -917,12 +926,10 @@ MonoBehaviour:
   mouseY: 0
   mouseX: 0
   drawerSpeed: 5
-  Outline: {fileID: 0}
   rb: {fileID: 54810900165283808}
   audio: {fileID: 82644652613830674}
   drawerSound:
   - {fileID: 8300000, guid: f8c3cd8ab14997d43b241d8af672f968, type: 3}
-  toggleOutline: 0
 --- !u!114 &114778340361706800
 MonoBehaviour:
   m_ObjectHideFlags: 1
