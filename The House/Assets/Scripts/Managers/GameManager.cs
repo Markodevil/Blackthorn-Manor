@@ -369,6 +369,8 @@ public class GameManager : MonoBehaviour
                 switch (tutorialState)
                 {
                     case 0:
+                        Dresser.SetActive(true);
+
                         RaycastHit hit;
                         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 2.5f))
                         {
