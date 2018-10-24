@@ -812,17 +812,19 @@ public class GameManager : MonoBehaviour
 
     public void EnableMovement()
     {
-        switch (currentState)
-        {
-            case GameStates.Intro:
-
-                break;
-            case GameStates.Playing:
-                FindObjectOfType<PlayerMovement>().SetTouchingSomething(false);
-                FindObjectOfType<FPSCamera>().SetTouching(false);
-                break;
-        }
-
+        //switch (currentState)
+        //{
+        //    case GameStates.Intro:
+        //        FindObjectOfType<PlayerMovement>().SetTouchingSomething(false);
+        //        FindObjectOfType<FPSCamera>().SetTouching(false);
+        //        break;
+        //    case GameStates.Playing:
+        //        FindObjectOfType<PlayerMovement>().SetTouchingSomething(false);
+        //        FindObjectOfType<FPSCamera>().SetTouching(false);
+        //        break;
+        //}
+        FindObjectOfType<PlayerMovement>().SetTouchingSomething(false);
+        FindObjectOfType<FPSCamera>().SetTouching(false);
     }
 
     public void ResetEverything()
