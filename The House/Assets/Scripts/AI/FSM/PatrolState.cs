@@ -29,6 +29,10 @@ public class PatrolState : State<GhostAI>
     GameObject thingy;
     float lowestMag;
 
+    private float floatTimer = 5.0f;
+    private float floatTimeTimer = 5.0f;
+    private bool floating = false;
+
     private PatrolState(GhostAI owner)
     {
         //if (instance != null)
@@ -84,6 +88,26 @@ public class PatrolState : State<GhostAI>
 
     public override void UpdateState(GhostAI owner)
     {
+        owner.heardSomethingAnim.SetBool("Floating", floating);
+        
+        if(!waiting && !floating)
+        {
+            floatTimeTimer -= Time.deltaTime;
+            if(floatTimeTimer <= 0)
+            {
+                floating = true;
+                floatTimeTimer = 5.0f;
+            }
+        }
+        else if(floating && !waiting)
+        {
+            floatTimer -= Time.deltaTime;
+            if(floatTimer <= 0)
+            {
+                floating = false;
+                floatTimer = 5.0f;
+            }
+        }
         owner.wait = waiting;
         //Check if the path is ready
         if (navMeshAgent.pathPending != true)

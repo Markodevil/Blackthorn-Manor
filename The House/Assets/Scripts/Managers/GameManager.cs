@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public GameObject clickyWinThing;
     public MonoBehaviour[] scriptsToTurnOff;
     private CameraSwitch CS;
-    private GameObject deathCamera;
+    public GameObject deathCamera;
     private GameObject playerCamera;
     private bool isDead;
     public Animator deathAnim;
@@ -102,7 +102,6 @@ public class GameManager : MonoBehaviour
     {
         menuManager = FindObjectOfType<MenuManager>();
         Player = GameObject.FindGameObjectWithTag("Player");
-        deathCamera = GameObject.FindGameObjectWithTag("DeathCam");
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera");
         camView = GameObject.FindGameObjectWithTag("camView");
         camPosScript = camView.GetComponent<CameraPositions>();

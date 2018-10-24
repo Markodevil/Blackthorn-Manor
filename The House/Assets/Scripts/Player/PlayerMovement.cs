@@ -440,19 +440,7 @@ public class PlayerMovement : MonoBehaviour
         //DO NOT DO THIS \/ EVER IN LIFE 
         //transform.position += Vector3.ClampMagnitude(Move, speed) * Time.deltaTime;
 
-        //RaycastHit hitty;
-        //if (Physics.Raycast(transform.position, Move, out hitty, 2.5f))
-        //{
-        //    if (hitty.collider.gameObject.layer == LayerMask.NameToLayer("Obsticle"))
-        //    {
-        //        transform.position += Vector3.ClampMagnitude(Move.normalized * hitty.distance, speed) * Time.deltaTime;
-        //    }
-        //}
-        //else
-        //{
-        //    transform.position += Vector3.ClampMagnitude(Move, speed) * Time.deltaTime;
-        //
-        //}
+        
 
         // Vector3.Normalize(Move);
         // Move = Vector3.ClampMagnitude(Move, 1);

@@ -44173,6 +44173,7 @@ MonoBehaviour:
   clickyWinThing: {fileID: 1595418250}
   scriptsToTurnOff:
   - {fileID: 1071783160}
+  deathCamera: {fileID: 1705902003}
   deathAnim: {fileID: 1902073373}
   jumpscareSound: {fileID: 8300000, guid: aabb27263446c4f45b6240bf2bf3ecd8, type: 3}
   playerMesh: {fileID: 788620107}
@@ -44205,7 +44206,7 @@ MonoBehaviour:
   useGhost: 1
   Ghost: {fileID: 215344012}
   ghostLookAt: {fileID: 372860215}
-  runTutorial: 0
+  runTutorial: 1
   prompts:
   - Press 'F' to bring up your phone
   - Use 'A' or 'D' to switch cameras
@@ -44217,6 +44218,7 @@ MonoBehaviour:
   hasTouchedDresser: 0
   doorScript: {fileID: 0}
   tutorialPageThing: {fileID: 1759831707}
+  disableGhostButton: {fileID: 1569327590}
 --- !u!114 &1131695673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58759,6 +58761,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1569327585}
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!1 &1569327590 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1313149750172892, guid: 907e993f9c1e148408e9fee4a5dbb0a2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1569327585}
 --- !u!1001 &1573713606
 Prefab:
   m_ObjectHideFlags: 0
@@ -63078,9 +63085,18 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 450f8f21f562a754893fbae18f5bb532, type: 2}
+    - target: {fileID: 1581913642044888, guid: a51fd2e6b8a438140a22e485a23d726e, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a51fd2e6b8a438140a22e485a23d726e, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1705902003 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1581913642044888, guid: a51fd2e6b8a438140a22e485a23d726e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1705902002}
 --- !u!43 &1706673045
 Mesh:
   m_ObjectHideFlags: 0
