@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 65593752745620136}
   - component: {fileID: 65261041452441546}
   - component: {fileID: 65046438235887070}
+  - component: {fileID: 65219203581794018}
   m_Layer: 0
   m_Name: Outline
   m_TagString: Outlined
@@ -113,7 +114,7 @@ GameObject:
   - component: {fileID: 64357372766917094}
   - component: {fileID: 153670977020084706}
   - component: {fileID: 114481283810992820}
-  - component: {fileID: 65577650354960268}
+  - component: {fileID: 65816967524913228}
   m_Layer: 0
   m_Name: polySurface128
   m_TagString: Drawer
@@ -708,6 +709,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.071394965, y: 1.0226412, z: 1}
   m_Center: {x: -0.8795359, y: 0.14016485, z: -1.7118942e-15}
+--- !u!65 &65219203581794018
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1328262685777928}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.3270438, y: 1.0991368, z: 0.88908744}
+  m_Center: {x: 1.6991312e-16, y: -0.07197487, z: 0.050543413}
 --- !u!65 &65261041452441546
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -726,18 +739,6 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1697132470478302}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.5465457, y: 0.1384743, z: 0.8792466}
-  m_Center: {x: 1.6161329e-15, y: -0.050291497, z: 0.38627464}
---- !u!65 &65577650354960268
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1685553627494660}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -780,6 +781,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.16051807, y: 1.0226412, z: 1}
   m_Center: {x: 0.85043025, y: 0.14016485, z: 2.1255106e-15}
+--- !u!65 &65816967524913228
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1685553627494660}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5465457, y: 0.19640675, z: 0.8792466}
+  m_Center: {x: 1.6161329e-15, y: -0.02132527, z: 0.38627464}
 --- !u!65 &65856021252331172
 BoxCollider:
   m_ObjectHideFlags: 1

@@ -422,15 +422,22 @@ public class PlayerMovement : MonoBehaviour
         //move
         //charControl.SimpleMove(MoveDirectionSide);
         //charControl.SimpleMove(MoveDirectionForward);
-       
-         
+
+
         //Vector3 Move = MoveDirectionSide + MoveDirectionForward;
         //Move = Move.normalized;
         //charControl.Move(Move * speed * Time.deltaTime);
 
         //charControl.SimpleMove(MoveDirectionSide);
         //charControl.SimpleMove(MoveDirectionForward);
-         
+
+        // just in case player leaves the ground       
+        if (transform.position.y >= 0.87)
+        {
+            // returns player to the ground
+            transform.Translate(-Vector3.up * Time.deltaTime);
+        }
+
         Vector3 Move = MoveDirectionSide + MoveDirectionForward;
         Move = Move.normalized;
         //this works if you change the gravity on input 

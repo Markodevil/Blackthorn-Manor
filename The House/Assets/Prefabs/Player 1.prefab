@@ -1498,7 +1498,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1591516204178888
 GameObject:
   m_ObjectHideFlags: 1
@@ -5488,7 +5488,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f6701feaa3ae7ef4884fc0faaf959868, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.6
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -6172,6 +6172,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialSpeed: 3
+  sprintMultiplier: 1.5
+  crouchMultiplier: 0.5
   footstepsSound: {fileID: 82941048956642432}
   timeBetweenStepsWalking: 0.75
   timeBetweenStepsRunning: 0.4
@@ -6606,7 +6608,7 @@ CapsuleCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1988884962101314}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 74de05f34be67df4486625d2f2edb081, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.36
@@ -6844,8 +6846,8 @@ CharacterController:
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.3
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_SlopeLimit: 0
+  m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
