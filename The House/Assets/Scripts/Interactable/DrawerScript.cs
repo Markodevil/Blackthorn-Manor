@@ -58,14 +58,31 @@ public class DrawerScript : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Mouse0) || dist > 2.65f)
         {
             isOpen = false;
+            drawerSoundBool = false;
+
         }
         // Plays a sound on Drawers Direction
-        if (drawerSoundBool && mouseY > 0 || drawerSoundBool && mouseY < 0)
+        // if (drawerSoundBool && mouseY > 0 || drawerSoundBool && mouseY < 0)
+        // {
+        //     audio.Play();
+        //     drawerSoundBool = false;
+        // }
+        if (isOpen && mouseY == 0)
         {
-            audio.Play();
+            drawerSoundBool = true;
+
+        }
+        if (drawerSoundBool && mouseY > 1.5f)
+        {
+            audio.PlayOneShot(drawerSound[RandomDrawerSound], 1);
             drawerSoundBool = false;
         }
-
+        if (drawerSoundBool && mouseY < -1.5f)
+        {
+            audio.PlayOneShot(drawerSound[RandomDrawerSound], 1);
+            drawerSoundBool = false;
+         
+        }
         // Checks if can be opened and if player is positioned infront of the Dresser 
         if (isOpen && Vector3.Dot(transform.forward, Direction) > 0)
         {
