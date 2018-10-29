@@ -8,6 +8,7 @@ public class SeekState : State<GhostAI>
     private static SeekState instance;
     private float cantSeePlayerCountdown;
     private float timer;
+    private bool hasSeenYou = false;
 
     private SeekState(GhostAI owner)
     {
@@ -42,10 +43,14 @@ public class SeekState : State<GhostAI>
         timer = cantSeePlayerCountdown;
         owner.heardSomethingAnim.SetBool("WaitBool", false);
 
-        if (owner.seekSound)
+        if (owner.sight.visibleTargets.Count > 0)
         {
-            if (!owner.seekSound.isPlaying)
-                owner.seekSound.PlayOneShot(owner.seekSoundClips[owner.seekSoundClipIndex]);
+            if (owner.seekSound)
+            {
+                if (!owner.seekSound.isPlaying)
+                    owner.seekSound.PlayOneShot(owner.seekSoundClips[owner.seekSoundClipIndex]);
+            }
+
         }
 
         owner.heardSomethingAnim.SetBool("Chasing", true);
@@ -54,6 +59,7 @@ public class SeekState : State<GhostAI>
     public override void ExitState(GhostAI owner)
     {
         owner.heardSomethingAnim.SetBool("Chasing", false);
+        hasSeenYou = false;
     }
 
     public override void UpdateState(GhostAI owner)
@@ -72,20 +78,31 @@ public class SeekState : State<GhostAI>
         {
             owner.NMA.speed = 1.5f;
             //If we have a path increase speed while within 10 meters
-        //    if (owner.NMA.remainingDistance <= 10.0f)
-        //    {
-        //        //Increase Speed as we get closer
-        //        if (owner.NMA.speed < 3.0f)
-        //        {
-        //            owner.NMA.speed += 0.1f;
-        //        }
-        //    } // If we've gotten far enought away reset speed
-        //    else if (owner.NMA.remainingDistance >= 10.0f)
-        //        owner.NMA.speed = 1.0f;
+            //    if (owner.NMA.remainingDistance <= 10.0f)
+            //    {
+            //        //Increase Speed as we get closer
+            //        if (owner.NMA.speed < 3.0f)
+            //        {
+            //            owner.NMA.speed += 0.1f;
+            //        }
+            //    } // If we've gotten far enought away reset speed
+            //    else if (owner.NMA.remainingDistance >= 10.0f)
+            //        owner.NMA.speed = 1.0f;
         }
 
 
-
+        if (owner.sight.visibleTargets.Count > 0)
+        {
+            if (!hasSeenYou)
+            {
+                hasSeenYou = true;
+                if (owner.seekSound)
+                {
+                    if (!owner.seekSound.isPlaying)
+                        owner.seekSound.PlayOneShot(owner.seekSoundClips[owner.seekSoundClipIndex]);
+                }
+            }
+        }
 
 
 
