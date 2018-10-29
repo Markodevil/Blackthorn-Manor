@@ -105,6 +105,8 @@ public class GameManager : MonoBehaviour
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera");
         camView = GameObject.FindGameObjectWithTag("camView");
         camPosScript = camView.GetComponent<CameraPositions>();
+        Dresser = GameObject.FindGameObjectWithTag("TutorialOutlined");
+        Dresser.SetActive(false);
 
         resetItems = new List<ResetObjects>();
 
@@ -149,8 +151,6 @@ public class GameManager : MonoBehaviour
         //currentState = GameStates.Intro;
         SpawnItems();
 
-        Dresser = GameObject.FindGameObjectWithTag("TutorialOutlined");
-        Dresser.SetActive(false);
 
 
 
