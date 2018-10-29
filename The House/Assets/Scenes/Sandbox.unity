@@ -47165,7 +47165,7 @@ Prefab:
         type: 2}
       propertyPath: spawnDoors.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1927245974}
     - target: {fileID: 114918467163974758, guid: 8fa7168838974c64db6cdfadfbdc0e29,
         type: 2}
       propertyPath: spawnDoors.Array.data[2]
@@ -71477,6 +71477,11 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 0acc933ebb49e2847bee3230de9554fc, type: 3}
   m_PrefabInternal: {fileID: 1926285941}
+--- !u!1 &1927245974 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1231985913291568, guid: ebe2e274b9dd72b4583d14f7a5c4ca2c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1066105458}
 --- !u!1 &1927252953
 GameObject:
   m_ObjectHideFlags: 0
