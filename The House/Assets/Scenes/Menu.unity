@@ -1004,10 +1004,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 827658270}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Script: {fileID: 11500000, guid: 8cb02fd952647444eabbb65a4b77db00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 057d31c9ba3ee2d45ba9dfb9abbea49c, type: 2}
+  profile: {fileID: 11400000, guid: b498b588fcfdcdb44a1e77f7403c2408, type: 2}
 --- !u!114 &921587925 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114142357924800330, guid: 763afb75270cdb8458a38e3dab15ff4b,

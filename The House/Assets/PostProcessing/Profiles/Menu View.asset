@@ -8,8 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a3bdb2cd68f901469e7cc149151eb49, type: 3}
-  m_Name: Camera_Grain
+  m_Script: {fileID: 11500000, guid: eacbded7b58d8c74aaa859da014a2512, type: 3}
+  m_Name: Menu View
   m_EditorClassIdentifier: 
   debugViews:
     m_Enabled: 1
@@ -42,9 +42,9 @@ MonoBehaviour:
   ambientOcclusion:
     m_Enabled: 0
     m_Settings:
-      intensity: 0.56
+      intensity: 1
       radius: 0.3
-      sampleCount: 3
+      sampleCount: 10
       downsampling: 1
       forceForwardCompatibility: 0
       ambientOnly: 0
@@ -112,20 +112,20 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       tonemapping:
-        tonemapper: 0
+        tonemapper: 2
         neutralBlackIn: 0.02
         neutralWhiteIn: 10
-        neutralBlackOut: 0
-        neutralWhiteOut: 10
-        neutralWhiteLevel: 5.3
+        neutralBlackOut: -0.09
+        neutralWhiteOut: 1
+        neutralWhiteLevel: 20
         neutralWhiteClip: 10
       basic:
-        postExposure: 1
-        temperature: 2
-        tint: 2
-        hueShift: 8
-        saturation: 0.3
-        contrast: 0.8
+        postExposure: 3
+        temperature: 0
+        tint: 0
+        hueShift: 0
+        saturation: 0
+        contrast: 1
       channelMixer:
         red: {x: 1, y: 0, z: 0}
         green: {x: 0, y: 1, z: 0}
@@ -289,16 +289,16 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       colored: 0
-      intensity: 0.445
+      intensity: 1
       size: 0.3
-      luminanceContribution: 0.348
+      luminanceContribution: 0
   vignette:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       mode: 0
       color: {r: 0, g: 0, b: 0, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0.45
+      intensity: 0.468
       smoothness: 0.2
       roundness: 1
       mask: {fileID: 0}
