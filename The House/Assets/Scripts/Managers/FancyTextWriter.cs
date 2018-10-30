@@ -27,6 +27,7 @@ public class FancyTextWriter : MonoBehaviour
     private void Awake()
     {
         mainCamera = Camera.main;
+        anim = GetComponent<Animator>();
     }
 
     // Use this for initialization
