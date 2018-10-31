@@ -103,7 +103,6 @@ public class ClosetScript : MonoBehaviour {
        // if the player is in the forward position of the dresser you can open it using -mouseX 
        if (isOpen && Vector3.Dot(transform.forward, Direction) < 0)
        {
-           Debug.Log("Front");
            if (isOpen && Vector3.Dot(transform.right, Direction) < 0)
            {
        
@@ -119,7 +118,6 @@ public class ClosetScript : MonoBehaviour {
         // if the player is in the -forward position of the dresser you can open it using -mouseX 
         if (isOpen && Vector3.Dot(transform.forward, Direction) > 0)
         {
-            Debug.Log("Behind");
 
             if (isOpen && Vector3.Dot(transform.right, Direction) > 0)
             {

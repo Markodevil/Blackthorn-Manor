@@ -511,12 +511,12 @@ GameObject:
   - component: {fileID: 114209887467727460}
   - component: {fileID: 124321940795442966}
   - component: {fileID: 81247332901367224}
-  - component: {fileID: 114643910981474702}
   - component: {fileID: 114138149600672652}
   - component: {fileID: 114038500558310994}
   - component: {fileID: 114002028163313346}
   - component: {fileID: 82672786267533406}
   - component: {fileID: 82765060168070418}
+  - component: {fileID: 114441045411035984}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6144,6 +6144,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114441045411035984
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1181625725552622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cb02fd952647444eabbb65a4b77db00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 95dbdb4b41a87d644bfa927333e942c1, type: 2}
 --- !u!114 &114466708903678144
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6171,8 +6183,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e197676b68a0e4f86d1acaf82570e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialSpeed: 3
-  sprintMultiplier: 1.5
+  initialSpeed: 1.75
+  sprintMultiplier: 1.25
   crouchMultiplier: 0.5
   footstepsSound: {fileID: 82941048956642432}
   timeBetweenStepsWalking: 0.75
@@ -6399,18 +6411,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114643910981474702
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1181625725552622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 8b35cd9f9477c7a47b93ca4cf72e36c1, type: 2}
 --- !u!114 &114786340771772000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6608,7 +6608,7 @@ CapsuleCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1988884962101314}
-  m_Material: {fileID: 13400000, guid: 74de05f34be67df4486625d2f2edb081, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.36
