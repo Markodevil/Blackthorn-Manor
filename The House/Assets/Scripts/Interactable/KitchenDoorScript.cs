@@ -8,15 +8,17 @@ public class KitchenDoorScript : MonoBehaviour {
     public HingeJoint hinge;
     public JointSpring hingeSpring;
     bool isOpen = false;
+    // gets mouse axis
     public float mouseY;
     public float mouseX;
-
+    // kitchen door open speed
     public float kitchenDoorSpeed;
     private GameObject Player;
     public Rigidbody rb;
+    // KitchenDoor audio 
     public AudioSource audio;
     public AudioClip kitchenDoorSound;
-    private float soundPlayTimer;
+
 
     bool kitchenDoorSoundEnabled;
     private void Awake()
@@ -65,14 +67,12 @@ public class KitchenDoorScript : MonoBehaviour {
 
         if (kitchenDoorSoundEnabled && mouseY > 0)
         {
-            // audio.pitch = 1;
             audio.PlayOneShot(kitchenDoorSound, 1);
             kitchenDoorSoundEnabled = false;
         }
         else if (kitchenDoorSoundEnabled && mouseY < 0)
         {
 
-            //audio.pitch = -1;
             audio.PlayOneShot(kitchenDoorSound, 1);
             kitchenDoorSoundEnabled = false;
         }

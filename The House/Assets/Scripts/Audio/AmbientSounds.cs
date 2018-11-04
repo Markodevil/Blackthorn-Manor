@@ -7,34 +7,35 @@ public class AmbientSounds : MonoBehaviour {
     public AudioClip[] Sounds;
     private AudioClip playSound;
     int soundIndex;
-    public float SoundTimer;
-    public int SetSoundTimer;
+    public float soundTimer;
+    public int setSoundTimer;
     public float minimumSoundTime;
-    bool RandomiseTimer = true;
-    bool PlaySoundEffect = false;
+    bool randomiseTimer = true;
+    bool playSoundEffect = false;
     // Update is called once per frame
     void Update () {
 	
-        if (RandomiseTimer)
+        // gets a random number from the set variables to be u
+        if (randomiseTimer)
         {
-            SoundTimer = Random.Range(minimumSoundTime, SetSoundTimer);
-            RandomiseTimer = false;
+            soundTimer = Random.Range(minimumSoundTime, setSoundTimer);
+            randomiseTimer = false;
         }
-        SoundTimer -= Time.deltaTime;
-
-        if (SoundTimer <= 0)
+        soundTimer -= Time.deltaTime;
+        // if the SoundTimer is zero play random sound
+        if (soundTimer <= 0)
         {
             soundIndex = Random.Range(0, Sounds.Length);
             playSound = Sounds[soundIndex];
             audioSource.clip = playSound;
-            PlaySoundEffect = true;
-            RandomiseTimer = true;
+            playSoundEffect = true;
+            randomiseTimer = true;
         }
-
-        if (PlaySoundEffect)
+        // plays the sound
+        if (playSoundEffect)
         {
             audioSource.Play();
-            PlaySoundEffect = false;
+            playSoundEffect = false;
         }
     }
 }

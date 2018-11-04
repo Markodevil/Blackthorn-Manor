@@ -13,7 +13,6 @@ public class OutlineShaderScript : MonoBehaviour {
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        Dresser = GameObject.FindGameObjectWithTag("Drawer");
         isOutlined = Player.GetComponent<ItemCollection>();
         toggleOutline = false;
     }

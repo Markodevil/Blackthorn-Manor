@@ -22,12 +22,9 @@ public class OpenDoorScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        // checks if door is locked for tutorial 
         if (isLocked)
             return;
-        Ray ray = new Ray(transform.position, transform.forward);
-        RaycastHit hit;
-
-        Debug.DrawRay(transform.position, transform.forward,Color.green);
 
         //Distance from the door to the player 
         Vector3 distance = transform.position - Door.transform.position;
@@ -42,6 +39,9 @@ public class OpenDoorScript : MonoBehaviour {
         // Return 
         //      Changes the doorState so that the door can be opened
         //--------------------------------------------------------------------------------------
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+
         if (Physics.Raycast(ray, out hit, interactDistance))
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))

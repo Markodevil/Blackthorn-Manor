@@ -23,19 +23,19 @@ public class DoorScript : MonoBehaviour
     [Header("SpawnDoor Stuff")]
     [HideInInspector]
     public bool normalTrack = false;
-    public bool SpawnDoor = false;
+    public bool spawnDoor = false;
 
     // Opens the door from the direction of the player
-    bool OpenedRight;
-    bool OpenedLeft;
-    bool OpenZeroRotation;
-    bool DoorClosed;
+    bool openedRight;
+    bool openedLeft;
+    bool openZeroRotation;
+    bool doorClosed;
     
     // Begins delaytimer 
-    bool DelayTimer;
+    bool delayTimer;
     // helps door progress through open and closing stages 
     int doorOpenToggle;
-    int RandomDoorSound;
+    int randomDoorSound;
 
     // Use this for initialization
     void Start()
@@ -64,40 +64,40 @@ public class DoorScript : MonoBehaviour
 
         // if the player is on the right side of the door 
         // bring the door to the open angle
-        if (OpenedRight)
+        if (openedRight)
         {
             Quaternion targetRotation = Quaternion.Euler(0, -doorOpenAngle, 0);
             transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, doorOpenSpeed * Time.deltaTime);
         }
         // if the player is on the left side of the door and opens the door
         // bring the door to the open angle
-        if (OpenedLeft)
+        if (openedLeft)
         {
             Quaternion targetRotation = Quaternion.Euler(0, doorOpenAngle, 0);
             transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, doorOpenSpeed * Time.deltaTime);
         }
         // if the player opens the door on the zAxis on either side 
         // open the door at 180 degrees 
-        if (OpenZeroRotation)
+        if (openZeroRotation)
         {
             Quaternion targetRotation = Quaternion.Euler(0, 180, 0);
             transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, doorOpenSpeed * Time.deltaTime);
         }
         // if the player closes the door bring door to the closing angle
-        if (DoorClosed)
+        if (doorClosed)
         {
             Quaternion targetRotation2 = Quaternion.Euler(0, doorCloseAngle, 0);
             transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation2, doorOpenSpeed * Time.deltaTime);
         }
         // when the door has been opened or closed the timer will count down to when the player can 
         // interact with the door again
-        if (DelayTimer)
+        if (delayTimer)
         {
             doorDelayTime -= Time.deltaTime;
         }
         if (doorDelayTime <= 0 )
         {
-            DelayTimer = false;
+            delayTimer = false;
             doorDelayTime = 0.55f;
         }
         // Begins the door open state 
@@ -108,7 +108,7 @@ public class DoorScript : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.Mouse0))
             {
                 isOpen = false;
-                if (SpawnDoor == true)
+                if (spawnDoor == true)
                 {
                     normalTrack = true;
                 }
@@ -119,34 +119,38 @@ public class DoorScript : MonoBehaviour
             {
                 // opens the door 
                 case 1:
+                    // if the door is being opened from the front
                     if (Vector3.Dot(Direction, Player.transform.right) > 0)
                     {
 
-                       
+                       // if player opens the door when doors y is 90 
                         if (transform.localRotation == Zerorotation)
                         {
-                            OpenZeroRotation = true;
+                            openZeroRotation = true;
                             doorOpenToggle++;
 
                         }
                         if (transform.localRotation != Zerorotation)
                         {
 
-                            OpenedRight = true;
+                            openedRight = true;
                             doorOpenToggle++;
                         }
-                            playSound = doorSounds[RandomDoorSound];
+                        // plays door sound
+                            playSound = doorSounds[randomDoorSound];
                             audioSource.clip = playSound;
                             audioSource.Play();
                     }
-
+                    // else if the door is being open from behind 
                     else
                     {
-
-                        OpenedLeft = true;
-                        playSound = doorSounds[RandomDoorSound];
+                        // opens door from behind (left of the doors coordinates)
+                        openedLeft = true;
+                        // plays door sound
+                        playSound = doorSounds[randomDoorSound];
                         audioSource.clip = playSound;
                         audioSource.Play();
+                        // progresses through switch statement
                         doorOpenToggle++;
 
                     }
@@ -155,23 +159,23 @@ public class DoorScript : MonoBehaviour
                 // closes the door
                 case 3:
                     // Gets random door sound available in the list
-                    RandomDoorSound = Random.Range(0, doorSounds.Length);
-                    playSound = doorSounds[RandomDoorSound];
+                    randomDoorSound = Random.Range(0, doorSounds.Length);
+                    playSound = doorSounds[randomDoorSound];
                     audioSource.clip = playSound;
                     // Plays sound 
                     audioSource.Play();
                     // Sets all possible open bools to false to ensure the door closes 
-                    OpenedRight = false;
-                    OpenedLeft = false;
-                    OpenZeroRotation = false;
+                    openedRight = false;
+                    openedLeft = false;
+                    openZeroRotation = false;
                     //Rotates door to closing position
-                    DoorClosed = true;
+                    doorClosed = true;
                  
                     break;
                 // resets switchstatement so that player can open door again
                 case 4:
-                    DoorClosed = false;
-                    OpenZeroRotation = false;
+                    doorClosed = false;
+                    openZeroRotation = false;
                     doorOpenToggle = 1;
                    
                     break;
@@ -194,13 +198,13 @@ public class DoorScript : MonoBehaviour
         isOpen = true;
         
 
-        RandomDoorSound = Random.Range(0, doorSounds.Length);
+        randomDoorSound = Random.Range(0, doorSounds.Length);
 
-        Debug.Log(RandomDoorSound);
-        if (DelayTimer == false)
+        Debug.Log(randomDoorSound);
+        if (delayTimer == false)
         {
             doorOpenToggle++;
-            DelayTimer = true;
+            delayTimer = true;
         }
     }
 }

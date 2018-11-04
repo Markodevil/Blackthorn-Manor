@@ -23,16 +23,6 @@ public class OpenClosetScript : MonoBehaviour {
     void Update()
     {
 
-        Ray ray = new Ray(transform.position, transform.forward);
-        RaycastHit hit;
-
-        Debug.DrawRay(transform.position, transform.forward, Color.green);
-
-        //Distance from the Closet to the player 
-        Vector3 distance = transform.position - Closet.transform.position;
-        distance.y = 0;
-        // gets the magnitude of players position and doors position 
-        float dist = distance.magnitude;
         //--------------------------------------------------------------------------------------
         // Raycasts in front of the player checking if their is a Closet infront of the player 
         //
@@ -40,6 +30,15 @@ public class OpenClosetScript : MonoBehaviour {
         //      Direction: the direction in which i want to check if there is a Closet 
         // Return 
         //      Changes the doorState so that the Closet can be opened
+
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+
+        //Distance from the Closet to the player 
+        Vector3 distance = transform.position - Closet.transform.position;
+        distance.y = 0;
+        // gets the magnitude of players position and doors position 
+        float dist = distance.magnitude;
         //--------------------------------------------------------------------------------------
         if (Input.GetKeyDown(KeyCode.Mouse0) && Physics.Raycast(ray, out hit, interactDistance))
         {
@@ -55,6 +54,14 @@ public class OpenClosetScript : MonoBehaviour {
                 hit.collider.transform.GetComponent<ClosetScript>().ChangeClosetState();
             }
         }
+        //--------------------------------------------------------------------------------------
+        // Raycasts in front of the player checking if theirs a kitchenDoor infront of the player 
+        //
+        // Param 
+        //      Direction: the direction in which i want to check if there is a kitchenDoor 
+        // Return 
+        //      Changes the kitchenDoorState so that the kitchenDoor can be opened
+
         if (Input.GetKeyDown(KeyCode.Mouse0) && Physics.Raycast(ray, out hit, interactDistance))
         {
             if (hit.collider.CompareTag("KitchenDoor"))

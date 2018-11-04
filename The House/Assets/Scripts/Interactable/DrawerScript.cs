@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DrawerScript : MonoBehaviour
 {
-
+    //checks if drawer is open
     bool isOpen = false;
     // Gets mouse X and Y Axis
     public float mouseY;
@@ -61,22 +61,21 @@ public class DrawerScript : MonoBehaviour
             drawerSoundBool = false;
 
         }
-        // Plays a sound on Drawers Direction
-        // if (drawerSoundBool && mouseY > 0 || drawerSoundBool && mouseY < 0)
-        // {
-        //     audio.Play();
-        //     drawerSoundBool = false;
-        // }
+        // if the drawer is being opened and on zero mouseY
+        // make the drawer able to play a sound again 
         if (isOpen && mouseY == 0)
         {
             drawerSoundBool = true;
 
         }
+        // when the drawer is being pushed it makes a sound 
         if (drawerSoundBool && mouseY > 1.5f)
         {
             audio.PlayOneShot(drawerSound[RandomDrawerSound], 1);
             drawerSoundBool = false;
         }
+        // when the drawer is being pulled it makes a sound 
+
         if (drawerSoundBool && mouseY < -1.5f)
         {
             audio.PlayOneShot(drawerSound[RandomDrawerSound], 1);
@@ -104,12 +103,6 @@ public class DrawerScript : MonoBehaviour
 
 
     }
-    // Sets isOpen to true and enables the drawer sound
-    public void changeDrawerState()
-    {
-        isOpen = !isOpen;
-        playDrawerSound();
-    }
     // sets bool to true to play the drawer sound
     void playDrawerSound()
     {
@@ -117,7 +110,32 @@ public class DrawerScript : MonoBehaviour
         audio.clip = drawerSound[RandomDrawerSound];
         drawerSoundBool = true;
     }
-
+    // Sets isOpen to true and enables the drawer sound
+    //--------------------------------------------------------------------------------------
+    // Checks if the drawerstate should be changed (is accessed from OpenDrawerScript)
+    //
+    // Param 
+    //      Bool : changes isOpen from false to true 
+    // Return 
+    //    if the player interacts with the drawer it will change the IsOpen bool to true
+    //    which will make the player able to open and close the drawer
+    //     
+    //--------------------------------------------------------------------------------------
+    public void changeDrawerState()
+    {
+        isOpen = !isOpen;
+        playDrawerSound();
+    }
+    //--------------------------------------------------------------------------------------
+    // Checks if the drawer is colliding with a requiured item 
+    //
+    // Param 
+    //      transform.rotation = rotates the gameobject and makes it a child to the drawer 
+    // Return 
+    //   if the drawer is colliding with a required item it will rotate the item to fit
+    //   in the drawer and will make it a child so that it moves with the drawer.
+    //     
+    //--------------------------------------------------------------------------------------
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "RequiredItem")

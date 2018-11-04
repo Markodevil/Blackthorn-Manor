@@ -48,7 +48,7 @@ public class ClosetScript : MonoBehaviour {
     void Update()
     {
         //--------------------------------------------------------------------------------------
-        // Gets the distance from the player to the Closet
+        // Gets the distance from the player to the Closet door 
         //
         // Param 
         //      Vector3.Distance : gets the position of the player and the Closet 
@@ -100,8 +100,8 @@ public class ClosetScript : MonoBehaviour {
         }
 
 
-       // if the player is in the forward position of the dresser you can open it using -mouseX 
-       if (isOpen && Vector3.Dot(transform.forward, Direction) < 0)
+        // if the player is in front of the Closetdoor
+        if (isOpen && Vector3.Dot(transform.forward, Direction) < 0)
        {
            if (isOpen && Vector3.Dot(transform.right, Direction) < 0)
            {
@@ -115,7 +115,7 @@ public class ClosetScript : MonoBehaviour {
        
            }
        }
-        // if the player is in the -forward position of the dresser you can open it using -mouseX 
+        // if the player behind the Closetdoor
         if (isOpen && Vector3.Dot(transform.forward, Direction) > 0)
         {
 
@@ -140,7 +140,7 @@ public class ClosetScript : MonoBehaviour {
     //      Bool : changes isOpen from false to true 
     // Return 
     //    if the player interacts with the closet it will change the IsOpen bool to true
-    //    which will make the player able to open the door
+    //    which will make the player able to open the Closetdoor
     //     
     //--------------------------------------------------------------------------------------
     public void ChangeClosetState()
