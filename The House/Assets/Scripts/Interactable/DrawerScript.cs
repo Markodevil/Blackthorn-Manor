@@ -22,6 +22,7 @@ public class DrawerScript : MonoBehaviour
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+
         //fpsCamera = GetComponent<FPSCamera>();
     }
     // Use this for initialization
