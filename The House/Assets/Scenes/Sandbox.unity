@@ -5788,6 +5788,11 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114959234510918558, guid: ebe2e274b9dd72b4583d14f7a5c4ca2c,
+        type: 2}
+      propertyPath: spawnDoor
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 0}
@@ -45310,6 +45315,11 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: -1.016
       objectReference: {fileID: 0}
+    - target: {fileID: 114959234510918558, guid: ebe2e274b9dd72b4583d14f7a5c4ca2c,
+        type: 2}
+      propertyPath: spawnDoor
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 0}
@@ -48583,6 +48593,11 @@ Prefab:
     - target: {fileID: 4777208940616248, guid: ebe2e274b9dd72b4583d14f7a5c4ca2c, type: 2}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114959234510918558, guid: ebe2e274b9dd72b4583d14f7a5c4ca2c,
+        type: 2}
+      propertyPath: spawnDoor
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
