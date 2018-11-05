@@ -77070,8 +77070,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9bb15da966062ad46b57e3fe87d6f053, type: 3}
   - {fileID: 8300000, guid: ffb24409c5c8e1d479998ba4c382e677, type: 3}
   - {fileID: 8300000, guid: b2aa3992f39d83945bc0a1df88e14690, type: 3}
-  soundTimer: 0
-  setSoundTimer: 0
+  soundTimer: 10
+  setSoundTimer: 20
   minimumSoundTime: 10
 --- !u!136 &1893354602
 CapsuleCollider:
@@ -84605,15 +84605,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400002, guid: 9d078f3bbe7a4914684a11f1657eb6d4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.0015261
+      value: 4.9
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9d078f3bbe7a4914684a11f1657eb6d4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.78
+      value: 3.18
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9d078f3bbe7a4914684a11f1657eb6d4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.49625304
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9d078f3bbe7a4914684a11f1657eb6d4, type: 3}
       propertyPath: m_LocalRotation.x
