@@ -101,36 +101,36 @@ public class ClosetScript : MonoBehaviour {
 
 
         // if the player is in front of the Closetdoor
-        if (isOpen && Vector3.Dot(transform.forward, Direction) < 0)
-       {
-           if (isOpen && Vector3.Dot(transform.right, Direction) < 0)
-           {
-       
-               rb.AddForceAtPosition(Player.transform.forward * -mouseX * closetOpenSpeed, Player.transform.position);
-           }
-           else
-           {
-       
-               rb.AddForceAtPosition(Player.transform.forward * mouseX * -closetOpenSpeed, Player.transform.position);
-       
-           }
-       }
-        // if the player behind the Closetdoor
-        if (isOpen && Vector3.Dot(transform.forward, Direction) > 0)
-        {
-
-            if (isOpen && Vector3.Dot(transform.right, Direction) > 0)
-            {
-
-                rb.AddForceAtPosition(Player.transform.forward * -mouseX * closetOpenSpeed, Player.transform.position);
-            }
-            else
-            {
-
-                rb.AddForceAtPosition(-Player.transform.forward * mouseX * -closetOpenSpeed, Player.transform.position);
-
-            }
-        }
+    //    if (isOpen && Vector3.Dot(transform.forward, Direction) < 0)
+    //   {
+    //       if (isOpen && Vector3.Dot(transform.right, Direction) < 0)
+    //       {
+    //   
+    //           rb.AddForceAtPosition(Player.transform.forward * -mouseX * closetOpenSpeed, Player.transform.position);
+    //       }
+    //       else
+    //       {
+    //   
+    //           rb.AddForceAtPosition(Player.transform.forward * mouseX * -closetOpenSpeed, Player.transform.position);
+    //   
+    //       }
+    //   }
+    //    // if the player behind the Closetdoor
+    //    if (isOpen && Vector3.Dot(transform.forward, Direction) > 0)
+    //    {
+    //
+    //        if (isOpen && Vector3.Dot(transform.right, Direction) > 0)
+    //        {
+    //
+    //            rb.AddForceAtPosition(Player.transform.forward * -mouseX * closetOpenSpeed, Player.transform.position);
+    //        }
+    //        else
+    //        {
+    //
+    //            rb.AddForceAtPosition(-Player.transform.forward * mouseX * -closetOpenSpeed, Player.transform.position);
+    //
+    //        }
+    //    }
     }
 
     //--------------------------------------------------------------------------------------
