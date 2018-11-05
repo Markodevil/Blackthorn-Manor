@@ -9,40 +9,50 @@ public class HeadBob : MonoBehaviour
     //     SCRIPT IS NOW REDUNDANT     //
     /////////////////////////////////////
 
-    //public Animator headBobAnim;
-    //private PlayerMovement playerMovScript;
-    //
-    //// Use this for initialization
-    //void Start()
-    //{
-    //    playerMovScript = GetComponent<PlayerMovement>();
-    //}
-    //
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    if (!Input.GetKey(KeyCode.LeftShift))
-    //    {
-    //        headBobAnim.SetBool("isRunning", false);
-    //        return;
-    //    }
-    //
-    //    if (!playerMovScript.GetTouchingSomething())
-    //    {
-    //        if (Input.GetAxis("Vertical") != 0)
-    //        {
-    //            headBobAnim.SetBool("isRunning", true);
-    //        }
-    //        else
-    //        {
-    //            headBobAnim.SetBool("isRunning", false);
-    //        }
-    //
-    //    }
-    //
-    //    if(Input.GetKeyDown(KeyCode.F))
-    //    {
-    //        headBobAnim.SetBool("isRunning", false);
-    //    }
-    //}
+    private float timer = 0.0f;
+    public float bobbingSpeed = 0.18f;
+    public float bobbingAmount = 0.2f;
+    public float midpoint = 0.5f;
+
+    private void Start()
+    {
+        
+    }
+
+    void Update()
+    {
+        float waveslice = 0.0f;
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+
+        Vector3 cSharpConversion = transform.localPosition;
+
+        if (Mathf.Abs(horizontal) == 0 && Mathf.Abs(vertical) == 0)
+        {
+            timer = 0.0f;
+        }
+        else
+        {
+            waveslice = Mathf.Sin(timer);
+            timer = timer + bobbingSpeed;
+            if (timer > Mathf.PI * 2)
+            {
+                timer = timer - (Mathf.PI * 2);
+            }
+        }
+        if (waveslice != 0)
+        {
+            float translateChange = waveslice * bobbingAmount;
+            float totalAxes = Mathf.Abs(horizontal) + Mathf.Abs(vertical);
+            totalAxes = Mathf.Clamp(totalAxes, 0.0f, 1.0f);
+            translateChange = totalAxes * translateChange;
+            cSharpConversion.y = midpoint + translateChange;
+        }
+        else
+        {
+            cSharpConversion.y = midpoint;
+        }
+
+        transform.localPosition = cSharpConversion;
+    }
 }

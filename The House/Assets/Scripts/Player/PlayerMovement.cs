@@ -160,6 +160,7 @@ public class PlayerMovement : MonoBehaviour
         if (isTouchingSomething)
         {
             headbobAnim.SetBool("isRunning", false);
+            headbobAnim.SetBool("isWalking", false);
             //isRunning = false;
             //isCreepin = false;
             //if (currentMovementState == howAmIMoving.running)
@@ -178,6 +179,11 @@ public class PlayerMovement : MonoBehaviour
                     headbobAnim.SetBool("isRunning", true);
                 else
                     headbobAnim.SetBool("isRunning", false);
+
+                if (currentMovementState == howAmIMoving.walking)
+                    headbobAnim.SetBool("isWalking", true);
+                else
+                    headbobAnim.SetBool("isWalking", false);
 
             }
         }
