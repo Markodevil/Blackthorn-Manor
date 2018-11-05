@@ -129,7 +129,8 @@ public class GameManager : MonoBehaviour
             disableGhostButton.SetActive(false);
         }
 
-        killCamera.SetActive(false);
+        if (killCamera)
+            killCamera.SetActive(false);
 
         if (runTutorial)
         {
@@ -523,7 +524,7 @@ public class GameManager : MonoBehaviour
             case GameStates.GameOver:
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
-                
+
                 Player.GetComponent<CharacterController>().enabled = false;
 
                 //get direction vector from camera to ghost 
@@ -548,9 +549,14 @@ public class GameManager : MonoBehaviour
                         if (hitty.collider.gameObject.tag == "Ghost")
                         {
                             deathCamera.SetActive(false);
-                            killCamera.SetActive(true);
-                            normalGhostMesh.SetActive(false);
-                            killGhostMesh.SetActive(true);
+                            if (killCamera)
+                                killCamera.SetActive(true);
+                            if (normalGhostMesh && killGhostMesh)
+                            {
+
+                                normalGhostMesh.SetActive(false);
+                                killGhostMesh.SetActive(true);
+                            }
                             gameOverManager.SetBool("Killing", true);
                             //Ghost.GetComponent<GhostAI>().heardSomethingAnim.SetInteger("KillAnim", 1);
                             deathLookingAtGhost = true;
@@ -877,7 +883,11 @@ public class GameManager : MonoBehaviour
 
     public void SetCameras()
     {
-        deathCamera.SetActive(true);
-        playerCamera.SetActive(false);
+        if (deathCamera && playerCamera)
+        {
+
+            deathCamera.SetActive(true);
+            playerCamera.SetActive(false);
+        }
     }
 }
