@@ -76,6 +76,10 @@ public class GameManager : MonoBehaviour
     public GameObject killCamera;
     private bool deathLookingAtGhost = false;
 
+    [Header("Kill animation things")]
+    public GameObject normalGhostMesh;
+    public GameObject killGhostMesh;
+
     class ResetObjects
     {
         public GameObject item;
@@ -545,8 +549,10 @@ public class GameManager : MonoBehaviour
                         {
                             deathCamera.SetActive(false);
                             killCamera.SetActive(true);
+                            normalGhostMesh.SetActive(false);
+                            killGhostMesh.SetActive(true);
                             gameOverManager.SetBool("Killing", true);
-                            Ghost.GetComponent<GhostAI>().heardSomethingAnim.SetInteger("KillAnim", 1);
+                            //Ghost.GetComponent<GhostAI>().heardSomethingAnim.SetInteger("KillAnim", 1);
                             deathLookingAtGhost = true;
                         }
                     }
