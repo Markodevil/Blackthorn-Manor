@@ -59,6 +59,8 @@ public class MenuManager : MonoBehaviour
     private static MenuManager instance;
     private static GameObject instanceOfCanvas;
 
+    public Toggle fullscreenToggle;
+
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnLevelFinishedLoading;
@@ -102,6 +104,10 @@ public class MenuManager : MonoBehaviour
         vSync = QualitySettings.vSyncCount;
         resolution = Screen.currentResolution.ToString();
         brandNew = true;
+
+        fullscreen = Screen.fullScreen;
+        fullscreenToggle.isOn = fullscreen;
+        fullscreenToggle.onValueChanged.AddListener(ToggleFullscreen);
 
         textureQualityDD.value = textureQuality;
         aaDD.value = aa;
@@ -207,7 +213,7 @@ public class MenuManager : MonoBehaviour
 
     }
 
-    public void ToggleFullscreen()
+    void ToggleFullscreen(bool a)
     {
         Screen.fullScreen = !Screen.fullScreen;
     }
