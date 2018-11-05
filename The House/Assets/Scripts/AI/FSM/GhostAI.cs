@@ -312,6 +312,7 @@ public class GhostAI : MonoBehaviour
             PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
             //PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
             gm.ChangeGameStates(GameManager.GameStates.GameOver);
+            gm.SetCameras();
             gm.Jumpscare();
             //PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
             //SceneManager.LoadScene("GameOver");

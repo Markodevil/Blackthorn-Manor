@@ -72,6 +72,9 @@ public class GameManager : MonoBehaviour
     private float inMyFaceTimer = 5.0f;
 
     public GameObject disableGhostButton;
+    public Animator gameOverManager;
+    public GameObject killCamera;
+    private bool deathLookingAtGhost = false;
 
     class ResetObjects
     {
@@ -117,10 +120,12 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        if(!Application.isEditor)
+        if (!Application.isEditor)
         {
             disableGhostButton.SetActive(false);
         }
+
+        killCamera.SetActive(false);
 
         if (runTutorial)
         {
@@ -514,8 +519,8 @@ public class GameManager : MonoBehaviour
             case GameStates.GameOver:
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
-                deathCamera.SetActive(true);
-                playerCamera.SetActive(false);
+                
+                Player.GetComponent<CharacterController>().enabled = false;
 
                 //get direction vector from camera to ghost 
                 Vector3 direction = ghostLookAt.transform.position - deathCamera.transform.position;
@@ -529,8 +534,24 @@ public class GameManager : MonoBehaviour
                 //deactivate mesh 
                 playerMesh.SetActive(false);
                 isDead = true;
-                deathAnim.SetBool("DeathTrigger", isDead);
+                //deathAnim.SetBool("DeathTrigger", isDead);
 
+                if (!deathLookingAtGhost)
+                {
+                    Debug.DrawRay(deathCamera.transform.position, deathCamera.transform.forward * 5.0f, Color.green);
+                    if (Physics.Raycast(deathCamera.transform.position, deathCamera.transform.forward * 5.0f, out hitty))
+                    {
+                        if (hitty.collider.gameObject.tag == "Ghost")
+                        {
+                            deathCamera.SetActive(false);
+                            killCamera.SetActive(true);
+                            gameOverManager.SetBool("Killing", true);
+                            Ghost.GetComponent<GhostAI>().heardSomethingAnim.SetInteger("KillAnim", 1);
+                            deathLookingAtGhost = true;
+                        }
+                    }
+
+                }
 
 
                 foreach (MonoBehaviour mon in scriptsToTurnOff)
@@ -846,5 +867,11 @@ public class GameManager : MonoBehaviour
     {
         if (universalSoundManager && jumpscareSound)
             universalSoundManager.PlayOneShot(jumpscareSound);
+    }
+
+    public void SetCameras()
+    {
+        deathCamera.SetActive(true);
+        playerCamera.SetActive(false);
     }
 }

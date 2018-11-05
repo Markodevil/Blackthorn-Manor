@@ -50,7 +50,7 @@ public class GameOverState : State<GhostAI>
 
         //Makes the ghost visible and turn off the player and ghost colliders
         mainCamera.cullingMask |= 1 << LayerMask.NameToLayer("Ghost");
-        ghostCollider.enabled = false;
+        //ghostCollider.enabled = false;
         playerCollider.enabled = false;
 
         //Rotates the ghost to the player
@@ -59,7 +59,7 @@ public class GameOverState : State<GhostAI>
         owner.transform.rotation = rotation;
 
         //plays the anim and freezes the ghost
-        owner.heardSomethingAnim.SetInteger("KillAnim", 1);
+        //owner.heardSomethingAnim.SetInteger("KillAnim", 1);
         owner.NMA.isStopped = true;
         owner.NMA.velocity = Vector3.zero;
         owner.r.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
