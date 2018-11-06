@@ -72,13 +72,14 @@ public class GameManager : MonoBehaviour
     private float inMyFaceTimer = 5.0f;
 
     public GameObject disableGhostButton;
-    public Animator gameOverManager;
+    public Animator gameOverAnimation;
     public GameObject killCamera;
     private bool deathLookingAtGhost = false;
 
     [Header("Kill animation things")]
     public GameObject normalGhostMesh;
     public GameObject killGhostMesh;
+    public Transform deathRayCastTransform;
 
     class ResetObjects
     {
@@ -543,8 +544,8 @@ public class GameManager : MonoBehaviour
 
                 if (!deathLookingAtGhost)
                 {
-                    Debug.DrawRay(deathCamera.transform.position, deathCamera.transform.forward * 5.0f, Color.green);
-                    if (Physics.Raycast(deathCamera.transform.position, deathCamera.transform.forward * 5.0f, out hitty))
+                    Debug.DrawRay(deathRayCastTransform.position, deathRayCastTransform.forward * 5.0f, Color.green);
+                    if (Physics.Raycast(deathRayCastTransform.position, deathRayCastTransform.forward * 5.0f, out hitty))
                     {
                         if (hitty.collider.gameObject.tag == "Ghost")
                         {
@@ -553,11 +554,10 @@ public class GameManager : MonoBehaviour
                                 killCamera.SetActive(true);
                             if (normalGhostMesh && killGhostMesh)
                             {
-
                                 normalGhostMesh.SetActive(false);
                                 killGhostMesh.SetActive(true);
                             }
-                            gameOverManager.SetBool("Killing", true);
+                            gameOverAnimation.SetBool("Killing", true);
                             //Ghost.GetComponent<GhostAI>().heardSomethingAnim.SetInteger("KillAnim", 1);
                             deathLookingAtGhost = true;
                         }
@@ -654,105 +654,6 @@ public class GameManager : MonoBehaviour
     //--------------------------------------------------------------------------------------
     private void SpawnItems()
     {
-        /*
-        ////initialize temp list of spawn points that have been chosen
-        //List<int> chosenSpots = new List<int>();
-        ////initialize temp int for random position index
-        //int randPlace = int.MaxValue;
-        ////for each item required in the game
-        //for (int i = 0; i < requiredItems.Length; i++)
-        //{
-        //    //start do while 
-        //    do
-        //    {
-        //        //set rand place to a random int between 0 and length of item spawns array
-        //        randPlace = Random.Range(0, requiredItemSpawns.Length);
-        //
-        //        //keep doing this if randplace is withing chosenspots
-        //    } while (chosenSpots.Contains(randPlace));
-        //
-        //    //add randplace to chosenspots list
-        //    chosenSpots.Add(randPlace);
-        //    //instantiate required item at random position
-        //    Instantiate(requiredItems[i], requiredItemSpawns[randPlace].transform.position, Quaternion.identity);
-        //}
-
-        //for(int i = 0; i < requiredItems.Length; i++)
-        //{
-        //    List<int> chosenSpots = new List<int>();
-        //    //initialize temp int for random position index
-        //    int randPlace = int.MaxValue;
-        //
-        //    switch (requiredItems[i].name)
-        //    {
-        //        case "Mug":
-        //
-        //            do
-        //            {
-        //                //set rand place to a random int between 0 and length of item spawns array
-        //                randPlace = Random.Range(0, item1Spawns.Length);
-        //
-        //                //keep doing this if randplace is withing chosenspots
-        //            } while (chosenSpots.Contains(randPlace));
-        //
-        //            //add randplace to chosenspots list
-        //            chosenSpots.Add(randPlace);
-        //            //instantiate required item at random position
-        //            Instantiate(requiredItems[i], item1Spawns[randPlace].transform.position, Quaternion.identity);
-        //
-        //            break;
-        //        case "Plate":
-        //
-        //            do
-        //            {
-        //                //set rand place to a random int between 0 and length of item spawns array
-        //                randPlace = Random.Range(0, item2Spawns.Length);
-        //
-        //                //keep doing this if randplace is withing chosenspots
-        //            } while (chosenSpots.Contains(randPlace));
-        //
-        //            //add randplace to chosenspots list
-        //            chosenSpots.Add(randPlace);
-        //            //instantiate required item at random position
-        //            Instantiate(requiredItems[i], item2Spawns[randPlace].transform.position, Quaternion.identity);
-        //
-        //            break;
-        //        case "Pot":
-        //
-        //            do
-        //            {
-        //                //set rand place to a random int between 0 and length of item spawns array
-        //                randPlace = Random.Range(0, item3Spawns.Length);
-        //
-        //                //keep doing this if randplace is withing chosenspots
-        //            } while (chosenSpots.Contains(randPlace));
-        //
-        //            //add randplace to chosenspots list
-        //            chosenSpots.Add(randPlace);
-        //            //instantiate required item at random position
-        //            Instantiate(requiredItems[i], item3Spawns[randPlace].transform.position, Quaternion.identity);
-        //
-        //            break;
-        //        case "Short Cup":
-        //
-        //            do
-        //            {
-        //                //set rand place to a random int between 0 and length of item spawns array
-        //                randPlace = Random.Range(0, item4Spawns.Length);
-        //
-        //                //keep doing this if randplace is withing chosenspots
-        //            } while (chosenSpots.Contains(randPlace));
-        //
-        //            //add randplace to chosenspots list
-        //            chosenSpots.Add(randPlace);
-        //            //instantiate required item at random position
-        //            Instantiate(requiredItems[i], item4Spawns[randPlace].transform.position, Quaternion.identity);
-        //
-        //            break;
-        //    }
-        //}
-        */
-
         //foreach required item
         for (int i = 0; i < requiredItems.Length; i++)
         {
@@ -761,7 +662,7 @@ public class GameManager : MonoBehaviour
             //initialize temp int for random position index
             int randPlace = int.MaxValue;
 
-            //make sure to do this at least once
+            ////make sure to do this at least once
             do
             {
                 //set rand place to a random int between 0 and length of item spawns array

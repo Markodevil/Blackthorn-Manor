@@ -56,11 +56,17 @@ public class PlayerMovement : MonoBehaviour
     public bool Panic = false;
     bool PlayPanicSound = true;
 
+    [Header("UI Elements")]
     public Image movementStateImage;
     public Sprite notMoving;
     public Sprite walking;
     public Sprite sprinting;
     public Sprite crouching;
+
+    [Header("HEADBOB STUFF")]
+    [SerializeField]
+    HeadBob hbScript;
+
     public enum howAmIMoving
     {
         notMoving,
@@ -91,6 +97,7 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         charControl = GetComponent<CharacterController>();
+        hbScript = GetComponentInChildren<HeadBob>();
     }
 
     private void Start()
@@ -124,6 +131,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        hbScript.isTouchingSomething = isTouchingSomething;
         //  if (Panic)
         //  {
         //      PlayPanicSound = true;
@@ -214,7 +222,7 @@ public class PlayerMovement : MonoBehaviour
             case howAmIMoving.notMoving:
                 if (movementStateImage)
                     movementStateImage.sprite = notMoving;
-
+                hbScript.sprinting = false;
                 //headbobAnim.SetBool("isRunning", false);
 
                 Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, new Vector3(0, initialCameraHeight, 0.25f), crouchSpeed);
@@ -229,6 +237,7 @@ public class PlayerMovement : MonoBehaviour
                 }
                 break;
             case howAmIMoving.creeping:
+                hbScript.sprinting = false;
                 if (movementStateImage)
                 {
                     if (Vertical != 0 || Horizontal != 0)
@@ -267,6 +276,7 @@ public class PlayerMovement : MonoBehaviour
                 Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, new Vector3(0, initialCameraHeight, 0.25f), crouchSpeed);
                 //speed is equal to initial speed
                 speed = initialSpeed;
+                hbScript.sprinting = false;
 
                 //if you are already holding left shift
                 if (Input.GetKeyDown(KeyCode.LeftShift))
@@ -294,6 +304,7 @@ public class PlayerMovement : MonoBehaviour
                 Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, new Vector3(0, initialCameraHeight, 0.25f), crouchSpeed);
                 //speed is equal to twice the initial speed
                 speed = initialSpeed * sprintMultiplier;
+                hbScript.sprinting = true;
 
                 //headbobAnim.SetBool("isRunning", true);
 

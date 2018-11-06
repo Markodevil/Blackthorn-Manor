@@ -6936,6 +6936,7 @@ GameObject:
   - component: {fileID: 192063431}
   - component: {fileID: 192063433}
   - component: {fileID: 192063432}
+  - component: {fileID: 192063436}
   m_Layer: 0
   m_Name: CameraPivot
   m_TagString: Untagged
@@ -6966,7 +6967,7 @@ Animator:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 192063430}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 16cf1c5ce94171e40875f776f3bb46a1, type: 2}
   m_CullingMode: 0
@@ -7023,6 +7024,26 @@ Transform:
   m_Father: {fileID: 1893354603}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 5}
+--- !u!114 &192063436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 192063430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6033230cb710b946be68034e3ffdacd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  restPosition: {x: 0, y: 0, z: 0}
+  transitionSpeed: 20
+  bobSpeed: 4.8
+  bobAmount: 0.05
+  bobSpeedRunning: 5.6
+  bobAmountRunning: 0.1
+  sprinting: 0
+  isTouchingSomething: 0
+  camPos: {x: 0, y: 0, z: 0}
 --- !u!1001 &193114844
 Prefab:
   m_ObjectHideFlags: 0
@@ -26590,6 +26611,7 @@ Transform:
   - {fileID: 1185024861}
   - {fileID: 1492179732}
   - {fileID: 191741219}
+  - {fileID: 828489197}
   m_Father: {fileID: 192063435}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -26874,9 +26896,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6033230cb710b946be68034e3ffdacd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bobbingSpeed: 0.18
-  bobbingAmount: 0.2
-  midpoint: 1
+  restPosition: {x: 0, y: 0, z: 0}
+  transitionSpeed: 20
+  bobSpeed: 4.8
+  bobAmount: 0.05
+  bobSpeedRunning: 5.6
+  bobAmountRunning: 0.1
+  sprinting: 0
+  isTouchingSomething: 0
+  camPos: {x: 0, y: 0, z: 0}
 --- !u!1 &623750023
 GameObject:
   m_ObjectHideFlags: 0
@@ -34440,6 +34468,34 @@ Transform:
   m_PrefabParentObject: {fileID: 4259658695123222, guid: d2537f56a4095e74f83d6260a04e0048,
     type: 2}
   m_PrefabInternal: {fileID: 1170379667}
+--- !u!1 &828489196
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 828489197}
+  m_Layer: 0
+  m_Name: deathCameraTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &828489197
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 828489196}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: -0.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 619276043}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &834056347
 Prefab:
   m_ObjectHideFlags: 0
@@ -48383,10 +48439,11 @@ MonoBehaviour:
   doorScript: {fileID: 0}
   tutorialPageThing: {fileID: 1759831707}
   disableGhostButton: {fileID: 1569327590}
-  gameOverManager: {fileID: 1948627055}
+  gameOverAnimation: {fileID: 1948627055}
   killCamera: {fileID: 598610993}
   normalGhostMesh: {fileID: 1989985187}
   killGhostMesh: {fileID: 1948627053}
+  deathRayCastTransform: {fileID: 828489197}
 --- !u!114 &1131695673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77433,6 +77490,7 @@ MonoBehaviour:
   walking: {fileID: 21300000, guid: 36af376e0c230d04f8d142d728ce634e, type: 3}
   sprinting: {fileID: 21300000, guid: fc63ccd2fb19e404eb788a9f19681efb, type: 3}
   crouching: {fileID: 21300000, guid: 01d9db48b2662e6419b321e8baa22078, type: 3}
+  hbScript: {fileID: 0}
   currentMovementState: 0
   currentFloorType: 0
   timberStep: {fileID: 8300000, guid: 441b814a236bccb49b54e67dd2ec5ee9, type: 3}
