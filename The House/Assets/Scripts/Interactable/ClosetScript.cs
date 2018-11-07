@@ -11,8 +11,8 @@ public class ClosetScript : MonoBehaviour {
     public JointSpring hingeSpring;
     
     // Gets mouse X and Y Axis 
-    public float mouseY;
-    public float mouseX;
+    private float mouseY;
+    private float mouseX;
   
     // Opening and closing speed of closet 
     public float closetOpenSpeed;
