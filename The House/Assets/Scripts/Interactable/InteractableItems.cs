@@ -7,7 +7,7 @@ using UnityEngine;
 public class InteractableItems : MonoBehaviour
 {
 
-    public GameObject player;
+    private GameObject player;
     private GameObject playerCam;
     public float throwForce;
     private bool throwReady = false;
@@ -39,13 +39,15 @@ public class InteractableItems : MonoBehaviour
 
     private void Awake()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
             //playerMovementCS = player.GetComponent<PlayerMovement>();
             playerSpringPickUp = player.GetComponentInChildren<SpringPickup>();
             playerCam = GameObject.FindGameObjectWithTag("MainCamera");
         }
-        rb = GetComponent<Rigidbody>();
+        throwReady = false;
+        rb = this.GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
     }
     //
@@ -111,7 +113,7 @@ public class InteractableItems : MonoBehaviour
         if (throwReady && playerSpringPickUp.holdingSomething == false)
         {
             //If we have throw the item
-            rb.AddForce(playerCam.transform.forward * throwForce);
+            playerSpringPickUp.targetRigidBody.AddForce(playerCam.transform.forward * throwForce);
             throwReady = false;
         }
     }

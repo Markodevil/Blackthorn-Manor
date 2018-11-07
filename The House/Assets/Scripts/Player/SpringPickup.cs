@@ -11,6 +11,7 @@ public class SpringPickup : MonoBehaviour
     Transform jointTransform;
     float dragDepth;
     Rigidbody rb;
+    public Rigidbody targetRigidBody;
     public bool holdingSomething;
 
     private void Awake()
@@ -61,6 +62,7 @@ public class SpringPickup : MonoBehaviour
             //if the collider is hit and the gameobject is tagged "interactable"
             if (hit.transform.gameObject.tag == "Interactable")
             {
+                targetRigidBody = hit.rigidbody;
                 Debug.Log("touched something");
                 dragDepth = 6.0f;
                 //create new joint at the point of the hit connected to the player
