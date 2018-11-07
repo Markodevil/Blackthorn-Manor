@@ -12,7 +12,6 @@ public class ClosetScript : MonoBehaviour {
     
     // Gets mouse X and Y Axis 
     private float mouseY;
-    private float mouseX;
   
     // Opening and closing speed of closet 
     public float closetOpenSpeed;
@@ -67,22 +66,26 @@ public class ClosetScript : MonoBehaviour {
 
         //returns mouseY Axis
         mouseY = Input.GetAxis("Mouse Y");
-        mouseX = Input.GetAxis("Mouse X");
 
         // lets go of the closet when Mouse0 is released 
         if (Input.GetKeyUp(KeyCode.Mouse0) || dist > 3.5f)
         {
             isOpen = false;
+            closetSoundEnabled = false;
         }
   
       // If closet is being opened toward or away from player 
       // it will play the ClosetSound 
-        if (closetSoundEnabled && mouseY > 0)
+      if (isOpen && mouseY == 0)
+        {
+            closetSoundEnabled = true;
+        }
+        if (closetSoundEnabled && mouseY > 2.5f)
         {
             audio.PlayOneShot(closetSound, 1);
             closetSoundEnabled = false;
         }
-        else if (closetSoundEnabled && mouseY < 0)
+        if (closetSoundEnabled && mouseY < -2.5f)
         {
 
             audio.PlayOneShot(closetSound, 1);
@@ -100,37 +103,7 @@ public class ClosetScript : MonoBehaviour {
         }
 
 
-        // if the player is in front of the Closetdoor
-    //    if (isOpen && Vector3.Dot(transform.forward, Direction) < 0)
-    //   {
-    //       if (isOpen && Vector3.Dot(transform.right, Direction) < 0)
-    //       {
-    //   
-    //           rb.AddForceAtPosition(Player.transform.forward * -mouseX * closetOpenSpeed, Player.transform.position);
-    //       }
-    //       else
-    //       {
-    //   
-    //           rb.AddForceAtPosition(Player.transform.forward * mouseX * -closetOpenSpeed, Player.transform.position);
-    //   
-    //       }
-    //   }
-    //    // if the player behind the Closetdoor
-    //    if (isOpen && Vector3.Dot(transform.forward, Direction) > 0)
-    //    {
-    //
-    //        if (isOpen && Vector3.Dot(transform.right, Direction) > 0)
-    //        {
-    //
-    //            rb.AddForceAtPosition(Player.transform.forward * -mouseX * closetOpenSpeed, Player.transform.position);
-    //        }
-    //        else
-    //        {
-    //
-    //            rb.AddForceAtPosition(-Player.transform.forward * mouseX * -closetOpenSpeed, Player.transform.position);
-    //
-    //        }
-    //    }
+   
     }
 
     //--------------------------------------------------------------------------------------

@@ -105,7 +105,7 @@ public class DrawerScript : MonoBehaviour
 
     }
     // sets bool to true to play the drawer sound
-    void playDrawerSound()
+    void PlayDrawerSound()
     {
         RandomDrawerSound = Random.Range(0, drawerSound.Length);
         audio.clip = drawerSound[RandomDrawerSound];
@@ -125,7 +125,7 @@ public class DrawerScript : MonoBehaviour
     public void changeDrawerState()
     {
         isOpen = !isOpen;
-        playDrawerSound();
+        PlayDrawerSound();
     }
     //--------------------------------------------------------------------------------------
     // Checks if the drawer is colliding with a requiured item 

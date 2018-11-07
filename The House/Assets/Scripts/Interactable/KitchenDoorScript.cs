@@ -9,8 +9,8 @@ public class KitchenDoorScript : MonoBehaviour {
     public JointSpring hingeSpring;
     bool isOpen = false;
     // gets mouse axis
-    public float mouseY;
-    public float mouseX;
+    private float mouseY;
+    private float mouseX;
     // kitchen door open speed
     public float kitchenDoorSpeed;
     private GameObject Player;
@@ -138,12 +138,12 @@ public class KitchenDoorScript : MonoBehaviour {
     //    which will make the player able to open the door
     //     
     //--------------------------------------------------------------------------------------
-    public void ChangekitchenDoorState()
+    public void ChangeKitchenDoorState()
     {
         isOpen = !isOpen;
-        PlaykitchenDoorSound();
+        PlayKitchenDoorSound();
     }
-    void PlaykitchenDoorSound()
+    void PlayKitchenDoorSound()
     {
         kitchenDoorSoundEnabled = true;
     }
