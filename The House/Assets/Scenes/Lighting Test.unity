@@ -3951,6 +3951,22 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1446395662185238, guid: 25fe6d4dc65d44a4eba83d5864ad6c3f, type: 2}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1053956851244658, guid: 25fe6d4dc65d44a4eba83d5864ad6c3f, type: 2}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1335891291677364, guid: 25fe6d4dc65d44a4eba83d5864ad6c3f, type: 2}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1121614491048254, guid: 25fe6d4dc65d44a4eba83d5864ad6c3f, type: 2}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 25fe6d4dc65d44a4eba83d5864ad6c3f, type: 2}
   m_IsPrefabParent: 0
@@ -6916,6 +6932,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   throwForce: 50
   damping: 6
+  targetRigidBody: {fileID: 0}
   holdingSomething: 0
 --- !u!114 &192063432
 MonoBehaviour:

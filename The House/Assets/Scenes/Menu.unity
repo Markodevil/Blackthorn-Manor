@@ -264,7 +264,7 @@ Prefab:
     - target: {fileID: 114142357924800330, guid: 763afb75270cdb8458a38e3dab15ff4b,
         type: 2}
       propertyPath: sceneToLoad
-      value: Lighting Test
+      value: Sandbox
       objectReference: {fileID: 0}
     - target: {fileID: 114142357924800330, guid: 763afb75270cdb8458a38e3dab15ff4b,
         type: 2}
