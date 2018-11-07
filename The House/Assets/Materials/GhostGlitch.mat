@@ -83,7 +83,8 @@ Material:
     - _ZWrite: 1
     - _amount: 1
     - _amount_copy: 1
-    - _dissolveslider: 0.046
+    - _dissolveslider: 0.236
+    - _node_1269: 0
     - _node_546: 8.6
     - _node_7128: 0
     - _scanlineopacity: 0.175

@@ -2878,7 +2878,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 36
+  m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &73107416 stripped
 Transform:
@@ -5967,8 +5967,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hinge: {fileID: 149444996}
-  mouseY: 0
-  mouseX: 0
   kitchenDoorSpeed: 7
   rb: {fileID: 149444997}
   audio: {fileID: 683731346}
@@ -16209,7 +16207,6 @@ Transform:
   - {fileID: 73107416}
   - {fileID: 1088743104}
   - {fileID: 2142806686}
-  - {fileID: 1573922435}
   - {fileID: 2033961194}
   - {fileID: 1725687719}
   - {fileID: 1742234348}
@@ -16227,6 +16224,7 @@ Transform:
   - {fileID: 1589454762}
   - {fileID: 127416787}
   - {fileID: 627847927}
+  - {fileID: 1573922435}
   - {fileID: 182106833}
   - {fileID: 1929640467}
   - {fileID: 1694952537}
@@ -16238,15 +16236,13 @@ Transform:
   - {fileID: 1274490949}
   - {fileID: 1350284920}
   - {fileID: 1138565145}
-  - {fileID: 1914539894}
-  - {fileID: 430198146}
   - {fileID: 18409976}
   - {fileID: 1675038683}
-  - {fileID: 1963183084}
+  - {fileID: 1914539894}
+  - {fileID: 430198146}
   - {fileID: 611165981}
   - {fileID: 532732768}
   - {fileID: 584962643}
-  - {fileID: 1854440235}
   - {fileID: 2069621977}
   - {fileID: 1416459218}
   - {fileID: 1696815175}
@@ -16255,9 +16251,11 @@ Transform:
   - {fileID: 1622412822}
   - {fileID: 445941387}
   - {fileID: 1849352086}
+  - {fileID: 1963183084}
   - {fileID: 1402325132}
   - {fileID: 829297450}
   - {fileID: 1005226462}
+  - {fileID: 1854440235}
   - {fileID: 1694055405}
   - {fileID: 158914807}
   - {fileID: 654386614}
@@ -18596,8 +18594,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hinge: {fileID: 286677397}
-  mouseY: 0
-  mouseX: 0
   kitchenDoorSpeed: 7
   rb: {fileID: 286677398}
   audio: {fileID: 683731346}
@@ -19984,8 +19980,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hinge: {fileID: 343377830}
-  mouseY: 0
-  mouseX: 0
   kitchenDoorSpeed: 7
   rb: {fileID: 343377831}
   audio: {fileID: 683731346}
@@ -21543,8 +21537,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hinge: {fileID: 419106738}
-  mouseY: 0
-  mouseX: 0
   kitchenDoorSpeed: 7
   rb: {fileID: 419106739}
   audio: {fileID: 683731346}
@@ -22194,7 +22186,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 250024379}
-  m_RootOrder: 63
+  m_RootOrder: 65
   m_LocalEulerAnglesHint: {x: 0, y: 269.07898, z: 0}
 --- !u!64 &430198147
 MeshCollider:
@@ -23089,11 +23081,20 @@ Transform:
   m_PrefabParentObject: {fileID: 4380646166745616, guid: 895a331cce2b990449767284e3919ab9,
     type: 2}
   m_PrefabInternal: {fileID: 452502091}
---- !u!4 &453600759 stripped
+--- !u!4 &453600759
 Transform:
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 4321264053136510, guid: 97d7fa850d3ad704d930020536a6a510,
     type: 2}
   m_PrefabInternal: {fileID: 1296566748}
+  m_GameObject: {fileID: 1008236729}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1496701255}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &460445283
 Prefab:
   m_ObjectHideFlags: 0
@@ -23425,8 +23426,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hinge: {fileID: 468892761}
-  mouseY: 0
-  mouseX: 0
   closetOpenSpeed: 5
   rb: {fileID: 468892763}
   audio: {fileID: 468892760}
@@ -28321,6 +28320,7 @@ Transform:
   - {fileID: 1185024861}
   - {fileID: 1492179732}
   - {fileID: 191741219}
+  - {fileID: 819393991}
   m_Father: {fileID: 192063435}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -35008,8 +35008,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hinge: {fileID: 767302944}
-  mouseY: 0
-  mouseX: 0
   kitchenDoorSpeed: 7
   rb: {fileID: 767302945}
   audio: {fileID: 683731346}
@@ -36786,6 +36784,34 @@ Mesh:
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
   m_MeshOptimized: 0
+--- !u!1 &819393990
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 819393991}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &819393991
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 819393990}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: -0.469}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 619276043}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &819935065
 Prefab:
   m_ObjectHideFlags: 0
@@ -42082,8 +42108,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hinge: {fileID: 947142620}
-  mouseY: 0
-  mouseX: 0
   closetOpenSpeed: 5
   rb: {fileID: 947142621}
   audio: {fileID: 947142618}
@@ -42452,8 +42476,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hinge: {fileID: 958997818}
-  mouseY: 0
-  mouseX: 0
   kitchenDoorSpeed: 7
   rb: {fileID: 958997819}
   audio: {fileID: 683731346}
@@ -44283,8 +44305,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hinge: {fileID: 1005635794}
-  mouseY: 0
-  mouseX: 0
   kitchenDoorSpeed: 7
   rb: {fileID: 1005635795}
   audio: {fileID: 683731346}
@@ -44523,6 +44543,21 @@ Transform:
   m_PrefabParentObject: {fileID: 4608633873110196, guid: 2a4ffe6fbc79f9a4593f3931f1b82b19,
     type: 2}
   m_PrefabInternal: {fileID: 1007761041}
+--- !u!1 &1008236729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 1296566748}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 453600759}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1010751461 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 8ac53ba72758b8542af78643184a052e, type: 3}
@@ -45152,8 +45187,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hinge: {fileID: 1026513851}
-  mouseY: 0
-  mouseX: 0
   closetOpenSpeed: 5
   rb: {fileID: 1026513854}
   audio: {fileID: 1026513850}
@@ -51623,11 +51656,11 @@ MonoBehaviour:
   doorScript: {fileID: 0}
   tutorialPageThing: {fileID: 1759831707}
   disableGhostButton: {fileID: 1569327590}
-  gameOverAnimation: {fileID: 0}
+  gameOverAnimation: {fileID: 1948627055}
   killCamera: {fileID: 598610993}
   normalGhostMesh: {fileID: 1989985187}
   killGhostMesh: {fileID: 1948627053}
-  deathRayCastTransform: {fileID: 0}
+  deathRayCastTransform: {fileID: 819393991}
 --- !u!114 &1131695673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56005,8 +56038,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hinge: {fileID: 1245259848}
-  mouseY: 0
-  mouseX: 0
   kitchenDoorSpeed: 7
   rb: {fileID: 1245259849}
   audio: {fileID: 683731346}
@@ -57343,7 +57374,7 @@ Transform:
   - {fileID: 1542196375}
   - {fileID: 2125582037}
   m_Father: {fileID: 0}
-  m_RootOrder: 35
+  m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1290788028
 GameObject:
@@ -66347,6 +66378,35 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b8444b2c92cb56349b2826fc6227f0d7, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &1496701254
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 1296566748}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1496701255}
+  m_Layer: 0
+  m_Name: Missing Prefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1496701255
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 1296566748}
+  m_GameObject: {fileID: 1496701254}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 453600759}
+  m_Father: {fileID: 0}
+  m_RootOrder: 37
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1498657631
 Prefab:
   m_ObjectHideFlags: 0
@@ -68257,8 +68317,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hinge: {fileID: 1551889603}
-  mouseY: 0
-  mouseX: 0
   closetOpenSpeed: 5
   rb: {fileID: 1551889605}
   audio: {fileID: 1551889602}
@@ -68958,7 +69016,7 @@ Prefab:
     - target: {fileID: 224968758392061380, guid: 907e993f9c1e148408e9fee4a5dbb0a2,
         type: 2}
       propertyPath: m_RootOrder
-      value: 37
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 224968758392061380, guid: 907e993f9c1e148408e9fee4a5dbb0a2,
         type: 2}
@@ -70993,8 +71051,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hinge: {fileID: 1619600205}
-  mouseY: 0
-  mouseX: 0
   closetOpenSpeed: 12
   rb: {fileID: 1619600206}
   audio: {fileID: 881170848}
@@ -71011,8 +71067,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hinge: {fileID: 1619600205}
-  mouseY: 0
-  mouseX: 0
   kitchenDoorSpeed: 12
   rb: {fileID: 1619600206}
   audio: {fileID: 881170848}
@@ -73475,8 +73529,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hinge: {fileID: 1676764234}
-  mouseY: 0
-  mouseX: 0
   closetOpenSpeed: 12
   rb: {fileID: 1676764235}
   audio: {fileID: 881170848}
@@ -73493,8 +73545,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hinge: {fileID: 1676764234}
-  mouseY: 0
-  mouseX: 0
   kitchenDoorSpeed: 12
   rb: {fileID: 1676764235}
   audio: {fileID: 881170848}
@@ -83296,7 +83346,7 @@ Transform:
   m_LocalScale: {x: 0.87093824, y: 0.87059635, z: 0.8702818}
   m_Children: []
   m_Father: {fileID: 250024379}
-  m_RootOrder: 62
+  m_RootOrder: 64
   m_LocalEulerAnglesHint: {x: 0, y: 94.788, z: 0}
 --- !u!95 &1914539895
 Animator:
@@ -85069,8 +85119,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hinge: {fileID: 1942759139}
-  mouseY: 0
-  mouseX: 0
   kitchenDoorSpeed: 7
   rb: {fileID: 1942759140}
   audio: {fileID: 683731346}
@@ -85435,6 +85483,11 @@ GameObject:
 --- !u!4 &1948627054 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400168, guid: b8444b2c92cb56349b2826fc6227f0d7, type: 3}
+  m_PrefabInternal: {fileID: 1496050135}
+--- !u!95 &1948627055 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 9500000, guid: b8444b2c92cb56349b2826fc6227f0d7,
+    type: 3}
   m_PrefabInternal: {fileID: 1496050135}
 --- !u!114 &1948627056
 MonoBehaviour:
@@ -90978,8 +91031,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hinge: {fileID: 2093402118}
-  mouseY: 0
-  mouseX: 0
   kitchenDoorSpeed: 7
   rb: {fileID: 2093402119}
   audio: {fileID: 683731346}
