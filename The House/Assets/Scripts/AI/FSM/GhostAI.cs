@@ -212,14 +212,14 @@ public class GhostAI : MonoBehaviour
                     else
                         heardSomethingAnim.speed = 1.0f;
                 }
-                else if (dist >= 10.0f)
-                {
-                    NMA.speed = 1.5f;
-                    if (!wait)
-                        heardSomethingAnim.speed = 1.5f;
-                    else
-                        heardSomethingAnim.speed = 1.0f;
-                }
+                //else if (dist >= 10.0f)
+                //{
+                //    NMA.speed = 1.5f;
+                //    if (!wait)
+                //        heardSomethingAnim.speed = 1.5f;
+                //    else
+                //        heardSomethingAnim.speed = 1.0f;
+                //}
             }
 
             //Track Swap;
