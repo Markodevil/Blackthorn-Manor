@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45faf67343027de40beb7bc57d856b93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: 50
+  throwForce: 1
   soundRange: 5
   objectHasBeenHeard: 0
 --- !u!136 &136796815457012714
