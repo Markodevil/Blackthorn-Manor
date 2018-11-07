@@ -3967,6 +3967,51 @@ Prefab:
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 198438906716167666, guid: 25fe6d4dc65d44a4eba83d5864ad6c3f,
+        type: 2}
+      propertyPath: randomSeed
+      value: -1865081352
+      objectReference: {fileID: 0}
+    - target: {fileID: 198438906716167666, guid: 25fe6d4dc65d44a4eba83d5864ad6c3f,
+        type: 2}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198882732124954778, guid: 25fe6d4dc65d44a4eba83d5864ad6c3f,
+        type: 2}
+      propertyPath: randomSeed
+      value: 1601618074
+      objectReference: {fileID: 0}
+    - target: {fileID: 198882732124954778, guid: 25fe6d4dc65d44a4eba83d5864ad6c3f,
+        type: 2}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198926506949907814, guid: 25fe6d4dc65d44a4eba83d5864ad6c3f,
+        type: 2}
+      propertyPath: randomSeed
+      value: -1076538304
+      objectReference: {fileID: 0}
+    - target: {fileID: 198926506949907814, guid: 25fe6d4dc65d44a4eba83d5864ad6c3f,
+        type: 2}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198438906716167666, guid: 25fe6d4dc65d44a4eba83d5864ad6c3f,
+        type: 2}
+      propertyPath: EmissionModule.rateOverDistance.scalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 198882732124954778, guid: 25fe6d4dc65d44a4eba83d5864ad6c3f,
+        type: 2}
+      propertyPath: EmissionModule.rateOverDistance.scalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 198926506949907814, guid: 25fe6d4dc65d44a4eba83d5864ad6c3f,
+        type: 2}
+      propertyPath: EmissionModule.rateOverDistance.scalar
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 25fe6d4dc65d44a4eba83d5864ad6c3f, type: 2}
   m_IsPrefabParent: 0
