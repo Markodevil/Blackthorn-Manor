@@ -74,6 +74,11 @@ public class ItemCollection : MonoBehaviour
                 //if the object hit by ray is a required item
                 if (hitObject.tag == "RequiredItem")
                 {
+                    if(hitObject.gameObject.transform.root.GetComponentInChildren<OutlineShaderScript>() != null)
+                    {
+                        hitObject.gameObject.transform.root.GetComponentInChildren<OutlineShaderScript>().toggleOutline = false;
+                    }
+                    toggleOutline = false;
                     //check to see if the item has been picked up before
                     foreach (string str in pickedUpItems)
                     {
@@ -90,7 +95,6 @@ public class ItemCollection : MonoBehaviour
                     pickedUpItems.Add(hitObject.name);
                     //set object to inactive
                     // Turns off the object outline 
-                    toggleOutline = false;
                     //add to number of items
                     currentNumberOfItems++;
                     // hitObject.GetComponent<AudioSource>().Play();
