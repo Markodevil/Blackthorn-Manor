@@ -38,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isBreathing = true;
     public bool useHeadbob;
-    public Animator headbobAnim;
 
     [Header("Crouching")]
     public bool isCreepin;
@@ -164,36 +163,6 @@ public class PlayerMovement : MonoBehaviour
             PlayPanicSound = true;
             isBreathing = true;
 
-        }
-        if (isTouchingSomething)
-        {
-            headbobAnim.SetBool("isRunning", false);
-            headbobAnim.SetBool("isWalking", false);
-            //isRunning = false;
-            //isCreepin = false;
-            //if (currentMovementState == howAmIMoving.running)
-            //    playerSoundLvl /= 2;
-            //currentMovementState = howAmIMoving.walking;
-            //if (useHeadbob)
-            //    headbobAnim.SetBool("isRunning", isRunning);
-            return;
-        }
-        else
-        {
-            //set headbob anim bool
-            if (useHeadbob)
-            {
-                if (currentMovementState == howAmIMoving.running)
-                    headbobAnim.SetBool("isRunning", true);
-                else
-                    headbobAnim.SetBool("isRunning", false);
-
-                if (currentMovementState == howAmIMoving.walking)
-                    headbobAnim.SetBool("isWalking", true);
-                else
-                    headbobAnim.SetBool("isWalking", false);
-
-            }
         }
 
         //When the player stops crouching stop playing sound effect

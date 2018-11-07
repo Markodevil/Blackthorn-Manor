@@ -94,21 +94,27 @@ public class HeadBob : MonoBehaviour
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0) //moving
         {
             timer += usedBobSpeed * Time.deltaTime;
+            Vector3 newPosition = new Vector3();
 
             switch (sprinting)
             {
                 case true:
                     usedBobSpeed = bobSpeedRunning;
                     usedBobAmount = bobAmountRunning;
+
+                    //use the timer value to set the position
+                    newPosition = new Vector3(Mathf.Cos(timer) * usedBobAmount/*restPosition.x*/, restPosition.y + Mathf.Abs((Mathf.Sin(timer) * usedBobAmount)), restPosition.z); //abs val of y for a parabolic path
+                    transform.localPosition = newPosition;
                     break;
                 case false:
                     usedBobSpeed = bobSpeed;
                     usedBobAmount = bobAmount;
+
+                    //use the timer value to set the position
+                    newPosition = new Vector3(/*Mathf.Cos(timer) * usedBobAmount*/restPosition.x, restPosition.y + Mathf.Abs((Mathf.Sin(timer) * usedBobAmount)), restPosition.z); //abs val of y for a parabolic path
+                    transform.localPosition = newPosition;
                     break;
             }
-            //use the timer value to set the position
-            Vector3 newPosition = new Vector3(Mathf.Cos(timer) * usedBobAmount, restPosition.y + Mathf.Abs((Mathf.Sin(timer) * usedBobAmount)), restPosition.z); //abs val of y for a parabolic path
-            transform.localPosition = newPosition;
         }
         else
         {
