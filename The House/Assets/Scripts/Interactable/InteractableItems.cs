@@ -169,7 +169,7 @@ public class InteractableItems : MonoBehaviour
     //
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, soundRange);
+        //Gizmos.color = Color.red;
+        //Gizmos.DrawWireSphere(transform.position, soundRange);
     }
 }
