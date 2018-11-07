@@ -54,7 +54,7 @@ public class DrawerScript : MonoBehaviour
         // Gets the Mouse Y and Mouse X coordinates 
         mouseY = Input.GetAxis("Mouse Y");
         mouseX = Input.GetAxis("Mouse X");
-
+       
         // lets go of the drawer when Mouse0 is released 
         if (Input.GetKeyUp(KeyCode.Mouse0) || dist > 2.65f)
         {
@@ -101,7 +101,7 @@ public class DrawerScript : MonoBehaviour
         {
             rb.AddForceAtPosition(Player.transform.forward * -mouseX * drawerSpeed, Player.transform.position);
         }
-
+     
 
     }
     // sets bool to true to play the drawer sound
@@ -139,11 +139,16 @@ public class DrawerScript : MonoBehaviour
     //--------------------------------------------------------------------------------------
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "RequiredItem")
+        if (transform.childCount != 0)
         {
-            collision.transform.SetParent(transform.GetChild(0));
-            transform.GetChild(0).Rotate(0, 0, 90);
-            collision.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+ 
+            if (collision.gameObject.tag == "RequiredItem")
+            {
+                collision.transform.SetParent(transform.GetChild(0));
+                transform.GetChild(0).Rotate(0, 0, 90);
+                collision.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            }
         }
+  
     }
 }
