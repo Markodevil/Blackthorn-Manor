@@ -1,0 +1,205 @@
+fileFormatVersion: 2
+guid: 96938b95f52e571419d32c5873d4f987
+timeCreated: 1541973851
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Doorframe_0
+    100002: Doorframe_1
+    100004: Doorframe_10
+    100006: Doorframe_2
+    100008: Doorframe_3
+    100010: Doorframe_4
+    100012: Doorframe_5
+    100014: Doorframe_6
+    100016: Doorframe_7
+    100018: Doorframe_8
+    100020: Doorframe_9
+    100022: Room_Bathroom
+    100024: Room_Bedroom_01
+    100026: Room_Bedroom_02
+    100028: Room_Dining
+    100030: Room_EntranceHall
+    100032: Room_GrandHall
+    100034: Room_Kitchen
+    100036: Room_Living
+    100038: Room_MasterBathroom1
+    100040: Room_MasterBedroom
+    100042: Room_Study
+    100044: Texture_01
+    100046: Texture_02
+    100048: //RootNode
+    400000: Doorframe_0
+    400002: Doorframe_1
+    400004: Doorframe_10
+    400006: Doorframe_2
+    400008: Doorframe_3
+    400010: Doorframe_4
+    400012: Doorframe_5
+    400014: Doorframe_6
+    400016: Doorframe_7
+    400018: Doorframe_8
+    400020: Doorframe_9
+    400022: Room_Bathroom
+    400024: Room_Bedroom_01
+    400026: Room_Bedroom_02
+    400028: Room_Dining
+    400030: Room_EntranceHall
+    400032: Room_GrandHall
+    400034: Room_Kitchen
+    400036: Room_Living
+    400038: Room_MasterBathroom1
+    400040: Room_MasterBedroom
+    400042: Room_Study
+    400044: Texture_01
+    400046: Texture_02
+    400048: //RootNode
+    2100000: House_FirstHalf
+    2100002: House_SecondHalf
+    2300000: Doorframe_0
+    2300002: Doorframe_1
+    2300004: Doorframe_10
+    2300006: Doorframe_2
+    2300008: Doorframe_3
+    2300010: Doorframe_4
+    2300012: Doorframe_5
+    2300014: Doorframe_6
+    2300016: Doorframe_7
+    2300018: Doorframe_8
+    2300020: Doorframe_9
+    2300022: Room_Bathroom
+    2300024: Room_Bedroom_01
+    2300026: Room_Bedroom_02
+    2300028: Room_Dining
+    2300030: Room_EntranceHall
+    2300032: Room_GrandHall
+    2300034: Room_Kitchen
+    2300036: Room_Living
+    2300038: Room_MasterBathroom1
+    2300040: Room_MasterBedroom
+    2300042: Room_Study
+    3300000: Doorframe_0
+    3300002: Doorframe_1
+    3300004: Doorframe_10
+    3300006: Doorframe_2
+    3300008: Doorframe_3
+    3300010: Doorframe_4
+    3300012: Doorframe_5
+    3300014: Doorframe_6
+    3300016: Doorframe_7
+    3300018: Doorframe_8
+    3300020: Doorframe_9
+    3300022: Room_Bathroom
+    3300024: Room_Bedroom_01
+    3300026: Room_Bedroom_02
+    3300028: Room_Dining
+    3300030: Room_EntranceHall
+    3300032: Room_GrandHall
+    3300034: Room_Kitchen
+    3300036: Room_Living
+    3300038: Room_MasterBathroom1
+    3300040: Room_MasterBedroom
+    3300042: Room_Study
+    4300000: Doorframe_1
+    4300002: Doorframe_3
+    4300004: Doorframe_6
+    4300006: Room_Study
+    4300008: Room_EntranceHall
+    4300010: Doorframe_4
+    4300012: Room_Kitchen
+    4300014: Room_Dining
+    4300016: Room_Living
+    4300018: Doorframe_7
+    4300020: Room_GrandHall
+    4300022: Room_Bathroom
+    4300024: Doorframe_0
+    4300026: Doorframe_8
+    4300028: Room_MasterBedroom
+    4300030: Room_Bedroom_02
+    4300032: Doorframe_10
+    4300034: Doorframe_9
+    4300036: Doorframe_2
+    4300038: Room_Bedroom_01
+    4300040: Room_MasterBathroom1
+    4300042: Doorframe_5
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
