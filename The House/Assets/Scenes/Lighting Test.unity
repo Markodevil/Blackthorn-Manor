@@ -86229,6 +86229,20 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: 0.175
       objectReference: {fileID: 0}
+    - target: {fileID: 114843162709144182, guid: 90b4eee7b5364c749af1b2c7a8755098,
+        type: 2}
+      propertyPath: toggleOutline
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114843162709144182, guid: 90b4eee7b5364c749af1b2c7a8755098,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1369931300956976, guid: 90b4eee7b5364c749af1b2c7a8755098, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 90b4eee7b5364c749af1b2c7a8755098, type: 2}
   m_IsPrefabParent: 0
