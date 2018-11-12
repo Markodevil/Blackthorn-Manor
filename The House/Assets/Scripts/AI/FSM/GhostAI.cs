@@ -193,25 +193,25 @@ public class GhostAI : MonoBehaviour
 
             //Ghost Speed Changer
             //If the Ghost is close = 0.5f, medium = 1.0f, Far = 1.50f
-            dist = Vector3.Distance(playerPosition, currentPosition);
-            if (FSM.currentState == PatrolState.GetInstance(this))
-            {
-                if (dist <= 5.0f)
-                {
-                    NMA.speed = 0.5f;
-                    if (!wait)
-                        heardSomethingAnim.speed = 0.5f;
-                    else
-                        heardSomethingAnim.speed = 1.0f;
-                }
-                else if (dist <= 10.0f)
-                {
-                    NMA.speed = 1.0f;
-                    if (!wait)
-                        heardSomethingAnim.speed = 1.0f;
-                    else
-                        heardSomethingAnim.speed = 1.0f;
-                }
+            //dist = Vector3.Distance(playerPosition, currentPosition);
+            //if (FSM.currentState == PatrolState.GetInstance(this))
+            //{
+            //    if (dist <= 5.0f)
+            //    {
+            //        NMA.speed = 0.5f;
+            //        if (!wait)
+            //            heardSomethingAnim.speed = 0.5f;
+            //        else
+            //            heardSomethingAnim.speed = 1.0f;
+            //    }
+            //    else if (dist <= 10.0f)
+            //    {
+            //        NMA.speed = 1.0f;
+            //        if (!wait)
+            //            heardSomethingAnim.speed = 1.0f;
+            //        else
+            //            heardSomethingAnim.speed = 1.0f;
+            //    }
                 //else if (dist >= 10.0f)
                 //{
                 //    NMA.speed = 1.5f;
@@ -220,7 +220,7 @@ public class GhostAI : MonoBehaviour
                 //    else
                 //        heardSomethingAnim.speed = 1.0f;
                 //}
-            }
+            //}
 
             //Track Swap;
             if (spawnDoorList != null)
