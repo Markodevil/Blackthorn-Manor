@@ -12073,7 +12073,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4a9ec61f3362f224bb9ebf976728d344, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.419
+      value: 2.381
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4a9ec61f3362f224bb9ebf976728d344, type: 3}
       propertyPath: m_LocalPosition.z
@@ -61358,7 +61358,7 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b56716d7d12647245876daffb3e037d2, type: 2}
+      objectReference: {fileID: 2100000, guid: 0b9b039e01e30c748b30d4424c099055, type: 2}
     - target: {fileID: 1821583104544382, guid: d2537f56a4095e74f83d6260a04e0048, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 1
@@ -75074,6 +75074,11 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 65435768031552282, guid: c0f312103f8c1174fbeeac12c84d4a1f,
+        type: 2}
+      propertyPath: m_Center.z
+      value: -0.33
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c0f312103f8c1174fbeeac12c84d4a1f, type: 2}
   m_IsPrefabParent: 0
@@ -81722,6 +81727,7 @@ GameObject:
   - component: {fileID: 1705902006}
   - component: {fileID: 1902073373}
   - component: {fileID: 1705902004}
+  - component: {fileID: 1705902005}
   m_Layer: 8
   m_Name: DeathCamera
   m_TagString: DeathCam
@@ -81741,6 +81747,13 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!81 &1705902005
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1705902003}
+  m_Enabled: 1
 --- !u!124 &1705902006
 Behaviour:
   m_ObjectHideFlags: 0
@@ -92344,8 +92357,6 @@ MonoBehaviour:
   audioSource: {fileID: 1350357880}
   Sounds:
   - {fileID: 8300000, guid: 9bb15da966062ad46b57e3fe87d6f053, type: 3}
-  - {fileID: 8300000, guid: ffb24409c5c8e1d479998ba4c382e677, type: 3}
-  - {fileID: 8300000, guid: b2aa3992f39d83945bc0a1df88e14690, type: 3}
   soundTimer: 0
   setSoundTimer: 0
   minimumSoundTime: 10
