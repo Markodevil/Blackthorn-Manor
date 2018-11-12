@@ -98,7 +98,7 @@ public class WanderState : State<GhostAI>
         {
             owner.FSM.ChangeState(PatrolState.GetInstance(owner));
             playerScript.Panic = false;
-            Debug.Log("Ghost stopped searching");
+            //Debug.Log("Ghost stopped searching");
         }
     }
 

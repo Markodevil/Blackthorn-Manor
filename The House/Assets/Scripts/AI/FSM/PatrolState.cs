@@ -77,7 +77,7 @@ public class PatrolState : State<GhostAI>
         else
         {
             SetDestination(owner);
-            Debug.Log("OnEnter");
+            //Debug.Log("OnEnter");
         }
     }
 
@@ -122,7 +122,7 @@ public class PatrolState : State<GhostAI>
                 if (partrolWaiting && !travelling)
                 {
                     randomChance = Random.Range(1, 10);
-                    Debug.Log("Random Roll = " + randomChance);
+                    //Debug.Log("Random Roll = " + randomChance);
                     if (randomChance <= 5)
                     {
                         //Swaping to new track
@@ -196,9 +196,9 @@ public class PatrolState : State<GhostAI>
                             owner.ReadyToSwapTrack = false;
                         }
 
-                        Debug.Log("Random Chance");
+                        //Debug.Log("Random Chance");
                         SetDestination(owner);
-                        Debug.Log(navMeshAgent.remainingDistance);
+                        //Debug.Log(navMeshAgent.remainingDistance);
                     }
                 }
                 else
@@ -236,9 +236,9 @@ public class PatrolState : State<GhostAI>
                     }
 
                     //This can never fire if we are waiting
-                    Debug.Log("Not PartrolWaiting");
+                    //Debug.Log("Not PartrolWaiting");
                     SetDestination(owner);
-                    Debug.Log(navMeshAgent.remainingDistance);
+                    //Debug.Log(navMeshAgent.remainingDistance);
                 }
             }
         }
@@ -255,9 +255,9 @@ public class PatrolState : State<GhostAI>
             {
                 owner.heardSomethingAnim.SetBool("WaitBool", false);
                 waiting = false;
-                Debug.Log("WaitTimer >=");
+                //Debug.Log("WaitTimer >=");
                 SetDestination(owner);
-                Debug.Log(navMeshAgent.remainingDistance);
+                //Debug.Log(navMeshAgent.remainingDistance);
                 travelling = true;
                 waitTimer = 0;
             }
@@ -283,7 +283,7 @@ public class PatrolState : State<GhostAI>
         {
             Debug.Log("Error setting destination");
         }
-        Debug.Log(currentWayPoint.name + " " + targetVector);
+        //Debug.Log(currentWayPoint.name + " " + targetVector);
 
         travelling = true;
     }

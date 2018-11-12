@@ -163,7 +163,7 @@ public class GhostAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Anim speed" + heardSomethingAnim.speed);
+        //Debug.Log("Anim speed" + heardSomethingAnim.speed);
         if (FSM.currentState != GameOverState.GetInstance(this))
         {
 
