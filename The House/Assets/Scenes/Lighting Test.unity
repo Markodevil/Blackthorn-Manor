@@ -15481,11 +15481,11 @@ Transform:
   - {fileID: 2007923222}
   - {fileID: 431116369}
   - {fileID: 2015746738}
-  - {fileID: 2142806686}
   - {fileID: 1088743104}
   - {fileID: 1573922435}
   - {fileID: 2033961194}
   - {fileID: 73107416}
+  - {fileID: 2142806686}
   - {fileID: 1725687719}
   - {fileID: 1742234348}
   - {fileID: 2040544398}
@@ -15523,8 +15523,8 @@ Transform:
   - {fileID: 532732768}
   - {fileID: 584962643}
   - {fileID: 1416459218}
-  - {fileID: 1854440235}
   - {fileID: 2069621977}
+  - {fileID: 1854440235}
   - {fileID: 1696815175}
   - {fileID: 1551512028}
   - {fileID: 649157112}
@@ -18870,6 +18870,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5600cb6ff103e8e46b7e0eef87652c9f, type: 2}
+    - target: {fileID: 2300022, guid: 96938b95f52e571419d32c5873d4f987, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dc98846c4e589bc47959dcd8ce6d1429, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96938b95f52e571419d32c5873d4f987, type: 3}
   m_IsPrefabParent: 0
@@ -87241,7 +87245,7 @@ Transform:
   m_LocalScale: {x: 0.85252416, y: 0.87059635, z: 0.88982874}
   m_Children: []
   m_Father: {fileID: 250024379}
-  m_RootOrder: 32
+  m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 36.425003, z: 79.66701}
 --- !u!95 &2142806687
 Animator:
