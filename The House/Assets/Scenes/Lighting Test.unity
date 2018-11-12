@@ -26993,6 +26993,30 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 2300030, guid: 96938b95f52e571419d32c5873d4f987, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300036, guid: 96938b95f52e571419d32c5873d4f987, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300042, guid: 96938b95f52e571419d32c5873d4f987, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300032, guid: 96938b95f52e571419d32c5873d4f987, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300028, guid: 96938b95f52e571419d32c5873d4f987, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300034, guid: 96938b95f52e571419d32c5873d4f987, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96938b95f52e571419d32c5873d4f987, type: 3}
   m_IsPrefabParent: 0
@@ -33882,6 +33906,48 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300018, guid: 96938b95f52e571419d32c5873d4f987, type: 3}
+--- !u!1001 &568745021
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400272, guid: 6e2250ba32ff06d46ae753f35431ac9f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.008
+      objectReference: {fileID: 0}
+    - target: {fileID: 400272, guid: 6e2250ba32ff06d46ae753f35431ac9f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 400272, guid: 6e2250ba32ff06d46ae753f35431ac9f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 400272, guid: 6e2250ba32ff06d46ae753f35431ac9f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400272, guid: 6e2250ba32ff06d46ae753f35431ac9f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400272, guid: 6e2250ba32ff06d46ae753f35431ac9f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400272, guid: 6e2250ba32ff06d46ae753f35431ac9f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400272, guid: 6e2250ba32ff06d46ae753f35431ac9f, type: 3}
+      propertyPath: m_RootOrder
+      value: 49
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 6e2250ba32ff06d46ae753f35431ac9f, type: 3}
+  m_IsPrefabParent: 0
 --- !u!4 &571141852 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 4a9ec61f3362f224bb9ebf976728d344, type: 3}
@@ -52553,7 +52619,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 49
+  m_RootOrder: 50
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1023726062
 Prefab:
@@ -92175,8 +92241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e197676b68a0e4f86d1acaf82570e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialSpeed: 3
-  sprintMultiplier: 1.5
+  initialSpeed: 1.7
+  sprintMultiplier: 1.7
   crouchMultiplier: 0.5
   footstepsSound: {fileID: 801412691}
   timeBetweenStepsWalking: 0.75
