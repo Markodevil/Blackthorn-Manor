@@ -35,9 +35,9 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Sandbox.unity
     guid: 8b2af8ccd8d8aa3498a246d81a30d311
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Lighting Test.unity
     guid: cff2e962ae3166649a9767dd48de4d2f

@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eacbded7b58d8c74aaa859da014a2512, type: 3}
-  m_Name: Character View
+  m_Name: Blur View
   m_EditorClassIdentifier: 
   debugViews:
     m_Enabled: 1
@@ -69,9 +69,9 @@ MonoBehaviour:
       screenEdgeMask:
         intensity: 0.03
   depthOfField:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
-      focusDistance: 10
+      focusDistance: 0.42
       aperture: 5.6
       focalLength: 50
       useCameraFov: 0
