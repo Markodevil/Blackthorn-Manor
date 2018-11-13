@@ -328,7 +328,7 @@ public class PlayerMovement : MonoBehaviour
             //if you are moving in any direction
             if (Horizontal != 0 || Vertical != 0)
             {
-                //footstep sound timer
+                //footstep sound timerss
                 footstepTimer -= Time.deltaTime;
 
                 if (footstepTimer <= 0)

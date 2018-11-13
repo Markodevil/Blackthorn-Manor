@@ -264,7 +264,7 @@ Prefab:
     - target: {fileID: 114142357924800330, guid: 763afb75270cdb8458a38e3dab15ff4b,
         type: 2}
       propertyPath: sceneToLoad
-      value: Sandbox
+      value: Lighting Test
       objectReference: {fileID: 0}
     - target: {fileID: 114142357924800330, guid: 763afb75270cdb8458a38e3dab15ff4b,
         type: 2}
@@ -586,7 +586,7 @@ Prefab:
     - target: {fileID: 114619597180997302, guid: feb67016b036b214f9dac1552eeb1552,
         type: 2}
       propertyPath: m_MaxValue
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114480375076976522, guid: feb67016b036b214f9dac1552eeb1552,
         type: 2}
@@ -893,6 +893,14 @@ Prefab:
         type: 2}
       propertyPath: m_Interactable
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1352346551288896, guid: feb67016b036b214f9dac1552eeb1552, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1595106220146104, guid: feb67016b036b214f9dac1552eeb1552, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: feb67016b036b214f9dac1552eeb1552, type: 2}
