@@ -1531,7 +1531,6 @@ GameObject:
   - component: {fileID: 4759489007509370}
   - component: {fileID: 20054662106728538}
   - component: {fileID: 124155462092771666}
-  - component: {fileID: 114146084222377824}
   m_Layer: 0
   m_Name: Camera_05
   m_TagString: Untagged
@@ -45166,18 +45165,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entityType: 0
---- !u!114 &114146084222377824
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1160441698308826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 057d31c9ba3ee2d45ba9dfb9abbea49c, type: 2}
 --- !u!114 &114148756663674366
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -98285,6 +98272,10 @@ MonoBehaviour:
   numberOfHorcruxesNeeded: 4
   completed: 0
   positions: []
+  Skull: {fileID: 0}
+  Knife: {fileID: 0}
+  Candle: {fileID: 0}
+  Chalk: {fileID: 0}
 --- !u!114 &114979584021419664
 MonoBehaviour:
   m_ObjectHideFlags: 1

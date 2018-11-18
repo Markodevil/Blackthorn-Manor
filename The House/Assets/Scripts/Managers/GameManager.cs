@@ -182,7 +182,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         //Debug.Log(tutorialState);
-        Debug.Log(currentState);
+        //Debug.Log(currentState);
         /////////////////////
         // Game Logic Here //
         /////////////////////

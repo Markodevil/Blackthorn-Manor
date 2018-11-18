@@ -14588,9 +14588,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restPosition: {x: 0, y: 0, z: 0}
   transitionSpeed: 20
-  bobSpeed: 4.8
+  bobSpeed: 4.25
   bobAmount: 0.05
-  bobSpeedRunning: 5.6
+  bobSpeedRunning: 8
   bobAmountRunning: 0.1
   sprinting: 0
   isTouchingSomething: 0
@@ -44885,6 +44885,16 @@ Prefab:
     - target: {fileID: 1640332086819578, guid: 597dad7f998b58c49a10bfe496324868, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 114649637824581662, guid: 597dad7f998b58c49a10bfe496324868,
+        type: 2}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114373197016905576, guid: 597dad7f998b58c49a10bfe496324868,
+        type: 2}
+      propertyPath: timeBetweenCharacters
+      value: 0.04
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 597dad7f998b58c49a10bfe496324868, type: 2}
@@ -81745,7 +81755,6 @@ GameObject:
   - component: {fileID: 1705902007}
   - component: {fileID: 1705902006}
   - component: {fileID: 1902073373}
-  - component: {fileID: 1705902004}
   - component: {fileID: 1705902005}
   m_Layer: 8
   m_Name: DeathCamera
@@ -81754,18 +81763,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1705902004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114527788369203150, guid: a51fd2e6b8a438140a22e485a23d726e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1705902003}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!81 &1705902005
 AudioListener:
   m_ObjectHideFlags: 0
