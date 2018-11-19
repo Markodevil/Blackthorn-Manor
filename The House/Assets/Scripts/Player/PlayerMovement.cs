@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Footsteps")]
     public AudioSource footstepsSound;
+    // How much noise the footsteps make 
+    float footStepVolume;
     public float timeBetweenStepsWalking;
     public float timeBetweenStepsRunning;
     private float footstepTimer;
@@ -28,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Foot/Movement stuff")]
     public GameObject[] footsies;
     private int footIndex = 0;
-    public float playerSoundLvl;
+    public float playerSoundLvl = 1;
     public Transform GhostTransform;
     [HideInInspector]
     public bool playerHasBeenHeard = false;
@@ -255,6 +257,7 @@ public class PlayerMovement : MonoBehaviour
                     {
                         //you are now running
                         isRunning = true;
+                        footStepVolume += 3;
                         playerSoundLvl *= 2;
                         currentMovementState = howAmIMoving.running;
                     }
@@ -290,6 +293,7 @@ public class PlayerMovement : MonoBehaviour
                     //no longer running
                     isRunning = false;
                     playerSoundLvl /= 2;
+                    footStepVolume = 1;
                     currentMovementState = howAmIMoving.walking;
 
                 }
@@ -338,13 +342,13 @@ public class PlayerMovement : MonoBehaviour
                     switch (currentFloorType)
                     {
                         case floorType.timber:
-                            footstepsSound.PlayOneShot(timberStep);
+                            footstepsSound.PlayOneShot(timberStep, footStepVolume);
                             break;
                         case floorType.carpet:
-                            footstepsSound.PlayOneShot(carpetStep);
+                            footstepsSound.PlayOneShot(carpetStep , footStepVolume);
                             break;
                         case floorType.tiles:
-                            footstepsSound.PlayOneShot(tileStep);
+                            footstepsSound.PlayOneShot(tileStep , footStepVolume);
                             break;
                     }
 
