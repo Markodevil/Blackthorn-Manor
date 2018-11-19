@@ -11,20 +11,23 @@ public class DrawerScript : MonoBehaviour
     public float mouseX;
     // Opening and closing speed of drawer
     public float drawerSpeed;
+    // Darwer sound cooldown
+    float DrawerCooldown = 0.5f;
     private GameObject Player;
     public Rigidbody rb;
     //DrawerSounds 
     public AudioSource audio;
     public AudioClip[] drawerSound;
     bool drawerSoundBool;
+    // Controls timer to when drawer can play sound again
+    bool CanPlaySound;
     // Picks Random DoorSound to add to the drawersound list
     private int RandomDrawerSound;
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-
-        //fpsCamera = GetComponent<FPSCamera>();
-    }
+        CanPlaySound = false;
+     }
     // Use this for initialization
     void Start()
     {
@@ -54,26 +57,34 @@ public class DrawerScript : MonoBehaviour
         // Gets the Mouse Y and Mouse X coordinates 
         mouseY = Input.GetAxis("Mouse Y");
         mouseX = Input.GetAxis("Mouse X");
-       
-        // lets go of the drawer when Mouse0 is released 
-        if (Input.GetKeyUp(KeyCode.Mouse0) || dist > 2.65f)
-        {
-            isOpen = false;
-            drawerSoundBool = false;
 
+        // lets go of the drawer when Mouse0 is released 
+        if (CanPlaySound)
+        {
+            DrawerCooldown -= Time.deltaTime;
         }
+            if (Input.GetKeyUp(KeyCode.Mouse0) || dist > 2.65f)
+            {
+                isOpen = false;
+                drawerSoundBool = false;
+
+            }
+        
         // if the drawer is being opened and on zero mouseY
         // make the drawer able to play a sound again 
-        if (isOpen && mouseY == 0)
+        if (isOpen && mouseY == 0 && DrawerCooldown <= 0)
         {
             drawerSoundBool = true;
-
+            DrawerCooldown = 0.5f;
+            CanPlaySound = false;
         }
         // when the drawer is being pushed it makes a sound 
         if (drawerSoundBool && mouseY > 1.5f)
         {
+            Debug.Log("Open");
             audio.PlayOneShot(drawerSound[RandomDrawerSound], 1);
             drawerSoundBool = false;
+            CanPlaySound = true;
         }
         // when the drawer is being pulled it makes a sound 
 
@@ -81,7 +92,9 @@ public class DrawerScript : MonoBehaviour
         {
             audio.PlayOneShot(drawerSound[RandomDrawerSound], 1);
             drawerSoundBool = false;
-         
+            CanPlaySound = true;
+
+
         }
         // Checks if can be opened and if player is positioned infront of the Dresser 
         if (isOpen && Vector3.Dot(transform.forward, Direction) > 0)
