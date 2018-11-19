@@ -81,8 +81,7 @@ public class DrawerScript : MonoBehaviour
         // when the drawer is being pushed it makes a sound 
         if (drawerSoundBool && mouseY > 1.5f)
         {
-            Debug.Log("Open");
-            audio.PlayOneShot(drawerSound[RandomDrawerSound], 1);
+             audio.PlayOneShot(drawerSound[RandomDrawerSound], 1);
             drawerSoundBool = false;
             CanPlaySound = true;
         }
