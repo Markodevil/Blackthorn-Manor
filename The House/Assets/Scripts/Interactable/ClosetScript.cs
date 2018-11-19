@@ -10,14 +10,18 @@ public class ClosetScript : MonoBehaviour {
     public HingeJoint hinge;
     public JointSpring hingeSpring;
     
-    // Gets mouse X and Y Axis 
+    // Gets mouseY Axis 
     private float mouseY;
-  
+
+    // ClosetSound Cooldown
+    float closetCoolDown = 0.65f;
+    bool canPlaySound;
+
     // Opening and closing speed of closet 
     public float closetOpenSpeed;
+   
     // Checks if closet is open 
     bool isOpen = false;
-   
     // References Player Gameobject
     private GameObject Player;
     // Gets Closet RigidBody
@@ -73,22 +77,29 @@ public class ClosetScript : MonoBehaviour {
             isOpen = false;
             closetSoundEnabled = false;
         }
-  
+    // when the timer is up the closet can make a sound again 
+      if (canPlaySound)
+        {
+            closetCoolDown -= Time.deltaTime;
+        }
       // If closet is being opened toward or away from player 
       // it will play the ClosetSound 
-      if (isOpen && mouseY == 0)
+      if (isOpen && mouseY == 0 && closetCoolDown <= 0)
         {
             closetSoundEnabled = true;
+            canPlaySound = false;
+            closetCoolDown = 0.65f;
         }
         if (closetSoundEnabled && mouseY > 2.5f)
         {
             audio.PlayOneShot(closetSound, 1);
+            canPlaySound = true;
             closetSoundEnabled = false;
         }
         if (closetSoundEnabled && mouseY < -2.5f)
         {
-
             audio.PlayOneShot(closetSound, 1);
+            canPlaySound = true;
             closetSoundEnabled = false;
         }
 
